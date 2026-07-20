@@ -75,16 +75,69 @@
     "factions": {
         "The Federal States Army": [
             {
-                "id": "fed_expeditionaries",
-                "name": "Federal Expeditionaries",
-                "subname": "Paratrooper Squad",
-                "type": "Infantry",
-                "cost": 15,
-                "unit_stats": "Inf (S), H1, S16\", M5\", Q3, T1/1-/1-",
-                "keywords": ["Assault Dismount", "Fearless", "Paradrop", "Squad"],
+                "id": "feds_type_68c_appomattox",
+                "name": "TYPE 68C \"APPOMATTOX\"",
+                "subname": "Command Post Carrier",
+                "type": "TACOM",
+                "cost": 0,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T6/4/4, C3",
+                "keywords": ["Amphibious", "Brigade (3, 12\")", "NBC"],
                 "weapons": [
                     {
-                        "name": "6G1A 7.76 Automatic Rifle",
+                        "name": "Pequod SA 11.5mm, commander's issue",
+                        "weapon_stats": "All, R2\", A4+/4+, S1+/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "1M1V Target Bearing Transmitter",
+                        "weapon_stats": "All, R32\", A++/xx, D1",
+                        "keywords": ["Designator", "Discreet"]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_appomattox",
+                "name": "Type 68C \"Appomattox\"",
+                "subname": "Command Post Carrier",
+                "type": "TACOM",
+                "cost": 0,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T6/4/4, C3",
+                "keywords": ["Amphibious", "Brigade (3, 12\")", "NBC"],
+                "weapons": [
+                    {
+                        "name": "Pequod SA 11.5mm, commander's issue",
+                        "weapon_stats": "All, R2\", A4+/4+, S1+/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "1M1V Target Bearing Transmitter",
+                        "weapon_stats": "All, R32\", A++/xx, D1",
+                        "keywords": ["Designator", "Discreet"]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_expeditionary_command",
+                "name": "Expeditionary Command",
+                "subname": "Paratrooper Command Squad",
+                "type": "TACOM",
+                "cost": 15,
+                "unit_stats": "Inf (S), H1, S24\", M5\", Q4, T1/1-/1-, C5",
+                "keywords": ["Assault Dismount", "Brigade (2, 8\")", "Fearless", "Paradrop", "Squad"],
+                "bonus_traits": "All units targeted in Brigade (including self) lose all pin tokens.",
+                "weapons": [
+                    {
+                        "name": "6G1A 7.76mm Automatic Rifle",
                         "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
                         "keywords": ["Small Arm"]
                     },
@@ -96,7 +149,331 @@
                 ]
             },
             {
-                "id": "fed_atgm",
+                "id": "feds_veldjen_m_command",
+                "name": "Type 40M \"Veldjen-MC\"",
+                "subname": "Command Medium Tank",
+                "type": "TACOM",
+                "cost": 15,
+                "unit_stats": "Vec, H2, S32\", M6\", Q3, T8/6/5, C4",
+                "keywords": ["NBC", "Steel Watchbands", "Brigade (4, 6\")"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K70 57mm High Velocity Gun",
+                        "weapon_stats": "Vec, R40\", A4+/4+, S12/18, D1, Ammo 6",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K15 40mm HE Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R20\", A4+/5+, S1+/2, D2, Ammo 4",
+                        "keywords": ["Ignore Cover (1)", "Multi-Gun", "Slow Round"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_duck_command",
+                "name": "Type 52 \"Duck-C\"",
+                "subname": "Command Light Tank",
+                "type": "TACOM",
+                "cost": 15,
+                "unit_stats": "Vec, H2, S32\", M10\", Q3, T6/5/4, C4",
+                "keywords": ["Amphibious", "NBC", "Steel Watchbands", "Brigade (4, 6\")"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K81 152mm Gun-Launcher",
+                        "weapon_stats": "Inf/Vec, A4+/5+, Ammo 4",
+                        "keywords": ["Turret"],
+                        "ammos": [
+                            {
+                                "name": "152mm HEAT",
+                                "ammo_stats": "R32\", S14/2, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "152mm Beehive",
+                                "ammo_stats": "R16\", S1/1+, D5",
+                                "keywords": ["Defensive CC (Inf.)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_mallard_command",
+                "name": "Type 52P \"Mallard-C\"",
+                "subname": "Command Airmobile Light Tank",
+                "type": "TACOM",
+                "cost": 15,
+                "unit_stats": "Vec, H2, S32\", M10\", Q3, T4/3/3, C4",
+                "keywords": ["Active Protection (1)", "Amphibious", "NBC", "Paradrop", "Steel Watchbands", "Brigade (4, 6\")"],
+                "weapons": [
+                    {
+                        "name": "2A76 7.76mm Minigun",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D4",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K56 76mm Gun",
+                        "weapon_stats": "R32\", A4+/5+, D1, Ammo 3",
+                        "keywords": ["No CC (Inf.)", "Slow Round", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "76mm HVAP",
+                                "ammo_stats": "Vec, S8/15"
+                            },
+                            {
+                                "name": "76mm HE-Frag",
+                                "ammo_stats": "Inf/Vec, S3/3",
+                                "keywords": ["Ignore Cover (1)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_razorback_m_command",
+                "name": "Type 55M \"Razorback-MC\"",
+                "subname": "Command Main Battle Tank",
+                "type": "TACOM",
+                "cost": 30,
+                "unit_stats": "Vec, H2, S32\", M8\", Q4, T14/7/5, C4",
+                "keywords": ["NBC", "Steel Watchbands", "Brigade (4, 6\")"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG, hull",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Multi-Gun"]
+                    },
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/6+, S3/4, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K41 100mm Gun",
+                        "weapon_stats": "R40\", A3+/4+, D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Thermal Sights", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "100mm APDS",
+                                "ammo_stats": "Vec, S12/18"
+                            },
+                            {
+                                "name": "100mm HE-Frag",
+                                "ammo_stats": "Inf/Vec, S4/4",
+                                "keywords": ["Ignore Cover (1)", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_tusker_k_command",
+                "name": "Type 71 \"Tusker-KC\"",
+                "subname": "Command Main Battle Tank",
+                "type": "TACOM",
+                "cost": 40,
+                "unit_stats": "Vec, H2, S32\", M8\", Q4, T16/8/6, C4",
+                "keywords": ["NBC", "Steel Watchbands", "Brigade (4, 6\")"],
+                "weapons": [
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/5+, S3/4, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K43 115mm Gun",
+                        "weapon_stats": "R40\", A2+/3+, D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Thermal Sights", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "115mm Sabot",
+                                "ammo_stats": "Vec, S14/21"
+                            },
+                            {
+                                "name": "115mm HEAT",
+                                "ammo_stats": "Inf/Vec, S12/2",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_tusker_gm_command",
+                "name": "Type 71B \"Tusker-GMC\"",
+                "subname": "Command Main Battle Tank",
+                "type": "TACOM",
+                "cost": 70,
+                "unit_stats": "Vec, H2, S32\", M8\", Q5, T24/12/8, C4",
+                "keywords": ["NBC", "Steel Watchbands", "Brigade (4, 6\")"],
+                "weapons": [
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/4+, S3/4, D2",
+                        "keywords": ["Thermal Sights", "Turret"]
+                    },
+                    {
+                        "name": "2K81 152mm Gun-Launcher",
+                        "weapon_stats": "D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Thermal Sights", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "152mm Gun-Launched ATGM",
+                                "ammo_stats": "Vec, R12-60\", A2+/xx, S18/3",
+                                "keywords": ["Guided Missile (1)", "Shaped Charge"]
+                            },
+                            {
+                                "name": "152mm Gun-Launched Thermobaric",
+                                "ammo_stats": "Gnd, R12-60\", A3+/xx, S3/3",
+                                "keywords": ["Guided Missile (1)", "Ignore Cover (2)", "Radius (2\")", "Rear Attack"]
+                            },
+                            {
+                                "name": "152mm Tandem HEAT",
+                                "ammo_stats": "Inf/Vec, R40\", A2+/3+, S18/3",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_reservists",
+                "name": "Reservists",
+                "subname": "Militia Squad",
+                "type": "Infantry",
+                "cost": 5,
+                "unit_stats": "Inf (S), H1, S16\", M4\", Q1, T1-/1-/1-",
+                "keywords": ["Squad"],
+                "weapons": [
+                    {
+                        "name": "6P3 11.5mm SMG",
+                        "weapon_stats": "All, R8\", A5+/5+, S1-/1, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6L4 73mm RPG",
+                        "weapon_stats": "Inf/Vec, R8\", A5+/6+, S8/1, D1, Ammo 3",
+                        "keywords": ["Shaped Charge", "Slow Round", "Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_states_grenadiers",
+                "name": "States-Grenadiers",
+                "subname": "Line Squad",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf (S), H1, S16\", M4\", Q2, T1/1-/1-",
+                "keywords": ["Assault Dismount", "Squad"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6G2 7.76mm GPMG",
+                        "weapon_stats": "All, R12\", A4+/xx, S1/1+, D2",
+                        "keywords": ["Defensive CC"]
+                    },
+                    {
+                        "name": "6L1 85mm RPG",
+                        "weapon_stats": "Inf/Vec, R8\", A4+/6+, S9/1+, D1, Ammo 3",
+                        "keywords": ["Shaped Charge", "Slow Round", "Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_federal_expeditionaries",
+                "name": "Federal Expeditionaries",
+                "subname": "Paratrooper Squad",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf (S), H1, S16\", M5\", Q3, T1/1-/1-",
+                "keywords": ["Assault Dismount", "Fearless", "Paradrop", "Squad"],
+                "weapons": [
+                    {
+                        "name": "6G1A 7.76mm Automatic Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6L3 40mm HEDP Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R8\", A*, S5/1+, D1, Ammo 4",
+                        "keywords": ["Shaped Charge", "Slow Round", "Underbarrel (6G1A)"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_mortar_team",
+                "name": "Mortar Team",
+                "subname": "Anti-Personnel Team",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf, H1, S16\", M4\", Q2, T1-/1-/1-",
+                "keywords": ["Assault Dismount"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6L2 60mm Knee Mortar",
+                        "weapon_stats": "R16\", Ammo 6",
+                        "keywords": ["Light Indirect (1)", "No CC"],
+                        "ammos": [
+                            {
+                                "name": "60mm Frag",
+                                "ammo_stats": "Inf/Vec, A4+/xx, S1+/1+, D2",
+                                "keywords": ["Air-Filling"]
+                            },
+                            {
+                                "name": "60mm Smoke",
+                                "ammo_stats": "Gnd, A++/xx, D1",
+                                "keywords": ["Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_atgm_team",
                 "name": "ATGM Team",
                 "subname": "Anti-Tank Team",
                 "type": "Infantry",
@@ -105,14 +482,881 @@
                 "keywords": ["Assault Dismount"],
                 "weapons": [
                     {
-                        "name": "6G1A 7.76 Automatic Rifle",
-                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
                         "keywords": ["Small Arm"]
                     },
                     {
                         "name": "9GR1 125mm ATGM",
                         "weapon_stats": "Vec, R12-60\", A3+/xx, S14/2, D1, Ammo 2",
                         "keywords": ["Guided Missile (2)", "MCLOS", "Shaped Charge"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_manpads_team",
+                "name": "MANPADS Team",
+                "subname": "Anti-Air Team",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf, H1, S32\", M4\", Q2, T1-/1-/1-",
+                "keywords": ["Assault Dismount"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "9GR2 85mm MANPADS",
+                        "weapon_stats": "Air, R60\", A4+/xx, S5/5, D1, Ammo 2",
+                        "keywords": ["Air-Filling", "Guided Missile (2)", "Homing", "Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_recoilless_rifle_team",
+                "name": "Recoilless Rifle Team",
+                "subname": "General-Purpose Team",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf, H1, S24\", M4\", Q2, T1-/1-/1-",
+                "keywords": ["Assault Dismount"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6L5 73mm Recoilless Rifle",
+                        "weapon_stats": "R24\", D1, Ammo 4",
+                        "keywords": [],
+                        "ammos": [
+                            {
+                                "name": "73mm HEAT",
+                                "ammo_stats": "Inf/Vec, A3+/xx, S8/1+",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "73mm Incendiary",
+                                "ammo_stats": "Inf/Vec, A3+/xx, S1+/1+",
+                                "keywords": ["Ignore Cover (2)", "No CC (Inf.)", "Rear Attack", "Slow Round"]
+                            },
+                            {
+                                "name": "73mm Smoke",
+                                "ammo_stats": "Gnd, A++/xx",
+                                "keywords": ["No CC", "Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_expeditionary_rr_team",
+                "name": "Expeditionary R. R. Team",
+                "subname": "Paratrooper G. P. Team",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf, H1, S24\", M5\", Q3, T1/1-/1-",
+                "keywords": ["Assault Dismount", "Fearless", "Paradrop"],
+                "weapons": [
+                    {
+                        "name": "6G1A 7.76mm Automatic Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6L6 57mm Light Recoilless Rifle",
+                        "weapon_stats": "Inf/Vec, A3+/5+, Ammo 4",
+                        "keywords": ["Small Arm"],
+                        "ammos": [
+                            {
+                                "name": "57mm HEAT",
+                                "ammo_stats": "R24\", S6/1+, D1",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "57mm Canister",
+                                "ammo_stats": "R12\", S1/1, D3",
+                                "keywords": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_pup_carson_scouts",
+                "name": "Pup Carson Scouts",
+                "subname": "Pathfinder Team",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf, H1, S24\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Amphibious", "Sense (6\")"],
+                "bonus_traits": "Any vehicle with at least M6\" which this unit embarks or desants on can make a \"pathfinder move\" during the Maneuver Phase, which is only M6\", but ignores terrain entrance/exit cost and all terrain multipliers.",
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Teeth & Claws",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D1",
+                        "keywords": ["Melee"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_intermarine_rangers",
+                "name": "Intermarine Rangers",
+                "subname": "Scout-Sniper Team",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf, H1, S32\", M5\", Q4, T1/1-/1-",
+                "keywords": ["Assault Dismount", "Fearless"],
+                "bonus_traits": "This unit does not lose accuracy from pin tokens while it is not identified.",
+                "weapons": [
+                    {
+                        "name": "6G5 7.76mm Sniper Rifle",
+                        "weapon_stats": "All, R16\", A2+/xx, S1/1+, D1",
+                        "keywords": ["Discreet", "No CC", "Scoped", "Small Arm", "Thermal Sights"]
+                    },
+                    {
+                        "name": "6P3 11.5mm SMG",
+                        "weapon_stats": "All, R8\", A3+/3+, S1-/1, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "1A5P MVSO Acquisition Laser",
+                        "weapon_stats": "All, R40\", A++/xx, D1",
+                        "keywords": ["Designator", "Discreet"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_ox",
+                "name": "LaF-301 \"Ox\"",
+                "subname": "Logistics Truck",
+                "type": "Vehicle",
+                "cost": 10,
+                "unit_stats": "Vec (W), H2, S16\", M8\", Q2, T1/1/1",
+                "keywords": ["PC (2, Rear)", "Resupply (6)", "Tow (3)", "Wheeled"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_grumble",
+                "name": "Type 60 \"Grumble\"",
+                "subname": "Armored Personnel Carrier",
+                "type": "Vehicle",
+                "cost": 10,
+                "unit_stats": "Vec (W), H2, S24\", M8\", Q2, T4/4/3",
+                "keywords": ["Amphibious", "NBC", "PC (3, Rear)", "Wheeled"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K15 40mm HE Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R20\", A4+/6+, S1+/2, D2, Ammo 4",
+                        "keywords": ["Ignore Cover (1)", "Slow Round", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_bantam",
+                "name": "Type 68 \"Bantam\"",
+                "subname": "Infantry Fighting Vehicle",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T6/4/4",
+                "keywords": ["Amphibious", "NBC", "PC (2, Rear)", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K28 73mm Low-Pressure Gun",
+                        "weapon_stats": "Inf/Vec, R22\", A4+/4+, D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Slow Round", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "73mm HEAT",
+                                "ammo_stats": "S9/1+",
+                                "keywords": ["Shaped Charge"]
+                            },
+                            {
+                                "name": "73mm HE-Frag",
+                                "ammo_stats": "S3/3",
+                                "keywords": ["Ignore Cover (1)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "9GR1 125mm ATGM",
+                        "weapon_stats": "Vec, R12-60\", A3+/xx, S14/2, D1, Ammo 2",
+                        "keywords": ["Guided Missile (2)", "MCLOS", "Shaped Charge", "Turret"]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_bantam_mk",
+                "name": "Type 68B \"Bantam-MK\"",
+                "subname": "Infantry Fighting Vehicle",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T6/4/4",
+                "keywords": ["Amphibious", "NBC", "PC (2, Rear)", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2A34 23mm Autocannon",
+                        "weapon_stats": "All, R32\", A4+/4+, S4/6, D2, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Turret"]
+                    },
+                    {
+                        "name": "9GR1 125mm ATGM",
+                        "weapon_stats": "Vec, R12-60\", A3+/xx, S14/2, D1, Ammo 2",
+                        "keywords": ["Guided Missile (2)", "MCLOS", "Shaped Charge", "Turret"]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_veldjen_m",
+                "name": "Type 40M \"Veldjen-M\"",
+                "subname": "Medium Tank",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M6\", Q2, T8/6/5",
+                "keywords": ["NBC", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K70 57mm High Velocity Gun",
+                        "weapon_stats": "Vec, R40\", A4+/4+, S12/18, D1, Ammo 6",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K15 40mm HE Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R20\", A4+/5+, S1+/2, D2, Ammo 4",
+                        "keywords": ["Ignore Cover (1)", "Multi-Gun", "Slow Round"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_duck",
+                "name": "Type 52 \"Duck\"",
+                "subname": "Light Tank",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M10\", Q2, T6/5/4",
+                "keywords": ["Amphibious", "NBC", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K81 152mm Gun-Launcher",
+                        "weapon_stats": "Inf/Vec, A4+/5+, Ammo 4",
+                        "keywords": ["Turret"],
+                        "ammos": [
+                            {
+                                "name": "152mm HEAT",
+                                "ammo_stats": "R32\", S14/2, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "152mm Beehive",
+                                "ammo_stats": "R16\", S1/1+, D5",
+                                "keywords": ["Defensive CC (Inf.)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_mallard",
+                "name": "Type 52P \"Mallard\"",
+                "subname": "Airmobile Light Tank",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M10\", Q3, T4/3/3",
+                "keywords": ["Active Protection (1)", "Amphibious", "NBC", "Paradrop", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "2A76 7.76mm Minigun",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D4",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K56 76mm Gun",
+                        "weapon_stats": "R32\", A4+/5+, D1, Ammo 3",
+                        "keywords": ["No CC (Inf.)", "Slow Round", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "76mm HVAP",
+                                "ammo_stats": "Vec, S8/15"
+                            },
+                            {
+                                "name": "76mm HE-Frag",
+                                "ammo_stats": "Inf/Vec, S3/3",
+                                "keywords": ["Ignore Cover (1)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_razorback_m",
+                "name": "Type 55M \"Razorback-M\"",
+                "subname": "Main Battle Tank",
+                "type": "Vehicle",
+                "cost": 40,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T14/7/5",
+                "keywords": ["NBC", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG, hull",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Multi-Gun"]
+                    },
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/6+, S3/4, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K41 100mm Gun",
+                        "weapon_stats": "R40\", A3+/4+, D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Thermal Sights", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "100mm APDS",
+                                "ammo_stats": "Vec, S12/18"
+                            },
+                            {
+                                "name": "100mm HE-Frag",
+                                "ammo_stats": "Inf/Vec, S4/4",
+                                "keywords": ["Ignore Cover (1)", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_tusker_k",
+                "name": "Type 71 \"Tusker-K\"",
+                "subname": "Main Battle Tank",
+                "type": "Vehicle",
+                "cost": 50,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T16/8/6",
+                "keywords": ["NBC", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/5+, S3/4, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K43 115mm Gun",
+                        "weapon_stats": "R40\", A2+/3+, D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Thermal Sights", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "115mm Sabot",
+                                "ammo_stats": "Vec, S14/21"
+                            },
+                            {
+                                "name": "115mm HEAT",
+                                "ammo_stats": "Inf/Vec, S12/2",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_tusker_gm",
+                "name": "Type 71B \"Tusker-GM\"",
+                "subname": "Main Battle Tank",
+                "type": "Vehicle",
+                "cost": 80,
+                "unit_stats": "Vec, H2, S32\", M8\", Q4, T24/12/8",
+                "keywords": ["NBC", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/4+, S3/4, D2",
+                        "keywords": ["Thermal Sights", "Turret"]
+                    },
+                    {
+                        "name": "2K81 152mm Gun-Launcher",
+                        "weapon_stats": "D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Thermal Sights", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "152mm Gun-Launched ATGM",
+                                "ammo_stats": "Vec, R12-60\", A2+/xx, S18/3",
+                                "keywords": ["Guided Missile (1)", "Shaped Charge"]
+                            },
+                            {
+                                "name": "152mm Gun-Launched Thermobaric",
+                                "ammo_stats": "Gnd, R12-60\", A3+/xx, S3/3",
+                                "keywords": ["Guided Missile (1)", "Ignore Cover (2)", "Radius (2\")", "Rear Attack"]
+                            },
+                            {
+                                "name": "152mm Tandem HEAT",
+                                "ammo_stats": "Inf/Vec, R40\", A2+/3+, S18/3",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "902V 81mm Smoke Launchers",
+                        "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 1",
+                        "keywords": ["Light Indirect (1)", "No CC", "Smoke (3\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_korenbloem",
+                "name": "2M9 \"Korenbloem\"",
+                "subname": "Towed Automatic Mortar",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec (C), H1, S24\", M2\", Q2, T1/1-/1-",
+                "keywords": ["Carriage"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "2M9 82mm Automatic Mortar",
+                        "weapon_stats": "Ammo 6",
+                        "keywords": ["Barrage (3)", "No CC"],
+                        "ammos": [
+                            {
+                                "name": "82mm HEAT",
+                                "ammo_stats": "Inf/Vec, R28\", A3+/xx, S8/1+, D1",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "82mm Frag",
+                                "ammo_stats": "Gnd, R40\", A4+/xx, S[D3], D1",
+                                "keywords": ["Air-Filling", "Light Indirect (3)", "Radius (2\")"]
+                            },
+                            {
+                                "name": "82mm Chemical-SP",
+                                "ammo_stats": "Gnd, R40\", A++/xx, D1",
+                                "keywords": ["Chemical-SP (2\")", "Light Indirect (3)"]
+                            },
+                            {
+                                "name": "82mm Smoke",
+                                "ammo_stats": "Gnd, R40\", A++/xx, D2",
+                                "keywords": ["Light Indirect (3)", "Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_wheat",
+                "name": "2K52 \"Wheat\"",
+                "subname": "Towed Howitzer",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec (C), H1, S24\", M2\", Q2, T2/1-/1-",
+                "keywords": ["Carriage"],
+                "weapons": [
+                    {
+                        "name": "6G1 7.76mm Battle Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "2K52 152mm Howitzer",
+                        "weapon_stats": "Ammo 3",
+                        "keywords": ["No CC"],
+                        "ammos": [
+                            {
+                                "name": "152mm HEAT",
+                                "ammo_stats": "Inf/Vec, R40\", A3+/xx, S14/2, D1",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "152mm Frag",
+                                "ammo_stats": "Gnd, R∞\", A4+/xx, S[D6], D2",
+                                "keywords": ["Air-Filling", "Heavy Indirect (3)", "Radius (3\")"]
+                            },
+                            {
+                                "name": "152mm Chemical-SP",
+                                "ammo_stats": "Gnd, R∞\", A++/xx, D1",
+                                "keywords": ["Chemical-SP (4\")", "Heavy Indirect (3)"]
+                            },
+                            {
+                                "name": "152mm Smoke",
+                                "ammo_stats": "Gnd, R∞\", A++/xx, D4",
+                                "keywords": ["Heavy Indirect (3)", "Smoke (4\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_runner",
+                "name": "Type 60AT \"Runner\"",
+                "subname": "ATGM Carrier",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec (W), H2, S32\", M8\", Q2, T4/4/3",
+                "keywords": ["Amphibious", "NBC", "PC (1, Rear)", "Wheeled"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "9GR1M 125mm ATGM Rack",
+                        "weapon_stats": "Vec, R12-60\", A3+/xx, S16/3, D1, Ammo 6",
+                        "keywords": ["Barrage (3, Point)", "Guided Missile (2)", "Shaped Charge", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_firehose",
+                "name": "Type 52LW \"Firehose\"",
+                "subname": "Self-Propelled Anti-Air Gun",
+                "type": "Vehicle",
+                "cost": 30,
+                "unit_stats": "Vec, H2, S32\", M10\", Q3, T5/4/4",
+                "keywords": ["Amphibious", "NBC"],
+                "weapons": [
+                    {
+                        "name": "6P3 11.5mm SMG",
+                        "weapon_stats": "All, R8\", A4+/4+, S1-/1, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "2A37 37mm Rotary Cannon",
+                        "weapon_stats": "All, R36\", A4+/4+, S5/7, D3, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Radar Anti-Air", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_wave",
+                "name": "Type 60MD \"Wave\"",
+                "subname": "Automatic Mortar Carrier",
+                "type": "Vehicle",
+                "cost": 30,
+                "unit_stats": "Vec (W), H2, S24\", M8\", Q2, T4/4/3",
+                "keywords": ["Amphibious", "NBC", "PC (1, Rear)"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2M9 82mm Automatic Mortar",
+                        "weapon_stats": "Gnd, R40\", Ammo 6",
+                        "keywords": ["Barrage (3)", "Light Indirect (3)", "No CC"],
+                        "ammos": [
+                            {
+                                "name": "82mm Frag",
+                                "ammo_stats": "A4+/5+, S[D3], D1",
+                                "keywords": ["Air-Filling", "Radius (2\")"]
+                            },
+                            {
+                                "name": "82mm Chemical-SP",
+                                "ammo_stats": "A++/++, D1",
+                                "keywords": ["Chemical-SP (2\")"]
+                            },
+                            {
+                                "name": "82mm Smoke",
+                                "ammo_stats": "A++/++, D2",
+                                "keywords": ["Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_coachman",
+                "name": "Type 60LW \"Coachman\"",
+                "subname": "Anti-Air Missile Carrier",
+                "type": "Vehicle",
+                "cost": 30,
+                "unit_stats": "Vec (W), H2, S32\", M8\", Q2, T4/4/3",
+                "keywords": ["Amphibious", "NBC", "PC (1, Rear)", "Wheeled"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "9GR5 120mm Infrared SAM",
+                        "weapon_stats": "Air, R60\", A4+/xx, S6/6, D1, Ammo 4",
+                        "keywords": ["Air-Filling", "Barrage (2)", "Guided Missile (2)", "Homing", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_tusker_av",
+                "name": "Type 71H \"Tusker-AV\"",
+                "subname": "Self-Propelled Howitzer",
+                "type": "Vehicle",
+                "cost": 50,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T14/6/6",
+                "keywords": ["NBC", "Steel Watchbands"],
+                "weapons": [
+                    {
+                        "name": "6GZ1 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/6+, S3/4, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "2K52 152mm Howitzer",
+                        "weapon_stats": "Ammo 4",
+                        "keywords": ["Turret"],
+                        "ammos": [
+                            {
+                                "name": "152mm HEAT",
+                                "ammo_stats": "Inf/Vec, R40\", A3+/4+, S14/2, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "152mm Frag",
+                                "ammo_stats": "Gnd, R∞\", A4+/5+, S[D6], D2",
+                                "keywords": ["Air-Filling", "Heavy Indirect (3)", "No CC", "Radius (3\")"]
+                            },
+                            {
+                                "name": "152mm Chemical-SP",
+                                "ammo_stats": "Gnd, R∞\", A++/++, D1",
+                                "keywords": ["Chemical-SP (4\")", "Heavy Indirect (3)", "No CC"]
+                            },
+                            {
+                                "name": "152mm Smoke",
+                                "ammo_stats": "Gnd, R∞\", A++/++, D4",
+                                "keywords": ["Heavy Indirect (3)", "No CC", "Smoke (4\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "feds_paddle",
+                "name": "S36 \"Paddle\"",
+                "subname": "River Gunboat",
+                "type": "Vehicle",
+                "cost": 15,
+                "unit_stats": "Vec, H2, S32\", M8\", Q2, T3/3/1+",
+                "keywords": ["PC (3, Any)", "Watercraft"],
+                "weapons": [
+                    {
+                        "name": "6GN3 14.5mm HMG",
+                        "weapon_stats": "All, R24\", A4+/4+, S3/4, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Multi-Gun", "Turret"]
+                    },
+                    {
+                        "name": "2K15 40mm HE Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R20\", A4+/4+, S1+/2, D2, Ammo 4",
+                        "keywords": ["Ignore Cover (1)", "Multi-Gun", "Slow Round", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_moose",
+                "name": "HzN-18 \"Moose\"",
+                "subname": "Utility Helicopter",
+                "type": "Aircraft",
+                "cost": 15,
+                "unit_stats": "Air, H2, S32\", M32\", Q2, T1+/1+/1+",
+                "keywords": ["PC (2, Sides)"],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MG",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Door Gun (Sides)"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_hugag",
+                "name": "HzN-22 \"Hugag\"",
+                "subname": "Heavy Lift Helicopter",
+                "type": "Aircraft",
+                "cost": 20,
+                "unit_stats": "Air, H2, S32\", M24\", Q2, T2/2/2",
+                "keywords": ["PC (6, Sides)", "Resupply (6)", "Tow (2)"],
+                "weapons": [
+                    {
+                        "name": "2A76 7.76mm Minigun",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D4",
+                        "keywords": ["Door Gun (Sides)"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_bison",
+                "name": "HzN-18B \"Bison\"",
+                "subname": "Makeshift Gunship",
+                "type": "Aircraft",
+                "cost": 25,
+                "unit_stats": "Air, H2, S32\", M32\", Q3, T2/2/2",
+                "keywords": ["Decoy Protection (1)", "PC (1, Sides)"],
+                "weapons": [
+                    {
+                        "name": "2A76 7.76mm Minigun",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D4",
+                        "keywords": ["Door Gun (Sides)"]
+                    },
+                    {
+                        "name": "2K15 40mm HEDP Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R20\", A4+/5+, S5/1+, D2, Ammo 3",
+                        "keywords": ["Shaped Charge", "Slow Round"]
+                    },
+                    {
+                        "name": "9GR1 125mm ATGM",
+                        "weapon_stats": "Vec, R12-60\", A3+/4+, S14/2, D1, Ammo 2",
+                        "keywords": ["Guided Missile (2)", "MCLOS", "Shaped Charge"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_hardnose",
+                "name": "SiG-17 \"Hardnose\"",
+                "subname": "Light Bomber",
+                "type": "Aircraft",
+                "cost": 20,
+                "unit_stats": "Air (CAS), M10\", Q2, T3, E0",
+                "keywords": [],
+                "weapons": [
+                    {
+                        "name": "6G2 7.76mm MGs, octet",
+                        "weapon_stats": "All, R2\", A4+, S1, D3",
+                        "keywords": ["Radar Anti-Air"]
+                    },
+                    {
+                        "name": "4BB2 350kg Dual-Purpose Cluster Bomb",
+                        "weapon_stats": "Gnd, R0\", A2+, S6/1, D2, Ammo 6",
+                        "keywords": ["Rear Attack", "Saturating (6)", "Shaped Charge"]
+                    },
+                    {
+                        "name": "9GR6 200mm Beam-Riding AAM",
+                        "weapon_stats": "Air, R50\", A5+, S6, D1, Ammo 4",
+                        "keywords": ["Air-Filling", "Guided Missile (2)", "Barrage (2)", "No CC"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_rufe",
+                "name": "SiG-16 \"Rufe\"",
+                "subname": "Multi-Role Fighter",
+                "type": "Aircraft",
+                "cost": 25,
+                "unit_stats": "Air (CAP), M10\", Q2, T4, E1",
+                "keywords": ["Sprint Motor"],
+                "weapons": [
+                    {
+                        "name": "2A34 23mm Autocannons, triplet",
+                        "weapon_stats": "All, R8\", A4+, S4, D3, Ammo 3",
+                        "keywords": ["Radar Anti-Air"]
+                    },
+                    {
+                        "name": "4BN2 350kg Napalm Bomb",
+                        "weapon_stats": "Gnd, R0\", A3+, S1+, D2, Ammo 2",
+                        "keywords": ["Barrage (2)", "Ignore Cover (2)", "Lingering", "Radius (2\")", "Rear Attack"]
+                    },
+                    {
+                        "name": "9GR4 120mm Infrared AAM",
+                        "weapon_stats": "Air, R30\", A4+, S6, D1, Ammo 2",
+                        "keywords": ["Air-Filling", "Guided Missile (1)", "Homing"]
+                    }
+                ]
+            },
+            {
+                "id": "feds_schroef",
+                "name": "SiG-16B \"Schroef\"",
+                "subname": "Strike Aircraft",
+                "type": "Aircraft",
+                "cost": 30,
+                "unit_stats": "Air (CAS), M10\", Q2, T4, E0",
+                "keywords": ["Decoy Protection (2)", "Sprint Motor"],
+                "weapons": [
+                    {
+                        "name": "2A40 37mm Autocannons, triplet",
+                        "weapon_stats": "All, R8\", A4+, S5, D3, Ammo 3",
+                        "keywords": ["Radar Anti-Air"]
+                    },
+                    {
+                        "name": "4BE1 500kg HE Bomb",
+                        "weapon_stats": "Gnd, R0\", A3+, S8, D1, Ammo 2",
+                        "keywords": ["Air-Filling", "Barrage (2)", "Radius (3\")", "Rear Attack"]
+                    },
+                    {
+                        "name": "9GR3 275mm AGM",
+                        "weapon_stats": "Vec, R50\", A2+, S24/8, D1, Ammo 2",
+                        "keywords": ["Guided Missile (2)", "MCLOS", "Shaped Charge", "Thermal Sights"]
                     }
                 ]
             }

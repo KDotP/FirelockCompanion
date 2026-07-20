@@ -4,6 +4,7 @@ namespace FirelockCompanion;
 
 public partial class Window : Form
 {
+    private static String selectedFaction = "The Federal States Army";
 
     // -- Embark Status --
     private static readonly Regex LeadTagPattern = new(@"^(Vec|Inf|Air)\s*(\(([^)]*)\))?");
@@ -40,6 +41,9 @@ public partial class Window : Form
         // Probably don't do anything before this
         InitializeComponent();
 
+        // Set the header name to the chosen faction
+        factionNameLabel.Text = selectedFaction;
+
         activeArmyTree.AllowDrop = true;
         activeArmyTree.ItemDrag += activeArmyTree_ItemDrag;
         activeArmyTree.DragEnter += activeArmyTree_DragEnter;
@@ -54,7 +58,7 @@ public partial class Window : Form
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
         // Fill out available units
-        PopulateAvailableUnits(ruleset, "The Army of the Ebon Forest");
+        PopulateAvailableUnits(ruleset, selectedFaction);
         RecalculateArmyTotals();
 
         // First group
