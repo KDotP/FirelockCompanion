@@ -1,0 +1,1169 @@
+{
+    "keywords": {
+        "Assault Dismount": "If this infantry unit is embarked or desanting on a vehicle (not aircraft), when that vehicle charges into close combat, the infantry may immediately declare an Assault Dismount. Replace the vehicle with this unit, then move the vehicle's frontal arc into basal contact with the infantry's rear arc. The enemy unit that was charged then receives 2 pin tokens from the vehicle's covering fire (if the vehicle isn't unarmed). The units which used Assault Dismount to charge count as having Assault Specialist for the rest of that close combat. \nThe vehicle cannot itself be targeted by enemies in the subsequent close combat engagement, since it's not in basal contact with any of them. It is not considered a participant in the close combat. \nIf there are multiple units with this special rule in the same vehicle, then extra units after the first may consecutively disembark from the vehicle on the same Maneuver Phase turn, specifically to join the close combat engagement before it starts. \nIf infantry with Assault Dismount can harm an enemy, the vehicle carrying them may still charge that enemy, even if the vehicle itself could not damage the enemy in close combat. \nInfantry may not embark or desant on a vehicle and trigger Assault Dismount in the same round. \nIf Assault Dismount is used to charge into contact with multiple units or into a building, only one enemy unit in contact with the dismounting units receives two pin",
+        "Paradrop": "Units with the Paradrop special rule may deploy by parachuting onto the table in alternating turns after all other blinds deploy.\nParachuters can deploy anywhere on the board so long as the unit is not spotted by an enemy or within 8” of an enemy unit, enemy deployment zone or board edge, or objective.\nParachuting units do not get a deployment move. Vehicles cannot deploy with units towed, embarked, or desanting.\nAfter deployment, parachuters gain two pin per non-parachuting enemy with Air or All-targeting weapons able to kill it in half range. These aren't lost in the first Upkeep.",
+        "Fearless": "This infantry unit has nerves of steel! It does not lose movement from pin tokens.",
+        "Small Arm": "This is a man-portable weapon. It may be fired at stationary Accuracy while embarked in the Fire Phase and in close combat. It may target enemies in any of the firer's arcs.",
+        "Shaped Charge": "This weapon is a powerful explosive penetrator. It does not use its second Strength value as half range Strength.\nWhen hitting vehicles at any range, it uses its first Strength value. If this Strength is greater than the target's Toughness, add a +1 modifier to its kill roll (before Cover Modifier). If a 1+ attack gains a +1 modifier, it becomes ++.\nWhen hitting infantry at any range, it uses its second value and gains Ignore Cover (1).",
+        "Slow Round": "This munition is both large and slow enough to be susceptible to Active Protection.",
+        "Underbarrel (X)": "This weapon is mounted under the barrel of X parent weapon. It may be fired simultaneously with that weapon at the same target. The Underbarrel weapon uses that weapon's Accuracy and half range modifier. It benefits from Thermal Sights, Small Arm, and Scoped if those are possessed by the main weapon.",
+        "Squad": "The first time a squad is killed, it is instead considered to be depleted: shot down to team-size. It gains a depletion token. Thereafter, it counts as a team for all purposes.",
+        "Guided Missile (X)": "This weapon does not get a half range Accuracy modifier. Air-targeting Guided Missiles never confirm hits against airborne units and may target planes.\nA Guided Missile has a time-to-target equal to X. If the weapon is fired within half range, its time-to-target is reduced by 1. If timeto-target is reduced to 0, that attack is resolved immediately. Guided Missiles use their accuracy at the time their attack lands, not when it was fired. If the firer is killed, the attack misses.\nSusceptible to Active/Decoy Protection. Active Protection won't trigger if attack is Radius.",
+        "MCLOS": "This guided missile demands concentration to steer. For each pin token on the firer (not each two), this weapon suffers -1 to hit.",
+        "Bloodlust": "If this infantry unit reaches six pin tokens during the Fire Phase, the unit must roll a 4+ check on a D6 to avoid going berserk. Place a berserk token on the unit if it fails.\nWhen a unit gains a berserk token, all other Lupar infantry with the Bloodlust trait within 3\" also roll to go berserk. This chain reaction will continue until all infantry succeed their checks or there are no more units with Bloodlust within range. Units do not roll to go berserk more than once per round, and they may choose to willingly go berserk.\nBerserk units immediately lose all pin tokens and cannot gain new ones. They do not benefit from cover and must always fire at moving accuracy outside of close combat. In close combat, they fire stationary and re-roll misses. Time-to-target attacks fired by berserk units automatically miss.\nDuring the Maneuver Phase, the owning player chooses whether each non-stationary berserk unit moves towards the nearest corpse token or the nearest enemy unit which it can possibly kill. These obligatory move actions do not cost command tokens, and occur automatically at the beginning of the phase, before normal move actions are declared by anyone.\nA unit remains berserk until it is hit by a Rally weapon or it sates on a corpse token. Units with Bloodlust may choose to sate on a corpse even if not currently berserk.\nSating automatically occurs when a unit with Bloodlust ends a round in basal contact with a corpse token. In the beginning of the subsequent Support Phase, before any other actions occur, remove the corpse token. Flip the unit's berserk token to show that it is satiated. This unit will not roll berserk checks for the rest of the battle.\nMultiple units may sate on the same corpse token if they are all in contact with it at the beginning of the Support Phase.\nBloodlust cannot trigger while within Chemical Weapons. Berserk units may not call or participate in brigade movement, nor can they share spotting or call missions. Embarked units do not roll to go berserk.",
+        "Brigade (X, Y)": "This unit (the brigadier) may brigade in the Maneuver Phase for a command token.\nWhen executing a brigade move, the brigadier must be clearly indicated and may move as normal. Up to X additional friendly units may also move that same turn, so long as they remain within a Radius of Y inches from the brigadier at the start and end of movement. Neither they nor the brigadier are eligible to move again in the same Phase.\nAn infantry unit participating in a brigade move may either embark or disembark from a vehicle, but it may not do both. That is, an infantry unit cannot enter a vehicle, have that vehicle move, and then exit the vehicle (all as part of one brigade move).",
+        "Infiltrator": "This unit may deploy up to 16\" away from your deployment edge, into occluding terrain (or terrain that puts infantry into ambush, such as dead ground or entrenchment), before any standard deployment by either side. It does not get a subsequent move. Multiple players with Infiltrators must alternate their deployments.",
+        "Sense (X)": "This unit spots and may call missions on all enemy units within X inches, even without LOS. Embarked units cannot spot with or be spotted by Sense. Unlike Radius effects, Sense measures edge-to-edge.",
+        "Light Indirect (X)": "This weapon can conduct indirect fire. It does not get a half range Accuracy modifier. A non-blind-fire hit result of 6 hits counts as a Rear Attack. It has a time-to-target equal to X. Time-to-target is not reduced in half range.\nLight Indirect weapons do not identify or spot the firer (but remove vehicle ambush) and need friendly LOS for indirect fire.",
+        "Heavy Indirect (X)": "This weapon can conduct indirect fire. It does not get a half range Accuracy modifier. A non-blind-fire hit result of 6 hits counts as a Rear Attack. It has a time-to-target equal to X. Time-to-target is not reduced in half range.\nHeavy Indirect weapons do identify and spot the firer and cannot fire if concealed. They use their accuracy at the time their attack lands, not when it was fired. If the firer is killed, the attack misses. Heavy Indirect weapons need a fire mission to conduct indirect fire.",
+        "Active Protection (X)": "This unit is fitted with one of two protection systems which force dice to confirm a hit. They cannot be reloaded, but may trigger X times before running out of ammo. Protection can't fire if units are desanting.\nActive Protection may trigger when the unit is hit by a Slow Round or Guided Missile. One die which hit in a single attack must be confirmed at an unmodifiable roll of 6+ or else miss and apply three pin. This only affects one die at a time and only triggers once per turn. Cannot trigger on Radius attacks.",
+        "Decoy Protection (X)": "This unit is fitted with one of two protection systems which force dice to confirm a hit. They cannot be reloaded, but may trigger X times before running out of ammo. Protection can't fire if units are desanting.\nDecoy Protection may trigger when the unit is hit by Radar Anti-Air or a Guided Missile. All dice which hit must be confirmed at their original target numbers after modifiers or else miss and apply three pin. This affects all die which are resolving at the same time and may trigger multiple times per turn, but not to trigger multiple confirms on the same die. If triggered during close combat, only lasts for one close combat round. Unusable landed. Cannot trigger on Radius attacks.",
+        "Afterburner": "If this plane waves off and is not at max pin, it may both rotate and make a full move in the same action in exchange for one pin.",
+        "Loiter": "This plane may choose to stop moving forward anywhere along its strafing line. At the end of the Fire Phase, it may choose to stay on-map and hold its target between rounds.",
+        "NBC": "This unit and units embarked inside of it do not suffer kill rolls from Chemical Weapons or Scorched terrain.",
+        "Amphibious": "This unit may move through deep water without any movement penalty. It must pay 1\" to cross into or out of Swamp and Deep Water.",
+        "Assault Specialist": "This infantry unit is specifically trained for close-quarters combat, combat with it is not simultaneous in all rounds. It resolves its firing first in each round, then the enemy retaliates.\nOpposing Assault Specialists resolve combat simultaneously. Embarked and desanting units do not benefit from Assault Specialist.",
+        "Tow (X)": "This unit may tow any friendly vehicle with a (highest arc) toughness of X or less.\nTo hitch another vehicle, a tower must be in basal contact on its rear arc with the front or rear arc of a towable vehicle. The other vehicle may be hitched, even if it has already fired at stationary Accuracy. Hitching can occur at the beginning or end of a tower's turn.\nAs long as the tower and towed unit are hitched, they activate and move as one unit, using the towing unit's Movement statistic. Towed units cannot move in the same phase that they are hitched or the tower moves.\nTowing units can fire all weapons. Towed units may only fire Small Arms.\nA towed unit may tow another unit, creating a chain of tows. The leading unit adds together the (highest arc) Toughness of all tows in a chain to see if it can tow them.\nWhen deploying a unit that is towing another unit, deploy the towing unit first with its rear arc touching the edge of the map as normal. Then move the towing unit forward before placing the towed unit at its rear. If there is not enough space to fit the towed unit, the towed unit must deploy on a separate turn. Do this for all successive chain tows.\nA unit towing another unit must pay 1\" per unit being towed for every full 45 degrees it rotates during the Maneuver Phase. Its first 45 degrees of movement are free.\nThe towing unit may choose to unhitch towed units at the end of its movement. The towed unit automatically becomes unhitched from the tower when it moves on its own turn.\nA tower may not hitch and unhitch in the same turn. Airborne units may hitch and unhitch tows while airborne, but cannot land while towing, and the towed unit cannot form tow chains. Units towed by an airborne unit are considered aircraft for targeting purposes. Parachuting units do not get a deployment move. Vehicles cannot deploy with units towed, embarked, or desanting. After deployment, parachuters gain two pin per non-parachuting enemy with Air or All-targeting weapons able to kill it in half range. These aren't lost in the first Upkeep.",
+        "PC (X, Y)": "This unit is a personnel carrier, capable of carrying up to X infantry units inside itself in addition to external desants. Infantry must disembark from the vehicle from the listed Y arc. Friendly vehicles do not block disembarkation.\nInfantry may not use their weapons while embarked except for Small Arms, which may fire at stationary without forcing themselves or their carrier to lose their move action. Embarked units use the pin of their carrier for firing. A PC that is carrying infantry may use its own weapons as normal. Embarked infantry can fight in close combat, but cannot screen.\nAircraft must land to embark or disembark, and may not carry desanting infantry.\nEmbarked units cannot be targeted or hit directly by attacks on the carrier, and do not inherit the carrier's pin when they disembark. When a carrier dies, teams are killed and squads are depleted; infantry in an airborne carrier are fully killed.",
+        "Resupply (X)": "This unit can reload up to X Ammo (for any number of weapons) to one friendly within 6\" during Upkeep without needing LOS. For every unit of Ammo reloaded to another unit, this unit's Resupply value decreases by one. Reloading forces the Resupply vehicle to remain stationary in the Maneuver Phase, but it may still take a fire action. Resupply units cannot reload themselves or airborne units.",
+        "Watercraft": "Can only move and unhitch onto water type terrain. Pays nothing to cross water types. Deep Water offers a 2x movement modifier.\nWatercraft can't be towed by land units, only be other Watercraft or aircraft.",
+        "Air-Filling": "This weapon's misses apply two pin rather than one unless the weapon cannot possibly kill its target. For weapons with variable Strength, roll Strength even on a miss. Support missions can target designated units which aren't in LOS of the calling TACOM. Designators fired at the same time as other weapons can immediately spot for them. All Designators can target planes.",
+        "Discreet": "This weapon does not identify the firer nor cause the firer to lose concealment when fired. You don't have to indicate who fired it.",
+        "Barrage (X)": "This weapon may simultaneously fire up to X times in one fire action. Each attack consumes one Ammo and may use a different shot type. Declare the number of attacks before resolving. Targets can be spaced 2\" from each other unless the weapon is Barrage (X, Point).\nThe first Barrage attack called in a fire mission must be directly on target. The rest can be spaced 2\" from each other as normal.",
+        "Door Gun (X)": "This helicopter weapon may only fire in the listed X arc(s), and may fire while landed.",
+        "Chemical Weapon (X)": "All Chemical Weapons have a Radius of X inches and are Lingering. Ground units within cannot lose more than one pin at once by any means (including Rally), participate in brigading, or participate in support missions (but may still be targeted by one). Embarked units are affected. Airborne units are unaffected.\nChemical Weapons inflict a single 6+ kill roll on affected, non-NBC units only during Upkeep. Unlike other Lingering weapons, a unit in multiple Chemical Weapon radii only rolls one kill. This roll is never modified.",
+        "Defensive CC": "If its unit charged, this weapon cannot fire, or cannot fire vs. infantry (if marked (Inf.)).",
+        "No CC": "In close combat, this weapon cannot fire, or cannot fire vs. infantry (if marked (Inf.)).",
+        "Designator": "This weapon immediately spots its target with a designator token. Designation is maintained indefinitely as long as the designator is alive and has not declared any other fire action since beginning designation, and the target remains within arc, range, and LOS.\nDesignators can't be fired or maintained though Smoke or if the firer is at max pin.\nSupport missions can target designated units which aren't in the LOS of the calling TACOM.\nDesignators fired at the same time as other weapons can immediately spot for them. All designators can target planes.",
+        "Homing": "This missile has a fire-and-forget seeker. A declared attack's accuracy cannot be modified by anything but Evasion, even if its firer is dead or spotting/LOS to target is lost.",
+        "Nuclear (X)": "The final argument. X radius. See APPENDIX I.",
+        "Radius (X)": "This weapon affects all non-plane units whose base centers are within an X-inch radius from its impact point. If it possesses an Accuracy statistic, it rolls independently to hit each unit covered. Radius attacks against unspotted units are considered to be blind-firing.",
+        "Ignore Cover (X)": "This weapon ignores up to X points of the target's Cover Modifier.",
+        "Lingering": "This Radius weapon's effects persist on the table after it has landed. Units inside of a Lingering Radius are hit according to the weapon's Accuracy statistic when it lands, then hit again automatically if they are in the weapon's Radius during subsequent Upkeeps. Lingering creates a number of separate radii equal to its Dice statistic at the point where it lands. Units suffer as many kill rolls as radii which the unit is inside of. These kill rolls do not apply pin. After all Lingering weapons have rolled to kill during Upkeep (if they have Strength values), roll once per radius to see if it dissipates. On a roll of 4+, the weapon cloud persists until the next Support Phase. All discrete radii roll to persist separately.",
+        "Radar Anti-Air": "This weapon is designed to engage high-altitude aircraft. It may target planes.\nRadar Anti-Air does not confirm hits against airborne units at any range. It also blind-fires at planes and airborne units at 4+ (or base accuracy, if it's worse) rather than 6+, even if blocked by Smoke. However, it is susceptible to Decoy Protection.",
+        "Tracking Anti-Air": "This weapon is designed to engage high-altitude aircraft. It may target planes.\nTracking Anti-Air does not have to confirm attacks against airborne units within 12\" of itself and is not susceptible to Decoy Protection.",
+        "Rally": "This tool restores friendly units' fighting spirits. Any friendly unit targeted by this weapon immediately loses all of its pin tokens. Rally weapons can be fired at max pin.",
+        "Rear Attack": "This weapon strikes either the top or rear of a target (i.e., its thinnest armor). Attacks automatically hit the target's rear arc, regardless of the shooter and target's positions.",
+        "Melee": "This weapon may target an enemy in any of the firer's arcs, but only in close combat. Does not get a half range modifier.",
+        "Multi-Gun": "This weapon may be used simultaneously with other weapons during a single fire action. May be used against a different target. Unlike other types of Lingering weapon, a Smoke weapon with a Strength value only hits units when it lands, not during Upkeep. Missions can't be called through Smoke unless the TACOM spots the target by Sense.",
+        "Saturating (X)": "This weapon can spend up to X amount of Ammo in a single attack. The attack gains Radius with a number of inches equal to the Ammo spent to fire it. If only one Ammo is spent, the weapon's targeting type if Inf/Vec (not Gnd) and it does not get radius.",
+        "Scoped": "This weapon has a magnified optic. It blind-fires at ground units at 4+ (or base accuracy, if it's worse) unless firing through Smoke. Additionally, this weapon gains Ignore Cover (1) when hitting infantry.",
+        "Smoke (X)": "All Smoke weapons have a Radius of X inches and are Lingering. LOS may be drawn through Smoke, but not spotting. Fire through Smoke is thus always blind-fire, unless the unit is otherwise spotted, such as by Thermal Sights. A unit which has the center of its base within a Smoke radius is considered to be firing and fired at through smoke. Smoke blocks Designators.\nFiring through Smoke at an otherwise spotted unit incurs a -1 Accuracy modifier. A result of 6 will always hit anyways, unless the roll is also modified by pin tokens.\nSmoke fired at the same time as other weapons does not block spotting until after the fire action has concluded.\nAs airborne units fly above Smoke, they can spot units on the other side of Smoke radius. Ground units directly inside of the radius, however, benefit from smoke.\nUnlike other types of Lingering weapon, a Smoke weapon with a Strength value only hits units when it lands, not during Upkeep.\nMissions can't be called through Smoke unless the TACOM spots the target by Sense.",
+        "Strafing": "If this weapon is fired at moving Accuracy, the helicopter must immediately move itself forward 12\" without rotating after the attack is resolved. A strafing attack cannot be declared if the movement would result in a charge.",
+        "Turret": "This weapon may target an enemy in any of its firer's arcs, not just its front.",
+        "Thermal Sights": "This weapon can ignore Smoke on its own fire actions. If the target of this weapon would have been spotted by the firer if not for Smoke, the weapon is not forced to blind-fire. It still accrues the -1 Accuracy penalty from firing through Smoke at a spotted unit.\nThermal Sights do not allow an on-map unit to proactively spot through Smoke for the benefit of friendly units on their fire actions (e.g. for a friendly Indirect fire mission). Thermal Sights only negate Smoke for this weapon's own attack on its own turn. Scoped weapons with Thermal Sights blind-fire through Smoke at 4+.\nPlanes can't spot, so those with Thermal Sights may fire at -1 Accuracy through Smoke if the target would have been spotted otherwise.",
+        "Undetectable": "This trap cannot be avoided by infantry unless they move 2\" or less within its Radius. It may only be identified through basal contact.",
+        "Chemical-SP (X)": "This is a Chemical Weapon, but it rolls two separate kills against luparic units in Radius affected during Upkeep. X\" Radius.",
+        "Sprint Motor": "This turboprop plane is assisted by a powerful rocket motor with a separate fuel supply, allowing it to \"sprint\" much faster than its normal airspeed for a short duration.\nOnce per game, when this unit moves, the plane may declare a rocket sprint until its next turn. During a rocket sprint, the plane doubles its movement, sets its Evasion statistic to E2, and gains Afterburner. When Sprint Motor has been used, mark the plane with a spent ammo token. May be used in dogfights.",
+        "Steel Watchbands": "During the Fire Phase, when this vehicle scores a successful kill with a non-indirect weapon on an enemy unit, it can immediately make a half-move, even if the unit fired with its stationary Accuracy. This move may not result in a charge.\nIf the vehicle fired at moving Accuracy, then half-moved, no penalty is applied to its subsequent Manuever Phase movement.\nThis special rule activates even if suffering the kill did not remove the enemy unit from the game, such as infantry depleting or a unit triggering Leviathan. It may not trigger multiple times in a single Fire Phase.",
+        "Guidance (X)": "This unit soothes friendly lupar within X inches from itself. Units which enter this radius automatically lose their berserk tokens (if berserk), and units inside of the radius cannot gain them. A unit that loses its berserk token this way does not become satiated. Units within the radius never have to roll to go berserk for any reason.",
+        "Rally (Salt)": "This Rally weapon only affects non-NBC lupar. Friendly non-lupar are not affected. It does not affect airborne units.",
+        "Active Camouflage": "This unit starts the game in a special state called active camouflage. If active camouflage has not been lost, the unit cannot be spotted from more than 6\" away regardless of its current terrain, ambush, or concealment status, but LOS may still be drawn to it. While in active camouflage, dice from blind-fire attacks automatically miss, but still apply one pin as a miss regardless of special rules. If spotted by an enemy within 6\", active camouflage is lost and units from further than 6\" away may fire upon it as normal.\nThis unit permanently loses active camouflage when it fires a non-Discreet weapon, or is spotted by either Sense or Designators. It does not lose active camouflage when it is spotted by an enemy from 6\" away and then exits that range without any of the above occurring. Units in active camouflage may still be targeted by Designators at their normal range as long as the designating unit can draw valid LOS.\nUnits desanting on units with Active Camouflage also benefit from it.",
+        "Guided Shell": "This weapon gains an Ignore Cover (X) value where X equals the number of friendly units currently spotting the unit. If target would not be spotted if not for a Designator, only units currently Designating the target count.\nUnits which have counterbattery spotting tokens that are not directly spotted by any friendlies do not gain Ignore Cover.",
+        "Laser": "This weapon always rolls a minimum of 6+ to kill regardless of the target's Toughness. Like Designators, Lasers are blocked by Smoke, except in close combat. Lasers can target planes and do not have to confirm hits against aircraft at any range. Lasers can trigger Decoy Protection, in which case they are immediately nullified and do not re-roll, but still apply three pin.\nA die which hits but fails to kill a non-aircraft unit can only ever deal one pin, but a die which hits an aircraft deals three as normal.",
+        "Drone": "This unit's quality is marked Q*, indicating that it is unaffected by pin. This unit never receives pin tokens, but it cannot lend or receive actions through the Rygonet.",
+        "Round Extruder": "This weapon can use a fire action to reload one Ammo for itself instead of shooting in the Fire Phase. Weapon may not generate Ammo if already at its default maximum value.",
+        "Hovercraft": "Tracked IFVs have been supplanted by air-cushioned craft in N.R.H. service: the best of all worlds.",
+        "Rygonet (X)": "Any friendly Rygolic unit which is within a Radius of X inches from this unit is eligible to lend its action to any other Rygo unit in that same radius during the Fire and Maneuver Phases. A friendly Rygo unit can then simultaneously take a turn to receive that action during the Maneuver or Fire Phase. Receiving a move action always costs one command token. A unit can receive via Rygonet up to two times per Phase. Thus, in addition to its own (innate) action, it may act up to three times per Phase.\nWhen a unit lends its action, it is considered to have spent its turn. It is ineligible to act on its own or lend another action for the rest of the phase. It can, however, still receive bonus actions from other units.\nA unit which receives an action must begin and end its turn within a Rygonet radius, but it does not have to be the same unit's radius.\nRygonet can be used during a Brigade activation to transfer moves from units which have not been targeted as part of the Brigade to units that have been targeted.\nUnits with no weapons cannot lend a fire action. Units with no viable movement, such as those with M0\" or those which fired stationary in the previous Fire Phase, cannot lend a movement action.\nIf a unit is being towed, or is embarked or desanting where it cannot disembark, it cannot lend its move action.\nDummies, Petty Staters, Planes, Drones, and units being affected by Chemical Weapons cannot lend or receive actions.\nUnits using lended actions cannot both gain and lose a gone to ground token in the same Fire phase, nor embark and disembark in the same Maneuver Phase.",
+        "Strider": "Biological legs grant Rygolic light armor all-terrain mobility and the ability to crouch behind cover.\nThis vehicle is marked Vec (S) and behaves like infantry for movement purposes. It can sprint, rotate for free, and ignores terrain vehicle multipliers (though it cannot move through or into Inf-only terrain), but still takes pin as if it were a vehicle. It cannot garrison structures, but can move over them, provided it does not end its movement inside. It may also spend a fire action in any terrain to gain or lose a gone to ground token without simultaneously firing. This reduces the unit's Height by 1, but gives no Cover Modifier.",
+        "Leviathan (X)": "This unit must suffer X number of kills to be destroyed. When it suffers a kill, place a leviathan token on it and choose one non-Small Arm weapon on its statline to be destroyed. Destroyed weapons cannot be used and no special rule benefits may be derived from them for the rest of the game. Leviathans cannot be towed.\nLeviathan helicopters do not force hits against them to confirm beyond 12\" away.",
+        "Flower of the Atom": "Instead of moving, a plane with this rule that has not yet fired on or gotten into a dogfight with its mission target may instead choose to lose its current mission target and tilt. A tilt allows the plane to immediately select any spotted enemy on the board as its new mission target.\nDraw a new strafing line from the plane's current position through the selected unit and apply one pin to the plane. The plane then immediately moves toward its new target. The plane must attempt to fire upon its target, diving if necessary, before it can leave the board or wave off.\nThe command token used to activate the TACOM (or Pages) that originally called the mission then returns to the controlling player's command pool to be used during the Maneuver Phase. A TACOM which has had its command token refunded can later call a brigade and move and act normally, i.e. as if it did not activate during the Support phase.\nIf a plane with Flower of the Atom is the target of an interception by a living plane, it may not change targets until its interceptor is dead.",
+        "Tercio": "i. Formation\nUnits with this rule may be deployed in a special tercio formation. A tercio consists of three infantry units placed into mutual basal contact. To form a tercio, place all constituent units in the shape of a triangle, with one leading unit in front and two supporting units in the rear. Tercios can't be formed mid-game.\nA tercio may be deliberately disbanded. This is declared during Upkeep in the Support Phase and costs no command tokens. After the former tercio's pin has been divided (detailed below), the constituent units behave as normal and are not affected by the following rules.\nii. Pin & Quality\nTercios can accrue up to twelve pin. Rather than losing one inch of movement per one pin accrued, and suffering a -1 Accuracy modifier per two, the tercio loses one inch of movement per two and -1 Accuracy per four.\nA tercio's Quality is the sum of all its living units' Quality. Tercios sprint 1/3 of their Quality stat in inches rather than 1/2.\nWhen a tercio with pin disbands, the pin must be divided equally between the newly disbanded units. Any remainder is assigned at the player's discretion. No single unit can receive more than one pin from the remainder.\nIf only one unit remains in the tercio, that unit immediately takes the leading unit's position and the tercio disbands. The survivor inherits up to six pin from the former tercio.\niii. Movement\nA vehicle must be able to fit the whole tercio to transport it, but the tercio may split between the carrier's PC and desant capacity. While embarked or desanting, a tercio is temporarily disbanded, and its pin is divided as such. The tercio may disembark as a single activation. When a tercio exits its carrier, it exits in the same configuration as when it embarked, adding together its units' pin.\nTercios count as being three units (or two, if one constituent unit has been killed) for the purpose of garrisoning buildings.\nWhen charging with a tercio, the leading unit must make basal contact with its frontal arc to create a valid close combat. A move cannot result in basal contact with an enemy if no enemies end up in basal contact with the leading unit's frontal arc. A tercio can charge multiple enemies as long as at least one of them is in the leading unit's frontal arc.\niv. Suffering Hits & Kills\nTercios are targeted as a single unit by non-Radius attacks which can target at least one of its units. Attcks target the arc of the closest unit targetable by the attcker. When struck, the tercio uses the toughness of the leading unit to determine the target number of the kill roll. If the tercio suffers a kill, that kill must be applied to the leading unit.\nTercios targeted by a Radius attack receive an attack for each of its units within the Radius. Each unit in the tercio is truck by individuaally resolved attacks thaaat use the unit's own Toughness, not that of the leading unit. Hits gainst desanting members of a Tercio are also resolved individually.\nWhen the leading unit is fully killed (not just depleted), one of the two supporting units must immediately move up and replace it. The other supporting unit enters full basal conact with the rear of the new leading unit, resulting in  straight \"column\" of two unit bases.\nIf the tercio suffers multiple kills simultaneously, then kills are assigned to the leading unit until it is fully dead. All overflowing kills must then be assigned to one of the two supporting units (of the defender's choice) before the next leading unit is moved forward.\nv. Firing & Terrain\nA tercio attacks simultaneously, with all units using their weapons within normal facing and range restrictions. Each constituent unit may select a different target and draw LOS out of any other unit's base in the same tercio.\nTercios are spotted and identified as one unit. A tercio is concealed if all of its constituent units are concealed. It is in ambush if the leading unit can enter ambush and the supporting units are in ambush, concealed, or out of LOS from all enemies. The whole tercio uses the leading unit's Cover Modifier.\nConstituent units of a tercio benefit from their special rules individually. Parachuting tercios take pin as if disbanded.",
+        "Wheeled": "If a wheeled vehicle begins and ends its movement on road, it may road dash, adding its quality statistic to its base movement. Add quality before applying any multiplier.\nWheeled vehicles must pay an additional 1\" movement penalty whenever they enter occluding terrain, even if that terrain does not normally have an entrance/exit cost, unless otherwise noted.",
+        "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry."
+    },
+    "factions": {
+        "The Federal States Army": [
+            {
+                "id": "fed_expeditionaries",
+                "name": "Federal Expeditionaries",
+                "subname": "Paratrooper Squad",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf (S), H1, S16\", M5\", Q3, T1/1-/1-",
+                "keywords": ["Assault Dismount", "Fearless", "Paradrop", "Squad"],
+                "weapons": [
+                    {
+                        "name": "6G1A 7.76 Automatic Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "6L3 40mm HEDP Grenade Launcher",
+                        "weapon_stats": "Inf/Vec, R8\", A*, S5/1+, D1, Ammo 4",
+                        "keywords": ["Shaped Charge", "Slow Round", "Underbarrel (6G1A)"]
+                    }
+                ]
+            },
+            {
+                "id": "fed_atgm",
+                "name": "ATGM Team",
+                "subname": "Anti-Tank Team",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf, H1, S32\", M4\", Q2, T1-/1-/1-",
+                "keywords": ["Assault Dismount"],
+                "weapons": [
+                    {
+                        "name": "6G1A 7.76 Automatic Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "9GR1 125mm ATGM",
+                        "weapon_stats": "Vec, R12-60\", A3+/xx, S14/2, D1, Ammo 2",
+                        "keywords": ["Guided Missile (2)", "MCLOS", "Shaped Charge"]
+                    }
+                ]
+            }
+        ],
+        "The Army of the Ebon Forest": [
+            {
+                "id": "ebon_company_chief",
+                "name": "Company Chief",
+                "subname": "Command Team",
+                "type": "TACOM",
+                "cost": 0,
+                "unit_stats": "Inf, H1, S24\", M5\", Q4, T1+/1/1, C3",
+                "keywords": ["Bloodlust", "Brigade (4, 8\")", "Infiltrator", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 38 .30 LMG",
+                        "weapon_stats": "All, R10\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Mle. 44 3.5-inch RPG",
+                        "weapon_stats": "Inf/Vec, R8\", A4+/6+, S9/1+, D1, Ammo 2",
+                        "keywords": ["Shaped Charge", "Small Arm", "Slow Round"]
+                    },
+                    {
+                        "name": "OtPv. 9 30-inch Machete",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "Stimulant-Laced Bomb, \"Signal Salt\"",
+                        "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "Radius (3)", "Rally (Salt)", "Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_internal_security_escort",
+                "name": "Internal Security Escort",
+                "subname": "Command Shock Squad",
+                "type": "TACOM",
+                "cost": 15,
+                "unit_stats": "Inf (S), H1, S16\", M4\", Q5, T2/1+/1+, C4",
+                "keywords": ["Assault Specialist", "Brigade (3, 4\")", "NBC", "Squad"],
+                "weapons": [
+                    {
+                        "name": "FdcL 63 4-gauge Shotgun",
+                        "weapon_stats": "Inf/Vec, R6\"",
+                        "keywords": ["Small Arm"],
+                        "ammos": [
+                            {
+                                "name": "4-gauge Houndshot",
+                                "ammo_stats": "A4+/4+, S1/1+, D3"
+                            },
+                            {
+                                "name": "4-gauge Rifled Slug",
+                                "ammo_stats": "A3+/3+, S2/3, D1"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OtDs. 13 Tactical Breaching Charge",
+                        "weapon_stats": "Vec, R0\", A1+/1+, S12/12, D1, Ammo 2",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "OtPv. 9 30-inch Machete",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "Stimulant-Laced Filter, \"Signal Snuff\"",
+                        "weapon_stats": "Inf*, R0\", A++/++, D1, Ammo 1",
+                        "keywords": ["Discreet", "Rally"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_waykeeper_judge",
+                "name": "Waykeeper Judge",
+                "subname": "Religious Leader",
+                "type": "TACOM",
+                "cost": 20,
+                "unit_stats": "Inf, H1, S24\", M4\", Q5, T1/1/1, C5",
+                "keywords": ["Amphibious", "Brigade (3, 12\")", "Guidance (12\")", "Infiltrator", "Sense (8\")"],
+                "bonus_traits": "While this unit is alive, no unit in this army can willingly go berserk. Only Judges may call Exhortation support missions.",
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Multi-Gun", "Small Arm"]
+                    },
+                    {
+                        "name": "Teeth & Claws",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D1",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "Stimulant-Laced Bomb, \"Signal Salt\"",
+                        "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "Radius(3)", "Rally (Salt)", "Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_militia",
+                "name": "Territorials",
+                "subname": "Militia Squad",
+                "type": "Infantry",
+                "cost": 5,
+                "unit_stats": "Inf (S), H1, S24\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Amphibious", "Bloodlust", "Infiltrator", "Sense (6\")", "Squad"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "OtPv. 9 30-inch Machete",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+                        "keywords": ["Melee"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_chasseurs",
+                "name": "Chasseurs",
+                "subname": "Line Squad",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf (S), H1, S24\", M5\", Q2, T1+/1/1",
+                "keywords": ["Bloodlust", "Infiltrator", "Sense (6\")", "Squad"],
+                "weapons": [
+                    {
+                        "name": "Mle. 38 .30 LMG",
+                        "weapon_stats": "All, R10\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Mle. 44 3.5-inch RPG",
+                        "weapon_stats": "Inf/Vec, R8\", A4+/6+, S9/1+, D1, Ammo 2",
+                        "keywords": ["Shaped Charge", "Small Arm", "Slow Round"]
+                    },
+                    {
+                        "name": "OtPv. 9 30-inch Machete",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+                        "keywords": ["Melee"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_white_gloves",
+                "name": "White Gloves",
+                "subname": "Elite Line Squad",
+                "type": "Infantry",
+                "cost": 20,
+                "unit_stats": "Inf (S), H1, S24\", M5\", Q4, T1+/1/1",
+                "keywords": ["Bloodlust", "Fearless", "Sense (6\")", "Squad"],
+                "weapons": [
+                    {
+                        "name": "Mle. 52F .30 Automatic Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Lacra 3.5-inch Shouldered R. R.",
+                        "weapon_stats": "A3+/5+, D1, Ammo 4",
+                        "keywords": ["Small Arm"],
+                        "ammos": [
+                            {
+                                "name": "3.5-inch Rocket-Assisted Sabot",
+                                "ammo_stats": "Vec, R20\", S8/12"
+                            },
+                            {
+                                "name": "3.5-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R16\", S9/1+",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "3.5-inch Incendiary",
+                                "ammo_stats": "Inf/Vec, R16\", S1+/1+",
+                                "keywords": ["Ignore Cover (2)", "Rear Attack", "Slow Round"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Mle. 7 Laser Designator",
+                        "weapon_stats": "All, R40\", A++/xx",
+                        "keywords": ["Designator", "Discreet"]
+                    },
+                    {
+                        "name": "Mle. 313 26-inch Side Saber",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1+/1+, D2",
+                        "keywords": ["Melee"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_internal_security",
+                "name": "Internal Security",
+                "subname": "Elite Shock Squad",
+                "type": "Infantry",
+                "cost": 20,
+                "unit_stats": "Inf (S), H1, S16\", M4\", Q4, T2/1+/1+",
+                "keywords": ["Assault Specialist", "NBC", "Squad"],
+                "weapons": [
+                    {
+                        "name": "FdcL 63 4-gauge Shotgun",
+                        "weapon_stats": "Inf/Vec, R6\"",
+                        "keywords": ["Small Arm"],
+                        "ammos": [
+                            {
+                                "name": "4-gauge Houndshot",
+                                "ammo_stats": "A4+/4+, S1/1+, D3"
+                            },
+                            {
+                                "name": "4-gauge Rifled Slug",
+                                "ammo_stats": "A3+/3+, S2/3, D1"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OtDs. 13 Tactical Breaching Charge",
+                        "weapon_stats": "Vec, R0\", A1+/1+, S12/12, D1, Ammo 2",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "OtPv. 9 30-inch Machete",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "Stimulant-Laced Filter, \"Signal Snuff\"",
+                        "weapon_stats": "Inf*, R0\", A++/++, D1, Ammo 1",
+                        "keywords": ["Discreet", "Rally"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_machine_gun_team",
+                "name": "Machine Gun Team",
+                "subname": "Anti-Personnel/Materiel Team",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf, H1, S24\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Bloodlust", "Infiltrator", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/6+, S2/3, D2",
+                        "keywords": ["Defensive CC"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_hima_team",
+                "name": "Hima Team",
+                "subname": "Anti-Personnel/Tank Team",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf, H1, S24\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Bloodlust", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Lacra-76 \"Hima\" 3-inch Launcher",
+                        "weapon_stats": "Ammo 4",
+                        "ammos": [
+                            {
+                                "name": "3-inch Frag",
+                                "ammo_stats": "Gnd, R32\", A4+/xx, S[D3], D1",
+                                "keywords": ["Air-Filling", "Light Indirect (2)", "No CC", "Radius (2\")"]
+                            },
+                            {
+                                "name": "3-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R8\", A4+/xx, S8/1+, D1",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "3-inch Smoke",
+                                "ammo_stats": "Gnd, R32\", A++/xx, D2",
+                                "keywords": ["Light Indirect (2)", "No CC", "Smoke (3\")"]
+                            },
+                            {
+                                "name": "3-inch Signal Salt",
+                                "ammo_stats": "Gnd, R32\", A++/xx, D1",
+                                "keywords": ["Light Indirect (2)", "No CC", "Radius (3\")", "Rally (Salt)"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_recoilless_rifle_team",
+                "name": "Recoilless Rifle Team",
+                "subname": "General-Purpose Team",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf, H1, S24\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Bloodlust", "Infiltrator", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "TAP 20 3-inch Recoilless Rifle",
+                        "weapon_stats": "Ammo 4",
+                        "ammos": [
+                            {
+                                "name": "3-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R24\", A4+/6+, S8/1+, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "3-inch Canister",
+                                "ammo_stats": "Inf/Vec, R12\", A4+/6+, S1/1+, D3",
+                                "keywords": ["Defensive CC (Inf.)"]
+                            },
+                            {
+                                "name": "3-inch Smoke",
+                                "ammo_stats": "Gnd, R24\", A++/++, D1",
+                                "keywords": ["No CC", "Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_guided_missile_team",
+                "name": "Guided Missile Team",
+                "subname": "Anti-Tank/Air Team",
+                "type": "Infantry",
+                "cost": 20,
+                "unit_stats": "Inf, H1, S32\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Bloodlust", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "SD84 4.7-inch Missile Launcher",
+                        "weapon_stats": "S15/2, D1, Ammo 4",
+                        "keywords": ["Guided Missile (2)", "No CC", "Shaped Charge"],
+                        "ammos": [
+                            {
+                                "name": "ATGM Guidance Mode",
+                                "ammo_stats": "Vec, R6-60\", A3+/xx"
+                            },
+                            {
+                                "name": "MANPADS Guidance Mode",
+                                "ammo_stats": "Air, R60\", A4+/xx"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_subaltern_team",
+                "name": "Subaltern Team",
+                "subname": "Junior Command Team",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf, H1, S24\", M5\", Q4, T1/1-/1-",
+                "keywords": ["Bloodlust", "Brigade (2, 4\")", "Infiltrator", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "OtPv. 9 30-inch Machete",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "MdG. 341 Smoke Bomb",
+                        "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "Small Arm", "Smoke (2\")"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_made_to_orders",
+                "name": "Made-To-Orders",
+                "subname": "Berserker Squad",
+                "type": "Infantry",
+                "cost": 10,
+                "unit_stats": "Inf (S), H1, S24\", M5\", Q6, T1+/1+/1+",
+                "keywords": ["Amphibious", "Bloodlust", "Tow (2)", "Sense (6\")", "Squad"],
+                "bonus_traits": "If depleted, loses its depletion token at the end of the round after winning a close combat.",
+                "weapons": [
+                    {
+                        "name": "Mutated Teeth & Claws",
+                        "weapon_stats": "Inf/Vec, R0\", A1+/1+, S1+/1+, D3",
+                        "keywords": ["Melee"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_waykeepers",
+                "name": "Waykeepers",
+                "subname": "Religious Instructors",
+                "type": "Infantry",
+                "cost": 15,
+                "unit_stats": "Inf (S), H1, S24\", M5\", Q4, T1/1/1",
+                "keywords": ["Amphibious", "Guidance (12\")", "Infiltrator", "Sense (8\")", "Squad"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+                        "keywords": ["Multi-Gun", "Small Arm"]
+                    },
+                    {
+                        "name": "Teeth & Claws",
+                        "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D1",
+                        "keywords": ["Melee"]
+                    },
+                    {
+                        "name": "Stimulant-Laced Bomb, \"Signal Salt\"",
+                        "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "Radius (3\")", "Rally (Salt)", "Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_bounders",
+                "name": "Bounders",
+                "subname": "Anti-Materiel/Sniper Team",
+                "type": "Infantry",
+                "cost": 20,
+                "unit_stats": "Inf, H1, S32\", M5\", Q2, T1/1-/1-",
+                "keywords": ["Amphibious", "Bloodlust", "Infiltrator", "Sense (6\")"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "APX-25 1-inch Anti-Tank Rifle",
+                        "weapon_stats": "All, R32\", A3+/xx, S4/6, D1, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Scoped"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_kennel",
+                "name": "CdS-F1 \"Kennel\"",
+                "subname": "Improvised Gun Truck",
+                "type": "Vehicle",
+                "cost": 10,
+                "unit_stats": "Vec (W), H2, S16\", M8\", Q2, T2/2/1",
+                "keywords": ["PC (2, Rear)", "Resupply (6)", "Tow (3)", "Wheeled"],
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/6+, S2/3, D2",
+                        "keywords": ["Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_denmother",
+                "name": "VBD-U \"Denmother\"",
+                "subname": "Universal Carrier",
+                "type": "Vehicle",
+                "cost": 5,
+                "unit_stats": "Vec, H1, S16\", M8\", Q2, T3/2/1+",
+                "keywords": ["PC (1, Any)"],
+                "bonus_traits": "This unit uses a 40x40mm base. Cannot have embarked units and desants at the same time. Embarked units can fire any one non-Melee weapon as if it were a Small Arm and are identified with the vehicle. Units embarked may spot and be spotted by Sense.",
+                "weapons": [
+                    {
+                        "name": "Lenus Automatic .45, driver's issue",
+                        "weapon_stats": "All, R2\", A4+/4+, S1+/1+, D1",
+                        "keywords": ["Small Arm"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_tanner",
+                "name": "VBD-1 \"Tanner\"",
+                "subname": "Armored Personnel Carrier",
+                "type": "Vehicle",
+                "cost": 10,
+                "unit_stats": "Vec, H2, S32\", M8\", Q2, T4/4/3",
+                "keywords": ["Amphibious", "NBC", "PC (3, Rear)"],
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/6+, S2/3, D2",
+                        "keywords": ["Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_rawhide",
+                "name": "VBD-2 \"Rawhide\"",
+                "subname": "Infantry Fighting Vehicle",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M8\", Q2, T5/5/4",
+                "keywords": ["Active Protection (1)", "NBC", "PC (2, Rear)"],
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/5+, S2/3, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "APX-30 1-inch Autocannon",
+                        "weapon_stats": "All, R32\", A4+/5+, S4/6, D2, Ammo 4",
+                        "keywords": ["No CC (Inf.)", "Turret"]
+                    },
+                    {
+                        "name": "Mle. 254 2.3-inch Smoke Launchers",
+                        "weapon_stats": "Gnd, R0\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "No CC", "Smoke (2\")"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_motte",
+                "name": "VBD-3 \"Motte\"",
+                "subname": "Armored Personnel Carrier",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M8\", Q3, T16/10/6",
+                "keywords": ["NBC", "PC (2, Rear, Front)"],
+                "weapons": [
+                    {
+                        "name": "Mle. 38C .30 MG, swivels",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/5+, S2/3, D2",
+                        "keywords": ["Multi-Gun"]
+                    },
+                    {
+                        "name": "Mle. 254 2.3-inch Smoke Launchers",
+                        "weapon_stats": "Gnd, R0\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "No CC", "Smoke (2\")"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_veldjen",
+                "name": "CHAR 30 \"Veldjen\"",
+                "subname": "Medium Tank",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H2, S32\", M8\", Q2, T10/6/5",
+                "keywords": ["NBC"],
+                "weapons": [
+                    {
+                        "name": "Mle. 38C .30 MG",
+                        "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "SA19 3-inch Gun",
+                        "weapon_stats": "R32\", A4+/6+, D1, Ammo 6",
+                        "keywords": ["No CC (Inf.)", "Slow Round", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "3-inch APHE",
+                                "ammo_stats": "Vec, S8/12"
+                            },
+                            {
+                                "name": "3-inch HE-Frag",
+                                "ammo_stats": "Inf/Vec, S3/3",
+                                "keywords": ["Ignore Cover (1)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LF4 Sponson Flamethrower",
+                        "weapon_stats": "Inf/Vec, R8\", A3+/3+, S1+/1+, D3, Ammo 3",
+                        "keywords": ["Ignore Cover (2)", "Multi-Gun", "Rear Attack"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_borvo",
+                "name": "CHAR 38 \"Borvo\"",
+                "subname": "Main Battle Tank",
+                "type": "Vehicle",
+                "cost": 40,
+                "unit_stats": "Vec, H2, S32\", M8\", Q2, T14/10/6",
+                "keywords": ["NBC"],
+                "weapons": [
+                    {
+                        "name": "Mle. 38C .30 MG",
+                        "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Thermal Sights", "Turret"]
+                    },
+                    {
+                        "name": "SA19B 3-inch Dual Guns",
+                        "weapon_stats": "A3+/4+, Ammo 6",
+                        "keywords": ["Barrage (2)", "Thermal Sights", "Tracking Anti-Air", "Turret"],
+                        "ammos": [
+                            {
+                                "name": "3-inch APHE",
+                                "ammo_stats": "Vec, R40\", S8/12, D1",
+                                "keywords": ["No CC (Inf.)", "Slow Round"]
+                            },
+                            {
+                                "name": "3-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R40\", S9/1+, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "3-inch Canister",
+                                "ammo_stats": "All, R20\", S1/1+, D3",
+                                "keywords": ["Defensive CC (Inf.)"]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Mle. 254 2.3-inch Smoke Launchers",
+                        "weapon_stats": "Gnd, R0\", A++/++, D1, Ammo 1",
+                        "keywords": ["Light Indirect (0)", "No CC", "Smoke (2\")", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_blossom",
+                "name": "DAG-8 \"Blossom\"",
+                "subname": "Towed Anti-Tank Gun",
+                "type": "Vehicle",
+                "cost": 15,
+                "unit_stats": "Vec (C), H1, S32\", M3\", Q2, T2/1/1",
+                "keywords": ["Carriage"],
+                "weapons": [
+                    {
+                        "name": "Mle. 38 .30 LMG",
+                        "weapon_stats": "All, R10\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "DAG-8 3.3-inch Gun",
+                        "weapon_stats": "R40\", A3+/xx, D1, Ammo 4",
+                        "keywords": ["No CC", "Thermal Sights"],
+                        "ammos": [
+                            {
+                                "name": "3.3-inch Sabot",
+                                "ammo_stats": "Vec, S12/18"
+                            },
+                            {
+                                "name": "3.3-inch HE-Frag",
+                                "ammo_stats": "Inf/Vec, S3/3",
+                                "keywords": ["Ignore Cover (1)", "Slow Round"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_tanner_r",
+                "name": "VBD-1B \"Tanner-R\"",
+                "subname": "Recoilless Rifle Carrier",
+                "type": "Vehicle",
+                "cost": 15,
+                "unit_stats": "Vec, H2, S32\", M8\", Q2, T4/4/3",
+                "keywords": ["Amphibious", "NBC", "PC (1, Rear)"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "TAP 30 4.2-inch Recoilless Rifle",
+                        "weapon_stats": "Ammo 4",
+                        "ammos": [
+                            {
+                                "name": "4.2-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R28\", A4+/6+, S12/2, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "4.2-inch Canister",
+                                "ammo_stats": "Inf/Vec, R14\", A4+/6+, S1/1+, D4",
+                                "keywords": ["Defensive CC (Inf.)"]
+                            },
+                            {
+                                "name": "4.2-inch White Phosphorus",
+                                "ammo_stats": "Gnd, R28\", A4+/6+, S1+/1+, D1",
+                                "keywords": ["Ignore Cover (2)", "No CC", "Rear Attack", "Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_forester",
+                "name": "CdS-F3 \"Forester\"",
+                "subname": "Anti-Air Gun Truck",
+                "type": "Vehicle",
+                "cost": 15,
+                "unit_stats": "Vec (W), H2, S16\", M8\", Q2, T2/2/1",
+                "keywords": ["Tow (2)", "Wheeled"],
+                "weapons": [
+                    {
+                        "name": "AMA-2 .60 Dual HMGs",
+                        "weapon_stats": "All, R24\", A4+/6+, S3/4, D3",
+                        "keywords": ["Turret", "Tracking Anti-Air"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_saucer",
+                "name": "CdA-25 \"Saucer\"",
+                "subname": "Tank Destroyer",
+                "type": "Vehicle",
+                "cost": 20,
+                "unit_stats": "Vec, H1, S32\", M10\", Q2, T6/3/2",
+                "keywords": ["NBC"],
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/6+, S2/3, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "SA25 2.5-inch High Velocity Gun",
+                        "weapon_stats": "Vec, R40\", A4+/5+, S12/18, D1, Ammo 6",
+                        "keywords": []
+                    }
+                ]
+            },
+            {
+                "id": "ebon_cherry",
+                "name": "DAG-16 \"Cherry\"",
+                "subname": "Towed Howitzer",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec (C), H1, S24\", M2\", Q2, T1/1-/1-",
+                "keywords": ["Carriage"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "DAG-16 7.8-inch Howitzer",
+                        "weapon_stats": "Ammo 3",
+                        "keywords": ["No CC"],
+                        "ammos": [
+                            {
+                                "name": "7.8-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R40\", A3+/xx, S16/3, D1",
+                                "keywords": ["Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "7.8-inch Frag",
+                                "ammo_stats": "Gnd, R∞\", A4+/xx, S[D6], D3",
+                                "keywords": ["Air-Filling", "Heavy Indirect (3)", "Radius (3\")"]
+                            },
+                            {
+                                "name": "7.8-inch Canister",
+                                "ammo_stats": "All, R20\", A4+/xx, S1/1+, D6",
+                                "keywords": ["Radius (2\")"]
+                            },
+                            {
+                                "name": "7.8-inch Smoke",
+                                "ammo_stats": "Gnd, R∞\", A++/xx, D4",
+                                "keywords": ["Heavy Indirect (3)", "Smoke (5\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_lugus",
+                "name": "VBD SPECIAL \"Lugus\"",
+                "subname": "Recoilless Rifle Carrier",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec, H1, S32\", M8\", Q3, T3/2/1+",
+                "keywords": [],
+                "bonus_traits": "This unit uses a 40x40mm base.",
+                "weapons": [
+                    {
+                        "name": "Lenus Automatic .45, driver's issue",
+                        "weapon_stats": "All, R2\", A4+/4+, S1+/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "TAP 25 4.2-inch Recoilless Rifle Battery",
+                        "weapon_stats": "Ammo 6",
+                        "keywords": ["Barrage (6, Point)"],
+                        "ammos": [
+                            {
+                                "name": "4.2-inch HEAT",
+                                "ammo_stats": "Inf/Vec, R28\", A4+/6+, S12/2, D1",
+                                "keywords": ["No CC (Inf.)", "Shaped Charge", "Slow Round"]
+                            },
+                            {
+                                "name": "4.2-inch Canister",
+                                "ammo_stats": "Inf/Vec, R14\", A4+/6+, S1/1+, D4",
+                                "keywords": ["Defensive CC (Inf.)"]
+                            },
+                            {
+                                "name": "4.2-inch White Phosphorus",
+                                "ammo_stats": "Gnd, R28\", A4+/6+, S1+/1+, D1",
+                                "keywords": ["Ignore Cover (2)", "No CC", "Rear Attack", "Smoke (3\")"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_broomcloud",
+                "name": "CdA-36 \"Broomcloud\"",
+                "subname": "Self-Propelled Anti-Air Gun",
+                "type": "Vehicle",
+                "cost": 25,
+                "unit_stats": "Vec, H2, S32\", M10\", Q3, T5/3/1+",
+                "keywords": [],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "APX-40 1.5-inch Autocannon",
+                        "weapon_stats": "All, R36\", A4+/4+, S5/7, D2, Ammo 6",
+                        "keywords": ["No CC (Inf.)", "Radar Anti-Air", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_aurora",
+                "name": "CdS-F2 \"Aurora\"",
+                "subname": "Rocket Truck",
+                "type": "Vehicle",
+                "cost": 30,
+                "unit_stats": "Vec (W), H2, S16\", M8\", Q2, T2/2/1",
+                "keywords": ["Wheeled"],
+                "weapons": [
+                    {
+                        "name": "Mle. 32 .30 Self-loading Rifle",
+                        "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+                        "keywords": ["Small Arm"]
+                    },
+                    {
+                        "name": "Mle. 13 5.2-inch Rocket Rack",
+                        "weapon_stats": "Gnd, R12-∞\", A4+/5+, S6/6, D2, Ammo 6",
+                        "keywords": ["Air-Filling", "Ignore Cover (1)", "Heavy Indirect (2)", "No CC", "Saturating (6)"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_karve",
+                "name": "VDIM-K \"Karve\"",
+                "subname": "Speedboat",
+                "type": "Vehicle",
+                "cost": 10,
+                "unit_stats": "Vec, H1, S32\", M12\", Q2, T2/2/1",
+                "keywords": ["PC (4, Any)", "Watercraft"],
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMG",
+                        "weapon_stats": "All, R20\", A4+/4+, S2/3, D2",
+                        "keywords": ["Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_chariots",
+                "name": "VZ61 \"Chariots\"",
+                "subname": "Ducted Fan Platforms",
+                "type": "Aircraft",
+                "cost": 15,
+                "unit_stats": "Air, H1, S24\", M18\", Q2, T1+/1/1",
+                "keywords": ["Squad"],
+                "bonus_traits": "This unit uses a 40x40mm base and can be depleted as if it were an infantry squad. When landed, unit class counts as Inf (S); it may fire all weapons and enter close combat as if it were infantry. May land in forests and inside of buildings as a squad-sized garrison.",
+                "weapons": [
+                    {
+                        "name": "Mle. 38 .30 LMG",
+                        "weapon_stats": "All, R10\", A4+/5+, S1/1+, D2",
+                        "keywords": ["Turret"]
+                    },
+                    {
+                        "name": "Mle. 44 3.5-inch RPG",
+                        "weapon_stats": "All, R8\", A4+/6+, S9/1+, D1, Ammo 4",
+                        "keywords": ["Shaped Charge", "Slow Round", "Turret"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_backbone",
+                "name": "AES514 \"Backbone\"",
+                "subname": "Heavy Lift Helicopter",
+                "type": "Aircraft",
+                "cost": 20,
+                "unit_stats": "Air, H2, S32\", M24\", Q2, T3/2/3",
+                "keywords": ["Decoy Protection (2)", "PC (2, Sides)", "Tow (10)"],
+                "bonus_traits": "Embarked units can fire any one non-Melee weapon as if it were a Small Arm and are identified with the vehicle. Units embarked may spot and be spotted by Sense.",
+                "weapons": []
+            },
+            {
+                "id": "ebon_tornado",
+                "name": "AES805 \"Tornado\"",
+                "subname": "Attack Helicopter",
+                "type": "Aircraft",
+                "cost": 30,
+                "unit_stats": "Air, H1, S32\", M32\", Q3, T2/2/2",
+                "keywords": ["Decoy Protection (2)"],
+                "weapons": [
+                    {
+                        "name": "APX-30 1-inch Autocannon",
+                        "weapon_stats": "All, R32\", A4+/5+, S4/6, D2, Ammo 4",
+                        "keywords": []
+                    },
+                    {
+                        "name": "SD84 4.7-inch Missile Launcher",
+                        "weapon_stats": "S15/2, D1, Ammo 2",
+                        "keywords": ["Door Gun (Front, Sides)", "Guided Missile (2)", "No CC", "Shaped Charge"],
+                        "ammos": [
+                            {
+                                "name": "ATGM Guidance Mode",
+                                "ammo_stats": "Vec, R6-60\", A3+/4+"
+                            },
+                            {
+                                "name": "MANPADS Guidance Mode",
+                                "ammo_stats": "Air, R60\", A4+/4+"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_chien_de_chasse",
+                "name": "R-2 \"Chien de Chasse\"",
+                "subname": "Observation Aircraft",
+                "type": "Aircraft",
+                "cost": 10,
+                "unit_stats": "Air (CAS), M10\", Q2, T2, E0",
+                "keywords": ["Loiter"],
+                "bonus_traits": "Does not break designation when it moves. Designation is broken when the target leaves frontal arc. Counts as E3 in dogfights.",
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMGs, dual",
+                        "weapon_stats": "All, R4\", A6+, S2, D2",
+                        "keywords": []
+                    },
+                    {
+                        "name": "Mle. 7 Laser Designator",
+                        "weapon_stats": "All, R40\", A++, D1",
+                        "keywords": ["Designator"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_falconet",
+                "name": "AD-48 \"Falconet\"",
+                "subname": "Light Attack Aircraft",
+                "type": "Aircraft",
+                "cost": 20,
+                "unit_stats": "Air (CAS), M14\", Q3, T2, E1",
+                "keywords": ["Decoy Protection (2)"],
+                "weapons": [
+                    {
+                        "name": "Mtl. 19 .50 HMGs, octet",
+                        "weapon_stats": "All, R4\", A4+, S2, D3",
+                        "keywords": ["Radar Anti-Air"]
+                    },
+                    {
+                        "name": "LR-49 2.7-inch HEAT Rocket Pod",
+                        "weapon_stats": "Inf/Vec, R6\", A4+, S7/1+, D4, Ammo 2",
+                        "keywords": ["Barrage (2)", "Shaped Charge", "Slow Round"]
+                    },
+                    {
+                        "name": "BLG-64 500-lb. HE Cluster Bomb",
+                        "weapon_stats": "Gnd, R0\", A2+, S4, D2, Ammo 4",
+                        "keywords": ["Air-Filling", "Rear Attack", "Saturating (4)"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_grognard",
+                "name": "AD-IV \"Grognard\"",
+                "subname": "Fighter-Bomber",
+                "type": "Aircraft",
+                "cost": 35,
+                "unit_stats": "Air (CAP), M16\", Q3, T3, E2",
+                "keywords": ["Afterburner", "Decoy Protection (2)"],
+                "weapons": [
+                    {
+                        "name": "APX-50 1.4-inch Revolver Cannon",
+                        "weapon_stats": "All, R8\", A4+, S5, D3, Ammo 3",
+                        "keywords": ["Radar Anti-Air"]
+                    },
+                    {
+                        "name": "MA-67 4.7-inch Infrared AAM",
+                        "weapon_stats": "Air, R30\", A3+, S6, D1, Ammo 2",
+                        "keywords": ["Air-Filling", "Guided Missile (1)", "Homing"]
+                    },
+                    {
+                        "name": "SD68 8-inch TV-Guided Bomb",
+                        "weapon_stats": "Gnd, R40\", A3+, S8, D1, Ammo 2",
+                        "keywords": ["Air-Filling", "Guided Missile (2)", "Radius (3\")", "Rear Attack"]
+                    }
+                ]
+            },
+            {
+                "id": "ebon_mist",
+                "name": "MD-II \"Mist\"",
+                "subname": "Air Superiority Fighter",
+                "type": "Aircraft",
+                "cost": 40,
+                "unit_stats": "Air (CAP), M20\", Q4, T3, E3",
+                "keywords": ["Afterburner", "Decoy Protection (2)"],
+                "weapons": [
+                    {
+                        "name": "APX-50 1.4-inch Revolver Cannon",
+                        "weapon_stats": "All, R8\", A3+, S5, D3, Ammo 3",
+                        "keywords": ["Radar Anti-Air"]
+                    },
+                    {
+                        "name": "MA-67B 4.7-inch Infrared AAM",
+                        "weapon_stats": "Air, R36\", A3+, S6, D1, Ammo 2",
+                        "keywords": ["Air-Filling", "Guided Missile (1)", "Homing"]
+                    },
+                    {
+                        "name": "MA-62 7.9-inch Semi-Active AAM",
+                        "weapon_stats": "Air, R60\", A4+, S8, D1, Ammo 4",
+                        "keywords": ["Barrage (2, Point)", "Guided Missile (1)", "No CC"]
+                    }
+                ]
+            }
+        ]
+    }
+}
