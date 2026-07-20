@@ -116,6 +116,9 @@ public partial class Window : Form
     // Builds the leading connector glyphs (│ ├ └) for one row, one character per visible ancestor
     // territory, outermost to innermost. Also reports whether this row is "out of position": eligible
     // for its own direct territory, physically still inside that territory's span, but not committed.
+    // Builds the leading connector glyphs (│ ├ └) for one row, one character per visible ancestor
+    // territory, outermost to innermost. Also reports whether this row is "out of position": eligible
+    // for its own direct territory, physically still inside that territory's span, but not committed.
     private string BuildConnectorPrefix(ActiveUnitEntry entry, TreeNode node, out bool outOfPosition)
     {
         outOfPosition = false;
@@ -128,39 +131,39 @@ public partial class Window : Form
         int myIndex = nodePhysicalIndex.TryGetValue(node, out int idx) ? idx : -1;
         string prefix = "";
 
+        // A unit is actively committed if it's securely embarked or securely towed.
+        bool isCommitted = (IsPassenger(entry.Unit) && entry.Status != EmbarkStatus.None) || entry.IsTowed;
+
         foreach (TreeNode ancestorRoot in chain)
         {
             TreeNode lastCommittedNode = territoryLastCommitted[ancestorRoot];
             int lastCommittedIndex = nodePhysicalIndex[lastCommittedNode];
             bool isDirectParent = ancestorRoot == entry.RelationParentNode;
 
-            if (isDirectParent)
+            if (myIndex <= lastCommittedIndex)
             {
-                // A passenger's commitment is embark/desant status; a towee's is IsTowed.
-                // RelationParentNode is only ever set by one of the two passes, so this is unambiguous.
-                bool committed = IsPassenger(entry.Unit) ? entry.Status != EmbarkStatus.None : entry.IsTowed;
-
-                if (committed)
+                if (isDirectParent && isCommitted)
                 {
                     bool isLastCommitted = node == lastCommittedNode;
                     prefix += isLastCommitted ? "└" : "├";
                 }
-                else if (myIndex <= lastCommittedIndex)
-                {
-                    // Still inside the territory's span, ahead of (or at) its close, but not holding a spot.
-                    prefix += "│";
-                    outOfPosition = true;
-                }
                 else
                 {
-                    // Past this territory's close — it's already resolved, nothing more to show here.
-                    prefix += " ";
+                    // Pass-through or uncommitted direct child
+                    prefix += "│";
+
+                    // If this unit is physically inside ANY active territory span and is NOT 
+                    // successfully committed to its assigned direct parent, it is out of position.
+                    if (!isCommitted)
+                    {
+                        outOfPosition = true;
+                    }
                 }
             }
             else
             {
-                // Just physically inside an outer/ancestor territory's span — pure pass-through, never red.
-                prefix += myIndex <= lastCommittedIndex ? "│" : " ";
+                // Past this territory's close — it's already resolved, nothing more to show here.
+                prefix += " ";
             }
         }
 
