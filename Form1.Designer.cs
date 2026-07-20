@@ -35,7 +35,7 @@ partial class Window
         armyNameLabel = new Label();
         allUnitsSplit = new SplitContainer();
         activeArmySplit = new SplitContainer();
-        button1 = new Button();
+        reformatButton = new Button();
         removeButton = new Button();
         renameButton = new Button();
         newGroupButton = new Button();
@@ -172,7 +172,7 @@ partial class Window
         // activeArmySplit.Panel1
         // 
         activeArmySplit.Panel1.BackColor = SystemColors.ControlLight;
-        activeArmySplit.Panel1.Controls.Add(button1);
+        activeArmySplit.Panel1.Controls.Add(reformatButton);
         activeArmySplit.Panel1.Controls.Add(removeButton);
         activeArmySplit.Panel1.Controls.Add(renameButton);
         activeArmySplit.Panel1.Controls.Add(newGroupButton);
@@ -185,18 +185,19 @@ partial class Window
         activeArmySplit.SplitterDistance = 25;
         activeArmySplit.TabIndex = 0;
         // 
-        // button1
+        // reformatButton
         // 
-        button1.BackColor = SystemColors.ButtonFace;
-        button1.FlatAppearance.BorderSize = 2;
-        button1.Font = new Font("Noto Serif Lao", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-        button1.Location = new Point(98, -2);
-        button1.Name = "button1";
-        button1.Size = new Size(64, 26);
-        button1.TabIndex = 3;
-        button1.Text = "Format";
-        button1.TextAlign = ContentAlignment.TopCenter;
-        button1.UseVisualStyleBackColor = false;
+        reformatButton.BackColor = SystemColors.ButtonFace;
+        reformatButton.FlatAppearance.BorderSize = 2;
+        reformatButton.Font = new Font("Noto Serif Lao", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+        reformatButton.Location = new Point(98, -2);
+        reformatButton.Name = "reformatButton";
+        reformatButton.Size = new Size(64, 26);
+        reformatButton.TabIndex = 3;
+        reformatButton.Text = "Format";
+        reformatButton.TextAlign = ContentAlignment.TopCenter;
+        reformatButton.UseVisualStyleBackColor = false;
+        reformatButton.Click += reformatButton_Click;
         // 
         // removeButton
         // 
@@ -476,5 +477,5 @@ partial class Window
     private Button renameButton;
     private Button removeButton;
     private Button addUnitButton;
-    private Button button1;
+    private Button reformatButton;
 }

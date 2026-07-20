@@ -4,8 +4,6 @@ namespace FirelockCompanion;
 
 public partial class Window : Form
 {
-    // Toggles whether to display incompatible options
-    private static readonly bool Verbose = false;
 
     // -- Embark Status --
     private static readonly Regex LeadTagPattern = new(@"^(Vec|Inf|Air)\s*(\(([^)]*)\))?");
@@ -73,13 +71,21 @@ public partial class Window : Form
 
         if (entry.HasCarrierAbove)
         {
-            prefixTags.Add(entry.Status == EmbarkStatus.Embarked ? "【E】" : entry.CanEmbark ? "[E]" : "[-E-]");
+            if (entry.Status == EmbarkStatus.Embarked) prefixTags.Add("【E】");
+            else if (entry.CanEmbark) prefixTags.Add("[E]");
+
             if (entry.HasDesantCarrierAbove)
-                prefixTags.Add(entry.Status == EmbarkStatus.Desanted ? "【D】" : entry.CanDesant ? "[D]" : "[-D-]");
+            {
+                if (entry.Status == EmbarkStatus.Desanted) prefixTags.Add("【D】");
+                else if (entry.CanDesant) prefixTags.Add("[D]");
+            }
         }
 
         if (entry.HasTowProviderAbove)
-            prefixTags.Add(entry.IsTowed ? "【T】" : entry.CanTow ? "[T]" : "[-T-]");
+        {
+            if (entry.IsTowed) prefixTags.Add("【T】");
+            else if (entry.CanTow) prefixTags.Add("[T]");
+        }
 
         string tagPrefix = prefixTags.Count > 0 ? string.Join(" ", prefixTags) + " " : "";
 
@@ -314,11 +320,16 @@ public partial class Window : Form
         return m.Success ? int.Parse(m.Groups[1].Value) : 0;
     }
 
-    // Refactored out of the old SupportsDesant — same underlying check, now reused for towing too
     private static bool IsVehicle(UnitTemplate unit)
     {
         Match m = LeadTagPattern.Match(unit.unit_stats ?? "");
         return m.Success && m.Groups[1].Value == "Vec";
+    }
+
+    private static bool IsAircraft(UnitTemplate unit)
+    {
+        Match m = LeadTagPattern.Match(unit.unit_stats ?? "");
+        return m.Success && m.Groups[1].Value == "Air";
     }
 
     private static bool SupportsDesant(UnitTemplate unit) => IsVehicle(unit);
@@ -826,18 +837,38 @@ public partial class Window : Form
                 var pEntry = (ActiveUnitEntry)providerNode.Tag;
                 var entries = toweeNodes.Select(n => (Node: n, Entry: (ActiveUnitEntry)n.Tag)).ToList();
 
-                int used = entries.Where(x => x.Entry.IsTowed).Sum(x => GetTowWeight(x.Entry.Unit));
+                bool isAircraftProvider = IsAircraft(pEntry.Unit);
+                int usedWeight = 0;
+                int countTowed = 0;
 
                 foreach (var (node, entry) in entries)
                 {
-                    int weight = GetTowWeight(entry.Unit);
-                    int others = used - (entry.IsTowed ? weight : 0);
-
                     entry.HasTowProviderAbove = true;
-                    entry.CanTow = towCapacity.HasValue && others + weight <= towCapacity.Value;
                     entry.RelationParentNode = providerNode; // in range of this provider's territory, committed or not
 
-                    if (entry.IsTowed && !entry.CanTow) entry.IsTowed = false; // safety net, e.g. after a structural change
+                    int weight = GetTowWeight(entry.Unit);
+
+                    if (entry.IsTowed)
+                    {
+                        bool weightAllows = towCapacity.HasValue && (usedWeight + weight <= towCapacity.Value);
+                        bool limitAllows = !isAircraftProvider || countTowed == 0;
+
+                        if (weightAllows && limitAllows)
+                        {
+                            usedWeight += weight;
+                            countTowed++;
+                            entry.CanTow = true;
+                        }
+                        else
+                        {
+                            entry.IsTowed = false; // Safely drop the tow if it exceeds capacity
+                            entry.CanTow = towCapacity.HasValue && (usedWeight + weight <= towCapacity.Value) && (!isAircraftProvider || countTowed == 0);
+                        }
+                    }
+                    else
+                    {
+                        entry.CanTow = towCapacity.HasValue && (usedWeight + weight <= towCapacity.Value) && (!isAircraftProvider || countTowed == 0);
+                    }
                 }
 
                 // Same rule as embark territories: shape closes at the last committed towee, or doesn't exist yet.
@@ -849,7 +880,7 @@ public partial class Window : Form
                     territoryLastCommitted[providerNode] = lastCommittedTowee;
 
                 pEntry.TowCapacityDisplay = towCapacity;
-                pEntry.TowUsedDisplay = used;
+                pEntry.TowUsedDisplay = usedWeight;
             }
 
             foreach (TreeNode child in groupNode.Nodes)
@@ -934,42 +965,50 @@ public partial class Window : Form
 
         if (entry.HasCarrierAbove)
         {
-            string eTag = (entry.Status == EmbarkStatus.Embarked ? "【E】" : entry.CanEmbark ? "[E]" : "[-E-]") + " ";
-            int eWidth = TextRenderer.MeasureText(eTag, font, Size.Empty, MeasureFlags).Width;
-
-            if (e.X <= x + eWidth)
+            bool showEmbark = entry.Status == EmbarkStatus.Embarked || entry.CanEmbark;
+            if (showEmbark)
             {
-                if (entry.Status == EmbarkStatus.Embarked || entry.CanEmbark)
+                string eTag = (entry.Status == EmbarkStatus.Embarked ? "【E】" : "[E]") + " ";
+                int eWidth = TextRenderer.MeasureText(eTag, font, Size.Empty, MeasureFlags).Width;
+
+                if (e.X <= x + eWidth)
                 {
                     entry.Status = entry.Status == EmbarkStatus.Embarked ? EmbarkStatus.None : EmbarkStatus.Embarked;
                     RecalculateAll();
+                    return;
                 }
-                return;
+                x += eWidth;
             }
-            x += eWidth;
 
-            if (!entry.HasDesantCarrierAbove) return;
-
-            string dTag = (entry.Status == EmbarkStatus.Desanted ? "【D】" : entry.CanDesant ? "[D]" : "[-D-]") + " ";
-            int dWidth = TextRenderer.MeasureText(dTag, font, Size.Empty, MeasureFlags).Width;
-
-            if (e.X <= x + dWidth && (entry.Status == EmbarkStatus.Desanted || entry.CanDesant))
+            bool showDesant = entry.HasDesantCarrierAbove && (entry.Status == EmbarkStatus.Desanted || entry.CanDesant);
+            if (showDesant)
             {
-                entry.Status = entry.Status == EmbarkStatus.Desanted ? EmbarkStatus.None : EmbarkStatus.Desanted;
-                RecalculateAll();
+                string dTag = (entry.Status == EmbarkStatus.Desanted ? "【D】" : "[D]") + " ";
+                int dWidth = TextRenderer.MeasureText(dTag, font, Size.Empty, MeasureFlags).Width;
+
+                if (e.X <= x + dWidth)
+                {
+                    entry.Status = entry.Status == EmbarkStatus.Desanted ? EmbarkStatus.None : EmbarkStatus.Desanted;
+                    RecalculateAll();
+                    return;
+                }
+                x += dWidth;
             }
-            return;
         }
 
         if (entry.HasTowProviderAbove)
         {
-            string tTag = (entry.IsTowed ? "【T】" : entry.CanTow ? "[T]" : "[-T-]") + " ";
-            int tWidth = TextRenderer.MeasureText(tTag, font, Size.Empty, MeasureFlags).Width;
-
-            if (e.X <= x + tWidth && (entry.IsTowed || entry.CanTow))
+            bool showTow = entry.IsTowed || entry.CanTow;
+            if (showTow)
             {
-                entry.IsTowed = !entry.IsTowed;
-                RecalculateAll();
+                string tTag = (entry.IsTowed ? "【T】" : "[T]") + " ";
+                int tWidth = TextRenderer.MeasureText(tTag, font, Size.Empty, MeasureFlags).Width;
+
+                if (e.X <= x + tWidth)
+                {
+                    entry.IsTowed = !entry.IsTowed;
+                    RecalculateAll();
+                }
             }
         }
     }
@@ -1072,6 +1111,21 @@ public partial class Window : Form
         if (dragged.Tag is ActiveUnitEntry draggedEntry)
         {
             draggedEntry.Status = EmbarkStatus.None; // moving always clears embark/desant, per your rule
+            draggedEntry.IsTowed = false; // moving also clears tow status
+
+            // If the dragged unit is a provider, prevent it from hijacking units already being towed below it
+            if (GetTowCapacity(draggedEntry.Unit).HasValue && dragged.Parent != null)
+            {
+                int draggedIdx = dragged.Parent.Nodes.IndexOf(dragged);
+                for (int i = draggedIdx + 1; i < dragged.Parent.Nodes.Count; i++)
+                {
+                    if (dragged.Parent.Nodes[i].Tag is ActiveUnitEntry siblingEntry)
+                    {
+                        if (GetTowCapacity(siblingEntry.Unit).HasValue) break; // Stop checking at the next provider's territory
+                        siblingEntry.IsTowed = false; // Drop tow to prevent hijacking
+                    }
+                }
+            }
         }
 
         RecalculateAll();
@@ -1106,5 +1160,97 @@ public partial class Window : Form
             dropHighlightNode.BackColor = Color.Empty;
         }
         dropHighlightNode = null;
+    }
+
+    private void reformatButton_Click(object sender, EventArgs e)
+    {
+        if (currentTargetGroup == null)
+        {
+            MessageBox.Show("Please select a group or a unit within a group to format.", "No Group Selected");
+            return;
+        }
+
+        // Force an update to ensure all RelationParentNode properties and commit statuses are 100% accurate before sorting
+        RecalculateAll();
+
+        activeArmyTree.BeginUpdate();
+
+        List<TreeNode> allNodes = currentTargetGroup.Nodes.Cast<TreeNode>().ToList();
+
+        // 1. Separate independent (root) units from committed (child) units
+        List<TreeNode> roots = new List<TreeNode>();
+        Dictionary<TreeNode, List<TreeNode>> childrenMap = new Dictionary<TreeNode, List<TreeNode>>();
+
+        foreach (TreeNode node in allNodes)
+        {
+            if (node.Tag is not ActiveUnitEntry entry) continue;
+
+            // A unit is only a child if it is actively interacting with a provider
+            bool isCommitted = (entry.Status != EmbarkStatus.None || entry.IsTowed) && entry.RelationParentNode != null;
+
+            if (isCommitted)
+            {
+                if (!childrenMap.ContainsKey(entry.RelationParentNode))
+                    childrenMap[entry.RelationParentNode] = new List<TreeNode>();
+
+                childrenMap[entry.RelationParentNode].Add(node);
+            }
+            else
+            {
+                roots.Add(node); // Uncommitted units (including out-of-position ones) are treated as independents
+            }
+        }
+
+        // 2. Sort the independent units into the ideal layout order
+        var sortedRoots = roots.OrderBy(n =>
+        {
+            var entry = (ActiveUnitEntry)n.Tag;
+            if (entry.Unit.type == "TACOM") return 0;
+            if (IsPassenger(entry.Unit)) return 1;
+            if (IsVehicle(entry.Unit)) return 2;
+            if (IsAircraft(entry.Unit)) return 3;
+            return 4; // Fallback for anything else
+        }).ToList();
+
+        List<TreeNode> flattenedOrder = new List<TreeNode>();
+
+        // 3. Recursive function to rebuild the flat list in the correct relationship order
+        void FlattenNode(TreeNode node)
+        {
+            flattenedOrder.Add(node);
+
+            // If this unit has things committed to it, sort and append them immediately below it
+            if (childrenMap.TryGetValue(node, out var children))
+            {
+                var embarked = children.Where(c => ((ActiveUnitEntry)c.Tag).Status == EmbarkStatus.Embarked);
+                var desanted = children.Where(c => ((ActiveUnitEntry)c.Tag).Status == EmbarkStatus.Desanted);
+                var towed = children.Where(c => ((ActiveUnitEntry)c.Tag).IsTowed);
+
+                // Sort by TACOM first (0), then everything else (1), and flatten recursively
+                foreach (var child in embarked.OrderBy(c => ((ActiveUnitEntry)c.Tag).Unit.type == "TACOM" ? 0 : 1))
+                    FlattenNode(child);
+
+                foreach (var child in desanted.OrderBy(c => ((ActiveUnitEntry)c.Tag).Unit.type == "TACOM" ? 0 : 1))
+                    FlattenNode(child);
+
+                foreach (var child in towed.OrderBy(c => ((ActiveUnitEntry)c.Tag).Unit.type == "TACOM" ? 0 : 1))
+                    FlattenNode(child);
+            }
+        }
+
+        // Run the flattener on our sorted independent units
+        foreach (var root in sortedRoots)
+        {
+            FlattenNode(root);
+        }
+
+        // 4. Apply the new pristine order to the TreeView
+        currentTargetGroup.Nodes.Clear();
+        currentTargetGroup.Nodes.AddRange(flattenedOrder.ToArray());
+
+        activeArmyTree.EndUpdate();
+
+        // 5. Recalculate one last time to redraw the relationship lines correctly over the new physical layout
+        RecalculateAll();
     }
 }
