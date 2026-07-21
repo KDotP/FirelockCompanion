@@ -63,7 +63,7 @@
     "Laser": "This weapon always rolls a minimum of 6+ to kill regardless of the target's Toughness. Like Designators, Lasers are blocked by Smoke, except in close combat. Lasers can target planes and do not have to confirm hits against aircraft at any range. Lasers can trigger Decoy Protection, in which case they are immediately nullified and do not re-roll, but still apply three pin.\nA die which hits but fails to kill a non-aircraft unit can only ever deal one pin, but a die which hits an aircraft deals three as normal.",
     "Drone": "This unit's quality is marked Q*, indicating that it is unaffected by pin. This unit never receives pin tokens, but it cannot lend or receive actions through the Rygonet.",
     "Round Extruder": "This weapon can use a fire action to reload one Ammo for itself instead of shooting in the Fire Phase. Weapon may not generate Ammo if already at its default maximum value.",
-    "Hovercraft": "Tracked IFVs have been supplanted by air-cushioned craft in N.R.H. service: the best of all worlds.",
+    "Hovercraft": "This vehicle never pays movement to enter or exit terrain and ignores swamp's terrain multiple.",
     "Rygonet (X)": "Any friendly Rygolic unit which is within a Radius of X inches from this unit is eligible to lend its action to any other Rygo unit in that same radius during the Fire and Maneuver Phases. A friendly Rygo unit can then simultaneously take a turn to receive that action during the Maneuver or Fire Phase. Receiving a move action always costs one command token. A unit can receive via Rygonet up to two times per Phase. Thus, in addition to its own (innate) action, it may act up to three times per Phase.\nWhen a unit lends its action, it is considered to have spent its turn. It is ineligible to act on its own or lend another action for the rest of the phase. It can, however, still receive bonus actions from other units.\nA unit which receives an action must begin and end its turn within a Rygonet radius, but it does not have to be the same unit's radius.\nRygonet can be used during a Brigade activation to transfer moves from units which have not been targeted as part of the Brigade to units that have been targeted.\nUnits with no weapons cannot lend a fire action. Units with no viable movement, such as those with M0\" or those which fired stationary in the previous Fire Phase, cannot lend a movement action.\nIf a unit is being towed, or is embarked or desanting where it cannot disembark, it cannot lend its move action.\nDummies, Petty Staters, Planes, Drones, and units being affected by Chemical Weapons cannot lend or receive actions.\nUnits using lended actions cannot both gain and lose a gone to ground token in the same Fire phase, nor embark and disembark in the same Maneuver Phase.",
     "Strider": "Biological legs grant Rygolic light armor all-terrain mobility and the ability to crouch behind cover.\nThis vehicle is marked Vec (S) and behaves like infantry for movement purposes. It can sprint, rotate for free, and ignores terrain vehicle multipliers (though it cannot move through or into Inf-only terrain), but still takes pin as if it were a vehicle. It cannot garrison structures, but can move over them, provided it does not end its movement inside. It may also spend a fire action in any terrain to gain or lose a gone to ground token without simultaneously firing. This reduces the unit's Height by 1, but gives no Cover Modifier.",
     "Leviathan (X)": "This unit must suffer X number of kills to be destroyed. When it suffers a kill, place a leviathan token on it and choose one non-Small Arm weapon on its statline to be destroyed. Destroyed weapons cannot be used and no special rule benefits may be derived from them for the rest of the game. Leviathans cannot be towed.\nLeviathan helicopters do not force hits against them to confirm beyond 12\" away.",
@@ -73,6 +73,1013 @@
     "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry."
   },
   "factions": {
+    "The New Rygolic Host": [
+      {
+        "id": "rygo_node_team",
+        "name": "Node Team",
+        "subname": "Transmission Team",
+        "type": "TACOM",
+        "cost": 0,
+        "unit_stats": "Inf, H1, S24\", M5\", Q3, T1+/1/1, C2",
+        "keywords": [ "Brigade (2, 12\")", "Fearless", "NBC", "Rygonet (12\")" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Tread Curve\" 20mm Grenade Launcher",
+            "weapon_stats": "R8\", A*, D1, Ammo 3",
+            "keywords": [ "Slow Round", "Underbarrel (Snake Green)" ],
+            "ammos": [
+              {
+                "name": "20mm KE",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "20mm HE",
+                "ammo_stats": "Inf/Vec, S1+/1+",
+                "keywords": [ "Ignore Cover (1)" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_node_team_aux",
+        "name": "Reserve Node Team",
+        "subname": "Auxiliary Transmission Team",
+        "type": "TACOM",
+        "cost": 20,
+        "unit_stats": "Inf, H1, S24\", M5\", Q3, T1+/1/1, C2",
+        "keywords": [ "Brigade (2, 12\")", "Fearless", "NBC", "Rygonet (12\")" ],
+        "bonus_traits": "Same as standard node team, but can be bought past the standard TACOM limit at a cost of 20 points.",
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Tread Curve\" 20mm Grenade Launcher",
+            "weapon_stats": "R8\", A*, D1, Ammo 3",
+            "keywords": [ "Slow Round", "Underbarrel (Snake Green)" ],
+            "ammos": [
+              {
+                "name": "20mm KE",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "20mm HE",
+                "ammo_stats": "Inf/Vec, S1+/1+",
+                "keywords": [ "Ignore Cover (1)" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_ganglion",
+        "name": "G1 \"Ganglion\"",
+        "subname": "Transmission Tower",
+        "type": "TACOM",
+        "cost": 20,
+        "unit_stats": "Vec, H1, S0\", M0\", Q6, T4/4/4, C6",
+        "keywords": [ "Brigade (4, 12\")", "NBC", "Paradrop", "Rygonet (24\")", "Sense (6\")" ],
+        "bonus_traits": "Uses a 40x40mm base. May activate in the Maneuver Phase despite having M0\", but only to call a Brigade. May not lend actions to friendly units via Rygonet.",
+        "weapons": []
+      },
+      {
+        "id": "rygo_stoma",
+        "name": "S3 \"Stoma\"",
+        "subname": "Bipedal Command Vehicle",
+        "type": "TACOM",
+        "cost": 30,
+        "unit_stats": "Vec (S), H2, S32\", M8\", Q3, T6/6/5, C4",
+        "keywords": [ "Brigade (4, 8\")", "NBC", "Rygonet (8\")", "Strider" ],
+        "bonus_traits": "This unit uses a 40x40mm infantry base. When this unit activates during the Fire Phase, it may select one friendly Rygolic unit within LOS up to 8\" away which has not yet acted that round to activate with the Stoma and simultaneously fire on the same target. The unit which activates with the Stoma is considered to have used its turn for the round.",
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm Coaxial MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Pitch Break\" 25mm Autocannon",
+            "weapon_stats": "All, R32\", A3+/3+, S4/6, D2, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Tracking Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_tactical_team",
+        "name": "Tactical Team",
+        "subname": "Line Team",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf, H1, S32\", M5\", Q3, T1+/1/1",
+        "keywords": [ "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Tread Curve\" 20mm Grenade Launcher",
+            "weapon_stats": "R8\", A*, D1, Ammo 3",
+            "keywords": [ "Slow Round", "Underbarrel (Snake Green)" ],
+            "ammos": [
+              {
+                "name": "20mm KE",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "20mm HE",
+                "ammo_stats": "Inf/Vec, S1+/1+",
+                "keywords": [ "Ignore Cover (1)" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Side Fast\" 140mm ATGM",
+            "weapon_stats": "Vec, R6-30\", A3+/xx, S14/2, D1, Ammo 1",
+            "keywords": [ "Guided Missile (1)", "Shaped Charge", "Thermal Sights" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_legionnaires",
+        "name": "Legionnaires",
+        "subname": "Line Squad",
+        "type": "Infantry",
+        "cost": 25,
+        "unit_stats": "Inf (S), H1, S32\", M5\", Q3, T1+/1/1",
+        "keywords": [ "Fearless", "NBC", "Squad" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Tread Curve\" 20mm Grenade Launcher",
+            "weapon_stats": "R8\", A*, D1, Ammo 6",
+            "keywords": [ "Slow Round", "Underbarrel (Snake Green)" ],
+            "ammos": [
+              {
+                "name": "20mm KE",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "20mm HE",
+                "ammo_stats": "Inf/Vec, S1+/1+",
+                "keywords": [ "Ignore Cover (1)" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Side Fast\" 140mm ATGM",
+            "weapon_stats": "Vec, R6-30\", A3+/xx, S14/2, D1, Ammo 3",
+            "keywords": [ "Guided Missile (1)", "Shaped Charge", "Thermal Sights" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_smart_gun_team",
+        "name": "Smart Gun Team",
+        "subname": "Anti-Personnel Team",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf, H1, S32\", M5\", Q3, T1+/1/1",
+        "keywords": [ "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Drift Cage\" 5mm Stabilized SAW",
+            "weapon_stats": "All, R16\", A2+/3+, S1/1, D3",
+            "keywords": [ "Scoped", "Thermal Sights", "Tracking Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_laser_team",
+        "name": "Laser Team",
+        "subname": "Anti-Materiel Team",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf, H1, S32\", M5\", Q3, T1+/1/1",
+        "keywords": [ "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Sun Point\" 6kW Laser Weapon",
+            "weapon_stats": "All, R40\", A1+/xx, S1+/1+, D1",
+            "keywords": [ "Laser", "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_manpads_team",
+        "name": "MANPADS Team",
+        "subname": "Anti-Air Team",
+        "type": "Infantry",
+        "cost": 20,
+        "unit_stats": "Inf, H1, S32\", M5\", Q3, T1+/1/1",
+        "keywords": [ "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Tread Curve\" 20mm Grenade Launcher",
+            "weapon_stats": "R8\", A*, D1, Ammo 3",
+            "keywords": [ "Slow Round", "Underbarrel (Snake G.)" ],
+            "ammos": [
+              {
+                "name": "20mm KE",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "20mm HE",
+                "ammo_stats": "Inf/Vec, S1+/1+",
+                "keywords": [ "Ignore Cover (1)" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Pole Guard\" 70mm MANPADS",
+            "weapon_stats": "Air, R60\", A3+/xx, S6/6, D1, Ammo 2",
+            "keywords": [ "Guided Missile (1)", "Homing", "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_chemical_team",
+        "name": "Chemical Team",
+        "subname": "Anti-Personnel Team",
+        "type": "Infantry",
+        "cost": 20,
+        "unit_stats": "Inf, H1, S24\", M4\", Q3, T1+/1+/1+",
+        "keywords": [ "Fearless", "NBC" ],
+        "bonus_traits": "This unit is not negatively affected by Chemical Weapons. If this unit or a unit it charged is within a Chemical Weapon radius during close combat, this unit resolves its attacks before all enemy units, including Assault Specialists.",
+        "weapons": [
+          {
+            "name": "\"Pike Jump\" 12-gauge Automatic Shotgun",
+            "weapon_stats": "All, R6\", A3+/4+, S1-/1+, D3",
+            "keywords": [ "Ignore Cover (1)", "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Weave Liner\" 70mm Dual RPG",
+            "weapon_stats": "R10\", D1, Ammo 6",
+            "keywords": [ "Barrage (2)", "Small Arm", "Thermal Sights" ],
+            "ammos": [
+              {
+                "name": "70mm HEAT",
+                "ammo_stats": "Inf/Vec, A3+/4+, S8/1+",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "70mm Thermobaric",
+                "ammo_stats": "Inf/Vec, A3+/4+, S2/2",
+                "keywords": [ "Ignore Cover (2)", "Rear Attack", "Slow Round" ]
+              },
+              {
+                "name": "70mm Nerve Agent",
+                "ammo_stats": "Gnd, A++/++",
+                "keywords": [ "Chemical Weapon (2\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_guided_mortar_spider",
+        "name": "Guided Mortar Spider",
+        "subname": "Anti-Personnel/Materiel Team",
+        "type": "Infantry",
+        "cost": 30,
+        "unit_stats": "Inf, H1, S24\", M5\", Q3, T1+/1/1",
+        "keywords": [ "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Trace Rung\" 80mm Guided Mortar",
+            "weapon_stats": "Inf/Vec, R40\", A3+/4+, S4/4, D1, Ammo 4",
+            "keywords": [ "Guided Shell", "Light Indirect (1)", "No CC", "Thermal Sights" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_carabiner_horse",
+        "name": "Carabiner Horse",
+        "subname": "Draft Animal",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf, H1, S32\", M6\", Q3, T1/1/1",
+        "keywords": [ "Fearless", "NBC", "Resupply (4)", "Tow (2)" ],
+        "weapons": [
+          {
+            "name": "\"Bronze Lead\" Laser Designator",
+            "weapon_stats": "All, R40\", A++/++, D1",
+            "keywords": [ "Designator", "Discreet" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_capsule_squad",
+        "name": "Capsule Squad",
+        "subname": "Low Orbit Insertion Squad",
+        "type": "Infantry",
+        "cost": 25,
+        "unit_stats": "Inf (S), H1, S24\", M5\", Q3, T1/1/1",
+        "keywords": [ "Fearless", "NBC", "Squad" ],
+        "bonus_traits": "Deploy this unit via a Capsule Insertion support mission during the Support Phase.",
+        "weapons": [
+          {
+            "name": "\"Snake Green\" 5mm Assault Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Tread Curve\" 20mm Grenade Launcher",
+            "weapon_stats": "R8\", A*, D1, Ammo 6",
+            "keywords": [ "Slow Round", "Underbarrel (Snake Green)" ],
+            "ammos": [
+              {
+                "name": "20mm KE",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "20mm HE",
+                "ammo_stats": "Inf/Vec, S1+/1+",
+                "keywords": [ "Ignore Cover (1)" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_assassins",
+        "name": "Assassins",
+        "subname": "Commando Team",
+        "type": "Infantry",
+        "cost": 30,
+        "unit_stats": "Inf, H1, S8\", M6\", Q4, T1/1/1-",
+        "keywords": [ "Active Camouflage", "Assault Specialist", "Fearless", "NBC", "Sense (8\")" ],
+        "weapons": [
+          {
+            "name": "\"Frame Staff\" 10mm SMG, dual",
+            "weapon_stats": "All, R8\", A2+/2+, S1/1+, D3",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Sphere Catch\" 12mm Pistol, subsonic",
+            "weapon_stats": "All, R8\", A2+/2+, S1/1, D1",
+            "keywords": [ "Discreet", "Multi-Gun", "Scoped", "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "\"Site Cause\" Plastic Explosive Charge",
+            "weapon_stats": "Vec, R0\", A1+/1+, S12/12, D1, Ammo 2",
+            "keywords": [ "Melee", "Multi-Gun" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_simulacrum",
+        "name": "Simulacrum",
+        "subname": "Unclassified Unit",
+        "type": "Infantry",
+        "cost": 30,
+        "unit_stats": "Inf, H1, S32\", M4\", Q4, T1+/1+/1+",
+        "keywords": [ "Amphibious", "Fearless", "NBC" ],
+        "bonus_traits": "This unit may copy enemies (see card/rules). May respond to Specific Imitation missions.",
+        "weapons": []
+      },
+      {
+        "id": "rygo_candor",
+        "name": "C3 \"Candor\"",
+        "subname": "Armored Personnel Carrier",
+        "type": "Vehicle",
+        "cost": 25,
+        "unit_stats": "Vec (W), H2, S32\", M10\", Q3, T6/4/4",
+        "keywords": [ "NBC", "PC (2, Rear)", "Wheeled" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm Coaxial MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Sun Point\" 6kW Laser Weapon",
+            "weapon_stats": "All, R40\", A1+/1+, S1+/1+, D1",
+            "keywords": [ "Laser", "Turret" ]
+          },
+          {
+            "name": "\"Tread Bus\" 65mm Smoke Launchers",
+            "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_parallax",
+        "name": "P1 \"Parallax\"",
+        "subname": "Infantry Fighting Hovercraft",
+        "type": "Vehicle",
+        "cost": 35,
+        "unit_stats": "Vec (H), H2, S32\", M10\", Q3, T6/4/4",
+        "keywords": [ "Active Protection (1)", "Amphibious", "Hovercraft", "NBC", "PC (2, Rear)" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm Coaxial MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Pitch Break\" 25mm Autocannon",
+            "weapon_stats": "All, R32\", A3+/3+, S4/6, D2, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Side Judge\" 150mm ATGM",
+            "weapon_stats": "Vec, R6-60\", A3+/xx, S15/2, D1, Ammo 3",
+            "keywords": [ "Guided Missile (2)", "Shaped Charge", "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Tread Bus\" 65mm Smoke Launchers",
+            "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_perigee",
+        "name": "P2 \"Perigee\"",
+        "subname": "Infantry Fighting Hovercraft",
+        "type": "Vehicle",
+        "cost": 35,
+        "unit_stats": "Vec (H), H2, S32\", M10\", Q3, T6/4/4",
+        "keywords": [ "Amphibious", "Hovercraft", "NBC", "PC (2, Rear)" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm Coaxial MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Pitch Break\" 25mm Autocannon",
+            "weapon_stats": "All, R32\", A3+/3+, S4/6, D2, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Tracking Anti-Air", "Turret" ]
+          },
+          {
+            "name": "\"Pole Guard\" 70mm SAM",
+            "weapon_stats": "Air, R60\", A3+/xx, S6/6, D1, Ammo 4",
+            "keywords": [ "Guided Missile (1)", "Homing", "Turret" ]
+          },
+          {
+            "name": "\"Tread Bus\" 65mm Smoke Launchers",
+            "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_microwave",
+        "name": "M1 \"Microwave\"",
+        "subname": "Unmanned Tankette",
+        "type": "Vehicle",
+        "cost": 20,
+        "unit_stats": "Vec, H1, S32\", M8\", Q*, T4/2/2",
+        "keywords": [ "Drone", "NBC", "Tow (2)" ],
+        "bonus_traits": "This unit uses a 40x40mm infantry base.",
+        "weapons": [
+          {
+            "name": "\"Pitch Break\" 25mm Autocannon",
+            "weapon_stats": "All, R32\", A3+/3+, S4/6, D2, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_synod",
+        "name": "S1 \"Synod\"",
+        "subname": "Bipedal Light Tank",
+        "type": "Vehicle",
+        "cost": 40,
+        "unit_stats": "Vec (S), H2, S32\", M8\", Q3, T12/10/8",
+        "keywords": [ "Strider", "NBC" ],
+        "bonus_traits": "This unit uses a 40x40mm infantry base.",
+        "weapons": [
+          {
+            "name": "\"Drift Fence\" 10mm HMG",
+            "weapon_stats": "All, R20\", A3+/3+, S2/3, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Bridge Spike\" 75mm Rifled Gun",
+            "weapon_stats": "Ammo 4",
+            "keywords": [ "Round Extruder", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "75mm Sabot",
+                "ammo_stats": "Vec, R40\", A3+/3+, S10/15, D1"
+              },
+              {
+                "name": "75mm HEAT",
+                "ammo_stats": "Inf/Vec, R40\", A3+/3+, S10/1+, D1",
+                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "75mm Beehive",
+                "ammo_stats": "All, R20\", A2+/2+, S1/1+, D3",
+                "keywords": [ "Defensive CC (Inf.)" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Tread Bus\" 65mm Smoke Launchers",
+            "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_cabal",
+        "name": "C1 \"Cabal\"",
+        "subname": "Assault Gun",
+        "type": "Vehicle",
+        "cost": 50,
+        "unit_stats": "Vec (W), H2, S32\", M10\", Q3, T8/6/4",
+        "keywords": [ "Active Protection (2)", "NBC", "Wheeled" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm Coaxial MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Bridge Dart\" 105mm Gun",
+            "weapon_stats": "R40\", A2+/3+, D1, Ammo 6",
+            "keywords": [ "No CC (Inf.)", "Radar Anti-Air", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "105mm Sabot",
+                "ammo_stats": "Vec, S14/21"
+              },
+              {
+                "name": "105mm HEAT",
+                "ammo_stats": "Inf/Vec, S12/2",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "105mm Proximity Fuze HE",
+                "ammo_stats": "All, S4/4",
+                "keywords": [ "Air-Filling", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Tread Port\" 65mm Smoke Array",
+            "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 2",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_x_ray",
+        "name": "X1 \"X-Ray\"",
+        "subname": "Main Battle Tank",
+        "type": "Vehicle",
+        "cost": 80,
+        "unit_stats": "Vec, H2, S32\", M10\", Q4, T16/14/6",
+        "keywords": [ "Active Protection (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Sun Point\" 6kW Laser Weapon",
+            "weapon_stats": "All, R40\", A1+/1+, S1+/1+, D1",
+            "keywords": [ "Laser", "Turret" ]
+          },
+          {
+            "name": "\"Bridge Dart\" 105mm Gun",
+            "weapon_stats": "R50\", A2+/3+, D1, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Round Extruder", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "105mm Rocket-Assisted Sabot",
+                "ammo_stats": "Vec, S16/24"
+              },
+              {
+                "name": "105mm Rocket-Assisted HEAT",
+                "ammo_stats": "Inf/Vec, S12/2",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Tread Port\" 65mm Smoke Array",
+            "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 2",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_automated_sentry",
+        "name": "Automated Sentry",
+        "subname": "Anti-Personnel Turret",
+        "type": "Vehicle",
+        "cost": 15,
+        "unit_stats": "Vec, H1, S32\", M0\", Q*, T2/2/1",
+        "keywords": [ "Drone", "NBC", "Paradrop" ],
+        "bonus_traits": "This unit uses a 40x40mm infantry base. Cannot fire during the first Fire Phase of the game if Paradropped.",
+        "weapons": [
+          {
+            "name": "\"Yaw Post\" 10mm Minigun",
+            "weapon_stats": "All, R20\", A4+/xx, S2/3, D3",
+            "keywords": [ "Thermal Sights", "Tracking Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_automated_atgm",
+        "name": "Automated ATGM",
+        "subname": "Anti-Tank Turret",
+        "type": "Vehicle",
+        "cost": 15,
+        "unit_stats": "Vec, H1, S32\", M0\", Q*, T2/2/1",
+        "keywords": [ "Drone", "NBC", "Paradrop" ],
+        "bonus_traits": "This unit uses a 40x40mm infantry base. Cannot fire during the first Fire Phase of the game if Paradropped.",
+        "weapons": [
+          {
+            "name": "\"Side Judge\" 150mm ATGM",
+            "weapon_stats": "Vec, R6-60\", A4+/xx, S15/2, D1, Ammo 3",
+            "keywords": [ "Guided Missile (2)", "Shaped Charge", "Thermal Sights", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_stochast",
+        "name": "S2 \"Stochast\"",
+        "subname": "Bipedal Assault Tank",
+        "type": "Vehicle",
+        "cost": 40,
+        "unit_stats": "Vec (S), H2, S32\", M8\", Q3, T12/10/8",
+        "keywords": [ "Strider", "NBC" ],
+        "bonus_traits": "This unit uses a 40x40mm infantry base.",
+        "weapons": [
+          {
+            "name": "\"Drift Fence\" 10mm HMG",
+            "weapon_stats": "All, R20\", A3+/3+, S2/3, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Ink Strake\" 55mm Thermobaric Rockets",
+            "weapon_stats": "Gnd, R28\", A4+/4+, S2/2, D3, Ammo 4",
+            "keywords": [ "Ignore Cover (2)", "No CC", "Rear Attack", "Saturating (4)", "Thermal Sights", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_chorus",
+        "name": "C2 \"Chorus\"",
+        "subname": "Beam-Riding Missile Carrier",
+        "type": "Vehicle",
+        "cost": 60,
+        "unit_stats": "Vec (W), H2, S32\", M10\", Q3, T8/6/4",
+        "keywords": [ "NBC", "Wheeled" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Star Call\" Laser Designator",
+            "weapon_stats": "All, R40\", A++/++, D1",
+            "keywords": [ "Designator", "Discreet", "Turret" ]
+          },
+          {
+            "name": "\"Star Shelf\" 155mm Missile Launcher",
+            "weapon_stats": "A3+/xx, S16/3, D1, Ammo 6",
+            "keywords": [ "Guided Missile (1)", "Radar Anti-Air", "Shaped Charge", "Turret" ],
+            "ammos": [
+              {
+                "name": "ATGM Guidance Mode",
+                "ammo_stats": "Vec, R12-60\""
+              },
+              {
+                "name": "SAM Guidance Mode",
+                "ammo_stats": "Air, R60\""
+              }
+            ]
+          },
+          {
+            "name": "\"Tread Bus\" 65mm Smoke Launchers",
+            "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_xiphos",
+        "name": "X2 \"Xiphos\"",
+        "subname": "Self-Propelled Howitzer",
+        "type": "Vehicle",
+        "cost": 80,
+        "unit_stats": "Vec, H2, S32\", M10\", Q4, T12/8/6",
+        "keywords": [ "Active Protection (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Bridge Arrow\" 155mm Howitzer",
+            "weapon_stats": "Ammo 4",
+            "keywords": [ "No CC", "Round Extruder", "Thermal Sights" ],
+            "ammos": [
+              {
+                "name": "155mm Kinetic Energy Missile",
+                "ammo_stats": "Vec, R60\", A2+/3+, S21/14, D1",
+                "keywords": [ "Guided Missile (1)" ]
+              },
+              {
+                "name": "155mm Guided HE",
+                "ammo_stats": "Inf/Vec, R∞\", A3+/4+, S8/8, D2",
+                "keywords": [ "Heavy Indirect (2)", "Guided Shell" ]
+              },
+              {
+                "name": "155mm Smoke",
+                "ammo_stats": "Gnd, R∞\", A++/++, D4",
+                "keywords": [ "Heavy Indirect (2)", "Smoke (4\")" ]
+              }
+            ]
+          },
+          {
+            "name": "\"Tread Port\" 65mm Smoke Array",
+            "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 2",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_xenon",
+        "name": "X3 \"Xenon\"",
+        "subname": "Self-Propelled Laser Array",
+        "type": "Vehicle",
+        "cost": 80,
+        "unit_stats": "Vec, H2, S32\", M10\", Q4, T14/10/6",
+        "keywords": [ "Active Protection (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Drift Bar\" 5mm MG",
+            "weapon_stats": "All, R12\", A3+/3+, S1/1, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "\"Sun Blind\" 20kW Laser Weapon Array",
+            "weapon_stats": "All",
+            "keywords": [ "Laser", "Turret" ],
+            "ammos": [
+              {
+                "name": "Focused Array",
+                "ammo_stats": "R40\", A1+/1+, S2/2, D4"
+              },
+              {
+                "name": "Dispersed Array",
+                "ammo_stats": "R4-20\", A++/++, D1",
+                "keywords": [ "Radius (3\")" ],
+                "bonus_traits": "*All non-plane units in the radius take max pin."
+              }
+            ]
+          },
+          {
+            "name": "\"Tread Port\" 65mm Smoke Array",
+            "weapon_stats": "Gnd, R6\", A++/++, D2, Ammo 2",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          },
+          {
+            "name": "Shockwave Dispersal System",
+            "weapon_stats": "Gnd, R0\", A++/++, D1",
+            "keywords": [ "Radius (6\")" ],
+            "bonus_traits": "*Infantry in radius take one pin. Smoke radii with their centers inside this weapon's radius are cleared."
+          }
+        ]
+      },
+      {
+        "id": "rygo_yardfish",
+        "name": "Y1 \"Yardfish\"",
+        "subname": "Autonomous Torpedo",
+        "type": "Vehicle",
+        "cost": 30,
+        "unit_stats": "Vec, H1, S32\", M8\", Q3, T3/3/2",
+        "keywords": [ "Active Camouflage", "NBC", "Watercraft" ],
+        "weapons": [
+          {
+            "name": "\"Sun Line\" 6kW Laser Weapon Array",
+            "weapon_stats": "All, R40\", A1+/1+, S1+/1+, D2",
+            "keywords": [ "Laser", "Turret" ]
+          },
+          {
+            "name": "\"Dredge Top\" 140mm VLS Missiles",
+            "weapon_stats": "Vec/Air, R12-60\", A3+/3+, S8/8, D1, Ammo 2",
+            "keywords": [ "Guided Missile (2)", "Radar Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_redstone",
+        "name": "R1 \"Redstone\"",
+        "subname": "Logistics Rocket",
+        "type": "Aircraft",
+        "cost": 20,
+        "unit_stats": "Air, H2, S16\", M24\", Q3, T3/3/3",
+        "keywords": [ "Decoy Protection (1)", "NBC", "PC (2, Any)", "Resupply (3)" ],
+        "bonus_traits": "This unit uses a 40x40mm base. It may land in any occluding terrain. If it falls back from close combat, choose one engaged enemy unit to take a Strength 1+ hit on its rear arc.",
+        "weapons": []
+      },
+      {
+        "id": "rygo_repeater",
+        "name": "R2 \"Repeater\"",
+        "subname": "Attack Rocket",
+        "type": "Aircraft",
+        "cost": 30,
+        "unit_stats": "Air, H2, S24\", M24\", Q3, T3/3/3",
+        "keywords": [ "Decoy Protection (1)", "NBC", "PC (1, Any)" ],
+        "bonus_traits": "This unit uses a 40x40mm base. It may land in any occluding terrain. If it falls back from close combat, choose one engaged enemy unit to take a Strength 1+ hit on its rear arc.",
+        "weapons": [
+          {
+            "name": "\"Yaw Shaft\" 15mm Minigun",
+            "weapon_stats": "All, R24\", A4+/4+, S3/4, D3",
+            "keywords": [ "Door Gun (Front)", "Thermal Sights", "Tracking Anti-Air" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_handler",
+        "name": "H1 \"Handler\"",
+        "subname": "Reconnaissance Drone",
+        "type": "Aircraft",
+        "cost": 15,
+        "unit_stats": "Air, H1, S32\", M32\", Q*, T1/1/1",
+        "keywords": [ "Drone", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Star Call\" Laser Designator",
+            "weapon_stats": "All, R40\", A++/++, D1",
+            "keywords": [ "Designator", "Discreet" ]
+          },
+          {
+            "name": "\"Tread Rake\" 65mm Smoke Projector",
+            "weapon_stats": "Gnd, R12\", A++/++, D2, Ammo 2",
+            "keywords": [ "Light Indirect (1)", "No CC", "Smoke (4\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_hangman",
+        "name": "H2 \"Hangman\"",
+        "subname": "Attack Drone",
+        "type": "Aircraft",
+        "cost": 15,
+        "unit_stats": "Air, H1, S32\", M32\", Q*, T1/1/1",
+        "keywords": [ "Decoy Protection (1)", "Drone", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Bolt Fleck\" 100mm Flechette Gun",
+            "weapon_stats": "Inf/Vec, R16\", A4+/4+, S1/1+, D4, Ammo 3",
+            "keywords": [ "Thermal Sights" ]
+          },
+          {
+            "name": "\"Weave Stalk\" 70mm Dual Rocket Pod",
+            "weapon_stats": "Inf/Vec, R16\", A6+/5+, S7/1+, D1, Ammo 2",
+            "keywords": [ "Barrage (2)", "Shaped Charge", "Strafing", "Slow Round", "Thermal Sights" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_tatter",
+        "name": "T1 \"Tatter\"",
+        "subname": "Attack Helicopter",
+        "type": "Aircraft",
+        "cost": 60,
+        "unit_stats": "Air, H2, S32\", M32\", Q3, T3/3/2",
+        "keywords": [ "Decoy Protection (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Pitch Throat\" 35mm Autocannon",
+            "weapon_stats": "All, R32\", A4+/4+, S5/7, D2, Ammo 3",
+            "keywords": [ "Thermal Sights" ]
+          },
+          {
+            "name": "\"Ram Crutch\" 175mm Active AAM",
+            "weapon_stats": "Air, R60\", A3+/3+, S7/7, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Radar Anti-Air" ]
+          },
+          {
+            "name": "\"Mark Pate\" 180mm AGM",
+            "weapon_stats": "Vec, R12-60\", A3+/4+, S18/4, D1, Ammo 4",
+            "keywords": [ "Guided Missile (1)", "Shaped Charge" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_destroying_angel",
+        "name": "\"Destroying Angel\"",
+        "subname": "Unclassified Unit",
+        "type": "Aircraft",
+        "cost": 80,
+        "unit_stats": "Air, H2, S32\", M18\", Q4, T4/4/4",
+        "keywords": [ "NBC", "Sense (12\")" ],
+        "bonus_traits": "This unit uses a 40x40mm base. It costs 0\" to rotate and cannot land. Hits against this unit do not need to be confirmed. When this unit suffers a successful kill, it automatically forces that kill to re-roll at an unmodified 6+ (fails applying three pin), then its weapon's Dice statistic decreases by one for the rest of the round. If Dice hits zero, the weapon cannot fire and no further attacks are forced to re-roll that round. During Upkeep, the weapon's Dice value resets back to D4.",
+        "weapons": [
+          {
+            "name": "\"Sun Door\" 20kW Pulsed Laser Battery",
+            "weapon_stats": "All, R40\", A1+/xx, S1+/1+, D4",
+            "keywords": [ "Laser", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_blindsight",
+        "name": "B1 \"Blindsight\"",
+        "subname": "Strike Fighter",
+        "type": "Aircraft",
+        "cost": 50,
+        "unit_stats": "Air (CAP), M20\", Q4, T3, E3",
+        "keywords": [ "Afterburner", "Decoy Protection (2)" ],
+        "weapons": [
+          {
+            "name": "\"Sun Grid\" 20kW Laser Weapon Array",
+            "weapon_stats": "All, R10\", A1+, S1+, D3",
+            "keywords": [ "Laser", "Radar Anti-Air" ]
+          },
+          {
+            "name": "\"Ram Crutch\" 175mm Active AAM",
+            "weapon_stats": "Air, R60\", A3+, S7, D1, Ammo 4",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Radar Anti-Air" ]
+          },
+          {
+            "name": "\"Mark Pate\" 180mm AGM",
+            "weapon_stats": "Vec, R60\", A3+, S18/4, D1, Ammo 2",
+            "keywords": [ "Guided Missile (1)", "Shaped Charge" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_zenith",
+        "name": "Z1 \"Zenith\"",
+        "subname": "Stealth Bomber",
+        "type": "Aircraft",
+        "cost": 50,
+        "unit_stats": "Air (CAS), M16\", Q4, T3, E1",
+        "keywords": [ "Active Camouflage", "Afterburner" ],
+        "weapons": [
+          {
+            "name": "\"Able Ivy\" 20t Guided Nuclear Bomb",
+            "weapon_stats": "Gnd, R40\", A++, D1, Ammo 1",
+            "keywords": [ "Guided Missile (2)", "Nuclear (1\"-2\"-6\")" ]
+          }
+        ]
+      },
+      {
+        "id": "rygo_apogee",
+        "name": "A1 \"Apogee\"",
+        "subname": "Strike Aircraft",
+        "type": "Aircraft",
+        "cost": 50,
+        "unit_stats": "Air (CAS), M14\", Q4, T6, E2",
+        "keywords": [ "Decoy Protection (1)" ],
+        "weapons": [
+          {
+            "name": "\"Yaw Switch\" 40mm Rotary Cannon",
+            "weapon_stats": "All, R8\", A4+, S6, D4, Ammo 4",
+            "keywords": [ "Radar Anti-Air" ]
+          },
+          {
+            "name": "\"Lake Brush\" 275mm Guided Bomb",
+            "weapon_stats": "Gnd, R32\", A2+, S10, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Radius (3\")", "Rear Attack" ]
+          }
+        ]
+      }
+    ],
     "The Federal States Army": [
       {
         "id": "feds_appomattox",
@@ -2392,7 +3399,7 @@
       "group_name": "Xe Groupe"
     },
     "The New Rygolic Host": {
-      "group_name": "Task Unit 1"
+      "group_name": "Task Unit X"
     },
     "Atom Barons of Santagria": {
       "group_name": "X. Hemipelotón"
