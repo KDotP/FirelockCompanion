@@ -1,6 +1,6 @@
 ﻿namespace FirelockCompanion;
 
-partial class Window
+partial class ArmyBuilder
 {
     /// <summary>
     ///  Required designer variable.
@@ -119,7 +119,6 @@ partial class Window
         // factionNameLabel
         // 
         factionNameLabel.Anchor = AnchorStyles.Top;
-        factionNameLabel.AutoSize = true;
         factionNameLabel.BackColor = Color.Transparent;
         factionNameLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         factionNameLabel.Location = new Point(339, 0);
@@ -127,6 +126,7 @@ partial class Window
         factionNameLabel.Size = new Size(278, 30);
         factionNameLabel.TabIndex = 4;
         factionNameLabel.Text = "The Army of the Ebon Forest";
+        factionNameLabel.TextAlign = ContentAlignment.TopCenter;
         // 
         // armyNameLabel
         // 
@@ -415,14 +415,15 @@ partial class Window
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
-        // Window
+        // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1013, 637);
         Controls.Add(initalSplit);
-        Name = "Window";
-        Text = "Form1";
+        Name = "ArmyBuilder";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Army Builder";
         initalSplit.Panel1.ResumeLayout(false);
         initalSplit.Panel1.PerformLayout();
         initalSplit.Panel2.ResumeLayout(false);

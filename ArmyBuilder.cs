@@ -2,9 +2,9 @@
 
 namespace FirelockCompanion;
 
-public partial class Window : Form
+public partial class ArmyBuilder : Form
 {
-    private static String selectedFaction = "The Federal States Army";
+    private static string armyName = "New Army";
 
     // -- Embark Status --
     private static readonly Regex LeadTagPattern = new(@"^(Vec|Inf|Air)\s*(\(([^)]*)\))?");
@@ -36,13 +36,22 @@ public partial class Window : Form
     private static string StripParams(string keyword) =>
         ParamPattern.Replace(keyword, "").Trim();
 
-    public Window()
+    public ArmyBuilder()
     {
         // Probably don't do anything before this
         InitializeComponent();
+    }
+
+    public void SelectFaction(string faction, string newName, int pointsTotal)
+    {
+        armyName = newName;
+        armyNameLabel.Text = armyName;
+
+        maxPoints = pointsTotal;
+        pointsLabel.Text = $"Points 000/{maxPoints:000}";
 
         // Set the header name to the chosen faction
-        factionNameLabel.Text = selectedFaction;
+        factionNameLabel.Text = faction;
 
         activeArmyTree.AllowDrop = true;
         activeArmyTree.ItemDrag += activeArmyTree_ItemDrag;
@@ -58,7 +67,7 @@ public partial class Window : Form
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
         // Fill out available units
-        PopulateAvailableUnits(ruleset, selectedFaction);
+        PopulateAvailableUnits(ruleset, faction);
         RecalculateArmyTotals();
 
         // First group
