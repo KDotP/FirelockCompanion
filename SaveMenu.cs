@@ -18,8 +18,6 @@ namespace FirelockCompanion
         // Public properties for the ArmyBuilder to read after the form closes
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FinalFileName { get; private set; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string EnteredArmyName { get; private set; }
 
         public SaveMenu(string factionName, int maxPoints)
         {
@@ -41,9 +39,6 @@ namespace FirelockCompanion
             // Strip any characters that Windows doesn't allow in file names (like \ / : * ? " < > |)
             string safeName = string.Join("_", rawName.ToLower().Replace(" ", "_").Split(Path.GetInvalidFileNameChars()));
             string safeFaction = string.Join("_", _factionName.Split(Path.GetInvalidFileNameChars()));
-
-            // Store the raw name in case you want to update the ArmyBuilder UI
-            EnteredArmyName = rawName;
 
             // Construct the final file name automatically
             FinalFileName = $"{safeName}_{safeFaction}_{_maxPoints}_pts.json";

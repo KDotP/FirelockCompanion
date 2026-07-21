@@ -64,6 +64,7 @@
             loadEditButton.TabIndex = 2;
             loadEditButton.Text = "Load and Edit";
             loadEditButton.UseVisualStyleBackColor = true;
+            loadEditButton.Click += loadEditButton_Click;
             // 
             // loadPlayButton
             // 

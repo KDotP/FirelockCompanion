@@ -27,12 +27,32 @@ namespace FirelockCompanion
                     ArmyBuilder armyBuilder = new ArmyBuilder();
                     armyBuilder.SelectFaction(popup.SelectedFaction, popup.ArmyName, popup.SelectedPoints);
 
-                    // Tie the Start Menu's life to the Army Builder
                     armyBuilder.FormClosed += (s, args) => this.Close();
-
-                    // Show the builder and hide the Start Menu
                     armyBuilder.Show();
                     this.Hide();
+                }
+            }
+        }
+
+        private void loadEditButton_Click(object sender, EventArgs e)
+        {
+            using (LoadAndEdit loadDialog = new LoadAndEdit())
+            {
+                if (loadDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileToLoad = loadDialog.SelectedFilePath;
+
+                    // Create the ArmyBuilder window
+                    ArmyBuilder builderForm = new ArmyBuilder();
+
+                    // Ensure all UI elements are shown
+                    builderForm.Show();
+
+                    // Push the data into the builder
+                    builderForm.LoadArmyFromFile(fileToLoad);
+
+                    this.Hide();
+                    builderForm.FormClosed += (s, args) => this.Close();
                 }
             }
         }

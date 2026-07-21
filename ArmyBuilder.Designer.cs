@@ -101,7 +101,6 @@ partial class ArmyBuilder
         // initalSplit.Panel2
         // 
         initalSplit.Panel2.Controls.Add(allUnitsSplit);
-        initalSplit.Panel2.Paint += splitContainer1_Panel2_Paint;
         initalSplit.Size = new Size(1013, 637);
         initalSplit.SplitterDistance = 34;
         initalSplit.TabIndex = 0;
@@ -303,7 +302,6 @@ partial class ArmyBuilder
         GroupManager.Name = "contextMenuStrip1";
         GroupManager.Size = new Size(172, 70);
         GroupManager.Text = "Group Manager";
-        GroupManager.Opening += CreateGroupParent_Opening;
         // 
         // createNewGroupToolStripMenuItem
         // 

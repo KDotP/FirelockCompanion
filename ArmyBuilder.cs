@@ -36,9 +36,7 @@ public partial class ArmyBuilder : Form
     private static readonly Color TargetGroupColor = Color.PaleGreen;
     private static readonly Color OutOfPositionColor = Color.Firebrick;
 
-    // -- Connector / relationship rendering --
     // Scope root (carrier or tow provider) -> the last physically-committed member node in its territory.
-    // A scope only has a visual shape at all if it appears as a key here.
     private readonly Dictionary<TreeNode, TreeNode> territoryLastCommitted = new();
     // Node -> its physical position within its group's flat child list (for span comparisons).
     private readonly Dictionary<TreeNode, int> nodePhysicalIndex = new();
@@ -129,7 +127,7 @@ public partial class ArmyBuilder : Form
             }
             else if (committedCount == subEntries.Count && committedCount > 0)
             {
-                // If the entire Tercio is securely committed, explicitly clear the warning color
+                // If the entire Tercio is securely committed, clear the warning color
                 outOfPosition = false;
             }
         }
@@ -190,9 +188,6 @@ public partial class ArmyBuilder : Form
         return $"{connectorPrefix}{tagPrefix}{baseText}{suffix}";
     }
 
-    // The chain of ancestor territories this entry sits inside, outermost first — skipping any
-    // ancestor whose territory currently has zero committed members (it has no visual shape at all,
-    // so it contributes no column and no indentation, per the "Idle Trooper" rule).
     private List<TreeNode> GetVisibleAncestorChain(ActiveUnitEntry entry)
     {
         var chain = new List<TreeNode>();
@@ -243,9 +238,6 @@ public partial class ArmyBuilder : Form
     // Builds the leading connector glyphs (│ ├ └) for one row, one character per visible ancestor
     // territory, outermost to innermost. Also reports whether this row is "out of position": eligible
     // for its own direct territory, physically still inside that territory's span, but not committed.
-    // Builds the leading connector glyphs (│ ├ └) for one row, one character per visible ancestor
-    // territory, outermost to innermost. Also reports whether this row is "out of position": eligible
-    // for its own direct territory, physically still inside that territory's span, but not committed.
     private string BuildConnectorPrefix(ActiveUnitEntry entry, TreeNode node, out bool outOfPosition)
     {
         outOfPosition = false;
@@ -279,22 +271,16 @@ public partial class ArmyBuilder : Form
                     // Pass-through or uncommitted direct child
                     prefix += "│";
 
-                    // If this unit is physically inside ANY active territory span and is NOT 
-                    // successfully committed to its assigned direct parent, it is out of position.
+                    // Any unit between related units that isn't involved in that relationship is out of position
                     if (!isCommitted)
                     {
                         outOfPosition = true;
                     }
                 }
             }
-            else
-            {
-                // Past this territory's close — it's already resolved, nothing more to show here.
-                prefix += " ";
-            }
         }
 
-        return prefix + " ";
+        return prefix;
     }
 
     // Resets everything the connector/relationship pass derives, so each RecalculateAll starts clean.
@@ -392,6 +378,7 @@ public partial class ArmyBuilder : Form
         }
     }
 
+    // Can't remember why I needed this, leaving it for now
     private static EmbarkRole GetEmbarkRole(UnitTemplate unit)
     {
         Match m = LeadTagPattern.Match(unit.unit_stats ?? "");
@@ -465,36 +452,6 @@ public partial class ArmyBuilder : Form
 
     private void renameToolStripMenuItem_Click(object sender, EventArgs e) => RenameSelectedNode();
     private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => RemoveSelectedNode();
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void panel1_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
-
-    private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
-
-    private void textBox1_TextChanged_1(object sender, EventArgs e)
-    {
-
-    }
-
-    private void CreateNewGroup_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-
-    }
-
-    private void CreateGroupParent_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-
-    }
 
     private void ClearTargetGroup()
     {
@@ -595,8 +552,6 @@ public partial class ArmyBuilder : Form
 
         e.CancelEdit = true;
 
-        // Because BuildFullNodeText now natively handles Tercio quirks, 
-        // we can just call it directly for everything!
         e.Node.Text = BuildFullNodeText(entry, e.Node);
     }
 
@@ -620,7 +575,7 @@ public partial class ArmyBuilder : Form
 
         foreach (UnitTemplate unit in factionUnits)
         {
-            // 1. Core Category Generation (e.g., Infantry, Vehicles)
+            // Core Category Generation (e.g., Infantry, Vehicles)
             if (!categoryNodes.ContainsKey(unit.type))
             {
                 TreeNode newCategory = new TreeNode(unit.type);
@@ -629,12 +584,10 @@ public partial class ArmyBuilder : Form
                 availableArmyTree.Nodes.Add(newCategory);
             }
 
-            // 2. Unit Root Node (Minimized by default)
+            // Unit Root Node (Minimized by default)
             TreeNode unitNode = new TreeNode($"{unit.name} ({unit.cost} pts)");
             unitNode.Tag = unit;
             categoryNodes[unit.type].Nodes.Add(unitNode);
-
-            // --- Layer 1 Subnodes ---
 
             // Subname / Role
             if (!string.IsNullOrEmpty(unit.subname))
@@ -729,7 +682,7 @@ public partial class ArmyBuilder : Form
 
         if (keywordInfos.Count == 1)
         {
-            // Only one keyword: the header IS the keyword. No children, no expand arrow.
+            // If only keyword, no children
             headerNode.Tag = keywordInfos[0];
         }
         else
@@ -835,7 +788,7 @@ public partial class ArmyBuilder : Form
 
         TreeNode unitNode = new TreeNode();
         unitNode.Tag = entry;
-        unitNode.Text = BuildFullNodeText(entry, unitNode); // placeholder text — RecalculateAll below rebuilds it correctly
+        unitNode.Text = BuildFullNodeText(entry, unitNode);
 
         currentTargetGroup.Nodes.Add(unitNode);
         currentTargetGroup.Expand();
@@ -1069,8 +1022,7 @@ public partial class ArmyBuilder : Form
                     entry.CanTow = false;
                 }
 
-                // A vehicle currently being towed cannot itself act as a provider —
-                // its own Tow(X), if any, is suppressed while it's the one being pulled.
+                // A vehicle currently being towed cannot itself act as a provider
                 if (isProvider && !entry.IsTowed && entry.Status == EmbarkStatus.None)
                 {
                     FinalizeProvider();
@@ -1080,7 +1032,7 @@ public partial class ArmyBuilder : Form
                 }
                 else if (isProvider && entry.IsTowed)
                 {
-                    entry.TowCapacityDisplay = null; // suppressed — don't show a Tow suffix while towed
+                    entry.TowCapacityDisplay = null; // suppressed, don't show a Tow suffix while towed
                 }
                 else if (!isVehicle)
                 {
@@ -1279,7 +1231,7 @@ public partial class ArmyBuilder : Form
             }
             else
             {
-                // Dropped on a normal unit — becomes the next sibling right after it
+                // If dropped on a normal unit, becomes the next sibling right after it
                 TreeNode parentGroup = targetNode.Parent;
                 int targetIndex = parentGroup.Nodes.IndexOf(targetNode);
                 parentGroup.Nodes.Insert(targetIndex + 1, dragged);
@@ -1297,7 +1249,7 @@ public partial class ArmyBuilder : Form
             draggedEntry.Status = EmbarkStatus.None; // moving always clears embark/desant
             draggedEntry.IsTowed = false; // moving also clears tow status
 
-            // NEW: If the dragged unit is a Tercio, we must wipe the status of all its subunits
+            // If the dragged unit is a Tercio wipe the status of all its subunits
             if (draggedEntry.Unit.name == "Tercios")
             {
                 foreach (TreeNode childNode in dragged.Nodes)
@@ -1410,7 +1362,7 @@ public partial class ArmyBuilder : Form
 
             if (entry.Unit.name == "Tercios")
             {
-                // A Tercio parent is committed if ANY of its children are embarked or desanted
+                // A Tercio parent is committed if any of its children are embarked or desanted
                 var subEntries = node.Nodes.Cast<TreeNode>().Select(n => (ActiveUnitEntry)n.Tag).ToList();
                 var interactingChild = subEntries.FirstOrDefault(se => se.Status != EmbarkStatus.None && se.RelationParentNode != null);
 
@@ -1564,7 +1516,7 @@ public partial class ArmyBuilder : Form
         {
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                armyName = saveDialog.EnteredArmyName;
+                armyName = armyName;
                 armyNameLabel.Text = armyName;
                 SaveArmyToFile(saveDialog.FinalFileName);
             }
@@ -1626,7 +1578,7 @@ public partial class ArmyBuilder : Form
                     }
                 }
 
-                // Add the unit to the group (if it's a Tercio, its children are safely nested inside it!)
+                // Add the unit to the group (if it's a Tercio, children are nested)
                 group.Units.Add(sUnit);
             }
             saveData.Groups.Add(group);
@@ -1641,5 +1593,117 @@ public partial class ArmyBuilder : Form
         File.WriteAllText(filePath, jsonOutput);
 
         MessageBox.Show($"Army saved successfully as:\n{customFileName}", "Save Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    public void LoadArmyFromFile(string filePath)
+    {
+        if (!System.IO.File.Exists(filePath)) return;
+
+        try
+        {
+            string jsonString = System.IO.File.ReadAllText(filePath);
+            ArmySaveData saveData = System.Text.Json.JsonSerializer.Deserialize<ArmySaveData>(jsonString);
+
+            if (saveData == null) return;
+
+            SelectFaction(saveData.FactionName, saveData.ArmyName, saveData.MaxPoints);
+
+            activeArmyTree.BeginUpdate();
+            activeArmyTree.Nodes.Clear();
+            ClearTargetGroup();
+
+            // Restore basic army info
+            armyName = saveData.ArmyName;
+            armyNameLabel.Text = armyName;
+            maxPoints = saveData.MaxPoints;
+            nextUnitNumber = 1;
+
+            foreach (var savedGroup in saveData.Groups)
+            {
+                TreeNode groupNode = new TreeNode(savedGroup.GroupName);
+                groupNode.Tag = "GROUP";
+
+                foreach (var sUnit in savedGroup.Units)
+                {
+                    if (sUnit.IsTercioParent)
+                    {
+                        // Rebuild the Tercio Dummy Wrapper
+                        UnitTemplate tercioDummy = new UnitTemplate
+                        {
+                            name = "Tercios",
+                            cost = sUnit.TercioCost,
+                            type = "Infantry",
+                            subname = "",
+                            unit_stats = "Inf",
+                            bonus_traits = "",
+                            keywords = new List<string> { $"Group ({sUnit.TercioSize})" },
+                            weapons = new List<Weapon>()
+                        };
+
+                        ActiveUnitEntry parentEntry = new ActiveUnitEntry(tercioDummy, sUnit.CustomName);
+                        TreeNode parentNode = new TreeNode();
+                        parentNode.Tag = parentEntry;
+
+                        // Load the nested subunits
+                        if (sUnit.TercioChildren != null)
+                        {
+                            foreach (var sChild in sUnit.TercioChildren)
+                            {
+                                // Match the saved reference ID against loaded faction units
+                                UnitTemplate childTemplate = factionUnits.FirstOrDefault(u => (u.id ?? u.name) == sChild.UnitId);
+                                if (childTemplate == null) continue;
+
+                                ActiveUnitEntry childEntry = new ActiveUnitEntry(childTemplate, sChild.CustomName);
+
+                                if (Enum.TryParse(sChild.EmbarkStatus, out EmbarkStatus status))
+                                    childEntry.Status = status;
+                                childEntry.IsTowed = sChild.IsTowed;
+
+                                TreeNode childNode = new TreeNode();
+                                childNode.Tag = childEntry;
+                                parentNode.Nodes.Add(childNode);
+                            }
+                        }
+
+                        groupNode.Nodes.Add(parentNode);
+                    }
+                    else
+                    {
+                        // Load standard independent units
+                        UnitTemplate unitTemplate = factionUnits.FirstOrDefault(u => (u.id ?? u.name) == sUnit.UnitId);
+                        if (unitTemplate == null) continue;
+
+                        ActiveUnitEntry entry = new ActiveUnitEntry(unitTemplate, sUnit.CustomName);
+
+                        if (Enum.TryParse(sUnit.EmbarkStatus, out EmbarkStatus status))
+                            entry.Status = status;
+                        entry.IsTowed = sUnit.IsTowed;
+
+                        TreeNode node = new TreeNode();
+                        node.Tag = entry;
+                        groupNode.Nodes.Add(node);
+                    }
+                }
+
+                activeArmyTree.Nodes.Add(groupNode);
+            }
+
+            activeArmyTree.ExpandAll();
+
+            // Auto-focus the last group so the user can immediately keep building
+            if (activeArmyTree.Nodes.Count > 0)
+                SetTargetGroup(activeArmyTree.Nodes[activeArmyTree.Nodes.Count - 1]);
+            else
+                createNewGroup(); // Fallback if they managed to save an entirely empty army
+
+            activeArmyTree.EndUpdate();
+
+            // Run the math loop to reconstruct all the lines, prefixes, and capacities!
+            RecalculateAll();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to load army:\n{ex.Message}", "Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
