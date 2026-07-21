@@ -54,6 +54,7 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
+        newTercioButton = new Button();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -125,7 +126,7 @@ partial class ArmyBuilder
         factionNameLabel.Name = "factionNameLabel";
         factionNameLabel.Size = new Size(278, 30);
         factionNameLabel.TabIndex = 4;
-        factionNameLabel.Text = "The Army of the Ebon Forest";
+        factionNameLabel.Text = "Faction Banner Bar";
         factionNameLabel.TextAlign = ContentAlignment.TopCenter;
         // 
         // armyNameLabel
@@ -136,9 +137,9 @@ partial class ArmyBuilder
         armyNameLabel.Location = new Point(0, 0);
         armyNameLabel.MaximumSize = new Size(450, 30);
         armyNameLabel.Name = "armyNameLabel";
-        armyNameLabel.Size = new Size(133, 30);
+        armyNameLabel.Size = new Size(158, 30);
         armyNameLabel.TabIndex = 3;
-        armyNameLabel.Text = "Dogs Army 1";
+        armyNameLabel.Text = "Unnamed Army";
         // 
         // allUnitsSplit
         // 
@@ -311,6 +312,7 @@ partial class ArmyBuilder
         // availableUnitsSplit.Panel1
         // 
         availableUnitsSplit.Panel1.BackColor = SystemColors.ControlLight;
+        availableUnitsSplit.Panel1.Controls.Add(newTercioButton);
         availableUnitsSplit.Panel1.Controls.Add(addUnitButton);
         availableUnitsSplit.Panel1.Controls.Add(tacomLabel);
         availableUnitsSplit.Panel1.Controls.Add(label1);
@@ -344,9 +346,9 @@ partial class ArmyBuilder
         tacomLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         tacomLabel.Location = new Point(414, -2);
         tacomLabel.Name = "tacomLabel";
-        tacomLabel.Size = new Size(121, 25);
+        tacomLabel.Size = new Size(122, 25);
         tacomLabel.TabIndex = 2;
-        tacomLabel.Text = "TACOMS: 0/3";
+        tacomLabel.Text = "TACOMS: 0/X";
         tacomLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // label1
@@ -415,6 +417,18 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
+        // newTercioButton
+        // 
+        newTercioButton.BackColor = SystemColors.ButtonFace;
+        newTercioButton.Location = new Point(32, -1);
+        newTercioButton.Name = "newTercioButton";
+        newTercioButton.Size = new Size(75, 26);
+        newTercioButton.TabIndex = 4;
+        newTercioButton.Text = "New Tercio";
+        newTercioButton.UseVisualStyleBackColor = false;
+        newTercioButton.Visible = false;
+        newTercioButton.Click += newTercioButton_Click;
+        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -479,4 +493,5 @@ partial class ArmyBuilder
     private Button removeButton;
     private Button addUnitButton;
     private Button reformatButton;
+    private Button newTercioButton;
 }

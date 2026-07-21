@@ -70,7 +70,23 @@
     "Flower of the Atom": "Instead of moving, if this unit has not yet fired on or gotten into a dogfight with its mission target may instead choose to lose its current mission target and tilt. A tilt allows the plane to immediately select any spotted enemy on the board as its new mission target.\nDraw a new strafing line from the plane's current position through the selected unit and apply one pin to the plane. The plane then immediately moves toward its new target. The plane must attempt to fire upon its target, diving if necessary, before it can leave the board or wave off.\nThe command token used to activate the TACOM (or Pages) that originally called the mission then returns to the controlling player's command pool to be used during the Maneuver Phase. A TACOM which has had its command token refunded can later call a brigade and move and act normally, i.e. as if it did not activate during the Support phase.\nIf a plane with Flower of the Atom is the target of an interception by a living plane, it may not change targets until its interceptor is dead.",
     "Tercio": "i. Formation\nUnits with this rule may be deployed in a special tercio formation. A tercio consists of three infantry units placed into mutual basal contact. To form a tercio, place all constituent units in the shape of a triangle, with one leading unit in front and two supporting units in the rear. Tercios can't be formed mid-game.\nA tercio may be deliberately disbanded. This is declared during Upkeep in the Support Phase and costs no command tokens. After the former tercio's pin has been divided (detailed below), the constituent units behave as normal and are not affected by the following rules.\nii. Pin & Quality\nTercios can accrue up to twelve pin. Rather than losing one inch of movement per one pin accrued, and suffering a -1 Accuracy modifier per two, the tercio loses one inch of movement per two and -1 Accuracy per four.\nA tercio's Quality is the sum of all its living units' Quality. Tercios sprint 1/3 of their Quality stat in inches rather than 1/2.\nWhen a tercio with pin disbands, the pin must be divided equally between the newly disbanded units. Any remainder is assigned at the player's discretion. No single unit can receive more than one pin from the remainder.\nIf only one unit remains in the tercio, that unit immediately takes the leading unit's position and the tercio disbands. The survivor inherits up to six pin from the former tercio.\niii. Movement\nA vehicle must be able to fit the whole tercio to transport it, but the tercio may split between the carrier's PC and desant capacity. While embarked or desanting, a tercio is temporarily disbanded, and its pin is divided as such. The tercio may disembark as a single activation. When a tercio exits its carrier, it exits in the same configuration as when it embarked, adding together its units' pin.\nTercios count as being three units (or two, if one constituent unit has been killed) for the purpose of garrisoning buildings.\nWhen charging with a tercio, the leading unit must make basal contact with its frontal arc to create a valid close combat. A move cannot result in basal contact with an enemy if no enemies end up in basal contact with the leading unit's frontal arc. A tercio can charge multiple enemies as long as at least one of them is in the leading unit's frontal arc.\niv. Suffering Hits & Kills\nTercios are targeted as a single unit by non-Radius attacks which can target at least one of its units. Attcks target the arc of the closest unit targetable by the attcker. When struck, the tercio uses the toughness of the leading unit to determine the target number of the kill roll. If the tercio suffers a kill, that kill must be applied to the leading unit.\nTercios targeted by a Radius attack receive an attack for each of its units within the Radius. Each unit in the tercio is truck by individuaally resolved attacks thaaat use the unit's own Toughness, not that of the leading unit. Hits gainst desanting members of a Tercio are also resolved individually.\nWhen the leading unit is fully killed (not just depleted), one of the two supporting units must immediately move up and replace it. The other supporting unit enters full basal conact with the rear of the new leading unit, resulting in  straight \"column\" of two unit bases.\nIf the tercio suffers multiple kills simultaneously, then kills are assigned to the leading unit until it is fully dead. All overflowing kills must then be assigned to one of the two supporting units (of the defender's choice) before the next leading unit is moved forward.\nv. Firing & Terrain\nA tercio attacks simultaneously, with all units using their weapons within normal facing and range restrictions. Each constituent unit may select a different target and draw LOS out of any other unit's base in the same tercio.\nTercios are spotted and identified as one unit. A tercio is concealed if all of its constituent units are concealed. It is in ambush if the leading unit can enter ambush and the supporting units are in ambush, concealed, or out of LOS from all enemies. The whole tercio uses the leading unit's Cover Modifier.\nConstituent units of a tercio benefit from their special rules individually. Parachuting tercios take pin as if disbanded.",
     "Wheeled": "If a wheeled vehicle begins and ends its movement on road, it may road dash, adding its quality statistic to its base movement. Add quality before applying any multiplier.\nWheeled vehicles must pay an additional 1\" movement penalty whenever they enter occluding terrain, even if that terrain does not normally have an entrance/exit cost, unless otherwise noted.",
-    "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry."
+    "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry.",
+    "Group (X)": "Internal keyword. Has an embark weight of X. You probably shouldn't see this unless you're editing the data.",
+    "Desant (X)": "This unit has an altered max number of desanting units."
+  },
+  "formats": {
+    "The Federal States Army": {
+      "group_name": "Section X"
+    },
+    "The Army of the Ebon Forest": {
+      "group_name": "Xe Groupe"
+    },
+    "The New Rygolic Host": {
+      "group_name": "Task Unit X"
+    },
+    "Atom Barons of Santagria": {
+      "group_name": "X. Hemipelotón"
+    }
   },
   "factions": {
     "Atom Barons of Santagria": [
@@ -487,7 +503,7 @@
         "type": "Vehicle",
         "cost": 15,
         "unit_stats": "Vec, H1, S24\", M8\", Q3, T5/4/2",
-        "keywords": [ "NBC", "Paradrop", "Tow (2)" ],
+        "keywords": [ "NBC", "Paradrop", "Tow (2)", "Desant (3)" ],
         "bonus_traits": "Uses a 40x40mm infantry base. May fire while carrying desanting infantry. Carries up to PC (3) desants instead of PC (2).",
         "weapons": [
           {
@@ -708,7 +724,7 @@
         "type": "Vehicle",
         "cost": 60,
         "unit_stats": "Vec, H2, S32\", M6\", Q4, T6/6/4",
-        "keywords": [ "Active Protection (∞)", "Leviathan (3)", "NBC" ],
+        "keywords": [ "Active Protection (∞)", "Leviathan (3)", "NBC", "Desant (4)" ],
         "bonus_traits": "Takes pin like a Tercio. May desant at PC (4). If the CIWS has not been destroyed, the unit gains Active Protection (∞). This Protection has infinite ammo but only triggers once per round and only against Guided Missiles.",
         "weapons": [
           {
@@ -4491,19 +4507,5 @@
         ]
       }
     ]
-  },
-  "Formats": {
-    "The Federal States Army": {
-      "group_name": "Section X"
-    },
-    "The Army of the Ebon Forest": {
-      "group_name": "Xe Groupe"
-    },
-    "The New Rygolic Host": {
-      "group_name": "Task Unit X"
-    },
-    "Atom Barons of Santagria": {
-      "group_name": "X. Hemipelotón"
-    }
   }
 }

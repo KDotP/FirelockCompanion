@@ -1,16 +1,26 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace FirelockCompanion;
 
 public partial class ArmyBuilder : Form
 {
     private static string armyName = "New Army";
+    private string currentGroupFormat = "Group X";
+    private List<UnitTemplate> factionUnits;
+
+    // Getting real tired of this """error""" and if I suppress it internally, YOU would still get warned
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Dictionary<string, Dictionary<string, string>> Formats { get; set; }
 
     // -- Embark Status --
     private static readonly Regex LeadTagPattern = new(@"^(Vec|Inf|Air)\s*(\(([^)]*)\))?");
     private static readonly Regex PcPattern = new(@"^PC\s*\((\d+)");
     private static readonly Regex TowCapacityPattern = new(@"^Tow\s*\((\d+)");
     private static readonly Regex TowWeightPattern = new(@"(?:^|,\s*)T(\d+)");
+    private static readonly Regex ParamPattern = new(@"\s*\(.*\)\s*$");
+    private static readonly Regex DesantCapacityPattern = new(@"^Desant\s*\((\d+)\)"); // For ONE UNIT
+
     private static readonly TextFormatFlags MeasureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine; // For special formatting with embark
 
     // Point management
@@ -20,7 +30,6 @@ public partial class ArmyBuilder : Form
 
     private int nextUnitNumber = 1;
 
-    private static readonly Regex ParamPattern = new(@"\s*\(.*\)\s*$");
     private record KeywordInfo(string Keyword, string Description);
     private TreeNode currentTargetGroup;
     private static readonly Color TargetGroupColor = Color.PaleGreen;
@@ -66,6 +75,24 @@ public partial class ArmyBuilder : Form
         string jsonString = System.IO.File.ReadAllText("Data.json");
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
+        // Load group names
+        if (ruleset.formats != null &&
+            ruleset.formats.TryGetValue(faction, out var factionFormat) &&
+            factionFormat.TryGetValue("group_name", out var customName))
+        {
+            currentGroupFormat = customName;
+        }
+        else
+        {
+            currentGroupFormat = "Group X";
+        }
+
+        // Show Tercio button
+        if (faction == "Atom Barons of Santagria")
+        {
+            newTercioButton.Visible = true;
+        }
+
         // Fill out available units
         PopulateAvailableUnits(ruleset, faction);
         RecalculateArmyTotals();
@@ -77,9 +104,48 @@ public partial class ArmyBuilder : Form
     private string BuildFullNodeText(ActiveUnitEntry entry, TreeNode node)
     {
         string connectorPrefix = BuildConnectorPrefix(entry, node, out bool outOfPosition);
+        bool isMismatchedTercio = false;
+
+        // Custom Tercio mismatch validation
+        if (entry.Unit.name == "Tercios" && node.Nodes.Count > 0)
+        {
+            var subEntries = node.Nodes.Cast<TreeNode>().Select(n => (ActiveUnitEntry)n.Tag).ToList();
+            int committedCount = subEntries.Count(e => e.Status != EmbarkStatus.None);
+
+            // If some units are in a vehicle but not all, the Tercio is broken
+            if (committedCount > 0 && committedCount < subEntries.Count)
+            {
+                isMismatchedTercio = true;
+                outOfPosition = true; // Force the parent text to turn red
+            }
+            else if (committedCount == subEntries.Count && committedCount > 0)
+            {
+                // If the entire Tercio is securely committed, explicitly clear the warning color
+                outOfPosition = false;
+            }
+        }
+
         node.ForeColor = outOfPosition ? OutOfPositionColor : Color.Empty;
 
-        string baseText = $"{entry.Unit.name} ({entry.Unit.cost} pts) \"{entry.CustomName}\"";
+        // Hide the point cost for Tercio children, but keep it for normal units/parents
+        bool isTercioChild = node.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios";
+        string baseText = isTercioChild
+            ? $"{entry.Unit.name} "
+            : $"{entry.Unit.name} ({entry.Unit.cost} pts) ";
+
+        // Dynamically pull the Size string for the Tercio parent so it never gets erased
+        if (entry.Unit.name == "Tercios")
+        {
+            string groupKw = entry.Unit.keywords?.FirstOrDefault(k => k.StartsWith("Group ("));
+            if (groupKw != null)
+            {
+                var match = Regex.Match(groupKw, @"\d+");
+                if (match.Success) baseText += $"({match.Value} size) ";
+            }
+        }
+
+        baseText += $"\"{entry.CustomName}\"";
+
         var prefixTags = new List<string>();
 
         if (entry.HasCarrierAbove)
@@ -104,8 +170,11 @@ public partial class ArmyBuilder : Form
 
         var suffixParts = new List<string>();
         if (entry.EmbarkCapacityDisplay.HasValue) suffixParts.Add($"Embark {entry.EmbarkUsedDisplay}/{entry.EmbarkCapacityDisplay.Value}");
-        if (entry.ShowDesantSuffix) suffixParts.Add($"Desant {entry.DesantUsedDisplay}/2");
+        if (entry.ShowDesantSuffix) suffixParts.Add($"Desant {entry.DesantUsedDisplay}/{GetDesantCapacity(entry.Unit)}");
         if (entry.TowCapacityDisplay.HasValue) suffixParts.Add($"Tow {entry.TowUsedDisplay}/{entry.TowCapacityDisplay.Value}");
+
+        // Append an error string if the Tercio is mismatched (some units in a vehicle, some not)
+        if (isMismatchedTercio) suffixParts.Add("Not all units in the same vehicle!");
 
         string suffix = suffixParts.Count > 0 ? $" — {string.Join(", ", suffixParts)}" : "";
 
@@ -130,6 +199,36 @@ public partial class ArmyBuilder : Form
 
         chain.Reverse();
         return chain;
+    }
+
+    private List<TreeNode> GetLogicalNodes(TreeNode groupNode)
+    {
+        List<TreeNode> list = new List<TreeNode>();
+        foreach (TreeNode child in groupNode.Nodes)
+        {
+            list.Add(child);
+            if (child.Tag is ActiveUnitEntry entry && entry.Unit.name == "Tercios")
+            {
+                foreach (TreeNode subChild in child.Nodes)
+                {
+                    list.Add(subChild);
+                }
+            }
+        }
+        return list;
+    }
+
+    private static int GetDesantCapacity(UnitTemplate unit)
+    {
+        if (unit.keywords != null)
+        {
+            foreach (string kw in unit.keywords)
+            {
+                Match m = DesantCapacityPattern.Match(kw);
+                if (m.Success) return int.Parse(m.Groups[1].Value);
+            }
+        }
+        return 2; // Default desant capacity
     }
 
     // Builds the leading connector glyphs (│ ├ └) for one row, one character per visible ancestor
@@ -196,7 +295,7 @@ public partial class ArmyBuilder : Form
         nodePhysicalIndex.Clear();
 
         foreach (TreeNode groupNode in activeArmyTree.Nodes)
-            foreach (TreeNode child in groupNode.Nodes)
+            foreach (TreeNode child in GetLogicalNodes(groupNode))
                 if (child.Tag is ActiveUnitEntry entry)
                 {
                     entry.RelationParentNode = null;
@@ -209,7 +308,7 @@ public partial class ArmyBuilder : Form
         foreach (TreeNode groupNode in activeArmyTree.Nodes)
         {
             int i = 0;
-            foreach (TreeNode child in groupNode.Nodes)
+            foreach (TreeNode child in GetLogicalNodes(groupNode))
                 nodePhysicalIndex[child] = i++;
         }
     }
@@ -230,6 +329,12 @@ public partial class ArmyBuilder : Form
     {
         TreeNode node = activeArmyTree.SelectedNode;
         if (node == null) return;
+
+        // Tercio nodes cannot be individually removed
+        if (node?.Parent?.Tag is ActiveUnitEntry parentEntry && parentEntry.Unit.name == "Tercios")
+        {
+            return;
+        }
 
         bool isGroup = node.Tag as string == "GROUP";
 
@@ -287,6 +392,8 @@ public partial class ArmyBuilder : Form
 
     private static int EmbarkWeight(UnitTemplate unit)
     {
+        if (unit.keywords != null && unit.keywords.Contains("Squad")) return 2;
+
         Match m = LeadTagPattern.Match(unit.unit_stats ?? "");
         return (m.Success && m.Groups[3].Success && m.Groups[3].Value.Contains("S")) ? 2 : 1;
     }
@@ -439,7 +546,10 @@ public partial class ArmyBuilder : Form
 
     private void createNewGroup()
     {
-        string defaultGroupName = $"{activeArmyTree.Nodes.Count + 1}e Groupe";
+        int nextGroupNum = activeArmyTree.Nodes.Count + 1;
+
+        // Dynamically insert the number into the format string
+        string defaultGroupName = currentGroupFormat.Replace("X", nextGroupNum.ToString());
 
         TreeNode groupNode = new TreeNode(defaultGroupName);
         groupNode.Tag = "GROUP";
@@ -447,7 +557,7 @@ public partial class ArmyBuilder : Form
         activeArmyTree.Nodes.Add(groupNode);
         activeArmyTree.ExpandAll();
 
-        SetTargetGroup(groupNode); // Automatically set focus to new group
+        SetTargetGroup(groupNode);
         activeArmyTree.SelectedNode = groupNode;
     }
 
@@ -463,7 +573,7 @@ public partial class ArmyBuilder : Form
     {
         activeArmyTree.LabelEdit = false;
 
-        if (e.Node.Tag is not ActiveUnitEntry entry) return; // groups: default behavior is fine as-is
+        if (e.Node.Tag is not ActiveUnitEntry entry) return;
 
         if (string.IsNullOrWhiteSpace(e.Label))
         {
@@ -474,8 +584,11 @@ public partial class ArmyBuilder : Form
             entry.CustomName = e.Label.Trim();
         }
 
-        e.Node.Text = BuildFullNodeText(entry, e.Node); // always rebuild — covers both "typed something" and "cancelled" cases
-        e.CancelEdit = true; // we're setting Text ourselves either way
+        e.CancelEdit = true;
+
+        // Because BuildFullNodeText now natively handles Tercio quirks, 
+        // we can just call it directly for everything!
+        e.Node.Text = BuildFullNodeText(entry, e.Node);
     }
 
     // Double click on any node in the active army tree
@@ -492,7 +605,7 @@ public partial class ArmyBuilder : Form
 
         if (!data.factions.ContainsKey(selectedFactionName)) return;
 
-        List<UnitTemplate> factionUnits = data.factions[selectedFactionName];
+        factionUnits = data.factions[selectedFactionName];
         Dictionary<string, TreeNode> categoryNodes = new Dictionary<string, TreeNode>();
         Dictionary<string, string> normalizedKeywords = BuildNormalizedKeywords(data.keywords);
 
@@ -647,6 +760,11 @@ public partial class ArmyBuilder : Form
             if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
             if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
             if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
+            if (unit.keywords.Count > 0)
+            {
+                string keywordsText = string.Join(", ", unit.keywords);
+                parts.Add($"Keywords: {keywordsText}");
+            }
             return string.Join("\r\n\r\n", parts);
         }
 
@@ -761,6 +879,7 @@ public partial class ArmyBuilder : Form
                 var vEntry = (ActiveUnitEntry)vehicleNode.Tag;
                 var entries = passengerNodes.Select(n => (Node: n, Entry: (ActiveUnitEntry)n.Tag)).ToList();
 
+                int maxDesant = GetDesantCapacity(vEntry.Unit);
                 int embarkUsed = entries.Where(x => x.Entry.Status == EmbarkStatus.Embarked)
                                          .Sum(x => EmbarkWeight(x.Entry.Unit));
                 int desantUsed = desantSupported
@@ -776,7 +895,7 @@ public partial class ArmyBuilder : Form
                     entry.HasCarrierAbove = true;
                     entry.HasDesantCarrierAbove = desantSupported;
                     entry.CanEmbark = capacity.HasValue && othersEmbark + weight <= capacity.Value;
-                    entry.CanDesant = desantSupported && othersDesant + weight <= 2;
+                    entry.CanDesant = desantSupported && othersDesant + weight <= maxDesant;
                     entry.RelationParentNode = vehicleNode; // in range of this carrier's territory, committed or not
 
                     if (!desantSupported && entry.Status == EmbarkStatus.Desanted)
@@ -789,8 +908,15 @@ public partial class ArmyBuilder : Form
                     .Where(x => x.Entry.Status != EmbarkStatus.None)
                     .Select(x => x.Node)
                     .LastOrDefault();
+
                 if (lastCommittedPassenger != null)
+                {
+                    if (lastCommittedPassenger.Parent?.Tag is ActiveUnitEntry parentEntry && parentEntry.Unit.name == "Tercios")
+                    {
+                        lastCommittedPassenger = lastCommittedPassenger.Parent.Nodes[lastCommittedPassenger.Parent.Nodes.Count - 1];
+                    }
                     territoryLastCommitted[vehicleNode] = lastCommittedPassenger;
+                }
 
                 vEntry.EmbarkCapacityDisplay = capacity;
                 vEntry.EmbarkUsedDisplay = embarkUsed;
@@ -798,7 +924,7 @@ public partial class ArmyBuilder : Form
                 vEntry.DesantUsedDisplay = desantUsed;
             }
 
-            foreach (TreeNode child in groupNode.Nodes)
+            foreach (TreeNode child in GetLogicalNodes(groupNode))
             {
                 if (child.Tag is not ActiveUnitEntry entry) continue;
 
@@ -829,6 +955,23 @@ public partial class ArmyBuilder : Form
                 {
                     entry.EmbarkCapacityDisplay = null;
                     entry.ShowDesantSuffix = false;
+                }
+            }
+
+            foreach (TreeNode child in groupNode.Nodes)
+            {
+                if (child.Tag is ActiveUnitEntry entry && entry.Unit.name == "Tercios")
+                {
+                    // Find the first subunit that is actively interacting
+                    var interactingChild = child.Nodes.Cast<TreeNode>()
+                        .FirstOrDefault(n => ((ActiveUnitEntry)n.Tag).RelationParentNode != null);
+
+                    if (interactingChild != null)
+                    {
+                        // Inherit the relationship so the Format button sorts the whole Tercio correctly
+                        entry.RelationParentNode = ((ActiveUnitEntry)interactingChild.Tag).RelationParentNode;
+                        entry.Status = ((ActiveUnitEntry)interactingChild.Tag).Status;
+                    }
                 }
             }
 
@@ -896,7 +1039,7 @@ public partial class ArmyBuilder : Form
                 pEntry.TowUsedDisplay = usedWeight;
             }
 
-            foreach (TreeNode child in groupNode.Nodes)
+            foreach (TreeNode child in GetLogicalNodes(groupNode))
             {
                 if (child.Tag is not ActiveUnitEntry entry) continue;
 
@@ -946,7 +1089,7 @@ public partial class ArmyBuilder : Form
         RecalculateTowState();
 
         foreach (TreeNode groupNode in activeArmyTree.Nodes)
-            foreach (TreeNode child in groupNode.Nodes)
+            foreach (TreeNode child in GetLogicalNodes(groupNode))
                 if (child.Tag is ActiveUnitEntry entry)
                     child.Text = BuildFullNodeText(entry, child);
 
@@ -1066,6 +1209,12 @@ public partial class ArmyBuilder : Form
     {
         if (e.Item is TreeNode node && node.Tag is ActiveUnitEntry)
         {
+            // Tercio prevention
+            if (node?.Parent?.Tag is ActiveUnitEntry parentEntry && parentEntry.Unit.name == "Tercios")
+            {
+                return;
+            }
+
             draggedNode = node;
             DoDragDrop(node, DragDropEffects.Move);
         }
@@ -1108,14 +1257,24 @@ public partial class ArmyBuilder : Form
         }
         else if (targetNode.Tag is ActiveUnitEntry)
         {
-            // Dropped on a unit — becomes the next sibling right after it, no top/bottom split
-            TreeNode parentGroup = targetNode.Parent;
-            int targetIndex = parentGroup.Nodes.IndexOf(targetNode);
-            parentGroup.Nodes.Insert(targetIndex + 1, dragged);
+            // Prevent insertion into a Tercio via drag and drop
+            if (targetNode.Parent?.Tag is ActiveUnitEntry parentEntry && parentEntry.Unit.name == "Tercios")
+            {
+                // Insert it after the Tercio parent instead
+                TreeNode groupFolder = targetNode.Parent.Parent;
+                int parentIndex = groupFolder.Nodes.IndexOf(targetNode.Parent);
+                groupFolder.Nodes.Insert(parentIndex + 1, dragged);
+            }
+            else
+            {
+                // Dropped on a normal unit — becomes the next sibling right after it
+                TreeNode parentGroup = targetNode.Parent;
+                int targetIndex = parentGroup.Nodes.IndexOf(targetNode);
+                parentGroup.Nodes.Insert(targetIndex + 1, dragged);
+            }
         }
         else
         {
-            // Dropped on something else (category, keyword, etc. — shouldn't happen in this tree)
             return;
         }
 
@@ -1123,8 +1282,21 @@ public partial class ArmyBuilder : Form
 
         if (dragged.Tag is ActiveUnitEntry draggedEntry)
         {
-            draggedEntry.Status = EmbarkStatus.None; // moving always clears embark/desant, per your rule
+            draggedEntry.Status = EmbarkStatus.None; // moving always clears embark/desant
             draggedEntry.IsTowed = false; // moving also clears tow status
+
+            // NEW: If the dragged unit is a Tercio, we must wipe the status of all its subunits
+            if (draggedEntry.Unit.name == "Tercios")
+            {
+                foreach (TreeNode childNode in dragged.Nodes)
+                {
+                    if (childNode.Tag is ActiveUnitEntry childEntry)
+                    {
+                        childEntry.Status = EmbarkStatus.None;
+                        childEntry.IsTowed = false;
+                    }
+                }
+            }
 
             // If the dragged unit is a provider, prevent it from hijacking units already being towed below it
             if (GetTowCapacity(draggedEntry.Unit).HasValue && dragged.Parent != null)
@@ -1134,8 +1306,8 @@ public partial class ArmyBuilder : Form
                 {
                     if (dragged.Parent.Nodes[i].Tag is ActiveUnitEntry siblingEntry)
                     {
-                        if (GetTowCapacity(siblingEntry.Unit).HasValue) break; // Stop checking at the next provider's territory
-                        siblingEntry.IsTowed = false; // Drop tow to prevent hijacking
+                        if (GetTowCapacity(siblingEntry.Unit).HasValue) break;
+                        siblingEntry.IsTowed = false;
                     }
                 }
             }
@@ -1146,10 +1318,22 @@ public partial class ArmyBuilder : Form
 
     private void activeArmyTree_DragOver(object sender, DragEventArgs e)
     {
-        e.Effect = DragDropEffects.Move;
-
         Point clientPoint = activeArmyTree.PointToClient(new Point(e.X, e.Y));
         TreeNode targetNode = activeArmyTree.GetNodeAt(clientPoint);
+
+        // Prevent highlighting or dropping on a Tercio subunit
+        if (targetNode?.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios")
+        {
+            e.Effect = DragDropEffects.None;
+            if (dropHighlightNode != null)
+            {
+                dropHighlightNode.BackColor = Color.Empty;
+                dropHighlightNode = null;
+            }
+            return;
+        }
+
+        e.Effect = DragDropEffects.Move;
 
         if (targetNode == dropHighlightNode) return; // no change, skip redundant work
 
@@ -1265,5 +1449,60 @@ public partial class ArmyBuilder : Form
 
         // 5. Recalculate one last time to redraw the relationship lines correctly over the new physical layout
         RecalculateAll();
+    }
+
+    private void newTercioButton_Click(object sender, EventArgs e)
+    {
+        if (currentTargetGroup == null)
+        {
+            MessageBox.Show("Select or create a group first.", "No group selected");
+            return;
+        }
+
+        // Pass the current faction's units into the builder
+        using (TercioBuilder builder = new TercioBuilder(factionUnits))
+        {
+            if (builder.ShowDialog() == DialogResult.OK)
+            {
+                // Create the parent Tercio dummy unit
+                UnitTemplate tercioDummy = new UnitTemplate
+                {
+                    name = "Tercios",
+                    cost = builder.TotalCost,
+                    type = "Infantry",
+                    subname = "",
+                    unit_stats = "Inf",
+                    bonus_traits = "",
+                    keywords = new List<string> { $"Group ({builder.TotalSize})" }, // Set keyword to read weight
+                    weapons = new List<Weapon>()
+                };
+
+                ActiveUnitEntry parentEntry = new ActiveUnitEntry(tercioDummy, $"Tercio");
+
+                TreeNode parentNode = new TreeNode();
+                parentNode.Tag = parentEntry;
+                parentNode.Text = $"Tercios ({builder.TotalCost} pts) ({builder.TotalSize} size) \"{parentEntry.CustomName}\"";
+
+                // Add the selected subunits and assign them default names
+                foreach (UnitTemplate member in builder.SelectedTercioUnits)
+                {
+                    // Give it a default name exactly like standard units get
+                    ActiveUnitEntry childEntry = new ActiveUnitEntry(member, $"Unit {nextUnitNumber++}");
+
+                    TreeNode childNode = new TreeNode();
+                    childNode.Tag = childEntry;
+
+                    // Display the custom name inline so it can be edited later
+                    childNode.Text = "";
+
+                    parentNode.Nodes.Add(childNode);
+                }
+
+                currentTargetGroup.Nodes.Add(parentNode);
+                currentTargetGroup.ExpandAll();
+
+                RecalculateAll();
+            }
+        }
     }
 }

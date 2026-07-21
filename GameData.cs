@@ -13,6 +13,7 @@ namespace FirelockCompanion
     {
         public Dictionary<string, string> keywords { get; set; }
         public Dictionary<string, List<UnitTemplate>> factions { get; set; }
+        public Dictionary<string, Dictionary<string, string>> formats { get; set; }
     }
 
     public class UnitTemplate
