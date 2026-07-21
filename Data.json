@@ -63,16 +63,1117 @@
     "Laser": "This weapon always rolls a minimum of 6+ to kill regardless of the target's Toughness. Like Designators, Lasers are blocked by Smoke, except in close combat. Lasers can target planes and do not have to confirm hits against aircraft at any range. Lasers can trigger Decoy Protection, in which case they are immediately nullified and do not re-roll, but still apply three pin.\nA die which hits but fails to kill a non-aircraft unit can only ever deal one pin, but a die which hits an aircraft deals three as normal.",
     "Drone": "This unit's quality is marked Q*, indicating that it is unaffected by pin. This unit never receives pin tokens, but it cannot lend or receive actions through the Rygonet.",
     "Round Extruder": "This weapon can use a fire action to reload one Ammo for itself instead of shooting in the Fire Phase. Weapon may not generate Ammo if already at its default maximum value.",
-    "Hovercraft": "This vehicle never pays movement to enter or exit terrain and ignores swamp's terrain multiple.",
+    "Hovercraft": "This vehicle never pays movement to enter or exit terrain and ignores swamp's terrain multipler.",
     "Rygonet (X)": "Any friendly Rygolic unit which is within a Radius of X inches from this unit is eligible to lend its action to any other Rygo unit in that same radius during the Fire and Maneuver Phases. A friendly Rygo unit can then simultaneously take a turn to receive that action during the Maneuver or Fire Phase. Receiving a move action always costs one command token. A unit can receive via Rygonet up to two times per Phase. Thus, in addition to its own (innate) action, it may act up to three times per Phase.\nWhen a unit lends its action, it is considered to have spent its turn. It is ineligible to act on its own or lend another action for the rest of the phase. It can, however, still receive bonus actions from other units.\nA unit which receives an action must begin and end its turn within a Rygonet radius, but it does not have to be the same unit's radius.\nRygonet can be used during a Brigade activation to transfer moves from units which have not been targeted as part of the Brigade to units that have been targeted.\nUnits with no weapons cannot lend a fire action. Units with no viable movement, such as those with M0\" or those which fired stationary in the previous Fire Phase, cannot lend a movement action.\nIf a unit is being towed, or is embarked or desanting where it cannot disembark, it cannot lend its move action.\nDummies, Petty Staters, Planes, Drones, and units being affected by Chemical Weapons cannot lend or receive actions.\nUnits using lended actions cannot both gain and lose a gone to ground token in the same Fire phase, nor embark and disembark in the same Maneuver Phase.",
     "Strider": "Biological legs grant Rygolic light armor all-terrain mobility and the ability to crouch behind cover.\nThis vehicle is marked Vec (S) and behaves like infantry for movement purposes. It can sprint, rotate for free, and ignores terrain vehicle multipliers (though it cannot move through or into Inf-only terrain), but still takes pin as if it were a vehicle. It cannot garrison structures, but can move over them, provided it does not end its movement inside. It may also spend a fire action in any terrain to gain or lose a gone to ground token without simultaneously firing. This reduces the unit's Height by 1, but gives no Cover Modifier.",
     "Leviathan (X)": "This unit must suffer X number of kills to be destroyed. When it suffers a kill, place a leviathan token on it and choose one non-Small Arm weapon on its statline to be destroyed. Destroyed weapons cannot be used and no special rule benefits may be derived from them for the rest of the game. Leviathans cannot be towed.\nLeviathan helicopters do not force hits against them to confirm beyond 12\" away.",
-    "Flower of the Atom": "Instead of moving, a plane with this rule that has not yet fired on or gotten into a dogfight with its mission target may instead choose to lose its current mission target and tilt. A tilt allows the plane to immediately select any spotted enemy on the board as its new mission target.\nDraw a new strafing line from the plane's current position through the selected unit and apply one pin to the plane. The plane then immediately moves toward its new target. The plane must attempt to fire upon its target, diving if necessary, before it can leave the board or wave off.\nThe command token used to activate the TACOM (or Pages) that originally called the mission then returns to the controlling player's command pool to be used during the Maneuver Phase. A TACOM which has had its command token refunded can later call a brigade and move and act normally, i.e. as if it did not activate during the Support phase.\nIf a plane with Flower of the Atom is the target of an interception by a living plane, it may not change targets until its interceptor is dead.",
+    "Flower of the Atom": "Instead of moving, if this unit has not yet fired on or gotten into a dogfight with its mission target may instead choose to lose its current mission target and tilt. A tilt allows the plane to immediately select any spotted enemy on the board as its new mission target.\nDraw a new strafing line from the plane's current position through the selected unit and apply one pin to the plane. The plane then immediately moves toward its new target. The plane must attempt to fire upon its target, diving if necessary, before it can leave the board or wave off.\nThe command token used to activate the TACOM (or Pages) that originally called the mission then returns to the controlling player's command pool to be used during the Maneuver Phase. A TACOM which has had its command token refunded can later call a brigade and move and act normally, i.e. as if it did not activate during the Support phase.\nIf a plane with Flower of the Atom is the target of an interception by a living plane, it may not change targets until its interceptor is dead.",
     "Tercio": "i. Formation\nUnits with this rule may be deployed in a special tercio formation. A tercio consists of three infantry units placed into mutual basal contact. To form a tercio, place all constituent units in the shape of a triangle, with one leading unit in front and two supporting units in the rear. Tercios can't be formed mid-game.\nA tercio may be deliberately disbanded. This is declared during Upkeep in the Support Phase and costs no command tokens. After the former tercio's pin has been divided (detailed below), the constituent units behave as normal and are not affected by the following rules.\nii. Pin & Quality\nTercios can accrue up to twelve pin. Rather than losing one inch of movement per one pin accrued, and suffering a -1 Accuracy modifier per two, the tercio loses one inch of movement per two and -1 Accuracy per four.\nA tercio's Quality is the sum of all its living units' Quality. Tercios sprint 1/3 of their Quality stat in inches rather than 1/2.\nWhen a tercio with pin disbands, the pin must be divided equally between the newly disbanded units. Any remainder is assigned at the player's discretion. No single unit can receive more than one pin from the remainder.\nIf only one unit remains in the tercio, that unit immediately takes the leading unit's position and the tercio disbands. The survivor inherits up to six pin from the former tercio.\niii. Movement\nA vehicle must be able to fit the whole tercio to transport it, but the tercio may split between the carrier's PC and desant capacity. While embarked or desanting, a tercio is temporarily disbanded, and its pin is divided as such. The tercio may disembark as a single activation. When a tercio exits its carrier, it exits in the same configuration as when it embarked, adding together its units' pin.\nTercios count as being three units (or two, if one constituent unit has been killed) for the purpose of garrisoning buildings.\nWhen charging with a tercio, the leading unit must make basal contact with its frontal arc to create a valid close combat. A move cannot result in basal contact with an enemy if no enemies end up in basal contact with the leading unit's frontal arc. A tercio can charge multiple enemies as long as at least one of them is in the leading unit's frontal arc.\niv. Suffering Hits & Kills\nTercios are targeted as a single unit by non-Radius attacks which can target at least one of its units. Attcks target the arc of the closest unit targetable by the attcker. When struck, the tercio uses the toughness of the leading unit to determine the target number of the kill roll. If the tercio suffers a kill, that kill must be applied to the leading unit.\nTercios targeted by a Radius attack receive an attack for each of its units within the Radius. Each unit in the tercio is truck by individuaally resolved attacks thaaat use the unit's own Toughness, not that of the leading unit. Hits gainst desanting members of a Tercio are also resolved individually.\nWhen the leading unit is fully killed (not just depleted), one of the two supporting units must immediately move up and replace it. The other supporting unit enters full basal conact with the rear of the new leading unit, resulting in  straight \"column\" of two unit bases.\nIf the tercio suffers multiple kills simultaneously, then kills are assigned to the leading unit until it is fully dead. All overflowing kills must then be assigned to one of the two supporting units (of the defender's choice) before the next leading unit is moved forward.\nv. Firing & Terrain\nA tercio attacks simultaneously, with all units using their weapons within normal facing and range restrictions. Each constituent unit may select a different target and draw LOS out of any other unit's base in the same tercio.\nTercios are spotted and identified as one unit. A tercio is concealed if all of its constituent units are concealed. It is in ambush if the leading unit can enter ambush and the supporting units are in ambush, concealed, or out of LOS from all enemies. The whole tercio uses the leading unit's Cover Modifier.\nConstituent units of a tercio benefit from their special rules individually. Parachuting tercios take pin as if disbanded.",
     "Wheeled": "If a wheeled vehicle begins and ends its movement on road, it may road dash, adding its quality statistic to its base movement. Add quality before applying any multiplier.\nWheeled vehicles must pay an additional 1\" movement penalty whenever they enter occluding terrain, even if that terrain does not normally have an entrance/exit cost, unless otherwise noted.",
     "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry."
   },
   "factions": {
+    "Atom Barons of Santagria": [
+      {
+        "id": "santa_graf",
+        "name": "PEG.123-AC \"Graf\"",
+        "subname": "Command Helicopter",
+        "type": "TACOM",
+        "cost": 0,
+        "unit_stats": "Air, H1, S32\", M36\", Q4, T2/1/1, C2",
+        "keywords": [ "Brigade (4, 16\")", "Decoy Protection (1)", "NBC" ],
+        "weapons": [
+          {
+            "name": "MhM-76 .305 Minigun",
+            "weapon_stats": "All, R12\", A4+/5+, S1/1+, D4",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "Lerna 15-lbr Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 1",
+            "keywords": [ "Slow Round", "Strafing" ]
+          },
+          {
+            "name": "SUR-4 127mm Air-to-Air Missile",
+            "weapon_stats": "Air, R60\", A3+/3+, S6/6, D1, Ammo 1",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+          },
+          {
+            "name": "120dB Megaphone Array",
+            "weapon_stats": "Inf/Vec, R16\", A++/++, D1",
+            "keywords": [ "Rally", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_don",
+        "name": "UNI.28-AC \"Don\"",
+        "subname": "Command Gunship",
+        "type": "TACOM",
+        "cost": 25,
+        "unit_stats": "Air, H2, S32\", M24\", Q4, T4/3/3, C3",
+        "keywords": [ "Brigade (3, 12\")", "Leviathan (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "Allant 1.8-lber Rotary Cannon",
+            "weapon_stats": "All, R32\", A4+/4+, S4/6, D3, Ammo 3",
+            "keywords": []
+          },
+          {
+            "name": "SUR-4 127mm Air-to-Air Missile",
+            "weapon_stats": "Air, R60\", A3+/3+, S6/6, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+          },
+          {
+            "name": "120dB Megaphone Array",
+            "weapon_stats": "Inf/Vec, R16\", A++/++, D1",
+            "keywords": [ "Rally", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_castellan",
+        "name": "VBD.127-DB \"Castellan\"",
+        "subname": "Command Main Battle Tank",
+        "type": "TACOM",
+        "cost": 40,
+        "unit_stats": "Vec, H2, S32\", M8\", Q4, T16/7/5, C4",
+        "keywords": [ "Brigade (2, 8\")", "NBC" ],
+        "bonus_traits": "Whenever this unit scores a kill on an enemy vehicle, it may Rally a friendly unit within 8\".",
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/4+, S1/1+, D2",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "Sb.98 55-lber Gun",
+            "weapon_stats": "R40\", A3+/3+, D1, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "55-lb. APDS",
+                "ammo_stats": "Vec, S14/21"
+              },
+              {
+                "name": "55-lb. HESH",
+                "ammo_stats": "Inf/Vec, S9/4",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "Lerna 15-lber Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A4+/5+, S4/4, D4, Ammo 1",
+            "keywords": [ "No CC (Inf.)", "Slow Round", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_santagrine_militia",
+        "name": "Santagrine Militia",
+        "subname": "Militia Squad",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf (S), H1, S16\", M4\", Q1, T1/1/1",
+        "keywords": [ "NBC", "Squad", "Tercio" ],
+        "weapons": [
+          {
+            "name": "Bolt Action Rifle, various make & caliber",
+            "weapon_stats": "All, R10\", A5+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_mounted_serjeants",
+        "name": "Mounted Serjeants",
+        "subname": "Cavalry Troop",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf (S), H2, S24\", M8\", Q2, T1/1/1-",
+        "keywords": [ "Fearless", "NBC", "Squad" ],
+        "bonus_traits": "May not embark or desant.",
+        "weapons": [
+          {
+            "name": "Cavalry Carbine, local manufacture",
+            "weapon_stats": "All, R8\", A5+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "18-oz. Lance Mine",
+            "weapon_stats": "Vec, R0\", A1+/1+, S6/1, D1, Ammo 2",
+            "keywords": [ "Melee", "Shaped Charge" ]
+          },
+          {
+            "name": "Heirloom Backsword",
+            "weapon_stats": "Inf, R0\", A1+/1+, S1/1, D2",
+            "keywords": [ "Melee" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_yeoman_paras",
+        "name": "Yeoman Paras",
+        "subname": "Paratrooper Squad",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf (S), H1, S16\", M5\", Q3, T1/1-/1-",
+        "keywords": [ "Assault Specialist", "Fearless", "NBC", "Paradrop", "Squad", "Tercio" ],
+        "weapons": [
+          {
+            "name": "MhL-48 .455 SMG",
+            "weapon_stats": "All, R8\", A3+/3+, S1-/1+, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Hi-25 2.5-lber Spigot Mortar",
+            "weapon_stats": "Inf/Vec, R6\", A3+/5+, S7/1+, D1, Ammo 3",
+            "keywords": [ "Light Indirect (0)", "Shaped Charge", "Slow Round", "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_volley_team",
+        "name": "Volley Team",
+        "subname": "Anti-Tank Team",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, H1, S16\", M4\", Q1, T1-/1-/1-",
+        "keywords": [ "NBC", "Tercio" ],
+        "weapons": [
+          {
+            "name": "Bolt Action Rifle, various make & caliber",
+            "weapon_stats": "All, R10\", A5+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "\"Tricorne\" Triple RPG, improvised",
+            "weapon_stats": "Inf/Vec, R8\", A5+/6+, S5/1, D3, Ammo 2",
+            "keywords": [ "Shaped Charge", "Slow Round", "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_light_gun_team",
+        "name": "Light Gun Team",
+        "subname": "Anti-Tank Team",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, H1, S24\", M4\", Q1, T1/1-/1-",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Rh-49 .305 Self-cycling Rifle",
+            "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Sb.1 1-lber Gun",
+            "weapon_stats": "Inf/Vec, R24\", A5+/xx, S14/2, D1, Ammo 3",
+            "keywords": [ "Defensive CC", "Shaped Charge", "Slow Round" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_grenadier_team",
+        "name": "Grenadier Team",
+        "subname": "Shock Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S16\", M4\", Q2, T2/1+/1+",
+        "keywords": [ "NBC", "Tercio" ],
+        "weapons": [
+          {
+            "name": "Engram .32 Machine Pistol",
+            "weapon_stats": "All, R2\", A5+/5+, S1-/1-, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "S-5 40mm Grenade Pistol, sawn off",
+            "weapon_stats": "R6\", D1, Ammo 4",
+            "keywords": [ "Small Arm" ],
+            "ammos": [
+              {
+                "name": "40mm HE",
+                "ammo_stats": "Inf/Vec, A4+/4+, S1+/1+",
+                "keywords": [ "Ignore Cover (1)", "Slow Round" ]
+              },
+              {
+                "name": "40mm Smoke",
+                "ammo_stats": "Gnd, A++/++",
+                "keywords": [ "No CC", "Smoke (2\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_machine_gun_team",
+        "name": "Machine Gun Team",
+        "subname": "Anti-Personnel Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S16\", M4\", Q2, T1/1-/1-",
+        "keywords": [ "NBC", "Tercio" ],
+        "weapons": [
+          {
+            "name": "Rh-49 .305 Self-cycling Rifle",
+            "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Depredador Cortes .455 MG",
+            "weapon_stats": "All, R14\", A4+/xx, S1+/2, D2",
+            "keywords": [ "Defensive CC" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_bombard_team",
+        "name": "Bombard Team",
+        "subname": "Suppression Team",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf, H1, S24\", M4\", Q2, T1-/1-/1-",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Rh-49 .305 Self-cycling Rifle",
+            "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Hi-14 Three-Quarters Bombard",
+            "weapon_stats": "Gnd, R24\", D1, Ammo 4",
+            "keywords": [ "Light Indirect (2)", "No CC" ],
+            "ammos": [
+              {
+                "name": "26-lb HE",
+                "ammo_stats": "A4+/xx, S[D6]",
+                "keywords": [ "Air-Filling", "Radius (2\")" ]
+              },
+              {
+                "name": "14-lb Plutonium Core",
+                "ammo_stats": "A++/xx",
+                "keywords": [ "Radius (4\")" ],
+                "bonus_traits": "*Roll a D6 for each unit in the radius. If the result is above the unit's Quality, it takes max pin, otherwise it takes one pin."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_groundsmen",
+        "name": "Groundsmen",
+        "subname": "Sniper Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S32\", M5\", Q3, T1/1-/1-",
+        "keywords": [ "Fearless", "NBC", "Paradrop", "Sense (6\")", "Tercio" ],
+        "weapons": [
+          {
+            "name": "SMHH Combination Gun, .276 Barrel",
+            "weapon_stats": "All, R12\", A3+/4+, S1/1+, D1",
+            "keywords": [ "Scoped", "Small Arm" ]
+          },
+          {
+            "name": "12-gauge Slug Barrel",
+            "weapon_stats": "Inf/Vec, R6\", A*, S1+/2, D1",
+            "keywords": [ "Underbarrel (SMHH)" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_pages",
+        "name": "Pages",
+        "subname": "Forward Air Control Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S32\", M5\", Q2, T1/1-/1-",
+        "keywords": [ "Fearless", "NBC" ],
+        "bonus_traits": "May activate to call a plane mission during the Support Phase, replacing a friendly TACOM's turn.",
+        "weapons": [
+          {
+            "name": "AFME-42/58 .439 Automatic Rifle",
+            "weapon_stats": "All, R8\", A4+/6+, S1+/1+, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Coincidence Rangefinder, craft-produced",
+            "weapon_stats": "All, R32\", A++/xx, D1",
+            "keywords": [ "Designator", "Discreet" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_black_fangs",
+        "name": "Black Fangs",
+        "subname": "Commando Team",
+        "type": "Infantry",
+        "cost": 20,
+        "unit_stats": "Inf, H1, S24\", M4\", Q4, T2/1+/1+",
+        "keywords": [ "Assault Specialist", "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "LMG, various make & caliber",
+            "weapon_stats": "All, R10\", A2+/3+, S1/1+, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Lerna 15-lber Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A4+/xx, S4/4, D4, Ammo 1",
+            "keywords": [ "No CC (Inf.)", "Slow Round" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_atomic_pilgrims",
+        "name": "Atomic Pilgrims",
+        "subname": "Nuclear Weapons Team",
+        "type": "Infantry",
+        "cost": 60,
+        "unit_stats": "Inf, H1, S24\", M4\", Q4, T1-/1-/1-",
+        "keywords": [ "Fearless", "NBC" ],
+        "weapons": [
+          {
+            "name": "Engram .32 Machine Pistol",
+            "weapon_stats": "Inf, R2\", A5+/5+, S1-/1-, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "\"Violet Mace\" Recoilless Gun, Nuclear",
+            "weapon_stats": "Gnd, R24\", A++/xx, D1, Ammo 1",
+            "keywords": [ "Nuclear (1\"-2\"-6\")" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_steam_tractor",
+        "name": "Steam Tractor",
+        "subname": "Prime Mover",
+        "type": "Vehicle",
+        "cost": 5,
+        "unit_stats": "Vec (W), H2, S16\", M6\", Q2, T4/4/3",
+        "keywords": [ "NBC", "PC (1, Any)", "Tow (16)", "Wheeled" ],
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A5+/6+, S1/1+, D2",
+            "keywords": [ "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_war_wagon",
+        "name": "War Wagon",
+        "subname": "Towed Personnel Carrier",
+        "type": "Vehicle",
+        "cost": 5,
+        "unit_stats": "Vec (C), H2, S8\", M0\", Q1, T3/3/3",
+        "keywords": [ "NBC", "PC (4, Any)", "Resupply (2)", "Tow (∞)", "Carriage" ],
+        "weapons": [
+          {
+            "name": "Engram .32 Snub Nose, driver's issue",
+            "weapon_stats": "Inf, R2\", A5+/5+, S1-/1-, D1",
+            "keywords": [ "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_misericorde",
+        "name": "CB.76 \"Miséricorde\"",
+        "subname": "Airmobile Assault Gun",
+        "type": "Vehicle",
+        "cost": 15,
+        "unit_stats": "Vec, H1, S24\", M8\", Q3, T5/4/2",
+        "keywords": [ "NBC", "Paradrop", "Tow (2)" ],
+        "bonus_traits": "Uses a 40x40mm infantry base. May fire while carrying desanting infantry. Carries up to PC (3) desants instead of PC (2).",
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "Sb.21 20-lber Mountain Gun",
+            "weapon_stats": "R24\", D1, Ammo 3",
+            "keywords": [ "No CC (Inf.)" ],
+            "ammos": [
+              {
+                "name": "20-lb. HESH",
+                "ammo_stats": "Inf/Vec, A4+/6+, S8/3",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "20-lb Smoke",
+                "ammo_stats": "Gnd, A++/++",
+                "keywords": [ "No CC", "Smoke (3\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_exto",
+        "name": "\"Exto\"",
+        "subname": "Infantry Support Crawler",
+        "type": "Vehicle",
+        "cost": 25,
+        "unit_stats": "Vec, H2, S32\", M8\", Q2, T4/4/4",
+        "keywords": [ "Leviathan (2)", "NBC", "PC (6, Sides)", "Resupply (4)", "Tow (3)" ],
+        "weapons": [
+          {
+            "name": "Rh-49 .305 Self-cycling Rifle",
+            "weapon_stats": "All, R8\", A4+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "SAE 2-lber AA Gun",
+            "weapon_stats": "All, R36\", A4+/5+, S5/7, D2, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Radar Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_hexamer",
+        "name": "\"Hexamer\"",
+        "subname": "Tractor Tank",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec, H2, S16\", M6\", Q2, T4/4/3",
+        "keywords": [ "NBC", "Tow (6)" ],
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+            "keywords": [ "Multi-Gun" ]
+          },
+          {
+            "name": "Sb.1 1-lber Gun",
+            "weapon_stats": "R20\", D1, Ammo 4",
+            "keywords": [ "Turret" ],
+            "ammos": [
+              {
+                "name": "1-lb. APDS",
+                "ammo_stats": "Vec, A4+/6+, S3/4"
+              },
+              {
+                "name": "1-lb. SAPHE",
+                "ammo_stats": "Inf/Vec, A4+/6+, S1+/2",
+                "keywords": [ "Ignore Cover (1)", "No CC (Inf.)", "Slow Round" ]
+              },
+              {
+                "name": "1-lb. Smoke",
+                "ammo_stats": "Gnd, A++/++",
+                "keywords": [ "No CC", "Smoke (2\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_veldjen",
+        "name": "VC.2 \"Veldjen\"",
+        "subname": "Medium Tank",
+        "type": "Vehicle",
+        "cost": 20,
+        "unit_stats": "Vec, H2, S32\", M6\", Q2, T8/6/5",
+        "keywords": [ "NBC", "Tow (3)" ],
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/6+, S1/1+, D2",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "MhL-60 .50 HMG",
+            "weapon_stats": "All, R20\", A4+/5+, S2/3, D2",
+            "keywords": [ "Multi-Gun" ]
+          },
+          {
+            "name": "14-lber Gun, various make",
+            "weapon_stats": "R32\", D1, Ammo 6",
+            "keywords": [ "Turret" ],
+            "ammos": [
+              {
+                "name": "14-lb. APHE",
+                "ammo_stats": "Vec, A4+/6+, S8/12",
+                "keywords": [ "No CC (Inf.)", "Slow Round" ]
+              },
+              {
+                "name": "14-lb. HESH",
+                "ammo_stats": "Inf/Vec, A4+/6+, S7/2",
+                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "14-lb. Smoke",
+                "ammo_stats": "Gnd, A++/++",
+                "keywords": [ "No CC", "Smoke (3\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_whirlwind",
+        "name": "VC.44R \"Whirlwind\"",
+        "subname": "Main Battle Tank",
+        "type": "Vehicle",
+        "cost": 35,
+        "unit_stats": "Vec, H2, S32\", M10\", Q2, T12/6/5",
+        "keywords": [ "NBC", "Tow (5)" ],
+        "bonus_traits": "This unit ignores up to 90 degrees of rotation to the right, but must pay an additional 1\" the first time it rotates to the left in a move.",
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "24-lber Gun, local manufacture",
+            "weapon_stats": "R40\", A3+/4+, D1, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Turret" ],
+            "ammos": [
+              {
+                "name": "24-lb. APDS",
+                "ammo_stats": "Vec, S12/18"
+              },
+              {
+                "name": "24-lb. HESH",
+                "ammo_stats": "Inf/Vec, S8/3",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "24-lb. WP Smoke",
+                "ammo_stats": "Gnd, S1+/1+",
+                "keywords": [ "Ignore Cover (2)", "Rear Attack", "Smoke (3\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_cataphract",
+        "name": "VE.378 \"Cataphract\"",
+        "subname": "Heavy Tank",
+        "type": "Vehicle",
+        "cost": 40,
+        "unit_stats": "Vec, H2, S32\", M6\", Q2, T16/10/6",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "MhL-60 .50 HMG",
+            "weapon_stats": "All, R20\", A4+/6+, S2/3, D2",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "Sb.1 1-lber Gun",
+            "weapon_stats": "R20\", A4+/6+, D1, Ammo 3",
+            "keywords": [ "Multi-Gun", "No CC (Inf.)", "Turret" ],
+            "ammos": [
+              {
+                "name": "1-lb. APDS",
+                "ammo_stats": "Vec, S3/4"
+              },
+              {
+                "name": "1-lb. SAPHE",
+                "ammo_stats": "Inf/Vec, S1+/2",
+                "keywords": [ "Ignore Cover (1)", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "Sb.92 55-lber Gun",
+            "weapon_stats": "R40\", D1, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "55-lb. APDS",
+                "ammo_stats": "Vec, A2+/5+, S14/21"
+              },
+              {
+                "name": "55-lb. HESH",
+                "ammo_stats": "Inf/Vec, A3+/5+, S9/4",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_vauban",
+        "name": "\"Vauban\"",
+        "subname": "Land Frigate",
+        "type": "Vehicle",
+        "cost": 60,
+        "unit_stats": "Vec, H2, S32\", M6\", Q4, T6/6/4",
+        "keywords": [ "Active Protection (∞)", "Leviathan (3)", "NBC" ],
+        "bonus_traits": "Takes pin like a Tercio. May desant at PC (4). If the CIWS has not been destroyed, the unit gains Active Protection (∞). This Protection has infinite ammo but only triggers once per round and only against Guided Missiles.",
+        "weapons": [
+          {
+            "name": "GAP-61.61 CIWS",
+            "weapon_stats": "All, R24\", A4+/4+, S3/4, D3",
+            "keywords": [ "Multi-Gun", "Radar Anti-Air", "Turret" ]
+          },
+          {
+            "name": "SAP 14-lber Naval Gun",
+            "weapon_stats": "R40\", A4+/4+, D2, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Radar Anti-Air", "Slow Round", "Turret" ],
+            "ammos": [
+              {
+                "name": "14-lb. APHE",
+                "ammo_stats": "Vec, S8/12"
+              },
+              {
+                "name": "14-lb. Proximity Fuze HE",
+                "ammo_stats": "All, S3/3",
+                "keywords": [ "Air-Filling" ]
+              }
+            ]
+          },
+          {
+            "name": "VIM-4 \"Copa\" 90-lber VLS Missiles",
+            "weapon_stats": "Vec/Air, R24-60\", A4+/4+, S8/8, D1, Ammo 4",
+            "keywords": [ "Air-Filling", "Guided Missile (2)", "Radar Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_field_gun",
+        "name": "Field Gun",
+        "subname": "Towed Anti-Tank Gun",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec (C), H1, S32\", M3\", Q2, T2/1/1",
+        "keywords": [ "NBC", "Carriage" ],
+        "bonus_traits": "This unit uses a 40x40mm base.",
+        "weapons": [
+          {
+            "name": "Bolt Action Rifle, various make & caliber",
+            "weapon_stats": "All, R10\", A5+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Field Gun, various make & caliber",
+            "weapon_stats": "R40\", D1, Ammo 4",
+            "keywords": [ "No CC" ],
+            "ammos": [
+              {
+                "name": "HESH, variable weight",
+                "ammo_stats": "Inf/Vec, A4+/xx, S9/4",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "Gas, variable composition & weight",
+                "ammo_stats": "Gnd, A++/xx",
+                "keywords": [ "Chemical Weapon (4\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_pom_pom",
+        "name": "SB.15 1-lber \"Pom-Pom\"",
+        "subname": "Towed Anti-Air Gun",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec (C), H1, S32\", M3\", Q2, T2/1/1",
+        "keywords": [ "NBC", "Carriage" ],
+        "bonus_traits": "This unit uses a 40x40mm base.",
+        "weapons": [
+          {
+            "name": "Bolt Action Rifle, various make & caliber",
+            "weapon_stats": "All, R10\", A5+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Sb.15 1-lber Autocannon",
+            "weapon_stats": "All, R32\", A4+/xx, S4/6, D2, Ammo 4",
+            "keywords": [ "No CC", "Tracking Anti-Air", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_galgo",
+        "name": "CB.61 \"Galgo\"",
+        "subname": "Airmobile Armored Car",
+        "type": "Vehicle",
+        "cost": 15,
+        "unit_stats": "Vec (W), H2, S32\", M10\", Q3, T4/3/2",
+        "keywords": [ "NBC", "Paradrop", "Wheeled" ],
+        "weapons": [
+          {
+            "name": "MhL-77 .61 HMG",
+            "weapon_stats": "All, R24\", A4+/5+, S3/4, D2",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "No. 20 4-lb. Smoke Launchers",
+            "weapon_stats": "Gnd, R0\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2\")", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_retumbo",
+        "name": "SB.18 22-lber \"Retumbo\"",
+        "subname": "Towed Anti-Air Gun",
+        "type": "Vehicle",
+        "cost": 20,
+        "unit_stats": "Vec (C), H2, S32\", M2\", Q2, T2/1/1",
+        "keywords": [ "NBC", "Carriage" ],
+        "weapons": [
+          {
+            "name": "Bolt Action Rifle, various make & caliber",
+            "weapon_stats": "All, R10\", A5+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Sb.18 22-lber Anti-Aircraft Gun",
+            "weapon_stats": "Ammo 4",
+            "keywords": [ "No CC", "Radar Anti-Air", "Turret" ],
+            "ammos": [
+              {
+                "name": "22-lb. AP",
+                "ammo_stats": "Vec, R40\", A3+/xx, S8/12, D1",
+                "keywords": [ "Slow Round" ]
+              },
+              {
+                "name": "22-lb. Timed Fuze HE",
+                "ammo_stats": "All, R40\", A4+/xx, S3/3, D1",
+                "keywords": [ "Air-Filling", "Slow Round" ]
+              },
+              {
+                "name": "22-lb. Frag",
+                "ammo_stats": "Gnd, R∞\", A4+/xx, S[D3], D2",
+                "keywords": [ "Air-Filling", "Heavy Indirect (3)", "Radius (2\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_mogul",
+        "name": "OSM \"Mogul\"",
+        "subname": "Self-Propelled Siege Gun",
+        "type": "Vehicle",
+        "cost": 40,
+        "unit_stats": "Vec, H2, S32\", M6\", Q2, T18/12/8",
+        "keywords": [ "NBC", "Tow (5)" ],
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "S-10 250-lber Siege Gun",
+            "weapon_stats": "Ammo 3",
+            "ammos": [
+              {
+                "name": "250-lb. HE",
+                "ammo_stats": "Inf/Vec, R40\", A3+/4+, S8/8, D1",
+                "keywords": [ "Ignore Cover (1)", "No CC (Inf.)", "Slow Round" ]
+              },
+              {
+                "name": "250-lb. Phosgene Gas",
+                "ammo_stats": "Gnd, R∞\", A++/++, D2",
+                "keywords": [ "Chemical Weapon (4\")", "Heavy Indirect (3)", "No CC" ]
+              },
+              {
+                "name": "250-lb. WP Smoke",
+                "ammo_stats": "Gnd, R∞\", A4+/5+, S1+/1+, D2",
+                "keywords": [ "Air-Filling", "Heavy Indirect (3)", "Ignore Cover (2)", "No CC", "Rear Attack", "Smoke (4\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_pietro",
+        "name": "LDAL \"Pietro\"",
+        "subname": "Landing Craft",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec, H2, S16\", M8\", Q1, T5/4/1+",
+        "keywords": [ "NBC", "PC (8, Front)", "Watercraft" ],
+        "weapons": [
+          {
+            "name": "Sb.1 1-lber Dual Guns",
+            "weapon_stats": "R20\", D1, Ammo 6",
+            "keywords": [ "Barrage (2)", "Turret" ],
+            "ammos": [
+              {
+                "name": "1-lb. APDS",
+                "ammo_stats": "Vec, A4+/6+, S3/4"
+              },
+              {
+                "name": "1-lb. SAPHE",
+                "ammo_stats": "Inf/Vec, A4+/6+, S1+/2",
+                "keywords": [ "Ignore Cover (1)", "No CC (Inf.)", "Slow Round" ]
+              },
+              {
+                "name": "1-lb. Smoke",
+                "ammo_stats": "Gnd, A++/++",
+                "keywords": [ "No CC", "Smoke (2\")" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_squire",
+        "name": "PEG.60-11 \"Squire\"",
+        "subname": "Utility Helicopter",
+        "type": "Aircraft",
+        "cost": 20,
+        "unit_stats": "Air, H2, S32\", M32\", Q3, T1+/1+/1+",
+        "keywords": [ "NBC", "PC (2, Rear)" ],
+        "weapons": [
+          {
+            "name": "MhL-42 .305 MG",
+            "weapon_stats": "All, R12\", A4+/5+, S1/1+, D2",
+            "keywords": []
+          },
+          {
+            "name": "Lerna 15-lber Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 1",
+            "keywords": [ "Slow Round", "Strafing" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_sambuca",
+        "name": "PEG.80-01A \"Sambuca\"",
+        "subname": "Heavy Lift Helicopter",
+        "type": "Aircraft",
+        "cost": 25,
+        "unit_stats": "Air, H2, S32\", M24\", Q3, T3/3/3",
+        "keywords": [ "Decoy Protection (1)", "NBC", "PC (6, Rear)", "Tow (2)" ],
+        "weapons": [
+          {
+            "name": "MhL-60 .50 HMG",
+            "weapon_stats": "All, R20\", A4+/5+, S2/3, D2",
+            "keywords": [ "Door Gun (Sides, Rear)" ]
+          },
+          {
+            "name": "Lerna 15-lber Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 1",
+            "keywords": [ "Slow Round", "Strafing" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_knight_errant",
+        "name": "PEG.123-00 \"Knight-Errant\"",
+        "subname": "Scout Attack Helicopter",
+        "type": "Aircraft",
+        "cost": 30,
+        "unit_stats": "Air, H1, S32\", M36\", Q3, T2/1/1",
+        "keywords": [ "Decoy Protection (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "SOAA Target Designator",
+            "weapon_stats": "All, R40\", A++/++, D1",
+            "keywords": [ "Designator", "Discreet" ]
+          },
+          {
+            "name": "Chilon 30-lbr High-Velocity Missile",
+            "weapon_stats": "S8/5, D1, Ammo 4",
+            "keywords": [ "Guided Missile (1)" ],
+            "ammos": [
+              {
+                "name": "Air-to-Ground Targeting",
+                "ammo_stats": "Vec, R12-60\", A3+/3+"
+              },
+              {
+                "name": "Air-to-Air Targeting",
+                "ammo_stats": "Air, R60\", A4+/4+"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "santa_conquistador",
+        "name": "UNI.28-05 \"Conquistador\"",
+        "subname": "Jalopy Gunship",
+        "type": "Aircraft",
+        "cost": 40,
+        "unit_stats": "Air, H2, S32\", M24\", Q3, T3/3/3",
+        "keywords": [ "Leviathan (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "Sb.38 20mm Autocannon",
+            "weapon_stats": "All, R32\", A4+/4+, S4/6, D2, Ammo 4",
+            "keywords": []
+          },
+          {
+            "name": "Sarvara 46-lber Dual Rocket Pod",
+            "weapon_stats": "Inf/Vec, R24\", A6+/5+, S10/2, D2, Ammo 2",
+            "keywords": [ "Barrage (2)", "Shaped Charge", "Slow Round", "Strafing" ]
+          },
+          {
+            "name": "Lerna 15-lber Dual Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 2",
+            "keywords": [ "Barrage (2)", "Slow Round", "Strafing" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_man_at_arms",
+        "name": "UNI.28-03 \"Man-at-Arms\"",
+        "subname": "Attack Gunship",
+        "type": "Aircraft",
+        "cost": 50,
+        "unit_stats": "Air, H2, S32\", M24\", Q4, T4/3/3",
+        "keywords": [ "Leviathan (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "Allant 1.8-lber Rotary Cannon",
+            "weapon_stats": "All, R32\", A4+/4+, S4/6, D3, Ammo 3",
+            "keywords": []
+          },
+          {
+            "name": "9GR1M 125mm ATGM",
+            "weapon_stats": "Vec, R6-60\", A3+/4+, S16/3, D1, Ammo 4",
+            "keywords": [ "Guided Missile (2)", "Shaped Charge" ]
+          },
+          {
+            "name": "Lerna 15-lber Dual Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 2",
+            "keywords": [ "Barrage (2)", "Slow Round", "Strafing" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_lancer",
+        "name": "UNI.28-08 \"Lancer\"",
+        "subname": "Anti-Tank Gunship",
+        "type": "Aircraft",
+        "cost": 60,
+        "unit_stats": "Air, H2, S32\", M24\", Q4, T4/4/3",
+        "keywords": [ "Leviathan (2)", "NBC" ],
+        "weapons": [
+          {
+            "name": "SDV 6-lber High Velocity Autocannon",
+            "weapon_stats": "Vec/Air, R40\", A4+/4+, S12/18, D2, Ammo 3",
+            "keywords": [ "Thermal Sights" ]
+          },
+          {
+            "name": "Lerna 15-lber Dual Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 2",
+            "keywords": [ "Barrage (2)", "Slow Round", "Strafing" ]
+          },
+          {
+            "name": "Silene 285-lber Dual WP Rocket Pod",
+            "weapon_stats": "Gnd, R28\", A4+/4+, S1+/1+, D1, Ammo 2",
+            "keywords": [ "Barrage (2)", "Ignore Cover (2)", "Rear Attack", "Smoke (4\")" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_spada_fresco",
+        "name": "MC.17-86 \"Spada-Fresco\"",
+        "subname": "Fighter-Bomber",
+        "type": "Aircraft",
+        "cost": 20,
+        "unit_stats": "Air (CAP), M16\", Q3, T2, E2",
+        "keywords": [ "Afterburner" ],
+        "weapons": [
+          {
+            "name": "Sb.38 20mm Autocannons, dual",
+            "weapon_stats": "All, R8\", A3+, S4, D2, Ammo 3",
+            "keywords": [ "Radar Anti-Air" ]
+          },
+          {
+            "name": "500-lber HE Bombs, various models",
+            "weapon_stats": "Gnd, R0\", A3+, S6, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Barrage (2)", "Radius (3\")", "Rear Attack" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_rocinante",
+        "name": "MC.20-01C \"Rocinante\"",
+        "subname": "Multi-Role Fighter",
+        "type": "Aircraft",
+        "cost": 30,
+        "unit_stats": "Air (CAP), M18\", Q3, T3, E3",
+        "keywords": [ "Afterburner", "Decoy Protection (1)", "Flower of the Atom" ],
+        "weapons": [
+          {
+            "name": "Allant 1.8-lber Rotary Cannon",
+            "weapon_stats": "All, R8\", A3+, S4, D3, Ammo 2",
+            "keywords": [ "Radar Anti-Air" ]
+          },
+          {
+            "name": "Lerna 15-lber Dual Rocket Pods",
+            "weapon_stats": "Inf/Vec, R6\", A4+, S4, D4, Ammo 2",
+            "keywords": [ "Barrage (2)", "Slow Round" ]
+          },
+          {
+            "name": "SUR-4 127mm Infrared AAM",
+            "weapon_stats": "Air, R30\", A3+, S6, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_jonquil",
+        "name": "DC/B.2K \"Jonquil\"",
+        "subname": "Multi-Role Fighter",
+        "type": "Aircraft",
+        "cost": 30,
+        "unit_stats": "Air (CAP), M14\", Q3, T3, E1",
+        "keywords": [ "Afterburner", "Decoy Protection (2)", "Flower of the Atom" ],
+        "weapons": [
+          {
+            "name": "Rb.12 9-lber Air-to-Air Rockets",
+            "weapon_stats": "All, R6\", A4+, S3, D3, Ammo 2",
+            "keywords": [ "Barrage (2)", "Radar Anti-Air", "Slow Round" ]
+          },
+          {
+            "name": "Mf.59 60-lber Semi-Active AAM",
+            "weapon_stats": "Air, R50\", A3+, S8, D1, Ammo 4",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "No CC" ]
+          },
+          {
+            "name": "9GR3 275mm AGM",
+            "weapon_stats": "Vec, R60\", A2+, S24/8, D1, Ammo 3",
+            "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge" ]
+          }
+        ]
+      },
+      {
+        "id": "santa_bavieca",
+        "name": "DC.4E \"Bavieca\"",
+        "subname": "Air Superiority Fighter",
+        "type": "Aircraft",
+        "cost": 40,
+        "unit_stats": "Air (CAP), M20\", Q4, T3, E2",
+        "keywords": [ "Afterburner", "Decoy Protection (2)", "Flower of the Atom" ],
+        "weapons": [
+          {
+            "name": "Allant 1.8-lber Rotary Cannon, modified",
+            "weapon_stats": "All, R8\", A3+, S4, D4, Ammo 2",
+            "keywords": [ "Radar Anti-Air" ]
+          },
+          {
+            "name": "Breakspear 60-lber Semi-Active AAM",
+            "weapon_stats": "Air, R60\", A3+, S8, D1, Ammo 4",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "No CC" ]
+          },
+          {
+            "name": "SUR-4 127mm IR AAM, modified",
+            "weapon_stats": "Vec/Air, R36\", A3+, S6, D1, Ammo 4",
+            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (1)", "Homing" ]
+          }
+        ]
+      }
+    ],
     "The New Rygolic Host": [
       {
         "id": "rygo_node_team",
