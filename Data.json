@@ -76,16 +76,20 @@
   },
   "formats": {
     "The Federal States Army": {
-      "group_name": "Section X"
+      "group_name": "Section X",
+      "save_name":  "feds"
     },
     "The Army of the Ebon Forest": {
-      "group_name": "Xe Groupe"
+      "group_name": "Xe Groupe",
+      "save_name": "ebon"
     },
     "The New Rygolic Host": {
-      "group_name": "Task Unit X"
+      "group_name": "Task Unit X",
+      "save_name": "rygo"
     },
     "Atom Barons of Santagria": {
-      "group_name": "X. Hemipelotón"
+      "group_name": "X. Hemipelotón",
+      "save_name": "baron"
     }
   },
   "factions": {

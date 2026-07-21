@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace FirelockCompanion
 {
@@ -79,5 +80,41 @@ namespace FirelockCompanion
             Unit = unit;
             CustomName = customName;
         }
+    }
+
+    public class ArmySaveData
+    {
+        public string ArmyName { get; set; }
+        public string FactionName { get; set; }
+        public int MaxPoints { get; set; }
+        public List<SavedGroup> Groups { get; set; } = new List<SavedGroup>();
+    }
+
+    public class SavedGroup
+    {
+        public string GroupName { get; set; }
+        public List<SavedUnit> Units { get; set; } = new List<SavedUnit>();
+    }
+
+    public class SavedUnit
+    {
+        public string UnitId { get; set; }
+        public string CustomName { get; set; }
+        public string EmbarkStatus { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool IsTowed { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool IsTercioParent { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public int TercioCost { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public int TercioSize { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public List<SavedUnit> TercioChildren { get; set; }
     }
 }

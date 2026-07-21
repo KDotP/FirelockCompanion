@@ -35,6 +35,8 @@ partial class ArmyBuilder
         armyNameLabel = new Label();
         allUnitsSplit = new SplitContainer();
         activeArmySplit = new SplitContainer();
+        playButton = new Button();
+        saveButton = new Button();
         reformatButton = new Button();
         removeButton = new Button();
         renameButton = new Button();
@@ -46,6 +48,7 @@ partial class ArmyBuilder
         renameToolStripMenuItem = new ToolStripMenuItem();
         deleteToolStripMenuItem = new ToolStripMenuItem();
         availableUnitsSplit = new SplitContainer();
+        newTercioButton = new Button();
         addUnitButton = new Button();
         tacomLabel = new Label();
         label1 = new Label();
@@ -54,7 +57,6 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
-        newTercioButton = new Button();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -126,18 +128,18 @@ partial class ArmyBuilder
         factionNameLabel.Name = "factionNameLabel";
         factionNameLabel.Size = new Size(278, 30);
         factionNameLabel.TabIndex = 4;
-        factionNameLabel.Text = "Faction Banner Bar";
+        factionNameLabel.Text = "Faction Name Banner";
         factionNameLabel.TextAlign = ContentAlignment.TopCenter;
         // 
         // armyNameLabel
         // 
-        armyNameLabel.AutoSize = true;
+        armyNameLabel.AutoEllipsis = true;
         armyNameLabel.BackColor = Color.Transparent;
         armyNameLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         armyNameLabel.Location = new Point(0, 0);
         armyNameLabel.MaximumSize = new Size(450, 30);
         armyNameLabel.Name = "armyNameLabel";
-        armyNameLabel.Size = new Size(158, 30);
+        armyNameLabel.Size = new Size(356, 30);
         armyNameLabel.TabIndex = 3;
         armyNameLabel.Text = "Unnamed Army";
         // 
@@ -173,6 +175,8 @@ partial class ArmyBuilder
         // activeArmySplit.Panel1
         // 
         activeArmySplit.Panel1.BackColor = SystemColors.ControlLight;
+        activeArmySplit.Panel1.Controls.Add(playButton);
+        activeArmySplit.Panel1.Controls.Add(saveButton);
         activeArmySplit.Panel1.Controls.Add(reformatButton);
         activeArmySplit.Panel1.Controls.Add(removeButton);
         activeArmySplit.Panel1.Controls.Add(renameButton);
@@ -186,6 +190,29 @@ partial class ArmyBuilder
         activeArmySplit.SplitterDistance = 25;
         activeArmySplit.TabIndex = 0;
         // 
+        // playButton
+        // 
+        playButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        playButton.BackColor = SystemColors.ButtonFace;
+        playButton.Location = new Point(382, -2);
+        playButton.Name = "playButton";
+        playButton.Size = new Size(90, 27);
+        playButton.TabIndex = 6;
+        playButton.Text = "Play";
+        playButton.UseVisualStyleBackColor = false;
+        // 
+        // saveButton
+        // 
+        saveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        saveButton.BackColor = Color.PaleGreen;
+        saveButton.Location = new Point(292, -2);
+        saveButton.Name = "saveButton";
+        saveButton.Size = new Size(84, 27);
+        saveButton.TabIndex = 5;
+        saveButton.Text = "Save";
+        saveButton.UseVisualStyleBackColor = false;
+        saveButton.Click += saveButton_Click;
+        // 
         // reformatButton
         // 
         reformatButton.BackColor = SystemColors.ButtonFace;
@@ -193,7 +220,7 @@ partial class ArmyBuilder
         reformatButton.Font = new Font("Noto Serif Lao", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
         reformatButton.Location = new Point(98, -2);
         reformatButton.Name = "reformatButton";
-        reformatButton.Size = new Size(64, 26);
+        reformatButton.Size = new Size(70, 26);
         reformatButton.TabIndex = 3;
         reformatButton.Text = "Format";
         reformatButton.TextAlign = ContentAlignment.TopCenter;
@@ -324,6 +351,18 @@ partial class ArmyBuilder
         availableUnitsSplit.SplitterDistance = 25;
         availableUnitsSplit.TabIndex = 0;
         // 
+        // newTercioButton
+        // 
+        newTercioButton.BackColor = SystemColors.ButtonFace;
+        newTercioButton.Location = new Point(32, -1);
+        newTercioButton.Name = "newTercioButton";
+        newTercioButton.Size = new Size(75, 26);
+        newTercioButton.TabIndex = 4;
+        newTercioButton.Text = "New Tercio";
+        newTercioButton.UseVisualStyleBackColor = false;
+        newTercioButton.Visible = false;
+        newTercioButton.Click += newTercioButton_Click;
+        // 
         // addUnitButton
         // 
         addUnitButton.BackColor = SystemColors.ButtonFace;
@@ -417,18 +456,6 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
-        // newTercioButton
-        // 
-        newTercioButton.BackColor = SystemColors.ButtonFace;
-        newTercioButton.Location = new Point(32, -1);
-        newTercioButton.Name = "newTercioButton";
-        newTercioButton.Size = new Size(75, 26);
-        newTercioButton.TabIndex = 4;
-        newTercioButton.Text = "New Tercio";
-        newTercioButton.UseVisualStyleBackColor = false;
-        newTercioButton.Visible = false;
-        newTercioButton.Click += newTercioButton_Click;
-        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -494,4 +521,6 @@ partial class ArmyBuilder
     private Button addUnitButton;
     private Button reformatButton;
     private Button newTercioButton;
+    private Button playButton;
+    private Button saveButton;
 }

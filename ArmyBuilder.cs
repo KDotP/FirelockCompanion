@@ -7,6 +7,7 @@ public partial class ArmyBuilder : Form
 {
     private static string armyName = "New Army";
     private string currentGroupFormat = "Group X";
+    private string currentSaveFormat = "faction";
     private List<UnitTemplate> factionUnits;
 
     // Getting real tired of this """error""" and if I suppress it internally, YOU would still get warned
@@ -76,15 +77,23 @@ public partial class ArmyBuilder : Form
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
         // Load group names
-        if (ruleset.formats != null &&
-            ruleset.formats.TryGetValue(faction, out var factionFormat) &&
-            factionFormat.TryGetValue("group_name", out var customName))
+        if (ruleset.formats != null && ruleset.formats.TryGetValue(faction, out var factionFormat))
         {
-            currentGroupFormat = customName;
+            if (factionFormat.TryGetValue("group_name", out var customName))
+                currentGroupFormat = customName;
+            else
+                currentGroupFormat = "Group X";
+
+            // Get shortened save name
+            if (factionFormat.TryGetValue("save_name", out var saveName))
+                currentSaveFormat = saveName;
+            else
+                currentSaveFormat = faction.ToLower().Replace(" ", "_"); // Safe fallback
         }
         else
         {
             currentGroupFormat = "Group X";
+            currentSaveFormat = faction.ToLower().Replace(" ", "_");
         }
 
         // Show Tercio button
@@ -940,7 +949,15 @@ public partial class ArmyBuilder : Form
                 }
                 else if (IsPassenger(entry.Unit))
                 {
-                    if (vehicleNode != null)
+                    // Tercio parents should not have their own embark status, but their children can still be passengers
+                    if (entry.Unit.name == "Tercios")
+                    {
+                        entry.HasCarrierAbove = false;
+                        entry.HasDesantCarrierAbove = false;
+                        // Status is temporarily cleared here, but synced to its children at the end of the method
+                        entry.Status = EmbarkStatus.None;
+                    }
+                    else if (vehicleNode != null)
                     {
                         passengerNodes.Add(child);
                     }
@@ -950,11 +967,6 @@ public partial class ArmyBuilder : Form
                         entry.HasDesantCarrierAbove = false;
                         entry.Status = EmbarkStatus.None;
                     }
-                }
-                else
-                {
-                    entry.EmbarkCapacityDisplay = null;
-                    entry.ShowDesantSuffix = false;
                 }
             }
 
@@ -1298,16 +1310,29 @@ public partial class ArmyBuilder : Form
                 }
             }
 
-            // If the dragged unit is a provider, prevent it from hijacking units already being towed below it
-            if (GetTowCapacity(draggedEntry.Unit).HasValue && dragged.Parent != null)
+            // If the dragged unit is a provider, prevent it from hijacking passengers below it
+            if (IsCarrier(draggedEntry.Unit) && dragged.Parent != null)
             {
                 int draggedIdx = dragged.Parent.Nodes.IndexOf(dragged);
                 for (int i = draggedIdx + 1; i < dragged.Parent.Nodes.Count; i++)
                 {
                     if (dragged.Parent.Nodes[i].Tag is ActiveUnitEntry siblingEntry)
                     {
-                        if (GetTowCapacity(siblingEntry.Unit).HasValue) break;
-                        siblingEntry.IsTowed = false;
+                        if (IsCarrier(siblingEntry.Unit)) break; // Stop checking at the next carrier's territory
+
+                        siblingEntry.Status = EmbarkStatus.None;
+
+                        // Also wipe Tercio subunits if we hit a Tercio wrapper
+                        if (siblingEntry.Unit.name == "Tercios" && dragged.Parent.Nodes[i].Nodes.Count > 0)
+                        {
+                            foreach (TreeNode subNode in dragged.Parent.Nodes[i].Nodes)
+                            {
+                                if (subNode.Tag is ActiveUnitEntry subEntry)
+                                {
+                                    subEntry.Status = EmbarkStatus.None;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1367,14 +1392,12 @@ public partial class ArmyBuilder : Form
             return;
         }
 
-        // Force an update to ensure all RelationParentNode properties and commit statuses are 100% accurate before sorting
         RecalculateAll();
 
         activeArmyTree.BeginUpdate();
 
         List<TreeNode> allNodes = currentTargetGroup.Nodes.Cast<TreeNode>().ToList();
 
-        // 1. Separate independent (root) units from committed (child) units
         List<TreeNode> roots = new List<TreeNode>();
         Dictionary<TreeNode, List<TreeNode>> childrenMap = new Dictionary<TreeNode, List<TreeNode>>();
 
@@ -1382,23 +1405,42 @@ public partial class ArmyBuilder : Form
         {
             if (node.Tag is not ActiveUnitEntry entry) continue;
 
-            // A unit is only a child if it is actively interacting with a provider
-            bool isCommitted = (entry.Status != EmbarkStatus.None || entry.IsTowed) && entry.RelationParentNode != null;
+            bool isCommitted = false;
+            TreeNode parentProvider = null;
 
-            if (isCommitted)
+            if (entry.Unit.name == "Tercios")
             {
-                if (!childrenMap.ContainsKey(entry.RelationParentNode))
-                    childrenMap[entry.RelationParentNode] = new List<TreeNode>();
+                // A Tercio parent is committed if ANY of its children are embarked or desanted
+                var subEntries = node.Nodes.Cast<TreeNode>().Select(n => (ActiveUnitEntry)n.Tag).ToList();
+                var interactingChild = subEntries.FirstOrDefault(se => se.Status != EmbarkStatus.None && se.RelationParentNode != null);
 
-                childrenMap[entry.RelationParentNode].Add(node);
+                if (interactingChild != null)
+                {
+                    isCommitted = true;
+                    parentProvider = interactingChild.RelationParentNode;
+                }
             }
             else
             {
-                roots.Add(node); // Uncommitted units (including out-of-position ones) are treated as independents
+                // Standard unit commitment check
+                isCommitted = (entry.Status != EmbarkStatus.None || entry.IsTowed) && entry.RelationParentNode != null;
+                parentProvider = entry.RelationParentNode;
+            }
+
+            if (isCommitted && parentProvider != null)
+            {
+                if (!childrenMap.ContainsKey(parentProvider))
+                    childrenMap[parentProvider] = new List<TreeNode>();
+
+                childrenMap[parentProvider].Add(node);
+            }
+            else
+            {
+                roots.Add(node); // Uncommitted / out-of-position units (and broken Tercios) go to roots
             }
         }
 
-        // 2. Sort the independent units into the ideal layout order
+        // Sort the independent units into the ideal layout order
         var sortedRoots = roots.OrderBy(n =>
         {
             var entry = (ActiveUnitEntry)n.Tag;
@@ -1406,24 +1448,37 @@ public partial class ArmyBuilder : Form
             if (IsPassenger(entry.Unit)) return 1;
             if (IsVehicle(entry.Unit)) return 2;
             if (IsAircraft(entry.Unit)) return 3;
-            return 4; // Fallback for anything else
+            return 4;
         }).ToList();
 
         List<TreeNode> flattenedOrder = new List<TreeNode>();
 
-        // 3. Recursive function to rebuild the flat list in the correct relationship order
+        // Recursive function to rebuild the flat list in the correct relationship order
         void FlattenNode(TreeNode node)
         {
             flattenedOrder.Add(node);
 
-            // If this unit has things committed to it, sort and append them immediately below it
             if (childrenMap.TryGetValue(node, out var children))
             {
-                var embarked = children.Where(c => ((ActiveUnitEntry)c.Tag).Status == EmbarkStatus.Embarked);
-                var desanted = children.Where(c => ((ActiveUnitEntry)c.Tag).Status == EmbarkStatus.Desanted);
-                var towed = children.Where(c => ((ActiveUnitEntry)c.Tag).IsTowed);
+                var embarked = children.Where(c =>
+                {
+                    var ce = (ActiveUnitEntry)c.Tag;
+                    return ce.Unit.name == "Tercios" || ce.Status == EmbarkStatus.Embarked;
+                });
 
-                // Sort by TACOM first (0), then everything else (1), and flatten recursively
+                var desanted = children.Where(c =>
+                {
+                    var ce = (ActiveUnitEntry)c.Tag;
+                    return ce.Unit.name != "Tercios" && ce.Status == EmbarkStatus.Desanted;
+                });
+
+                var towed = children.Where(c =>
+                {
+                    var ce = (ActiveUnitEntry)c.Tag;
+                    return ce.Unit.name != "Tercios" && ce.IsTowed;
+                });
+
+                // Sort children and flatten recursively
                 foreach (var child in embarked.OrderBy(c => ((ActiveUnitEntry)c.Tag).Unit.type == "TACOM" ? 0 : 1))
                     FlattenNode(child);
 
@@ -1435,19 +1490,16 @@ public partial class ArmyBuilder : Form
             }
         }
 
-        // Run the flattener on our sorted independent units
         foreach (var root in sortedRoots)
         {
             FlattenNode(root);
         }
 
-        // 4. Apply the new pristine order to the TreeView
         currentTargetGroup.Nodes.Clear();
         currentTargetGroup.Nodes.AddRange(flattenedOrder.ToArray());
 
         activeArmyTree.EndUpdate();
 
-        // 5. Recalculate one last time to redraw the relationship lines correctly over the new physical layout
         RecalculateAll();
     }
 
@@ -1504,5 +1556,90 @@ public partial class ArmyBuilder : Form
                 RecalculateAll();
             }
         }
+    }
+
+    private void saveButton_Click(object sender, EventArgs e)
+    {
+        using (SaveMenu saveDialog = new SaveMenu(currentSaveFormat, maxPoints))
+        {
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                armyName = saveDialog.EnteredArmyName;
+                armyNameLabel.Text = armyName;
+                SaveArmyToFile(saveDialog.FinalFileName);
+            }
+        }
+    }
+
+    public void SaveArmyToFile(string customFileName)
+    {
+        ArmySaveData saveData = new ArmySaveData
+        {
+            ArmyName = armyName,
+            FactionName = factionNameLabel.Text,
+            MaxPoints = maxPoints
+        };
+
+        foreach (TreeNode groupNode in activeArmyTree.Nodes)
+        {
+            SavedGroup group = new SavedGroup { GroupName = groupNode.Text };
+
+            foreach (TreeNode child in groupNode.Nodes)
+            {
+                if (child.Tag is not ActiveUnitEntry entry) continue;
+
+                SavedUnit sUnit = new SavedUnit
+                {
+                    UnitId = entry.Unit.id ?? entry.Unit.name,
+                    CustomName = entry.CustomName,
+                    EmbarkStatus = entry.Status.ToString(),
+                    IsTowed = entry.IsTowed,
+                    IsTercioParent = entry.Unit.name == "Tercios"
+                };
+
+                // If it's a Tercio parent, grab its stats
+                if (sUnit.IsTercioParent)
+                {
+                    sUnit.TercioCost = entry.Unit.cost;
+
+                    string groupKw = entry.Unit.keywords?.FirstOrDefault(k => k.StartsWith("Group ("));
+                    if (groupKw != null)
+                    {
+                        var match = Regex.Match(groupKw, @"\d+");
+                        if (match.Success) sUnit.TercioSize = int.Parse(match.Value);
+                    }
+
+                    // Initialize the nested list and populate it with the children
+                    sUnit.TercioChildren = new List<SavedUnit>();
+                    foreach (TreeNode subChild in child.Nodes)
+                    {
+                        if (subChild.Tag is not ActiveUnitEntry subEntry) continue;
+
+                        sUnit.TercioChildren.Add(new SavedUnit
+                        {
+                            UnitId = subEntry.Unit.id ?? subEntry.Unit.name,
+                            CustomName = subEntry.CustomName,
+                            EmbarkStatus = subEntry.Status.ToString(),
+                            IsTowed = subEntry.IsTowed,
+                            IsTercioParent = false
+                        });
+                    }
+                }
+
+                // Add the unit to the group (if it's a Tercio, its children are safely nested inside it!)
+                group.Units.Add(sUnit);
+            }
+            saveData.Groups.Add(group);
+        }
+
+        string savesFolder = Path.Combine(Application.StartupPath, "Saves");
+        Directory.CreateDirectory(savesFolder);
+
+        string filePath = Path.Combine(savesFolder, customFileName);
+
+        string jsonOutput = System.Text.Json.JsonSerializer.Serialize(saveData, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filePath, jsonOutput);
+
+        MessageBox.Show($"Army saved successfully as:\n{customFileName}", "Save Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }

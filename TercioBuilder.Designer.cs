@@ -126,9 +126,8 @@
             Controls.Add(secondUnitBox);
             Controls.Add(firstUnitBox);
             Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "TercioBuilder";
-            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TercioBuilder";
             ResumeLayout(false);
