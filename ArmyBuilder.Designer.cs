@@ -123,7 +123,7 @@ partial class ArmyBuilder
         factionNameLabel.Anchor = AnchorStyles.Top;
         factionNameLabel.BackColor = Color.Transparent;
         factionNameLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        factionNameLabel.Location = new Point(339, 0);
+        factionNameLabel.Location = new Point(367, 0);
         factionNameLabel.Name = "factionNameLabel";
         factionNameLabel.Size = new Size(278, 30);
         factionNameLabel.TabIndex = 4;
@@ -138,7 +138,7 @@ partial class ArmyBuilder
         armyNameLabel.Location = new Point(0, 0);
         armyNameLabel.MaximumSize = new Size(450, 30);
         armyNameLabel.Name = "armyNameLabel";
-        armyNameLabel.Size = new Size(356, 30);
+        armyNameLabel.Size = new Size(371, 30);
         armyNameLabel.TabIndex = 3;
         armyNameLabel.Text = "Unnamed Army";
         // 
@@ -158,7 +158,7 @@ partial class ArmyBuilder
         // 
         allUnitsSplit.Panel2.Controls.Add(availableUnitsSplit);
         allUnitsSplit.Size = new Size(1013, 599);
-        allUnitsSplit.SplitterDistance = 473;
+        allUnitsSplit.SplitterDistance = 505;
         allUnitsSplit.TabIndex = 0;
         // 
         // activeArmySplit
@@ -185,7 +185,7 @@ partial class ArmyBuilder
         // activeArmySplit.Panel2
         // 
         activeArmySplit.Panel2.Controls.Add(activeArmyTree);
-        activeArmySplit.Size = new Size(473, 599);
+        activeArmySplit.Size = new Size(505, 599);
         activeArmySplit.SplitterDistance = 25;
         activeArmySplit.TabIndex = 0;
         // 
@@ -193,7 +193,7 @@ partial class ArmyBuilder
         // 
         playButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         playButton.BackColor = SystemColors.ButtonFace;
-        playButton.Location = new Point(382, -2);
+        playButton.Location = new Point(414, -2);
         playButton.Name = "playButton";
         playButton.Size = new Size(90, 27);
         playButton.TabIndex = 6;
@@ -204,7 +204,7 @@ partial class ArmyBuilder
         // 
         saveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         saveButton.BackColor = Color.PaleGreen;
-        saveButton.Location = new Point(292, -2);
+        saveButton.Location = new Point(324, -2);
         saveButton.Name = "saveButton";
         saveButton.Size = new Size(84, 27);
         saveButton.TabIndex = 5;
@@ -274,7 +274,7 @@ partial class ArmyBuilder
         ActiveArmy.Anchor = AnchorStyles.Top;
         ActiveArmy.AutoSize = true;
         ActiveArmy.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        ActiveArmy.Location = new Point(174, 0);
+        ActiveArmy.Location = new Point(190, 0);
         ActiveArmy.Name = "ActiveArmy";
         ActiveArmy.Size = new Size(112, 25);
         ActiveArmy.TabIndex = 0;
@@ -288,7 +288,7 @@ partial class ArmyBuilder
         activeArmyTree.Dock = DockStyle.Fill;
         activeArmyTree.Location = new Point(0, 0);
         activeArmyTree.Name = "activeArmyTree";
-        activeArmyTree.Size = new Size(471, 568);
+        activeArmyTree.Size = new Size(503, 568);
         activeArmyTree.TabIndex = 1;
         activeArmyTree.AfterLabelEdit += activeArmyTree_AfterLabelEdit;
         activeArmyTree.AfterSelect += activeArmyTree_AfterSelect;
@@ -345,7 +345,7 @@ partial class ArmyBuilder
         // availableUnitsSplit.Panel2
         // 
         availableUnitsSplit.Panel2.Controls.Add(availableUnitsSubSplit);
-        availableUnitsSplit.Size = new Size(536, 599);
+        availableUnitsSplit.Size = new Size(504, 599);
         availableUnitsSplit.SplitterDistance = 25;
         availableUnitsSplit.TabIndex = 0;
         // 
@@ -381,7 +381,7 @@ partial class ArmyBuilder
         tacomLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         tacomLabel.AutoSize = true;
         tacomLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tacomLabel.Location = new Point(414, -2);
+        tacomLabel.Location = new Point(382, -2);
         tacomLabel.Name = "tacomLabel";
         tacomLabel.Size = new Size(122, 25);
         tacomLabel.TabIndex = 2;
@@ -393,7 +393,7 @@ partial class ArmyBuilder
         label1.Anchor = AnchorStyles.Top;
         label1.AutoSize = true;
         label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label1.Location = new Point(185, -1);
+        label1.Location = new Point(169, -1);
         label1.Name = "label1";
         label1.Size = new Size(137, 25);
         label1.TabIndex = 1;
@@ -415,7 +415,7 @@ partial class ArmyBuilder
         // availableUnitsSubSplit.Panel2
         // 
         availableUnitsSubSplit.Panel2.Controls.Add(detailsTextBox);
-        availableUnitsSubSplit.Size = new Size(534, 568);
+        availableUnitsSubSplit.Size = new Size(502, 568);
         availableUnitsSubSplit.SplitterDistance = 369;
         availableUnitsSubSplit.TabIndex = 1;
         // 
@@ -424,7 +424,7 @@ partial class ArmyBuilder
         availableArmyTree.Dock = DockStyle.Fill;
         availableArmyTree.Location = new Point(0, 0);
         availableArmyTree.Name = "availableArmyTree";
-        availableArmyTree.Size = new Size(534, 369);
+        availableArmyTree.Size = new Size(502, 369);
         availableArmyTree.TabIndex = 0;
         availableArmyTree.AfterSelect += availableArmyTree_AfterSelect;
         availableArmyTree.NodeMouseDoubleClick += availableArmyTree_NodeMouseDoubleClick;
@@ -438,7 +438,7 @@ partial class ArmyBuilder
         detailsTextBox.Name = "detailsTextBox";
         detailsTextBox.ReadOnly = true;
         detailsTextBox.ScrollBars = RichTextBoxScrollBars.Vertical;
-        detailsTextBox.Size = new Size(534, 195);
+        detailsTextBox.Size = new Size(502, 195);
         detailsTextBox.TabIndex = 0;
         detailsTextBox.Text = "Unit/Keyword info will show up here!";
         // 
