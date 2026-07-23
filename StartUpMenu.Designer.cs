@@ -75,6 +75,7 @@
             loadPlayButton.TabIndex = 3;
             loadPlayButton.Text = "Load and Play";
             loadPlayButton.UseVisualStyleBackColor = true;
+            loadPlayButton.Click += loadPlayButton_Click;
             // 
             // StartUpMenu
             // 

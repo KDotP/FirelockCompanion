@@ -35,13 +35,13 @@
             armyNameLabel = new Label();
             splitContainer2 = new SplitContainer();
             activeArmyContainer = new SplitContainer();
-            treeView1 = new TreeView();
-            splitContainer4 = new SplitContainer();
-            splitContainer3 = new SplitContainer();
             ActiveArmy = new Label();
+            activeArmyTree = new TreeView();
+            splitContainer4 = new SplitContainer();
             label1 = new Label();
-            richTextBox1 = new RichTextBox();
+            splitContainer3 = new SplitContainer();
             richTextBox2 = new RichTextBox();
+            detailsTextBox = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -155,18 +155,30 @@
             // 
             // activeArmyContainer.Panel2
             // 
-            activeArmyContainer.Panel2.Controls.Add(treeView1);
+            activeArmyContainer.Panel2.Controls.Add(activeArmyTree);
             activeArmyContainer.Size = new Size(505, 599);
             activeArmyContainer.SplitterDistance = 25;
             activeArmyContainer.TabIndex = 0;
             // 
-            // treeView1
+            // ActiveArmy
             // 
-            treeView1.Dock = DockStyle.Fill;
-            treeView1.Location = new Point(0, 0);
-            treeView1.Name = "treeView1";
-            treeView1.Size = new Size(505, 570);
-            treeView1.TabIndex = 0;
+            ActiveArmy.Anchor = AnchorStyles.Top;
+            ActiveArmy.AutoSize = true;
+            ActiveArmy.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ActiveArmy.Location = new Point(196, 0);
+            ActiveArmy.Name = "ActiveArmy";
+            ActiveArmy.Size = new Size(112, 25);
+            ActiveArmy.TabIndex = 1;
+            ActiveArmy.Text = "Active Army";
+            ActiveArmy.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // activeArmyTree
+            // 
+            activeArmyTree.Dock = DockStyle.Fill;
+            activeArmyTree.Location = new Point(0, 0);
+            activeArmyTree.Name = "activeArmyTree";
+            activeArmyTree.Size = new Size(505, 570);
+            activeArmyTree.TabIndex = 0;
             // 
             // splitContainer4
             // 
@@ -189,6 +201,18 @@
             splitContainer4.SplitterDistance = 25;
             splitContainer4.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(196, 1);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 25);
+            label1.TabIndex = 2;
+            label1.Text = "Active Army";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
             // splitContainer3
             // 
             splitContainer3.BorderStyle = BorderStyle.FixedSingle;
@@ -204,45 +228,10 @@
             // 
             // splitContainer3.Panel2
             // 
-            splitContainer3.Panel2.Controls.Add(richTextBox1);
+            splitContainer3.Panel2.Controls.Add(detailsTextBox);
             splitContainer3.Size = new Size(504, 570);
             splitContainer3.SplitterDistance = 252;
             splitContainer3.TabIndex = 0;
-            // 
-            // ActiveArmy
-            // 
-            ActiveArmy.Anchor = AnchorStyles.Top;
-            ActiveArmy.AutoSize = true;
-            ActiveArmy.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ActiveArmy.Location = new Point(196, 0);
-            ActiveArmy.Name = "ActiveArmy";
-            ActiveArmy.Size = new Size(112, 25);
-            ActiveArmy.TabIndex = 1;
-            ActiveArmy.Text = "Active Army";
-            ActiveArmy.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(196, 1);
-            label1.Name = "label1";
-            label1.Size = new Size(112, 25);
-            label1.TabIndex = 2;
-            label1.Text = "Active Army";
-            label1.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.BackColor = SystemColors.Control;
-            richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(0, 0);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(502, 312);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "Unit/Keyword info will show up here! (You can also resize this menu)";
             // 
             // richTextBox2
             // 
@@ -252,6 +241,17 @@
             richTextBox2.Size = new Size(502, 250);
             richTextBox2.TabIndex = 0;
             richTextBox2.Text = resources.GetString("richTextBox2.Text");
+            // 
+            // detailsTextBox
+            // 
+            detailsTextBox.BackColor = SystemColors.Control;
+            detailsTextBox.Dock = DockStyle.Fill;
+            detailsTextBox.Location = new Point(0, 0);
+            detailsTextBox.Name = "detailsTextBox";
+            detailsTextBox.ReadOnly = true;
+            detailsTextBox.Size = new Size(502, 312);
+            detailsTextBox.TabIndex = 0;
+            detailsTextBox.Text = "Unit/Keyword info will show up here! (You can also resize this menu)";
             // 
             // PlayScreen
             // 
@@ -295,11 +295,11 @@
         private Label commandPointsLabel;
         private SplitContainer activeArmyContainer;
         private SplitContainer splitContainer4;
-        private TreeView treeView1;
+        private TreeView activeArmyTree;
         private SplitContainer splitContainer3;
         private Label ActiveArmy;
         private Label label1;
-        private RichTextBox richTextBox1;
+        private RichTextBox detailsTextBox;
         private RichTextBox richTextBox2;
     }
 }

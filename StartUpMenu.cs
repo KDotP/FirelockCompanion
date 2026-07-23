@@ -56,5 +56,28 @@ namespace FirelockCompanion
                 }
             }
         }
+
+        private void loadPlayButton_Click(object sender, EventArgs e)
+        {
+            using (LoadAndPlay loadDialog = new LoadAndPlay())
+            {
+                if (loadDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileToLoad = loadDialog.SelectedFilePath;
+
+                    // Create the PlayScreen window
+                    PlayScreen playScreen = new PlayScreen();
+
+                    // Ensure all UI elements are shown
+                    playScreen.Show();
+
+                    // Push the data into the builder
+                    playScreen.LoadArmyFromFile(fileToLoad);
+
+                    this.Hide();
+                    playScreen.FormClosed += (s, args) => this.Close();
+                }
+            }
+        }
     }
 }
