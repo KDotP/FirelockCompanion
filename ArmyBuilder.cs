@@ -14,7 +14,6 @@ public partial class ArmyBuilder : Form
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Dictionary<string, Dictionary<string, string>> Formats { get; set; }
 
-    // -- Embark Status --
     private static readonly Regex LeadTagPattern = new(@"^(Vec|Inf|Air)\s*(\(([^)]*)\))?");
     private static readonly Regex PcPattern = new(@"^PC\s*\((\d+)");
     private static readonly Regex TowCapacityPattern = new(@"^Tow\s*\((\d+)");

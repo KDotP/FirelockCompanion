@@ -93,6 +93,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "LoadAndPlay";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoadAndPlay";

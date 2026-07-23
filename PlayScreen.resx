@@ -117,10 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox2.Text" xml:space="preserve">
-    <value>Unit Name "Custom Name"
-Status: Healthy/Uneasy/Stressed/Terrified, (Partially Depleted) (Partially Damaged/Heavily Damaged)
-Movement State: (Not shown for vehicles) On Foot/Gone to Ground, Airborne/Landed
+  <data name="unitInfoText.Text" xml:space="preserve">
+    <value>Unit Name "Custom Name" — Infantry/Vehicle/Aircraft — [-] Hits [+]
+Status: Fresh/Uneasy/Stressed/Terrified, (Partially Depleted) (Partially Damaged/Heavily Damaged)
+Movement State: On Foot/Gone to Ground/Riding (In/On) X, Free/Towed by X, Airborne/Landed [Land/Takeoff] (Only shown for aircraft, one or other)
+Move: [(X)]
+Action: [(X)]
 Pin: [-] X [+]
 
 Weapon 1

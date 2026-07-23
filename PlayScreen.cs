@@ -14,7 +14,6 @@ public partial class PlayScreen : Form
     private List<UnitTemplate> factionUnits;
     private Dictionary<string, string> normalizedKeywords = new Dictionary<string, string>();
 
-    // -- Embark Status --
     private static readonly Regex LeadTagPattern = new(@"^(Vec|Inf|Air)\s*(\(([^)]*)\))?");
     private static readonly Regex PcPattern = new(@"^PC\s*\((\d+)");
     private static readonly Regex TowCapacityPattern = new(@"^Tow\s*\((\d+)");
@@ -46,10 +45,6 @@ public partial class PlayScreen : Form
         activeArmyTree.MouseDown += activeArmyTree_MouseDown;
         activeArmyTree.AfterSelect += activeArmyTree_AfterSelect;
     }
-
-    // --------------------------------------------------------
-    // DATA LOADING
-    // --------------------------------------------------------
 
     public void LoadArmyFromFile(string filePath)
     {
@@ -101,7 +96,7 @@ public partial class PlayScreen : Form
                                 UnitTemplate childTemplate = factionUnits.FirstOrDefault(u => (u.id ?? u.name) == sChild.UnitId);
                                 if (childTemplate == null) continue;
 
-                                // TO-DO: Swap this to PlayUnitEntry later when tracking HP/Casualties
+                                // TO-DO: Swap this to PlayUnitEntry later when tracking unit info
                                 ActiveUnitEntry childEntry = new ActiveUnitEntry(childTemplate, sChild.CustomName);
 
                                 if (Enum.TryParse(sChild.EmbarkStatus, out EmbarkStatus status))
@@ -155,7 +150,7 @@ public partial class PlayScreen : Form
         string jsonString = System.IO.File.ReadAllText("Data.json");
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
-        // Cache the units for this faction so we can rebuild the army tree
+        // Cache the units for this faction to reference while loading army
         if (ruleset.factions.ContainsKey(factionName))
         {
             factionUnits = ruleset.factions[factionName];
@@ -173,10 +168,6 @@ public partial class PlayScreen : Form
             }
         }
     }
-
-    // --------------------------------------------------------
-    // DETAILS PANEL (Rewritten for Play Screen)
-    // --------------------------------------------------------
 
     private void activeArmyTree_AfterSelect(object sender, TreeViewEventArgs e)
     {
@@ -205,13 +196,13 @@ public partial class PlayScreen : Form
         UnitTemplate unit = entry.Unit;
         List<string> parts = new List<string>();
 
-        // 1. Core Stats
+        // Core stats
         parts.Add($"{unit.name} — \"{entry.CustomName}\"");
         if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
         if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
         if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
 
-        // 2. Inline Weapons List
+        // Weapons and ammo
         if (unit.weapons != null && unit.weapons.Count > 0)
         {
             List<string> weaponLines = new List<string>();
@@ -234,7 +225,7 @@ public partial class PlayScreen : Form
             parts.Add("WEAPONS:\r\n" + string.Join("\r\n", weaponLines));
         }
 
-        // 3. Gather ALL unique keywords (Unit + Weapon + Ammo)
+        // Gather keywords
         HashSet<string> uniqueKeywords = new HashSet<string>();
 
         if (unit.keywords != null)
@@ -258,10 +249,10 @@ public partial class PlayScreen : Form
             }
         }
 
-        // 4. Append Keyword Glossary to bottom
+        // Write out all keywords
         if (uniqueKeywords.Count > 0)
         {
-            parts.Add("----------\r\nKEYWORDS:");
+            parts.Add("----------\r\nKeywords:");
             foreach (var kw in uniqueKeywords)
             {
                 string baseKey = StripParams(kw);
@@ -269,7 +260,7 @@ public partial class PlayScreen : Form
                     ? foundDesc
                     : "No definition found.";
 
-                parts.Add($"{kw}\r\n{FormatDescription(desc)}");
+                parts.Add($"{kw}\r\n--\r\n{FormatDescription(desc)}");
             }
         }
 
@@ -307,10 +298,7 @@ public partial class PlayScreen : Form
         }
     }
 
-    // --------------------------------------------------------
-    // ENGINE LOGIC (Identical to ArmyBuilder)
-    // --------------------------------------------------------
-
+    // Identical to ArmyBuilder I think?
     private string BuildFullNodeText(ActiveUnitEntry entry, TreeNode node)
     {
         string connectorPrefix = BuildConnectorPrefix(entry, node, out bool outOfPosition);
@@ -854,8 +842,7 @@ public partial class PlayScreen : Form
         }
     }
 
-    // --- Drag and drop ---
-
+    // Drag and drop logic
     private TreeNode draggedNode;
     private TreeNode dropHighlightNode;
 
@@ -1017,8 +1004,7 @@ public partial class PlayScreen : Form
         dropHighlightNode = null;
     }
 
-    // --- Keep the reformat button for in-game cleaning ---
-
+    // Reformat button (not added yet)
     private void reformatButton_Click(object sender, EventArgs e)
     {
         if (currentTargetGroup == null)

@@ -40,7 +40,7 @@
             splitContainer4 = new SplitContainer();
             label1 = new Label();
             splitContainer3 = new SplitContainer();
-            richTextBox2 = new RichTextBox();
+            unitInfoText = new RichTextBox();
             detailsTextBox = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -124,6 +124,7 @@
             // 
             // splitContainer2
             // 
+            splitContainer2.BorderStyle = BorderStyle.FixedSingle;
             splitContainer2.Dock = DockStyle.Fill;
             splitContainer2.Location = new Point(0, 0);
             splitContainer2.Name = "splitContainer2";
@@ -141,6 +142,7 @@
             // 
             // activeArmyContainer
             // 
+            activeArmyContainer.BorderStyle = BorderStyle.FixedSingle;
             activeArmyContainer.Dock = DockStyle.Fill;
             activeArmyContainer.FixedPanel = FixedPanel.Panel1;
             activeArmyContainer.IsSplitterFixed = true;
@@ -165,7 +167,7 @@
             ActiveArmy.Anchor = AnchorStyles.Top;
             ActiveArmy.AutoSize = true;
             ActiveArmy.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ActiveArmy.Location = new Point(196, 0);
+            ActiveArmy.Location = new Point(195, 0);
             ActiveArmy.Name = "ActiveArmy";
             ActiveArmy.Size = new Size(112, 25);
             ActiveArmy.TabIndex = 1;
@@ -177,11 +179,12 @@
             activeArmyTree.Dock = DockStyle.Fill;
             activeArmyTree.Location = new Point(0, 0);
             activeArmyTree.Name = "activeArmyTree";
-            activeArmyTree.Size = new Size(505, 570);
+            activeArmyTree.Size = new Size(503, 568);
             activeArmyTree.TabIndex = 0;
             // 
             // splitContainer4
             // 
+            splitContainer4.BorderStyle = BorderStyle.FixedSingle;
             splitContainer4.Dock = DockStyle.Fill;
             splitContainer4.FixedPanel = FixedPanel.Panel1;
             splitContainer4.IsSplitterFixed = true;
@@ -206,11 +209,11 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(196, 1);
+            label1.Location = new Point(195, 1);
             label1.Name = "label1";
-            label1.Size = new Size(112, 25);
+            label1.Size = new Size(85, 25);
             label1.TabIndex = 2;
-            label1.Text = "Active Army";
+            label1.Text = "Unit Info";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // splitContainer3
@@ -224,7 +227,7 @@
             // splitContainer3.Panel1
             // 
             splitContainer3.Panel1.BackColor = SystemColors.InactiveBorder;
-            splitContainer3.Panel1.Controls.Add(richTextBox2);
+            splitContainer3.Panel1.Controls.Add(unitInfoText);
             // 
             // splitContainer3.Panel2
             // 
@@ -233,14 +236,16 @@
             splitContainer3.SplitterDistance = 252;
             splitContainer3.TabIndex = 0;
             // 
-            // richTextBox2
+            // unitInfoText
             // 
-            richTextBox2.Dock = DockStyle.Fill;
-            richTextBox2.Location = new Point(0, 0);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(502, 250);
-            richTextBox2.TabIndex = 0;
-            richTextBox2.Text = resources.GetString("richTextBox2.Text");
+            unitInfoText.DetectUrls = false;
+            unitInfoText.Dock = DockStyle.Fill;
+            unitInfoText.Location = new Point(0, 0);
+            unitInfoText.Name = "unitInfoText";
+            unitInfoText.ReadOnly = true;
+            unitInfoText.Size = new Size(502, 250);
+            unitInfoText.TabIndex = 0;
+            unitInfoText.Text = resources.GetString("unitInfoText.Text");
             // 
             // detailsTextBox
             // 
@@ -300,6 +305,6 @@
         private Label ActiveArmy;
         private Label label1;
         private RichTextBox detailsTextBox;
-        private RichTextBox richTextBox2;
+        private RichTextBox unitInfoText;
     }
 }

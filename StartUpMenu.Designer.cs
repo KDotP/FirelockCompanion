@@ -87,8 +87,9 @@
             Controls.Add(newArmyButton);
             Controls.Add(titleLabel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "StartUpMenu";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Firelock Companion Menu";
             ResumeLayout(false);
         }

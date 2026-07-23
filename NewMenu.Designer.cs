@@ -127,6 +127,8 @@
             Controls.Add(factionBox);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "NewMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Create New Army";
