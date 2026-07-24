@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaveMenu));
             armyNameTextBox = new TextBox();
             nameSuffixLabel = new Label();
             saveButton = new Button();
@@ -108,6 +109,7 @@
             Controls.Add(nameSuffixLabel);
             Controls.Add(armyNameTextBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SaveMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SaveMenu";

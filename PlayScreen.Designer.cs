@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayScreen));
             splitContainer1 = new SplitContainer();
             commandPointsLabel = new Label();
             factionNameLabel = new Label();
@@ -94,8 +95,9 @@
             commandPointsLabel.Name = "commandPointsLabel";
             commandPointsLabel.Size = new Size(278, 30);
             commandPointsLabel.TabIndex = 7;
-            commandPointsLabel.Text = "Command: X/X";
+            commandPointsLabel.Text = "Command: X/X (VIS)";
             commandPointsLabel.TextAlign = ContentAlignment.MiddleRight;
+            commandPointsLabel.Visible = false;
             // 
             // factionNameLabel
             // 
@@ -263,8 +265,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1013, 637);
             Controls.Add(splitContainer1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PlayScreen";
-            Text = "PlayScreen";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Play Menu";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();

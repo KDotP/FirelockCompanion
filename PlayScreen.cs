@@ -46,17 +46,11 @@ public partial class PlayScreen : Form
         activeArmyTree.AfterSelect += activeArmyTree_AfterSelect;
     }
 
-    public void LoadArmyFromFile(string filePath)
+    // Function is very similarly named to LoadGameData, but this is for loading an army from a save file, not the core game data
+    public void LoadArmyFromData(ArmySaveData saveData)
     {
-        if (!System.IO.File.Exists(filePath)) return;
-
         try
         {
-            string jsonString = System.IO.File.ReadAllText(filePath);
-            ArmySaveData saveData = System.Text.Json.JsonSerializer.Deserialize<ArmySaveData>(jsonString);
-
-            if (saveData == null) return;
-
             // Load the core ruleset to grab keywords and faction units for rebuilding
             LoadGameData(saveData.FactionName);
 
@@ -96,7 +90,6 @@ public partial class PlayScreen : Form
                                 UnitTemplate childTemplate = factionUnits.FirstOrDefault(u => (u.id ?? u.name) == sChild.UnitId);
                                 if (childTemplate == null) continue;
 
-                                // TO-DO: Swap this to PlayUnitEntry later when tracking unit info
                                 ActiveUnitEntry childEntry = new ActiveUnitEntry(childTemplate, sChild.CustomName);
 
                                 if (Enum.TryParse(sChild.EmbarkStatus, out EmbarkStatus status))
@@ -139,7 +132,26 @@ public partial class PlayScreen : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Failed to load army:\n{ex.Message}", "Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Failed to load army data:\n{ex.Message}", "Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+    public void LoadArmyFromFile(string filePath)
+    {
+        if (!System.IO.File.Exists(filePath)) return;
+
+        try
+        {
+            string jsonString = System.IO.File.ReadAllText(filePath);
+            ArmySaveData saveData = System.Text.Json.JsonSerializer.Deserialize<ArmySaveData>(jsonString);
+
+            if (saveData == null) return;
+
+            LoadArmyFromData(saveData);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to load army data:\n{ex.Message}", "Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

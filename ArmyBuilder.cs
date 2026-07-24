@@ -1705,4 +1705,80 @@ public partial class ArmyBuilder : Form
             MessageBox.Show($"Failed to load army:\n{ex.Message}", "Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
+
+    private void playButton_Click(object sender, EventArgs e)
+    {
+        ArmySaveData army = ExportArmyData();
+
+        PlayScreen playScreen = new PlayScreen();
+        playScreen.LoadArmyFromData(army);
+        playScreen.Show();
+
+        this.Hide();
+        playScreen.FormClosed += (s, args) => this.Close();
+    }
+
+    // Pass data without saving
+    private ArmySaveData ExportArmyData()
+    {
+        ArmySaveData saveData = new ArmySaveData
+        {
+            ArmyName = armyName,
+            FactionName = factionNameLabel.Text,
+            MaxPoints = maxPoints
+        };
+
+        foreach (TreeNode groupNode in activeArmyTree.Nodes)
+        {
+            SavedGroup group = new SavedGroup { GroupName = groupNode.Text };
+
+            foreach (TreeNode child in groupNode.Nodes)
+            {
+                if (child.Tag is not ActiveUnitEntry entry) continue;
+
+                SavedUnit sUnit = new SavedUnit
+                {
+                    UnitId = entry.Unit.id ?? entry.Unit.name,
+                    CustomName = entry.CustomName,
+                    EmbarkStatus = entry.Status.ToString(),
+                    IsTowed = entry.IsTowed,
+                    IsTercioParent = entry.Unit.name == "Tercios"
+                };
+
+                if (sUnit.IsTercioParent)
+                {
+                    sUnit.TercioCost = entry.Unit.cost;
+
+                    string groupKw = entry.Unit.keywords?.FirstOrDefault(k => k.StartsWith("Group ("));
+                    if (groupKw != null)
+                    {
+                        var match = Regex.Match(groupKw, @"\d+");
+                        if (match.Success) sUnit.TercioSize = int.Parse(match.Value);
+                    }
+
+                    // Initialize the nested list and populate it with the children
+                    sUnit.TercioChildren = new List<SavedUnit>();
+                    foreach (TreeNode subChild in child.Nodes)
+                    {
+                        if (subChild.Tag is not ActiveUnitEntry subEntry) continue;
+
+                        sUnit.TercioChildren.Add(new SavedUnit
+                        {
+                            UnitId = subEntry.Unit.id ?? subEntry.Unit.name,
+                            CustomName = subEntry.CustomName,
+                            EmbarkStatus = subEntry.Status.ToString(),
+                            IsTowed = subEntry.IsTowed,
+                            IsTercioParent = false
+                        });
+                    }
+                }
+
+                // Add the unit to the group
+                group.Units.Add(sUnit);
+            }
+            saveData.Groups.Add(group);
+        }
+
+        return saveData;
+    }
 }

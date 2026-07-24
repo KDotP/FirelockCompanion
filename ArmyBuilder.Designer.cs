@@ -29,6 +29,7 @@ partial class ArmyBuilder
     private void InitializeComponent()
     {
         components = new System.ComponentModel.Container();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArmyBuilder));
         initalSplit = new SplitContainer();
         pointsLabel = new Label();
         factionNameLabel = new Label();
@@ -199,6 +200,7 @@ partial class ArmyBuilder
         playButton.TabIndex = 6;
         playButton.Text = "Play";
         playButton.UseVisualStyleBackColor = false;
+        playButton.Click += playButton_Click;
         // 
         // saveButton
         // 
@@ -460,6 +462,7 @@ partial class ArmyBuilder
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1013, 637);
         Controls.Add(initalSplit);
+        Icon = (Icon)resources.GetObject("$this.Icon");
         Name = "ArmyBuilder";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Army Builder";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TercioBuilder));
             label1 = new Label();
             firstUnitBox = new ComboBox();
             secondUnitBox = new ComboBox();
@@ -127,6 +128,9 @@
             Controls.Add(firstUnitBox);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TercioBuilder";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TercioBuilder";
