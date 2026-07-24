@@ -272,7 +272,7 @@ public partial class PlayScreen : Form
                     ? foundDesc
                     : "No definition found.";
 
-                parts.Add($"---{kw}\r\n=--\r\n{FormatDescription(desc)}");
+                parts.Add($"---\r\n{kw}\r\n---\r\n{FormatDescription(desc)}");
             }
         }
 
@@ -311,6 +311,7 @@ public partial class PlayScreen : Form
     }
 
     // Identical to ArmyBuilder I think?
+    // To do: shared functions
     private string BuildFullNodeText(ActiveUnitEntry entry, TreeNode node)
     {
         string connectorPrefix = BuildConnectorPrefix(entry, node, out bool outOfPosition);

@@ -20,6 +20,7 @@ public partial class ArmyBuilder : Form
     private static readonly Regex TowWeightPattern = new(@"(?:^|,\s*)T(\d+)");
     private static readonly Regex ParamPattern = new(@"\s*\(.*\)\s*$");
     private static readonly Regex DesantCapacityPattern = new(@"^Desant\s*\((\d+)\)"); // For ONE UNIT
+    private Dictionary<string, string> normalizedKeywords = new Dictionary<string, string>();
 
     private static readonly TextFormatFlags MeasureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine; // For special formatting with embark
 
@@ -570,7 +571,7 @@ public partial class ArmyBuilder : Form
 
         factionUnits = data.factions[selectedFactionName];
         Dictionary<string, TreeNode> categoryNodes = new Dictionary<string, TreeNode>();
-        Dictionary<string, string> normalizedKeywords = BuildNormalizedKeywords(data.keywords);
+        normalizedKeywords = BuildNormalizedKeywords(data.keywords);
 
         foreach (UnitTemplate unit in factionUnits)
         {
@@ -703,30 +704,90 @@ public partial class ArmyBuilder : Form
         return headerNode;
     }
 
+    // Probably should have always been a seperate function, but these are trying times
+    private string FormatUnitDetails(UnitTemplate unit, string headerOverride = null)
+    {
+        List<string> parts = new List<string>();
+
+        // Core stats
+        parts.Add(headerOverride ?? unit.name);
+        if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
+        if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
+        if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
+
+        // Weapons and ammo profiles
+        if (unit.weapons != null && unit.weapons.Count > 0)
+        {
+            List<string> weaponLines = new List<string>();
+            foreach (var w in unit.weapons)
+            {
+                string wText = $"{w.name} {w.weapon_stats}";
+                if (w.keywords != null && w.keywords.Count > 0) wText += $" [{string.Join(", ", w.keywords)}]";
+                weaponLines.Add(wText);
+
+                if (w.ammos != null)
+                {
+                    foreach (var a in w.ammos)
+                    {
+                        string aText = $"  -> {a.name} {a.ammo_stats}";
+                        if (a.keywords != null && a.keywords.Count > 0) aText += $" [{string.Join(", ", a.keywords)}]";
+                        weaponLines.Add(aText);
+                    }
+                }
+            }
+            parts.Add("WEAPONS:\r\n" + string.Join("\r\n", weaponLines));
+        }
+
+        // Gather all unique keywords across unit, weapons, and ammos
+        HashSet<string> uniqueKeywords = new HashSet<string>();
+
+        if (unit.keywords != null)
+            foreach (var kw in unit.keywords) uniqueKeywords.Add(kw);
+
+        if (unit.weapons != null)
+        {
+            foreach (var w in unit.weapons)
+            {
+                if (w.keywords != null)
+                    foreach (var kw in w.keywords) uniqueKeywords.Add(kw);
+
+                if (w.ammos != null)
+                {
+                    foreach (var a in w.ammos)
+                    {
+                        if (a.keywords != null)
+                            foreach (var kw in a.keywords) uniqueKeywords.Add(kw);
+                    }
+                }
+            }
+        }
+
+        // Output definition entries for all gathered keywords
+        if (uniqueKeywords.Count > 0)
+        {
+            parts.Add("----------\r\nKeywords:");
+            foreach (var kw in uniqueKeywords)
+            {
+                string baseKey = StripParams(kw);
+                string desc = normalizedKeywords.TryGetValue(baseKey, out var foundDesc)
+                    ? foundDesc
+                    : "No definition found.";
+
+                parts.Add($"---\r\n{kw}\r\n---\r\n{FormatDescription(desc)}");
+            }
+        }
+
+        return string.Join("\r\n\r\n", parts);
+    }
+
+    // Now in the same style as Playscreen
+    // To do: seriously, shared functions
     private void ShowNodeDetails(TreeNode node)
     {
-        detailsTextBox.SelectionStart = 0;
-        detailsTextBox.SelectionLength = 0;
-        detailsTextBox.ScrollToCaret();
-
         if (node?.Tag == null)
         {
             detailsTextBox.Text = node?.Text ?? "";
             return;
-        }
-
-        string BuildUnitDetailsText(UnitTemplate unit, string headerOverride = null)
-        {
-            var parts = new List<string> { headerOverride ?? unit.name };
-            if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
-            if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
-            if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
-            if (unit.keywords.Count > 0)
-            {
-                string keywordsText = string.Join(", ", unit.keywords);
-                parts.Add($"Keywords: {keywordsText}");
-            }
-            return string.Join("\r\n\r\n", parts);
         }
 
         switch (node.Tag)
@@ -748,13 +809,15 @@ public partial class ArmyBuilder : Form
 
             case UnitTemplate unit:
                 {
-                    detailsTextBox.Text = BuildUnitDetailsText(unit);
+                    // Format library units
+                    detailsTextBox.Text = FormatUnitDetails(unit);
                     break;
                 }
 
             case ActiveUnitEntry activeEntry:
                 {
-                    detailsTextBox.Text = BuildUnitDetailsText(activeEntry.Unit, $"{activeEntry.Unit.name} — \"{activeEntry.CustomName}\"");
+                    // Format active army units with their custom names
+                    detailsTextBox.Text = FormatUnitDetails(activeEntry.Unit, $"{activeEntry.Unit.name} — \"{activeEntry.CustomName}\"");
                     break;
                 }
 
@@ -762,6 +825,10 @@ public partial class ArmyBuilder : Form
                 detailsTextBox.Text = node.Text;
                 break;
         }
+
+        detailsTextBox.SelectionStart = 0;
+        detailsTextBox.SelectionLength = 0;
+        detailsTextBox.ScrollToCaret();
     }
 
     private void availableArmyTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
