@@ -929,6 +929,18 @@ public partial class ArmyBuilder : Form
                         entry.Status = EmbarkStatus.None;
                     }
                 }
+                else
+                {
+                    // Hopefully fixes the air hierarchy issue
+                    FinalizeVehicle();
+                    vehicleNode = null;
+                    capacity = null;
+                    desantSupported = false;
+                    passengerNodes = new List<TreeNode>();
+
+                    entry.HasCarrierAbove = false;
+                    entry.HasDesantCarrierAbove = false;
+                }
             }
 
             foreach (TreeNode child in groupNode.Nodes)
@@ -1282,7 +1294,7 @@ public partial class ArmyBuilder : Form
 
                         siblingEntry.Status = EmbarkStatus.None;
 
-                        // Also wipe Tercio subunits if we hit a Tercio wrapper
+                        // Also wipe Tercio subunits 
                         if (siblingEntry.Unit.name == "Tercios" && dragged.Parent.Nodes[i].Nodes.Count > 0)
                         {
                             foreach (TreeNode subNode in dragged.Parent.Nodes[i].Nodes)
