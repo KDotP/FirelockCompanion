@@ -714,6 +714,11 @@ public partial class ArmyBuilder : Form
         if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
         if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
         if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
+        // Keywords week is BACK
+        if (unit.keywords != null && unit.keywords.Count > 0)
+        {
+            parts.Add($"Keywords: {string.Join(", ", unit.keywords)}");
+        }
 
         // Weapons and ammo profiles
         if (unit.weapons != null && unit.weapons.Count > 0)
@@ -742,7 +747,12 @@ public partial class ArmyBuilder : Form
         HashSet<string> uniqueKeywords = new HashSet<string>();
 
         if (unit.keywords != null)
-            foreach (var kw in unit.keywords) uniqueKeywords.Add(kw);
+        {
+            foreach (var kw in unit.keywords)
+            {
+                uniqueKeywords.Add(kw);
+            }
+        }
 
         if (unit.weapons != null)
         {
@@ -780,8 +790,7 @@ public partial class ArmyBuilder : Form
         return string.Join("\r\n\r\n", parts);
     }
 
-    // Now in the same style as Playscreen
-    // To do: seriously, shared functions
+    // Slight different compared to PlayScreen
     private void ShowNodeDetails(TreeNode node)
     {
         if (node?.Tag == null)

@@ -213,6 +213,10 @@ public partial class PlayScreen : Form
         if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
         if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
         if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
+        if (unit.keywords != null && unit.keywords.Count > 0)
+        {
+            parts.Add($"Keywords: {string.Join(", ", unit.keywords)}");
+        }
 
         // Weapons and ammo
         if (unit.weapons != null && unit.weapons.Count > 0)
