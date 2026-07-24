@@ -260,7 +260,7 @@ public partial class PlayScreen : Form
                     ? foundDesc
                     : "No definition found.";
 
-                parts.Add($"{kw}\r\n--\r\n{FormatDescription(desc)}");
+                parts.Add($"---{kw}\r\n=--\r\n{FormatDescription(desc)}");
             }
         }
 

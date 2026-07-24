@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayScreen));
             splitContainer1 = new SplitContainer();
             commandPointsLabel = new Label();
             factionNameLabel = new Label();
@@ -233,7 +232,7 @@
             // 
             splitContainer3.Panel2.Controls.Add(detailsTextBox);
             splitContainer3.Size = new Size(504, 570);
-            splitContainer3.SplitterDistance = 252;
+            splitContainer3.SplitterDistance = 25;
             splitContainer3.TabIndex = 0;
             // 
             // unitInfoText
@@ -243,9 +242,9 @@
             unitInfoText.Location = new Point(0, 0);
             unitInfoText.Name = "unitInfoText";
             unitInfoText.ReadOnly = true;
-            unitInfoText.Size = new Size(502, 250);
+            unitInfoText.Size = new Size(502, 23);
             unitInfoText.TabIndex = 0;
-            unitInfoText.Text = resources.GetString("unitInfoText.Text");
+            unitInfoText.Text = "This menu is still under development.";
             // 
             // detailsTextBox
             // 
@@ -254,7 +253,7 @@
             detailsTextBox.Location = new Point(0, 0);
             detailsTextBox.Name = "detailsTextBox";
             detailsTextBox.ReadOnly = true;
-            detailsTextBox.Size = new Size(502, 312);
+            detailsTextBox.Size = new Size(502, 539);
             detailsTextBox.TabIndex = 0;
             detailsTextBox.Text = "Unit/Keyword info will show up here! (You can also resize this menu)";
             // 
