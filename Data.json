@@ -72,7 +72,8 @@
     "Wheeled": "If a wheeled vehicle begins and ends its movement on road, it may road dash, adding its quality statistic to its base movement. Add quality before applying any multiplier.\nWheeled vehicles must pay an additional 1\" movement penalty whenever they enter occluding terrain, even if that terrain does not normally have an entrance/exit cost, unless otherwise noted.",
     "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry.",
     "Group (X)": "Internal keyword. Has an embark weight of X. You probably shouldn't see this unless you're editing the data.",
-    "Desant (X)": "This unit has an altered max number of desanting units."
+    "Desant (X)": "This unit has an altered max number of desanting units.",
+    "Dummy":  "Dummies are fake unit markers. Dummies are not real units and cannot do any actions a real unit can do. Destroyed on hit, can move as far as you want, but costs a command token to move as normal.\nCan be moved in a brigade move, but does not count towards the brigade limit. Dummies may call a brigade that affects only other dummies."
   },
   "formats": {
     "The Federal States Army": {
@@ -1192,6 +1193,36 @@
             "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (1)", "Homing" ]
           }
         ]
+      },
+      {
+        "id": "santa_infantry_blind",
+        "name": "Infantry Blind",
+        "subname": "Information Warfare",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "santa_vehicle_blind",
+        "name": "Vehicle Blind",
+        "subname": "Information Warfare",
+        "type": "Vehicle",
+        "cost": 5,
+        "unit_stats": "Vec, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "santa_aircraft_blind",
+        "name": "Aircraft Blind",
+        "subname": "Information Warfare",
+        "type": "Aircraft",
+        "cost": 5,
+        "unit_stats": "Air, MX\", QX, T1, EX",
+        "keywords": [ "Dummy" ],
+        "weapons": []
       }
     ],
     "The New Rygolic Host": [
@@ -2199,6 +2230,36 @@
             "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Radius (3\")", "Rear Attack" ]
           }
         ]
+      },
+      {
+        "id": "rygo_infantry_blind",
+        "name": "Infantry Blind",
+        "subname": "Information Warfare",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "rygo_vehicle_blind",
+        "name": "Vehicle Blind",
+        "subname": "Information Warfare",
+        "type": "Vehicle",
+        "cost": 5,
+        "unit_stats": "Vec, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "rygo_aircraft_blind",
+        "name": "Aircraft Blind",
+        "subname": "Information Warfare",
+        "type": "Aircraft",
+        "cost": 5,
+        "unit_stats": "Air, MX\", QX, T1, EX",
+        "keywords": [ "Dummy" ],
+        "weapons": []
       }
     ],
     "The Federal States Army": [
@@ -3461,6 +3522,36 @@
             "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge", "Thermal Sights" ]
           }
         ]
+      },
+      {
+        "id": "feds_infantry_blind",
+        "name": "Infantry Blind",
+        "subname": "Information Warfare",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "feds_vehicle_blind",
+        "name": "Vehicle Blind",
+        "subname": "Information Warfare",
+        "type": "Vehicle",
+        "cost": 5,
+        "unit_stats": "Vec, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "feds_aircraft_blind",
+        "name": "Aircraft Blind",
+        "subname": "Information Warfare",
+        "type": "Aircraft",
+        "cost": 5,
+        "unit_stats": "Air, MX\", QX, T1, EX",
+        "keywords": [ "Dummy" ],
+        "weapons": []
       }
     ],
     "The Army of the Ebon Forest": [
@@ -4509,6 +4600,36 @@
             "keywords": [ "Barrage (2, Point)", "Guided Missile (1)", "No CC" ]
           }
         ]
+      },
+      {
+        "id": "ebon_infantry_blind",
+        "name": "Infantry Blind",
+        "subname": "Information Warfare",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "ebon_vehicle_blind",
+        "name": "Vehicle Blind",
+        "subname": "Information Warfare",
+        "type": "Vehicle",
+        "cost": 5,
+        "unit_stats": "Vec, HX, S0\", MX\", QX, T0/0/0",
+        "keywords": [ "Dummy" ],
+        "weapons": []
+      },
+      {
+        "id": "ebon_aircraft_blind",
+        "name": "Aircraft Blind",
+        "subname": "Information Warfare",
+        "type": "Aircraft",
+        "cost": 5,
+        "unit_stats": "Air, MX\", QX, T1, EX",
+        "keywords": [ "Dummy" ],
+        "weapons": []
       }
     ]
   }

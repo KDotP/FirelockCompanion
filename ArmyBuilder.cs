@@ -806,7 +806,16 @@ public partial class ArmyBuilder : Form
             {
                 if (node.Tag is ActiveUnitEntry entry)
                 {
-                    totalPoints += entry.Unit.cost;
+                    // Check if this node is nested inside a Tercio wrapper
+                    bool isTercioChild = node.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios";
+
+                    // Only add the point cost if it's not a Tercio subunit
+                    // I hate you Tercio
+                    if (!isTercioChild)
+                    {
+                        totalPoints += entry.Unit.cost;
+                    }
+
                     if (entry.Unit.type == "TACOM")
                         totalTacoms++;
                 }
