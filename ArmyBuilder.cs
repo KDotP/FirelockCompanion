@@ -1159,7 +1159,12 @@ public partial class ArmyBuilder : Form
     private void activeArmyTree_MouseDown(object sender, MouseEventArgs e)
     {
         TreeNode node = activeArmyTree.GetNodeAt(e.X, e.Y);
-        if (node == null) return;
+        if (node == null)
+        {
+            // Deselect all if not clicking node
+            activeArmyTree.SelectedNode = null;
+            return;
+        }
 
         if (e.Button == MouseButtons.Right)
         {

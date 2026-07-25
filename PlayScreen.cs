@@ -20,6 +20,7 @@ public partial class PlayScreen : Form
     private static readonly Regex TowWeightPattern = new(@"(?:^|,\s*)T(\d+)");
     private static readonly Regex ParamPattern = new(@"\s*\(.*\)\s*$");
     private static readonly Regex DesantCapacityPattern = new(@"^Desant\s*\((\d+)\)");
+    private static readonly Regex LeviathanPattern = new(@"^Leviathan\s*\((\d+)\)");
 
     private static readonly TextFormatFlags MeasureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine;
 
@@ -314,12 +315,15 @@ public partial class PlayScreen : Form
         }
     }
 
-    // Identical to ArmyBuilder I think?
-    // To do: shared functions
+    // Nvm about shared functions, adding more functionalities
     private string BuildFullNodeText(ActiveUnitEntry entry, TreeNode node)
     {
         string connectorPrefix = BuildConnectorPrefix(entry, node, out bool outOfPosition);
         bool isMismatchedTercio = false;
+
+        // Depletion tracking
+        int maxDep = GetMaxDepletions(entry.Unit);
+        bool isDepleted = maxDep > 0 && entry.DepletionsTaken >= maxDep;
 
         if (entry.Unit.name == "Tercios" && node.Nodes.Count > 0)
         {
@@ -337,7 +341,14 @@ public partial class PlayScreen : Form
             }
         }
 
-        node.ForeColor = outOfPosition ? OutOfPositionColor : Color.Empty;
+        if (isDepleted)
+        {
+            node.ForeColor = Color.Gray;
+        }
+        else
+        {
+            node.ForeColor = outOfPosition ? OutOfPositionColor : Color.Empty;
+        }
 
         bool isTercioChild = node.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios";
         string baseText = isTercioChild
@@ -355,6 +366,15 @@ public partial class PlayScreen : Form
         }
 
         baseText += $"\"{entry.CustomName}\"";
+
+        // Depletion display
+        string depString = "";
+        if (maxDep > 0)
+        {
+            int remaining = maxDep - entry.DepletionsTaken;
+            bool isClicked = entry.DepletionsTaken > 0;
+            depString = isClicked ? $"【{remaining}/{maxDep}】 " : $"[{remaining}/{maxDep}] ";
+        }
 
         var prefixTags = new List<string>();
 
@@ -387,7 +407,7 @@ public partial class PlayScreen : Form
 
         string suffix = suffixParts.Count > 0 ? $" — {string.Join(", ", suffixParts)}" : "";
 
-        return $"{connectorPrefix}{tagPrefix}{baseText}{suffix}";
+        return $"{connectorPrefix}{depString}{tagPrefix}{baseText}{suffix}";
     }
 
     private List<TreeNode> GetVisibleAncestorChain(ActiveUnitEntry entry)
@@ -435,6 +455,37 @@ public partial class PlayScreen : Form
             }
         }
         return 2;
+    }
+
+    private static int GetMaxDepletions(UnitTemplate unit)
+    {
+        // TECIOSSSSSSSSS
+        if (unit.name == "Tercios") return 0;
+
+        if (unit.keywords != null)
+        {
+            foreach (string kw in unit.keywords)
+            {
+                // Leviathans
+                Match m = LeviathanPattern.Match(kw);
+                if (m.Success) return int.Parse(m.Groups[1].Value);
+            }
+        }
+
+        Match leadMatch = LeadTagPattern.Match(unit.unit_stats ?? "");
+        bool isInfantry = leadMatch.Success && leadMatch.Groups[1].Value == "Inf";
+
+        bool hasSquadKeyword = unit.keywords != null && unit.keywords.Contains("Squad");
+        bool hasSSuffix = leadMatch.Success && leadMatch.Groups[3].Success && leadMatch.Groups[3].Value.Contains("S");
+
+        // Twice for infantry squads
+        if (isInfantry && (hasSquadKeyword || hasSSuffix))
+        {
+            return 2;
+        }
+
+        // Default for everyone else
+        return 1;
     }
 
     private string BuildConnectorPrefix(ActiveUnitEntry entry, TreeNode node, out bool outOfPosition)
@@ -801,7 +852,12 @@ public partial class PlayScreen : Form
     private void activeArmyTree_MouseDown(object sender, MouseEventArgs e)
     {
         TreeNode node = activeArmyTree.GetNodeAt(e.X, e.Y);
-        if (node == null) return;
+        if (node == null)
+        {
+            // Deselect all if not clicking node
+            activeArmyTree.SelectedNode = null;
+            return;
+        }
 
         if (e.Button == MouseButtons.Right)
         {
@@ -819,6 +875,24 @@ public partial class PlayScreen : Form
         if (connectorPrefix.Length > 0)
         {
             x += TextRenderer.MeasureText(connectorPrefix, font, Size.Empty, MeasureFlags).Width;
+        }
+
+        int maxDep = GetMaxDepletions(entry.Unit);
+        if (maxDep > 0)
+        {
+            int remaining = maxDep - entry.DepletionsTaken;
+            bool isClicked = entry.DepletionsTaken > 0;
+            string dTag = isClicked ? $"【{remaining}/{maxDep}】 " : $"[{remaining}/{maxDep}] ";
+            int dWidth = TextRenderer.MeasureText(dTag, font, Size.Empty, MeasureFlags).Width;
+
+            if (e.X <= x + dWidth)
+            {
+                // Cycles up by 1 under the hood. If it goes past max, it resets to 0.
+                entry.DepletionsTaken = (entry.DepletionsTaken + 1) % (maxDep + 1);
+                RecalculateAll();
+                return;
+            }
+            x += dWidth;
         }
 
         if (entry.HasCarrierAbove)

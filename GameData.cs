@@ -47,6 +47,7 @@ namespace FirelockCompanion
 
     public class ActiveUnitEntry
     {
+        public int DepletionsTaken { get; set; } = 0; // Maybe move to seperate gameplay unit class?
         public UnitTemplate Unit { get; }
         public string CustomName { get; set; }
 
