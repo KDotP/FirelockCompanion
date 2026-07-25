@@ -55,6 +55,8 @@ public partial class PlayScreen : Form
             // Load the core ruleset to grab keywords and faction units for rebuilding
             LoadGameData(saveData.FactionName);
 
+            armyNameLabel.Text = saveData.ArmyName;
+
             activeArmyTree.BeginUpdate();
             activeArmyTree.Nodes.Clear();
             ClearTargetGroup();
@@ -162,6 +164,8 @@ public partial class PlayScreen : Form
 
         string jsonString = System.IO.File.ReadAllText("Data.json");
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
+
+        factionNameLabel.Text = factionName;
 
         // Cache the units for this faction to reference while loading army
         if (ruleset.factions.ContainsKey(factionName))
