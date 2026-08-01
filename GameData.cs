@@ -15,6 +15,59 @@ namespace FirelockCompanion
         public Dictionary<string, string> keywords { get; set; }
         public Dictionary<string, List<UnitTemplate>> factions { get; set; }
         public Dictionary<string, Dictionary<string, string>> formats { get; set; }
+
+        public void Merge(GameData customData)
+        {
+            if (customData == null) return;
+
+            // Merge Keywords (Custom definitions overwrite base ones)
+            if (customData.keywords != null)
+            {
+                keywords ??= new Dictionary<string, string>();
+                foreach (var kvp in customData.keywords)
+                {
+                    keywords[kvp.Key] = kvp.Value;
+                }
+            }
+
+            if (customData.factions != null)
+            {
+                factions ??= new Dictionary<string, List<UnitTemplate>>();
+                foreach (var kvp in customData.factions)
+                {
+                    if (factions.ContainsKey(kvp.Key))
+                    {
+                        // If the faction already exists, append the custom units to it
+                        factions[kvp.Key].AddRange(kvp.Value);
+                    }
+                    else
+                    {
+                        // If it's a completely new faction, add it
+                        factions[kvp.Key] = kvp.Value;
+                    }
+                }
+            }
+
+            // Merge Formats
+            if (customData.formats != null)
+            {
+                formats ??= new Dictionary<string, Dictionary<string, string>>();
+                foreach (var kvp in customData.formats)
+                {
+                    if (formats.ContainsKey(kvp.Key))
+                    {
+                        foreach (var formatKvp in kvp.Value)
+                        {
+                            formats[kvp.Key][formatKvp.Key] = formatKvp.Value;
+                        }
+                    }
+                    else
+                    {
+                        formats[kvp.Key] = kvp.Value;
+                    }
+                }
+            }
+        }
     }
 
     public class UnitTemplate

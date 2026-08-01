@@ -165,6 +165,25 @@ public partial class PlayScreen : Form
         string jsonString = System.IO.File.ReadAllText("Data.json");
         GameData ruleset = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
+        // Custom content loader
+        try
+        {
+            string customString = System.IO.File.ReadAllText("Custom_Content.json") ?? "null";
+            if (customString != "null")
+            {
+                GameData customData = System.Text.Json.JsonSerializer.Deserialize<GameData>(customString);
+                ruleset.Merge(customData);
+            }
+        }
+        catch (FileNotFoundException ex)
+        {
+            // Ignore if no file
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error loading custom content: {ex.Message}", "Custom Content Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         factionNameLabel.Text = factionName;
 
         // Cache the units for this faction to reference while loading army

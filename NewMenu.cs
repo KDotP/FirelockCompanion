@@ -36,6 +36,25 @@ namespace FirelockCompanion
                 string jsonString = System.IO.File.ReadAllText("Data.json");
                 GameData data = System.Text.Json.JsonSerializer.Deserialize<GameData>(jsonString);
 
+                // Custom content loader
+                try
+                {
+                    string customString = System.IO.File.ReadAllText("Custom_Content.json") ?? "null";
+                    if (customString != "null")
+                    {
+                        GameData customData = System.Text.Json.JsonSerializer.Deserialize<GameData>(customString);
+                        data.Merge(customData);
+                    }
+                }
+                catch (FileNotFoundException ex)
+                {
+                    MessageBox.Show($"No Custom Content Found: {ex.Message}", "Custom Content Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading custom content: {ex.Message}", "Custom Content Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 if (data?.factions == null || data.factions.Count == 0)
                 {
                     MessageBox.Show("No factions found in Data.json. Please check the file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
