@@ -892,7 +892,8 @@ public partial class ArmyBuilder : Form
                         totalPoints += entry.Unit.cost;
                     }
 
-                    if (entry.Unit.type == "TACOM")
+                    // Shh, these are official rules
+                    if (entry.Unit.type == "TACOM" && !entry.Unit.keywords.Contains("Reserve"))
                         totalTacoms++;
                 }
 

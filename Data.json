@@ -73,7 +73,8 @@
     "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry.",
     "Group (X)": "Internal keyword. Has an embark weight of X. You probably shouldn't see this unless you're editing the data.",
     "Desant (X)": "This unit has an altered max number of desanting units.",
-    "Dummy":  "Dummies are fake unit markers. Dummies are not real units and cannot do any actions a real unit can do. Destroyed on hit, can move as far as you want, but costs a command token to move as normal.\nCan be moved in a brigade move, but does not count towards the brigade limit. Dummies may call a brigade that affects only other dummies."
+    "Dummy": "Dummies are fake unit markers. Dummies are not real units and cannot do any actions a real unit can do. Destroyed on hit, can move as far as you want, but costs a command token to move as normal.\nCan be moved in a brigade move, but does not count towards the brigade limit. Dummies may call a brigade that affects only other dummies.",
+    "Reserve": "This TACOM unit does not count towards your TACOM total."
   },
   "formats": {
     "The Federal States Army": {
@@ -1265,7 +1266,7 @@
         "type": "TACOM",
         "cost": 20,
         "unit_stats": "Inf, H1, S24\", M5\", Q3, T1+/1/1, C2",
-        "keywords": [ "Brigade (2, 12\")", "Fearless", "NBC", "Rygonet (12\")" ],
+        "keywords": [ "Brigade (2, 12\")", "Fearless", "NBC", "Rygonet (12\")", "Reserve" ],
         "bonus_traits": "Same as standard node team, but can be bought past the standard TACOM limit at a cost of 20 points.",
         "weapons": [
           {
