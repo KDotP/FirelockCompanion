@@ -97,6 +97,8 @@
             // 
             // pointsBox
             // 
+            pointsBox.AutoCompleteMode = AutoCompleteMode.Append;
+            pointsBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             pointsBox.FormattingEnabled = true;
             pointsBox.Items.AddRange(new object[] { "100", "200", "300", "400" });
             pointsBox.Location = new Point(270, 110);

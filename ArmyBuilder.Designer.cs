@@ -112,7 +112,7 @@ partial class ArmyBuilder
         pointsLabel.AutoSize = true;
         pointsLabel.BackColor = Color.Transparent;
         pointsLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        pointsLabel.Location = new Point(864, 0);
+        pointsLabel.Location = new Point(862, 0);
         pointsLabel.Name = "pointsLabel";
         pointsLabel.Size = new Size(152, 30);
         pointsLabel.TabIndex = 5;

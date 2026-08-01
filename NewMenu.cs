@@ -25,7 +25,6 @@ namespace FirelockCompanion
             InitializeComponent();
 
             factionBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            pointsBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             PopulateComboBox();
         }
@@ -77,7 +76,20 @@ namespace FirelockCompanion
             // Save data as public
             SelectedFaction = selectedFaction;
             ArmyName = armyTextbox.Text.Trim();
-            SelectedPoints = int.Parse(pointsBox.SelectedItem as string); // Always has 100 selected by default
+            try
+            {
+                SelectedPoints = int.Parse(pointsBox.Text);
+                if (SelectedPoints % 100 != 0)
+                {
+                    MessageBox.Show($"Army points must be a multiple of 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"Army points cannot contain non-integers.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Mark the dialog as successful and close the popup
             this.DialogResult = DialogResult.OK;
