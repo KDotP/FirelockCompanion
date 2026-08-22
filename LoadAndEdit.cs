@@ -43,7 +43,7 @@ namespace FirelockCompanion
 
             foreach (string file in sortedFiles)
             {
-                // Add our custom item so the UI looks clean, but we still retain the full file path
+                // Add custom item so the UI looks clean, but still retain the full file path
                 fileComboBox.Items.Add(new SaveItem
                 {
                     DisplayText = Path.GetFileNameWithoutExtension(file),

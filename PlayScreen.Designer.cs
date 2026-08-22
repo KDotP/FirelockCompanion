@@ -35,6 +35,7 @@
             armyNameLabel = new Label();
             splitContainer2 = new SplitContainer();
             activeArmyContainer = new SplitContainer();
+            backToMenuButton = new Button();
             ActiveArmy = new Label();
             activeArmyTree = new TreeView();
             splitContainer4 = new SplitContainer();
@@ -163,6 +164,17 @@
             activeArmyContainer.SplitterDistance = 25;
             activeArmyContainer.TabIndex = 0;
             // 
+            // backToMenuButton
+            // 
+            backToMenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            backToMenuButton.Location = new Point(428, 517);
+            backToMenuButton.Name = "backToMenuButton";
+            backToMenuButton.Size = new Size(75, 23);
+            backToMenuButton.TabIndex = 2;
+            backToMenuButton.Text = "🠜 Back";
+            backToMenuButton.UseVisualStyleBackColor = true;
+            backToMenuButton.Click += backToMenuButton_Click;
+            // 
             // ActiveArmy
             // 
             ActiveArmy.Anchor = AnchorStyles.Top;
@@ -232,6 +244,7 @@
             // 
             // splitContainer3.Panel2
             // 
+            splitContainer3.Panel2.Controls.Add(backToMenuButton);
             splitContainer3.Panel2.Controls.Add(detailsTextBox);
             splitContainer3.Size = new Size(504, 570);
             splitContainer3.SplitterDistance = 25;
@@ -309,5 +322,6 @@
         private Label label1;
         private RichTextBox detailsTextBox;
         private RichTextBox unitInfoText;
+        private Button backToMenuButton;
     }
 }

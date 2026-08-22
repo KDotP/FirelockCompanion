@@ -19,7 +19,6 @@ namespace FirelockCompanion
 
         private void newArmyButton_Click(object sender, EventArgs e)
         {
-            // Open the popup
             using (NewMenu popup = new NewMenu())
             {
                 if (popup.ShowDialog() == DialogResult.OK)
@@ -27,8 +26,19 @@ namespace FirelockCompanion
                     ArmyBuilder armyBuilder = new ArmyBuilder();
                     armyBuilder.SelectFaction(popup.SelectedFaction, popup.ArmyName, popup.SelectedPoints);
 
-                    armyBuilder.FormClosed += (s, args) => this.Close();
-                    armyBuilder.Show();
+                    // Close if window closed, show menu if back is used
+                    armyBuilder.FormClosed += (s, args) =>
+                    {
+                        if (armyBuilder.ReturnToMenu)
+                        {
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+                    };
+                    armyBuilder.Show(); // No idea why this is needed, but it's only needed for this call
                     this.Hide();
                 }
             }
@@ -52,7 +62,17 @@ namespace FirelockCompanion
                     builderForm.LoadArmyFromFile(fileToLoad);
 
                     this.Hide();
-                    builderForm.FormClosed += (s, args) => this.Close();
+                    builderForm.FormClosed += (s, args) =>
+                    {
+                        if (builderForm.ReturnToMenu)
+                        {
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+                    };
                 }
             }
         }
@@ -75,7 +95,17 @@ namespace FirelockCompanion
                     playScreen.LoadArmyFromFile(fileToLoad);
 
                     this.Hide();
-                    playScreen.FormClosed += (s, args) => this.Close();
+                    playScreen.FormClosed += (s, args) =>
+                    {
+                        if (playScreen.ReturnToMenu)
+                        {
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+                    };
                 }
             }
         }

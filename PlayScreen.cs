@@ -10,6 +10,9 @@ namespace FirelockCompanion;
 
 public partial class PlayScreen : Form
 {
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool ReturnToMenu { get; private set; } = false;
+
     // Core Game Data caches
     private List<UnitTemplate> factionUnits;
     private Dictionary<string, string> normalizedKeywords = new Dictionary<string, string>();
@@ -1242,5 +1245,11 @@ public partial class PlayScreen : Form
 
         activeArmyTree.EndUpdate();
         RecalculateAll();
+    }
+
+    private void backToMenuButton_Click(object sender, EventArgs e)
+    {
+        ReturnToMenu = true;
+        this.Close();
     }
 }

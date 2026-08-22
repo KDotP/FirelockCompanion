@@ -5,6 +5,9 @@ namespace FirelockCompanion;
 
 public partial class ArmyBuilder : Form
 {
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool ReturnToMenu { get; private set; } = false;
+
     private static string armyName = "New Army";
     private string currentGroupFormat = "Group X";
     private string currentSaveFormat = "faction";
@@ -1902,5 +1905,11 @@ public partial class ArmyBuilder : Form
         }
 
         return saveData;
+    }
+
+    private void backToMenuButton_Click(object sender, EventArgs e)
+    {
+        ReturnToMenu = true;
+        this.Close();
     }
 }

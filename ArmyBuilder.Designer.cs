@@ -55,6 +55,7 @@ partial class ArmyBuilder
         label1 = new Label();
         availableUnitsSubSplit = new SplitContainer();
         availableArmyTree = new TreeView();
+        backToMenuButton = new Button();
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
@@ -416,6 +417,7 @@ partial class ArmyBuilder
         // 
         // availableUnitsSubSplit.Panel2
         // 
+        availableUnitsSubSplit.Panel2.Controls.Add(backToMenuButton);
         availableUnitsSubSplit.Panel2.Controls.Add(detailsTextBox);
         availableUnitsSubSplit.Size = new Size(502, 568);
         availableUnitsSubSplit.SplitterDistance = 369;
@@ -430,6 +432,17 @@ partial class ArmyBuilder
         availableArmyTree.TabIndex = 0;
         availableArmyTree.AfterSelect += availableArmyTree_AfterSelect;
         availableArmyTree.NodeMouseDoubleClick += availableArmyTree_NodeMouseDoubleClick;
+        // 
+        // backToMenuButton
+        // 
+        backToMenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        backToMenuButton.Location = new Point(429, 173);
+        backToMenuButton.Name = "backToMenuButton";
+        backToMenuButton.Size = new Size(75, 23);
+        backToMenuButton.TabIndex = 6;
+        backToMenuButton.Text = "🠜 Back";
+        backToMenuButton.UseVisualStyleBackColor = true;
+        backToMenuButton.Click += backToMenuButton_Click;
         // 
         // detailsTextBox
         // 
@@ -524,4 +537,5 @@ partial class ArmyBuilder
     private Button newTercioButton;
     private Button playButton;
     private Button saveButton;
+    private Button backToMenuButton;
 }
