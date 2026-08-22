@@ -11,6 +11,7 @@ public partial class ArmyBuilder : Form
     private static string armyName = "New Army";
     private string currentGroupFormat = "Group X";
     private string currentSaveFormat = "faction";
+    private string previousSaveName;
     private List<UnitTemplate> factionUnits;
 
     // Getting real tired of this """error""" and if I suppress it internally, YOU would still get warned
@@ -1638,8 +1639,14 @@ public partial class ArmyBuilder : Form
     {
         using (SaveMenu saveDialog = new SaveMenu(currentSaveFormat, maxPoints))
         {
+            if (previousSaveName != null)
+            {
+                saveDialog.armyNameTextBox.Text = previousSaveName;
+            }
+
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
+                previousSaveName = saveDialog.armyNameTextBox.Text; // Pull pre strip and format for consistancy
                 armyName = armyName;
                 armyNameLabel.Text = armyName;
                 SaveArmyToFile(saveDialog.FinalFileName);
@@ -1840,7 +1847,17 @@ public partial class ArmyBuilder : Form
         playScreen.Show();
 
         this.Hide();
-        playScreen.FormClosed += (s, args) => this.Close();
+        playScreen.FormClosed += (s, args) =>
+        {
+            if (playScreen.ReturnToMenu)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
+        };
     }
 
     // Pass data without saving
@@ -1911,5 +1928,30 @@ public partial class ArmyBuilder : Form
     {
         ReturnToMenu = true;
         this.Close();
+    }
+
+    private void quickSaveToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (previousSaveName == null)
+        {
+            MessageBox.Show("No previous save name found.", "Quick Save Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        // Modified version from save menu because reusing code is a crime ig
+        string rawName = previousSaveName.Trim();
+
+        // Strip any characters that Windows doesn't allow in file names (like \ / : * ? " < > |)
+        string safeName = string.Join("_", rawName.ToLower().Replace(" ", "_").Split(Path.GetInvalidFileNameChars()));
+        string safeFaction = string.Join("_", currentSaveFormat.Split(Path.GetInvalidFileNameChars()));
+
+        // Construct the final file name automatically
+        string FinalFileName = $"{safeName}_{safeFaction}_{maxPoints}_pts.json";
+
+        // Override confirmation if the file already exists
+        string savesFolder = Path.Combine(Application.StartupPath, "Saves");
+        string filePath = Path.Combine(savesFolder, FinalFileName);
+
+        SaveArmyToFile(FinalFileName);
     }
 }

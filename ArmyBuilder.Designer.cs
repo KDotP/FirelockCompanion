@@ -59,6 +59,8 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
+        saveContextMenu = new ContextMenuStrip(components);
+        quickSaveToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -81,6 +83,7 @@ partial class ArmyBuilder
         availableUnitsSubSplit.Panel2.SuspendLayout();
         availableUnitsSubSplit.SuspendLayout();
         availableUnitsMenu.SuspendLayout();
+        saveContextMenu.SuspendLayout();
         SuspendLayout();
         // 
         // initalSplit
@@ -207,6 +210,7 @@ partial class ArmyBuilder
         // 
         saveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         saveButton.BackColor = Color.PaleGreen;
+        saveButton.ContextMenuStrip = saveContextMenu;
         saveButton.Location = new Point(324, -2);
         saveButton.Name = "saveButton";
         saveButton.Size = new Size(84, 27);
@@ -469,6 +473,19 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
+        // saveContextMenu
+        // 
+        saveContextMenu.Items.AddRange(new ToolStripItem[] { quickSaveToolStripMenuItem });
+        saveContextMenu.Name = "saveContextMenu";
+        saveContextMenu.Size = new Size(133, 26);
+        // 
+        // quickSaveToolStripMenuItem
+        // 
+        quickSaveToolStripMenuItem.Name = "quickSaveToolStripMenuItem";
+        quickSaveToolStripMenuItem.Size = new Size(132, 22);
+        quickSaveToolStripMenuItem.Text = "Quick Save";
+        quickSaveToolStripMenuItem.Click += quickSaveToolStripMenuItem_Click;
+        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -504,6 +521,7 @@ partial class ArmyBuilder
         ((System.ComponentModel.ISupportInitialize)availableUnitsSubSplit).EndInit();
         availableUnitsSubSplit.ResumeLayout(false);
         availableUnitsMenu.ResumeLayout(false);
+        saveContextMenu.ResumeLayout(false);
         ResumeLayout(false);
     }
 
@@ -538,4 +556,6 @@ partial class ArmyBuilder
     private Button playButton;
     private Button saveButton;
     private Button backToMenuButton;
+    private ContextMenuStrip saveContextMenu;
+    private ToolStripMenuItem quickSaveToolStripMenuItem;
 }

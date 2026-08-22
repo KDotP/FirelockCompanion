@@ -118,12 +118,11 @@
         }
 
         #endregion
-
-        private TextBox armyNameTextBox;
         private Label nameSuffixLabel;
         private Button saveButton;
         private Button cancelButton;
         private Label label2;
         private Label label3;
+        public TextBox armyNameTextBox;
     }
 }
