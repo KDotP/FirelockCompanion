@@ -35,13 +35,13 @@
             armyNameLabel = new Label();
             splitContainer2 = new SplitContainer();
             activeArmyContainer = new SplitContainer();
-            backToMenuButton = new Button();
             ActiveArmy = new Label();
             activeArmyTree = new TreeView();
             splitContainer4 = new SplitContainer();
             label1 = new Label();
             splitContainer3 = new SplitContainer();
             unitInfoText = new RichTextBox();
+            backToMenuButton = new Button();
             detailsTextBox = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -92,13 +92,13 @@
             commandPointsLabel.Anchor = AnchorStyles.Top;
             commandPointsLabel.BackColor = Color.Transparent;
             commandPointsLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            commandPointsLabel.ForeColor = Color.Black;
             commandPointsLabel.Location = new Point(735, 0);
             commandPointsLabel.Name = "commandPointsLabel";
             commandPointsLabel.Size = new Size(278, 30);
             commandPointsLabel.TabIndex = 7;
-            commandPointsLabel.Text = "Command: X/X (VIS)";
+            commandPointsLabel.Text = "Max Command: X";
             commandPointsLabel.TextAlign = ContentAlignment.MiddleRight;
-            commandPointsLabel.Visible = false;
             // 
             // factionNameLabel
             // 
@@ -163,17 +163,6 @@
             activeArmyContainer.Size = new Size(505, 599);
             activeArmyContainer.SplitterDistance = 25;
             activeArmyContainer.TabIndex = 0;
-            // 
-            // backToMenuButton
-            // 
-            backToMenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            backToMenuButton.Location = new Point(428, 517);
-            backToMenuButton.Name = "backToMenuButton";
-            backToMenuButton.Size = new Size(75, 23);
-            backToMenuButton.TabIndex = 2;
-            backToMenuButton.Text = "🠜 Back";
-            backToMenuButton.UseVisualStyleBackColor = true;
-            backToMenuButton.Click += backToMenuButton_Click;
             // 
             // ActiveArmy
             // 
@@ -260,6 +249,17 @@
             unitInfoText.Size = new Size(502, 23);
             unitInfoText.TabIndex = 0;
             unitInfoText.Text = "This menu is still under development.";
+            // 
+            // backToMenuButton
+            // 
+            backToMenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            backToMenuButton.Location = new Point(428, 517);
+            backToMenuButton.Name = "backToMenuButton";
+            backToMenuButton.Size = new Size(75, 23);
+            backToMenuButton.TabIndex = 2;
+            backToMenuButton.Text = "🠜 Back";
+            backToMenuButton.UseVisualStyleBackColor = true;
+            backToMenuButton.Click += backToMenuButton_Click;
             // 
             // detailsTextBox
             // 

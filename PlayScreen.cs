@@ -24,6 +24,7 @@ public partial class PlayScreen : Form
     private static readonly Regex ParamPattern = new(@"\s*\(.*\)\s*$");
     private static readonly Regex DesantCapacityPattern = new(@"^Desant\s*\((\d+)\)");
     private static readonly Regex LeviathanPattern = new(@"^Leviathan\s*\((\d+)\)");
+    private static readonly Regex CommandValuePattern = new(@"(?:^|,\s*)C(\d+)(?:\s*,|$)");
 
     private static readonly TextFormatFlags MeasureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine;
 
@@ -483,6 +484,16 @@ public partial class PlayScreen : Form
         return 2;
     }
 
+    private static int GetCommandValue(UnitTemplate unit)
+    {
+        if (unit?.type != "TACOM") return 0;
+
+        Match m = CommandValuePattern.Match(unit.unit_stats ?? "");
+        if (m.Success) return int.Parse(m.Groups[1].Value);
+
+        return 0;
+    }
+
     private static int GetMaxDepletions(UnitTemplate unit)
     {
         // TECIOSSSSSSSSS
@@ -873,6 +884,40 @@ public partial class PlayScreen : Form
             foreach (TreeNode child in GetLogicalNodes(groupNode))
                 if (child.Tag is ActiveUnitEntry entry)
                     child.Text = BuildFullNodeText(entry, child);
+
+        UpdateCommandPointsLabel();
+    }
+
+    private void UpdateCommandPointsLabel()
+    {
+        int total = 0;
+
+        foreach (TreeNode groupNode in activeArmyTree.Nodes)
+        {
+            foreach (TreeNode child in GetLogicalNodes(groupNode))
+            {
+                if (child.Tag is not ActiveUnitEntry entry) continue;
+
+                int commandValue = GetCommandValue(entry.Unit);
+                if (commandValue == 0) continue;
+
+                int maxDep = GetMaxDepletions(entry.Unit);
+                bool isDepleted = maxDep > 0 && entry.DepletionsTaken >= maxDep;
+                if (isDepleted) continue;
+
+                total += commandValue;
+            }
+        }
+
+        commandPointsLabel.Text = $"Max Command: {total}";
+        if (total <= 0)
+        {
+            commandPointsLabel.ForeColor = Color.Firebrick;
+        }
+        else
+        {
+            commandPointsLabel.ForeColor = Color.Black;
+        }
     }
 
     private void activeArmyTree_MouseDown(object sender, MouseEventArgs e)
