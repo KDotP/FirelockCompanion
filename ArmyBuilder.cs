@@ -25,6 +25,7 @@ public partial class ArmyBuilder : Form
     private static readonly Regex ParamPattern = new(@"\s*\(.*\)\s*$");
     private static readonly Regex DesantCapacityPattern = new(@"^Desant\s*\((\d+)\)"); // For ONE UNIT
     private Dictionary<string, string> normalizedKeywords = new Dictionary<string, string>();
+    private static readonly Regex CommandValuePattern = new(@"(?:^|,\s*)C(\d+)(?:\s*,|$)");
 
     private static readonly TextFormatFlags MeasureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine; // For special formatting with embark
 
@@ -471,6 +472,16 @@ public partial class ArmyBuilder : Form
         return m.Success && m.Groups[1].Value == "Air";
     }
 
+    private static int GetCommandValue(UnitTemplate unit)
+    {
+        if (unit?.type != "TACOM") return 0;
+
+        Match m = CommandValuePattern.Match(unit.unit_stats ?? "");
+        if (m.Success) return int.Parse(m.Groups[1].Value);
+
+        return 0;
+    }
+
     private static bool SupportsDesant(UnitTemplate unit) => IsVehicle(unit);
 
     private void renameToolStripMenuItem_Click(object sender, EventArgs e) => RenameSelectedNode();
@@ -898,6 +909,7 @@ public partial class ArmyBuilder : Form
     {
         int totalPoints = 0;
         int totalTacoms = 0;
+        int totalCommand = 0;
 
         void Walk(TreeNodeCollection nodes)
         {
@@ -917,7 +929,10 @@ public partial class ArmyBuilder : Form
 
                     // Shh, these are official rules
                     if (entry.Unit.type == "TACOM" && !entry.Unit.keywords.Contains("Reserve"))
+                    {
                         totalTacoms++;
+                        totalCommand += GetCommandValue(entry.Unit);
+                    }
                 }
 
                 if (node.Nodes.Count > 0)
@@ -928,7 +943,7 @@ public partial class ArmyBuilder : Form
         Walk(activeArmyTree.Nodes);
 
         pointsLabel.Text = $"Points {totalPoints:000}/{maxPoints:000}";
-        tacomLabel.Text = $"TACOMs: {totalTacoms}/{RequiredTacoms}";
+        tacomLabel.Text = $"TACOMs: {totalTacoms}/{RequiredTacoms} – {totalCommand}C";
 
         pointsLabel.ForeColor = totalPoints > maxPoints ? Color.Red : SystemColors.ControlText;
         tacomLabel.ForeColor = totalTacoms < RequiredTacoms ? Color.Red : SystemColors.ControlText;

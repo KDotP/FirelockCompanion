@@ -414,14 +414,13 @@ partial class ArmyBuilder
         // tacomLabel
         // 
         tacomLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        tacomLabel.AutoSize = true;
         tacomLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tacomLabel.Location = new Point(382, -2);
+        tacomLabel.Location = new Point(312, -1);
         tacomLabel.Name = "tacomLabel";
-        tacomLabel.Size = new Size(122, 25);
+        tacomLabel.Size = new Size(192, 25);
         tacomLabel.TabIndex = 2;
-        tacomLabel.Text = "TACOMS: 0/X";
-        tacomLabel.TextAlign = ContentAlignment.MiddleRight;
+        tacomLabel.Text = "TACOMS: 0/X – 0C";
+        tacomLabel.TextAlign = ContentAlignment.TopRight;
         // 
         // label1
         // 
