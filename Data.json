@@ -74,7 +74,8 @@
     "Group (X)": "Internal keyword. Has an embark weight of X. You probably shouldn't see this unless you're editing the data.",
     "Desant (X)": "This unit has an altered max number of desanting units.",
     "Dummy": "Dummies are fake unit markers. Dummies are not real units and cannot do any actions a real unit can do. Destroyed on hit, can move as far as you want, but costs a command token to move as normal.\nCan be moved in a brigade move, but does not count towards the brigade limit. Dummies may call a brigade that affects only other dummies.",
-    "Reserve": "This TACOM unit does not count towards your TACOM total."
+    "Reserve": "This TACOM unit does not count towards your TACOM total.",
+    "Horseback":  "This unit cannot embark or desant. They may let you pet their horse if you ask, though."
   },
   "formats": {
     "The Federal States Army": {
@@ -214,7 +215,7 @@
         "type": "Infantry",
         "cost": 10,
         "unit_stats": "Inf (S), H2, S24\", M8\", Q2, T1/1/1-",
-        "keywords": [ "Fearless", "NBC", "Squad" ],
+        "keywords": [ "Fearless", "NBC", "Squad", "Horseback" ],
         "bonus_traits": "May not embark or desant.",
         "weapons": [
           {

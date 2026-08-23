@@ -1033,6 +1033,13 @@ public partial class ArmyBuilder : Form
                         // Status is temporarily cleared here, but synced to its children at the end of the method
                         entry.Status = EmbarkStatus.None;
                     }
+                    else if (entry.Unit.keywords.Contains("Horseback"))
+                    {
+                        // Santagria back at it again with another exception case
+                        entry.HasCarrierAbove = false;
+                        entry.HasDesantCarrierAbove = false;
+                        entry.Status = EmbarkStatus.None;
+                    }
                     else if (vehicleNode != null)
                     {
                         passengerNodes.Add(child);

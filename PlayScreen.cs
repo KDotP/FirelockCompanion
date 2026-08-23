@@ -730,6 +730,12 @@ public partial class PlayScreen : Form
                         entry.HasDesantCarrierAbove = false;
                         entry.Status = EmbarkStatus.None;
                     }
+                    else if (entry.Unit.keywords.Contains("Horseback"))
+                    {
+                        entry.HasCarrierAbove = false;
+                        entry.HasDesantCarrierAbove = false;
+                        entry.Status = EmbarkStatus.None;
+                    }
                     else if (vehicleNode != null)
                     {
                         passengerNodes.Add(child);
