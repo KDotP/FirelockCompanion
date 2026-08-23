@@ -3,9 +3,7 @@
 
 “Federal command, however well trained or experienced, has always been second to the Rygoles. Their shared minds move faster than bullets. Food, fuel, ammo, spare parts—no metal soldier has to wonder when their next supply drop is.
 
-If either of its self-destruct modules had functioned, they could have stopped us from ever closing the gap. But fate has an odd humor.
-
-Some scouts found one of those tentacled metal bastards hidden in the forest after a battle. An engineering team ripped it from the ground and brought it home. Its eyes watched them the whole time, but they were smart enough to clip the antennas before loading it up.
+Some scouts found one of those tentacled metal bastards hidden in the forest after a battle, both of its self-destruct modules fried. An engineering team ripped it from the ground and brought it home. Its eyes watched them the whole time, but they were smart enough to clip the antennas before loading it up.
 
 When we hooked it up, it seemed curious, but didn’t even hesitate when we fed a fabricated combat scenario. Pulled nearby assets, charted a path for the cargo trucks, distributed infantry between carriers. Planned everything except when to pull the trigger. It’s no Rygonet, but through time and trial, we will finally level the playing field.”
 
