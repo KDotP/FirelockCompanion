@@ -252,7 +252,7 @@ public partial class PlayScreen : Form
             List<string> weaponLines = new List<string>();
             foreach (var w in unit.weapons)
             {
-                string wText = $"{w.name} {w.weapon_stats}";
+                string wText = $"{w.name} — {w.weapon_stats}";
                 if (w.keywords != null && w.keywords.Count > 0) wText += $" [{string.Join(", ", w.keywords)}]";
                 weaponLines.Add(wText);
 

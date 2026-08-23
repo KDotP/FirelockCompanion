@@ -37,7 +37,10 @@ partial class ArmyBuilder
         allUnitsSplit = new SplitContainer();
         activeArmySplit = new SplitContainer();
         playButton = new Button();
+        quickSaveButton = new Button();
         saveButton = new Button();
+        saveContextMenu = new ContextMenuStrip(components);
+        quickSaveToolStripMenuItem = new ToolStripMenuItem();
         reformatButton = new Button();
         removeButton = new Button();
         renameButton = new Button();
@@ -59,8 +62,6 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
-        saveContextMenu = new ContextMenuStrip(components);
-        quickSaveToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -73,6 +74,7 @@ partial class ArmyBuilder
         activeArmySplit.Panel1.SuspendLayout();
         activeArmySplit.Panel2.SuspendLayout();
         activeArmySplit.SuspendLayout();
+        saveContextMenu.SuspendLayout();
         GroupManager.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)availableUnitsSplit).BeginInit();
         availableUnitsSplit.Panel1.SuspendLayout();
@@ -83,7 +85,6 @@ partial class ArmyBuilder
         availableUnitsSubSplit.Panel2.SuspendLayout();
         availableUnitsSubSplit.SuspendLayout();
         availableUnitsMenu.SuspendLayout();
-        saveContextMenu.SuspendLayout();
         SuspendLayout();
         // 
         // initalSplit
@@ -180,6 +181,7 @@ partial class ArmyBuilder
         // 
         activeArmySplit.Panel1.BackColor = SystemColors.ControlLight;
         activeArmySplit.Panel1.Controls.Add(playButton);
+        activeArmySplit.Panel1.Controls.Add(quickSaveButton);
         activeArmySplit.Panel1.Controls.Add(saveButton);
         activeArmySplit.Panel1.Controls.Add(reformatButton);
         activeArmySplit.Panel1.Controls.Add(removeButton);
@@ -198,26 +200,52 @@ partial class ArmyBuilder
         // 
         playButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         playButton.BackColor = SystemColors.ButtonFace;
-        playButton.Location = new Point(414, -2);
+        playButton.Location = new Point(449, -2);
         playButton.Name = "playButton";
-        playButton.Size = new Size(90, 27);
+        playButton.Size = new Size(55, 27);
         playButton.TabIndex = 6;
         playButton.Text = "Play";
         playButton.UseVisualStyleBackColor = false;
         playButton.Click += playButton_Click;
+        // 
+        // quickSaveButton
+        // 
+        quickSaveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        quickSaveButton.BackColor = Color.PaleGreen;
+        quickSaveButton.Enabled = false;
+        quickSaveButton.Location = new Point(327, -2);
+        quickSaveButton.Name = "quickSaveButton";
+        quickSaveButton.Size = new Size(55, 27);
+        quickSaveButton.TabIndex = 5;
+        quickSaveButton.Text = "Save";
+        quickSaveButton.UseVisualStyleBackColor = false;
+        quickSaveButton.Click += quickSaveButton_Click;
         // 
         // saveButton
         // 
         saveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         saveButton.BackColor = Color.PaleGreen;
         saveButton.ContextMenuStrip = saveContextMenu;
-        saveButton.Location = new Point(324, -2);
+        saveButton.Location = new Point(388, -2);
         saveButton.Name = "saveButton";
-        saveButton.Size = new Size(84, 27);
+        saveButton.Size = new Size(55, 27);
         saveButton.TabIndex = 5;
-        saveButton.Text = "Save";
+        saveButton.Text = "Save As";
         saveButton.UseVisualStyleBackColor = false;
         saveButton.Click += saveButton_Click;
+        // 
+        // saveContextMenu
+        // 
+        saveContextMenu.Items.AddRange(new ToolStripItem[] { quickSaveToolStripMenuItem });
+        saveContextMenu.Name = "saveContextMenu";
+        saveContextMenu.Size = new Size(133, 26);
+        // 
+        // quickSaveToolStripMenuItem
+        // 
+        quickSaveToolStripMenuItem.Name = "quickSaveToolStripMenuItem";
+        quickSaveToolStripMenuItem.Size = new Size(132, 22);
+        quickSaveToolStripMenuItem.Text = "Quick Save";
+        quickSaveToolStripMenuItem.Click += quickSaveToolStripMenuItem_Click;
         // 
         // reformatButton
         // 
@@ -473,19 +501,6 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
-        // saveContextMenu
-        // 
-        saveContextMenu.Items.AddRange(new ToolStripItem[] { quickSaveToolStripMenuItem });
-        saveContextMenu.Name = "saveContextMenu";
-        saveContextMenu.Size = new Size(133, 26);
-        // 
-        // quickSaveToolStripMenuItem
-        // 
-        quickSaveToolStripMenuItem.Name = "quickSaveToolStripMenuItem";
-        quickSaveToolStripMenuItem.Size = new Size(132, 22);
-        quickSaveToolStripMenuItem.Text = "Quick Save";
-        quickSaveToolStripMenuItem.Click += quickSaveToolStripMenuItem_Click;
-        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -510,6 +525,7 @@ partial class ArmyBuilder
         activeArmySplit.Panel2.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)activeArmySplit).EndInit();
         activeArmySplit.ResumeLayout(false);
+        saveContextMenu.ResumeLayout(false);
         GroupManager.ResumeLayout(false);
         availableUnitsSplit.Panel1.ResumeLayout(false);
         availableUnitsSplit.Panel1.PerformLayout();
@@ -521,7 +537,6 @@ partial class ArmyBuilder
         ((System.ComponentModel.ISupportInitialize)availableUnitsSubSplit).EndInit();
         availableUnitsSubSplit.ResumeLayout(false);
         availableUnitsMenu.ResumeLayout(false);
-        saveContextMenu.ResumeLayout(false);
         ResumeLayout(false);
     }
 
@@ -558,4 +573,5 @@ partial class ArmyBuilder
     private Button backToMenuButton;
     private ContextMenuStrip saveContextMenu;
     private ToolStripMenuItem quickSaveToolStripMenuItem;
+    private Button quickSaveButton;
 }

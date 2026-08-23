@@ -141,6 +141,7 @@ namespace FirelockCompanion
         public string ArmyName { get; set; }
         public string FactionName { get; set; }
         public int MaxPoints { get; set; }
+        public string ExistingSaveName { get; set; }
         public List<SavedGroup> Groups { get; set; } = new List<SavedGroup>();
     }
 

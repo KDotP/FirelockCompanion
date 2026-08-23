@@ -749,7 +749,7 @@ public partial class ArmyBuilder : Form
             List<string> weaponLines = new List<string>();
             foreach (var w in unit.weapons)
             {
-                string wText = $"{w.name} {w.weapon_stats}";
+                string wText = $"{w.name} — {w.weapon_stats}";
                 if (w.keywords != null && w.keywords.Count > 0) wText += $" [{string.Join(", ", w.keywords)}]";
                 weaponLines.Add(wText);
 
@@ -1660,7 +1660,8 @@ public partial class ArmyBuilder : Form
         {
             ArmyName = armyName,
             FactionName = factionNameLabel.Text,
-            MaxPoints = maxPoints
+            MaxPoints = maxPoints,
+            ExistingSaveName = previousSaveName // Can be null
         };
 
         foreach (TreeNode groupNode in activeArmyTree.Nodes)
@@ -1723,6 +1724,7 @@ public partial class ArmyBuilder : Form
         string jsonOutput = System.Text.Json.JsonSerializer.Serialize(saveData, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(filePath, jsonOutput);
 
+        quickSaveButton.Enabled = true; // Unlock quick save once save slot is established
         MessageBox.Show($"Army saved successfully as:\n{customFileName}", "Save Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
@@ -1748,6 +1750,13 @@ public partial class ArmyBuilder : Form
             armyNameLabel.Text = armyName;
             maxPoints = saveData.MaxPoints;
             nextUnitNumber = 1;
+
+            // Restore old save name when loading
+            if (saveData.ExistingSaveName != null)
+            {
+                previousSaveName = saveData.ExistingSaveName;
+                quickSaveButton.Enabled = true;
+            }
 
             foreach (var savedGroup in saveData.Groups)
             {
@@ -1930,7 +1939,9 @@ public partial class ArmyBuilder : Form
         this.Close();
     }
 
-    private void quickSaveToolStripMenuItem_Click(object sender, EventArgs e)
+    private void quickSaveToolStripMenuItem_Click(object sender, EventArgs e) => quickSaveButton_Click(sender, e);
+
+    private void quickSaveButton_Click(object sender, EventArgs e)
     {
         if (previousSaveName == null)
         {
