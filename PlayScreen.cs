@@ -172,16 +172,19 @@ public partial class PlayScreen : Form
         // Custom content loader
         try
         {
-            string customString = System.IO.File.ReadAllText("Custom_Content.json") ?? "null";
-            if (customString != "null")
+            string[] customContentFiles = Directory.GetFiles(Path.Combine(AppContext.BaseDirectory, "Custom Content"));
+            for (int i = 0; i < customContentFiles.Length; i++)
             {
-                GameData customData = System.Text.Json.JsonSerializer.Deserialize<GameData>(customString);
-                ruleset.Merge(customData);
+                if (!customContentFiles[i].EndsWith(".json"))
+                    continue;
+                string customString = System.IO.File.ReadAllText(customContentFiles[i]) ?? "null";
+
+                if (customString != "null")
+                {
+                    GameData customData = System.Text.Json.JsonSerializer.Deserialize<GameData>(customString);
+                    ruleset.Merge(customData);
+                }
             }
-        }
-        catch (FileNotFoundException ex)
-        {
-            // Ignore if no file
         }
         catch (Exception ex)
         {
@@ -648,8 +651,6 @@ public partial class PlayScreen : Form
         return m.Success && m.Groups[1].Value == "Air";
     }
 
-    private static bool SupportsDesant(UnitTemplate unit) => IsVehicle(unit);
-
     private void RecalculateEmbarkState()
     {
         foreach (TreeNode groupNode in activeArmyTree.Nodes)
@@ -717,7 +718,7 @@ public partial class PlayScreen : Form
                     FinalizeVehicle();
                     vehicleNode = child;
                     capacity = GetPcCapacity(entry.Unit);
-                    desantSupported = SupportsDesant(entry.Unit);
+                    desantSupported = IsVehicle(entry.Unit);
                     passengerNodes = new List<TreeNode>();
                     entry.HasCarrierAbove = false;
                     entry.HasDesantCarrierAbove = false;

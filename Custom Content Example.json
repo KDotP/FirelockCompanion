@@ -1,0 +1,70 @@
+{
+  "keywords": {
+    "Custom Content": "For formatting, match the Data.json formatting structure. All factions also need a format entry.",
+    "Custom Keyword": "This keyword does not add any functionality. If you're seeing it, you probably still have the example module enabled.",
+    "Custom Format": "Format is what the app uses for naming groups and files. See data.json for how to format. Reminder: a faction does not exist unless it has a format entry."
+  },
+  "formats": {
+    "Example Army": {
+      "group_name": "Group X",
+      "save_name": "exam"
+    }
+  },
+  "factions": {
+    "Example Army": [
+      {
+        "id": "exam_ref",
+        "name": "Alfa Command Infantry \"Ref\"",
+        "subname": "Command Reference",
+        "type": "TACOM",
+        "cost": 0,
+        "unit_stats": "Inf, H1, S24\", M5\", Q3, T1+/1/1, C2",
+        "keywords": [ "Horseback", "Custom Keyword" ],
+        "weapons": [
+          {
+            "name": "Small Pew Pew Gun",
+            "weapon_stats": "All, R12\", A4+/5+, S1/1+, D4",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Hand-Held Rocket Pod",
+            "weapon_stats": "Inf/Vec, R22\", A6+/5+, S4/4, D4, Ammo 1",
+            "keywords": [ "Slow Round", "Defensive CC" ]
+          }
+        ]
+      },
+      {
+        "id": "exam_inf",
+        "name": "Bravo Muster Infantry",
+        "subname": "Exmaple Cheap Infantry",
+        "type": "Infantry",
+        "cost": 5,
+        "unit_stats": "Inf, H1, S6\", M5\", Q2, T1/1-/1-",
+        "keywords": [ "Fearless", "Example Keyword" ],
+        "weapons": [
+          {
+            "name": "Small Armslop",
+            "weapon_stats": "All, R8\", A4+/5+, S1/1, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "\"The Easy Way Out\"",
+            "weapon_stats": "R*\", A*, D1, Ammo 1",
+            "keywords": [ ],
+            "ammos": [
+              {
+                "name": "The Quick Way",
+                "ammo_stats": "Inf, S20"
+              },
+              {
+                "name": "Go Down Gambling",
+                "ammo_stats": "Inf, S1+/1+",
+                "keywords": [ "Ignore Cover (2)" ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

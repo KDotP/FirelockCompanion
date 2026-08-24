@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FirelockCompanion;
 
@@ -82,16 +83,19 @@ public partial class ArmyBuilder : Form
         // Custom content loader
         try
         {
-            string customString = System.IO.File.ReadAllText("Custom_Content.json") ?? "null";
-            if (customString != "null")
+            string[] customContentFiles = Directory.GetFiles(Path.Combine(AppContext.BaseDirectory, "Custom Content"));
+            for (int i = 0; i < customContentFiles.Length; i++)
             {
-                GameData customData = System.Text.Json.JsonSerializer.Deserialize<GameData>(customString);
-                ruleset.Merge(customData);
+                if (!customContentFiles[i].EndsWith(".json"))
+                    continue;
+                string customString = System.IO.File.ReadAllText(customContentFiles[i]) ?? "null";
+
+                if (customString != "null")
+                {
+                    GameData customData = System.Text.Json.JsonSerializer.Deserialize<GameData>(customString);
+                    ruleset.Merge(customData);
+                }
             }
-        }
-        catch (FileNotFoundException ex)
-        {
-            // Ignore if no file
         }
         catch (Exception ex)
         {
