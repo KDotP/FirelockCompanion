@@ -86,6 +86,8 @@ public partial class ArmyBuilder : Form
             string[] customContentFiles = Directory.GetFiles(Path.Combine(AppContext.BaseDirectory, "Custom Content"));
             for (int i = 0; i < customContentFiles.Length; i++)
             {
+                if (customContentFiles[i].ToLower().Contains("disabled"))
+                    continue;
                 if (!customContentFiles[i].EndsWith(".json"))
                     continue;
                 string customString = System.IO.File.ReadAllText(customContentFiles[i]) ?? "null";
