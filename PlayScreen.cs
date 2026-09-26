@@ -913,7 +913,7 @@ public partial class PlayScreen : Form
                 if (isDepleted) continue;
 
                 // You'll never believe this, but tercio exception
-                if (child.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios") continue;
+                if (entry.Unit.name == "Tercios") continue; // Exclude tercio parent
                 pointsTotal += entry.Unit.cost;
 
                 int commandValue = GetCommandValue(entry.Unit);
