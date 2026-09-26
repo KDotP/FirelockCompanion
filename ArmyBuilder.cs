@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FirelockCompanion;
 

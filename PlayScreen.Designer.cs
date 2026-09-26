@@ -43,6 +43,7 @@
             unitInfoText = new RichTextBox();
             backToMenuButton = new Button();
             detailsTextBox = new RichTextBox();
+            currentArmyValueLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -155,6 +156,7 @@
             // activeArmyContainer.Panel1
             // 
             activeArmyContainer.Panel1.BackColor = SystemColors.ControlLight;
+            activeArmyContainer.Panel1.Controls.Add(currentArmyValueLabel);
             activeArmyContainer.Panel1.Controls.Add(ActiveArmy);
             // 
             // activeArmyContainer.Panel2
@@ -272,6 +274,18 @@
             detailsTextBox.TabIndex = 0;
             detailsTextBox.Text = "Unit/Keyword info will show up here! (You can also resize this menu)";
             // 
+            // currentArmyValueLabel
+            // 
+            currentArmyValueLabel.Anchor = AnchorStyles.Top;
+            currentArmyValueLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            currentArmyValueLabel.ForeColor = SystemColors.ControlDarkDark;
+            currentArmyValueLabel.Location = new Point(313, -1);
+            currentArmyValueLabel.Name = "currentArmyValueLabel";
+            currentArmyValueLabel.Size = new Size(191, 25);
+            currentArmyValueLabel.TabIndex = 2;
+            currentArmyValueLabel.Text = "Current Value: XXX";
+            currentArmyValueLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // PlayScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -323,5 +337,6 @@
         private RichTextBox detailsTextBox;
         private RichTextBox unitInfoText;
         private Button backToMenuButton;
+        private Label currentArmyValueLabel;
     }
 }

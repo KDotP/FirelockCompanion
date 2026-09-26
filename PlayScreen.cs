@@ -894,12 +894,13 @@ public partial class PlayScreen : Form
                 if (child.Tag is ActiveUnitEntry entry)
                     child.Text = BuildFullNodeText(entry, child);
 
-        UpdateCommandPointsLabel();
+        UpdateArmyLabels();
     }
 
-    private void UpdateCommandPointsLabel()
+    private void UpdateArmyLabels()
     {
-        int total = 0;
+        int commandTotal = 0;
+        int pointsTotal = 0;
 
         foreach (TreeNode groupNode in activeArmyTree.Nodes)
         {
@@ -907,19 +908,25 @@ public partial class PlayScreen : Form
             {
                 if (child.Tag is not ActiveUnitEntry entry) continue;
 
-                int commandValue = GetCommandValue(entry.Unit);
-                if (commandValue == 0) continue;
-
                 int maxDep = GetMaxDepletions(entry.Unit);
                 bool isDepleted = maxDep > 0 && entry.DepletionsTaken >= maxDep;
                 if (isDepleted) continue;
 
-                total += commandValue;
+                // You'll never believe this, but tercio exception
+                if (child.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios") continue;
+                pointsTotal += entry.Unit.cost;
+
+                int commandValue = GetCommandValue(entry.Unit);
+                if (commandValue == 0) continue;
+
+                commandTotal += commandValue;
             }
         }
 
-        commandPointsLabel.Text = $"Max Command: {total}";
-        if (total <= 0)
+        currentArmyValueLabel.Text = $"Army Value: {pointsTotal}";
+
+        commandPointsLabel.Text = $"Max Command: {commandTotal}";
+        if (commandTotal <= 0)
         {
             commandPointsLabel.ForeColor = Color.Firebrick;
         }
