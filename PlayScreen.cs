@@ -12,7 +12,7 @@ public partial class PlayScreen : Form
 {
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ReturnToMenu { get; private set; } = false;
-    public bool Verbose = false;
+    public bool Verbose = true;
 
     // Core Game Data caches
     private List<UnitTemplate> factionUnits;
@@ -262,21 +262,46 @@ public partial class PlayScreen : Form
             List<string> weaponLines = new List<string>();
             foreach (var w in unit.weapons)
             {
-                string wText = $"{w.name} — {w.weapon_stats}";
-                if (w.keywords != null && w.keywords.Count > 0) wText += $" [{string.Join(", ", w.keywords)}]";
-                weaponLines.Add(wText);
-
-                if (w.ammos != null)
+                if (!Verbose)
                 {
-                    foreach (var a in w.ammos)
+                    string wText = $"{w.name} — {w.weapon_stats}";
+                    if (w.keywords != null && w.keywords.Count > 0) wText += $" [{string.Join(", ", w.keywords)}]";
+                    weaponLines.Add(wText);
+
+                    if (w.ammos != null)
                     {
-                        string aText = $"  -> {a.name} {a.ammo_stats}";
-                        if (a.keywords != null && a.keywords.Count > 0) aText += $" [{string.Join(", ", a.keywords)}]";
-                        weaponLines.Add(aText);
+                        foreach (var a in w.ammos)
+                        {
+                            string aText = $"  -> {a.name} {a.ammo_stats}";
+                            if (a.keywords != null && a.keywords.Count > 0) aText += $" [{string.Join(", ", a.keywords)}]";
+                            weaponLines.Add(aText);
+                        }
+                    }
+                }
+                // Yes, there's already a verbose check, but formatting
+                else
+                {
+                    string weaponStats = Verbose
+                        ? Utilities.ToVerboseWeaponStats(w.weapon_stats, w.keywords)
+                        : w.weapon_stats;
+                    string wText = $"{w.name} — {weaponStats}\n";
+                    if (w.keywords != null && w.keywords.Count > 0) wText += $" [{string.Join(", ", w.keywords)}]\n";
+                    weaponLines.Add(wText);
+
+                    if (w.ammos != null)
+                    {
+                        foreach (var a in w.ammos)
+                        {
+                            string ammoStats = Verbose
+                                ? Utilities.ToVerboseWeaponStats(a.ammo_stats, a.keywords)
+                                : a.ammo_stats;
+                            string aText = $"  -> {a.name} {ammoStats}";
+                            if (a.keywords != null && a.keywords.Count > 0) aText += $" [{string.Join(", ", a.keywords)}]\n";
+                            weaponLines.Add(aText);
+                        }
                     }
                 }
             }
-            parts.Add("WEAPONS:\r\n" + string.Join("\r\n", weaponLines));
         }
 
         // Gather keywords

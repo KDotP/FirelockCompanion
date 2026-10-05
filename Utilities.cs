@@ -140,5 +140,97 @@ namespace FirelockCompanion
 
             return string.Join("\n", formattedTokens);
         }
+
+        // AI programmed section. I'm expecting some errors here, but I think I've fixed the obvious issues.
+        public static string ToVerboseWeaponStats(string conciseStats, IEnumerable<string> keywords = null)
+        {
+            if (string.IsNullOrWhiteSpace(conciseStats))
+                return string.Empty;
+
+            bool hasShapedCharge = keywords != null &&
+                keywords.Any(k => !string.IsNullOrEmpty(k) &&
+                    k.IndexOf("Shaped Charge", StringComparison.OrdinalIgnoreCase) >= 0);
+
+            string[] tokens = conciseStats.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            List<string> formattedTokens = new List<string>();
+
+            foreach (string rawToken in tokens)
+            {
+                string token = rawToken.Trim();
+                if (string.IsNullOrEmpty(token)) continue;
+
+                // R8" -> 8" Range. This also handles variable/split ranges such as R12-60" and R12-∞".
+                Match rangeMatch = Regex.Match(token, @"^R(.+)$", RegexOptions.IgnoreCase);
+                if (rangeMatch.Success && rangeMatch.Groups[1].Value.EndsWith("\""))
+                {
+                    formattedTokens.Add($"{rangeMatch.Groups[1].Value} Range");
+                    continue;
+                }
+
+                // A4+/5+ -> 4+ Stationary Accuracy, 5+ Moving Accuracy.
+                Match accuracyPairMatch = Regex.Match(token, @"^A([^/]+)/([^/]+)$", RegexOptions.IgnoreCase);
+                if (accuracyPairMatch.Success)
+                {
+                    string stationary = accuracyPairMatch.Groups[1].Value;
+                    string moving = accuracyPairMatch.Groups[2].Value;
+                    formattedTokens.Add($"{stationary} Stationary Accuracy");
+                    formattedTokens.Add($"{moving} Moving Accuracy");
+                    continue;
+                }
+
+                // A3+ / A++ -> 3+ Accuracy / ++ Accuracy. Preserve special A* unchanged.
+                Match accuracySingleMatch = Regex.Match(token, @"^A([0-9+*xX-]+)$", RegexOptions.IgnoreCase);
+                if (accuracySingleMatch.Success && !token.Equals("A*", StringComparison.OrdinalIgnoreCase))
+                {
+                    string accuracy = accuracySingleMatch.Groups[1].Value;
+                    formattedTokens.Add($"{accuracy} Accuracy");
+                    continue;
+                }
+
+                // S1/1+ -> Beyond/Below Half Range, unless Shaped Charge changes the meaning of the pair.
+                Match strengthPairMatch = Regex.Match(token, @"^S([^/]+)/([^/]+)$", RegexOptions.IgnoreCase);
+                if (strengthPairMatch.Success)
+                {
+                    string first = strengthPairMatch.Groups[1].Value;
+                    string second = strengthPairMatch.Groups[2].Value;
+
+                    if (hasShapedCharge)
+                    {
+                        formattedTokens.Add($"{first} Strength Against Armor");
+                        formattedTokens.Add($"{second} Strength Against Other");
+                    }
+                    else
+                    {
+                        formattedTokens.Add($"{first} Strength Beyond Half Range");
+                        formattedTokens.Add($"{second} Strength Below Half Range");
+                    }
+
+                    continue;
+                }
+
+                // Single Strength values are unambiguous as a single stat. Preserve bracketed variable Strength.
+                Match strengthSingleMatch = Regex.Match(token, @"^S(?!\[)(.+)$", RegexOptions.IgnoreCase);
+                if (strengthSingleMatch.Success)
+                {
+                    string strength = strengthSingleMatch.Groups[1].Value;
+                    formattedTokens.Add($"{strength} Strength");
+                    continue;
+                }
+
+                // D1 -> 1 Die.
+                Match diceMatch = Regex.Match(token, @"^D(.+)$", RegexOptions.IgnoreCase);
+                if (diceMatch.Success)
+                {
+                    string dice = diceMatch.Groups[1].Value;
+                    formattedTokens.Add($"{dice} Die");
+                    continue;
+                }
+
+                // Targeting types, Ammo counts, A*, S[D3]/S[D6], and any future unknown tokens remain unchanged.
+                formattedTokens.Add(token);
+            }
+
+            return string.Join(", ", formattedTokens);
+        }
     }
 }
