@@ -12,6 +12,7 @@ public partial class PlayScreen : Form
 {
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ReturnToMenu { get; private set; } = false;
+    public bool Verbose = false;
 
     // Core Game Data caches
     private List<UnitTemplate> factionUnits;
@@ -244,7 +245,11 @@ public partial class PlayScreen : Form
         // Core stats
         parts.Add($"{unit.name} — \"{entry.CustomName}\"");
         if (!string.IsNullOrEmpty(unit.subname)) parts.Add(unit.subname);
-        if (!string.IsNullOrEmpty(unit.unit_stats)) parts.Add(unit.unit_stats);
+        if (!string.IsNullOrEmpty(unit.unit_stats))
+        {
+            if (!Verbose) parts.Add(unit.unit_stats);
+            else parts.Add(Utilities.ToVerbose(unit.unit_stats));
+        }
         if (!string.IsNullOrEmpty(unit.bonus_traits)) parts.Add(FormatDescription(unit.bonus_traits));
         if (unit.keywords != null && unit.keywords.Count > 0)
         {
