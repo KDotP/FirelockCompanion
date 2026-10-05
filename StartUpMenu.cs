@@ -24,6 +24,7 @@ namespace FirelockCompanion
                 if (popup.ShowDialog() == DialogResult.OK)
                 {
                     ArmyBuilder armyBuilder = new ArmyBuilder();
+                    armyBuilder.Verbose = verboseCheckbox.Checked;
                     armyBuilder.SelectFaction(popup.SelectedFaction, popup.ArmyName, popup.SelectedPoints);
 
                     // Close if window closed, show menu if back is used
@@ -54,6 +55,8 @@ namespace FirelockCompanion
 
                     // Create the ArmyBuilder window
                     ArmyBuilder builderForm = new ArmyBuilder();
+
+                    builderForm.Verbose = verboseCheckbox.Checked;
 
                     // Ensure all UI elements are shown
                     builderForm.Show();
@@ -88,6 +91,8 @@ namespace FirelockCompanion
                     // Create the PlayScreen window
                     PlayScreen playScreen = new PlayScreen();
 
+                    playScreen.Verbose = verboseCheckbox.Checked;
+
                     // Ensure all UI elements are shown
                     playScreen.Show();
 
@@ -108,6 +113,11 @@ namespace FirelockCompanion
                     };
                 }
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

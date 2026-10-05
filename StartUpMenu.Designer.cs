@@ -35,6 +35,8 @@
             loadPlayButton = new Button();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            verboseCheckbox = new CheckBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -103,11 +105,32 @@
             label1.TabIndex = 5;
             label1.Text = "Firelock 198X\r\nby RifleInfantry";
             // 
+            // verboseCheckbox
+            // 
+            verboseCheckbox.AutoSize = true;
+            verboseCheckbox.Location = new Point(401, 279);
+            verboseCheckbox.Name = "verboseCheckbox";
+            verboseCheckbox.Size = new Size(15, 14);
+            verboseCheckbox.TabIndex = 6;
+            verboseCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(360, 261);
+            label2.Name = "label2";
+            label2.Size = new Size(88, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Beginner Mode";
+            label2.Click += label2_Click;
+            // 
             // StartUpMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(460, 304);
+            Controls.Add(label2);
+            Controls.Add(verboseCheckbox);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(loadPlayButton);
@@ -133,5 +156,7 @@
         private Button loadPlayButton;
         private PictureBox pictureBox1;
         private Label label1;
+        private CheckBox verboseCheckbox;
+        private Label label2;
     }
 }

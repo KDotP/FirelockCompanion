@@ -12,7 +12,7 @@ public partial class PlayScreen : Form
 {
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ReturnToMenu { get; private set; } = false;
-    public bool Verbose = true;
+    public bool Verbose = false;
 
     // Core Game Data caches
     private List<UnitTemplate> factionUnits;

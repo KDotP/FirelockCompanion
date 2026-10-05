@@ -7,7 +7,7 @@ public partial class ArmyBuilder : Form
 {
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool ReturnToMenu { get; private set; } = false;
-    public bool Verbose = true;
+    public bool Verbose = false;
 
     private static string armyName = "New Army";
     private string currentGroupFormat = "Group X";
