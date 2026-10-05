@@ -9,6 +9,17 @@ When we hooked it up, it seemed curious, but didn’t even hesitate when we fed 
 
 \- Rayleigh Irving, Federal Intelligence
 
+## Features
+
+- **Army Builder**: Beyond just tracking point usage, Firelock Companion also lists all unit stats, weapon stats, and keyword definitions! Gone are the days of searching through the books for what Saturating means. Also tracks command points, groups, embarking, desanting, and even towing!
+- **Army Player**: There's a dozen army builders out there, but Firelock Companion sets itself apart by allowing you to play the army in real time. Track each unit's live embark/desant/tow status, depletions, and names. Fully depleted command units even stop contributing max command.
+- **Beginner Mode**: Also called Verbose Mode, Beginner Mode automatically translates the difficult-to-understand unit stat lines into easily understandable English. No more wondering what A3+/4+ means!
+- **Saving, Loading, Sharing**: Your lists are safe on your computer, and they aren't going anywhere (except where you choose to send them). This means you can even send custom lists to friends using Firelock Companion!
+- **Custom Content Loading**: Play custom factions? Don't worry, Firelock Companion uniquely allows for full custom content loading, including custom keywords. Sharing you own custom armies is as simple as sharing the json file and putting it in the Custom Content folder.
+- *Custom Naming*: Firelock Companion supports custom everything, from unit nicknames to list names.
+- *Army Value Tracking*: Playing your list and wondering how much of your initial army remains? The army value tracker provides a convenient check.
+- *Smooth Menu Flow*: Move back and forth between the main menu, army builder, army player, back to the builder, back to player, then all the way back to the menu.
+
 ## Installation
 
 Firelock Companion is built and compiled into a single, easy to use .exe file (which you can trust blindly).
@@ -45,13 +56,14 @@ If you'd like something to be added, please open a new issue with the `enhanceme
 
 Contributions are always welcome!
 
-Note that most of this app was written over a frantic week where I had nothing else to do. The resulting code is so caustic that I'm sure it's been rejected from all but the ""free"" AI training data sets.
+Note that most of this app was mostly written over a single frantic week where I had nothing else to do. The resulting code is so caustic that I'm sure it's been rejected from all but the ""free"" AI training data sets.
 
-There's a healthy mix of some of the best coding I've ever done and "eh, good enough"s. Do not complain, do not hold reverence, just replace the line.
+There's a healthy mix of some of the best coding I've ever done and "eh, good enough"s. If you see something that needs changing, change it.
 
 ## Acknowledgements
 
  - Thank you to RifleInfantry for developing Firelock 198X!
- - Support Firelock 198X's development [>here<](https://www.patreon.com/RifleInfantry)
- - You can download Firelock 198X's manuals [>here<](https://drekfortmdc.itch.io/firelock-198x-09-public)
- - Thank you to everyone using Firelock Companion! It's fun to see people using it and complaining about missing features. That may sound sarcastic, but it's not.
+    - Support Firelock 198X's development [>here<](https://www.patreon.com/RifleInfantry)
+    - You can download Firelock 198X's manuals [>here<](https://drekfortmdc.itch.io/firelock-198x-09-public)
+ - Thank you to everyone using Firelock Companion! I hope it helps make the game a little more approachable.
+ - The Felidae army which is included in the default Custom Content folder was developed by @mr.minigunthefox on Discord
