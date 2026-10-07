@@ -172,4 +172,16 @@ namespace FirelockCompanion
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<SavedUnit> TercioChildren { get; set; }
     }
+
+    public class CopiedUnitSnapshot
+    {
+        public TreeNode Node { get; }
+        public bool PreserveRelationshipState { get; }
+
+        public CopiedUnitSnapshot(TreeNode node, bool preserveRelationshipState)
+        {
+            Node = node;
+            PreserveRelationshipState = preserveRelationshipState;
+        }
+    }
 }

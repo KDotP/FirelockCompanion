@@ -37,6 +37,10 @@ public partial class ArmyBuilder : Form
 
     private int nextUnitNumber = 1;
 
+    // Copy paste management
+
+    private List<CopiedUnitSnapshot> copiedUnits = new();
+
     private record KeywordInfo(string Keyword, string Description);
     private TreeNode currentTargetGroup;
     private static readonly Color TargetGroupColor = Color.PaleGreen;
@@ -928,7 +932,7 @@ public partial class ArmyBuilder : Form
             return;
         }
 
-        ActiveUnitEntry entry = new ActiveUnitEntry(unit, $"Unit {nextUnitNumber++}");
+        ActiveUnitEntry entry = new ActiveUnitEntry(unit, GetNextDefaultUnitName());
 
         TreeNode unitNode = new TreeNode();
         unitNode.Tag = entry;
@@ -1317,13 +1321,277 @@ public partial class ArmyBuilder : Form
 
     private void activeArmyTree_KeyDown(object sender, KeyEventArgs e)
     {
-        if (activeArmyTree.LabelEdit) return; // don't hijack Delete/Backspace while actively typing a rename
+        if (activeArmyTree.LabelEdit) return; // don't hijack shortcuts while actively typing a rename
+
+        if (e.Control && e.KeyCode == Keys.C)
+        {
+            CopySelectedUnit();
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            return;
+        }
+
+        if (e.Control && e.KeyCode == Keys.V)
+        {
+            PasteCopiedUnit();
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            return;
+        }
+
+        if (e.Control && e.KeyCode == Keys.D)
+        {
+            DuplicateSelectedUnit();
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            return;
+        }
 
         if (e.KeyCode == Keys.Delete)
         {
             e.Handled = true;
+            e.SuppressKeyPress = true;
             RemoveSelectedNode();
         }
+    }
+
+    private TreeNode GetSelectedUnitNode()
+    {
+        TreeNode node = activeArmyTree.SelectedNode;
+        if (node?.Tag is not ActiveUnitEntry) return null;
+
+        // I have no problems with Tercios in gameplay, but I wish nothing but death for them in programming
+        if (node.Parent?.Tag is ActiveUnitEntry parentEntry && parentEntry.Unit.name == "Tercios")
+            return node.Parent;
+
+        return node;
+    }
+
+    private string GetNextDefaultUnitName()
+    {
+        while (true)
+        {
+            string candidate = $"Unit {nextUnitNumber}";
+            bool alreadyUsed = false;
+
+            foreach (TreeNode groupNode in activeArmyTree.Nodes)
+            {
+                foreach (TreeNode node in GetLogicalNodes(groupNode))
+                {
+                    if (node.Tag is ActiveUnitEntry entry &&
+                        string.Equals(entry.CustomName, candidate, StringComparison.OrdinalIgnoreCase))
+                    {
+                        alreadyUsed = true;
+                        break;
+                    }
+                }
+
+                if (alreadyUsed) break;
+            }
+
+            nextUnitNumber++;
+            if (!alreadyUsed) return candidate;
+        }
+    }
+
+    private static TreeNode CloneUnitSnapshot(TreeNode source)
+    {
+        if (source?.Tag is not ActiveUnitEntry sourceEntry) return null;
+
+        ActiveUnitEntry cloneEntry = new ActiveUnitEntry(sourceEntry.Unit, sourceEntry.CustomName)
+        {
+            Status = sourceEntry.Status,
+            IsTowed = sourceEntry.IsTowed
+        };
+
+        TreeNode clone = new TreeNode
+        {
+            Tag = cloneEntry,
+            Text = source.Text
+        };
+
+        foreach (TreeNode child in source.Nodes)
+        {
+            TreeNode clonedChild = CloneUnitSnapshot(child);
+            if (clonedChild != null)
+                clone.Nodes.Add(clonedChild);
+        }
+
+        return clone;
+    }
+
+    private bool HasCommittedRelationshipTo(TreeNode node, TreeNode possibleProvider)
+    {
+        if (node?.Tag is not ActiveUnitEntry entry) return false;
+        if (entry.RelationParentNode != possibleProvider) return false;
+
+        return entry.Status != EmbarkStatus.None || entry.IsTowed;
+    }
+
+    private List<TreeNode> GetCommittedRelationshipChildren(TreeNode provider)
+    {
+        if (provider?.Parent?.Tag as string != "GROUP")
+            return new List<TreeNode>();
+
+        TreeNode group = provider.Parent;
+        List<TreeNode> relatedNodes = new List<TreeNode>();
+
+        foreach (TreeNode node in group.Nodes)
+        {
+            if (HasCommittedRelationshipTo(node, provider))
+            {
+                relatedNodes.Add(node);
+                continue;
+            }
+
+            // TERCIOOOOOOOO
+            if (node.Tag is ActiveUnitEntry entry && entry.Unit.name == "Tercios" &&
+                node.Nodes.Cast<TreeNode>().Any(child => HasCommittedRelationshipTo(child, provider)))
+            {
+                relatedNodes.Add(node);
+            }
+        }
+
+        return relatedNodes;
+    }
+
+    private void CollectCopyNodes(TreeNode source, HashSet<TreeNode> nodesToCopy)
+    {
+        if (source == null || !nodesToCopy.Add(source)) return;
+
+        // Copy all embarked/desanted/towed children of this node, recursively
+        foreach (TreeNode relatedNode in GetCommittedRelationshipChildren(source))
+            CollectCopyNodes(relatedNode, nodesToCopy);
+    }
+
+    private TreeNode CloneUnitSubtreeWithFreshNames(TreeNode source, bool preserveRelationshipState)
+    {
+        if (source?.Tag is not ActiveUnitEntry sourceEntry) return null;
+
+        ActiveUnitEntry cloneEntry = new ActiveUnitEntry(sourceEntry.Unit, GetNextDefaultUnitName());
+
+        if (preserveRelationshipState)
+        {
+            cloneEntry.Status = sourceEntry.Status;
+            cloneEntry.IsTowed = sourceEntry.IsTowed;
+        }
+        else
+        {
+            cloneEntry.Status = EmbarkStatus.None;
+            cloneEntry.IsTowed = false;
+        }
+
+        TreeNode clone = new TreeNode
+        {
+            Tag = cloneEntry
+        };
+        clone.Text = BuildFullNodeText(cloneEntry, clone);
+
+        foreach (TreeNode child in source.Nodes)
+        {
+            TreeNode clonedChild = CloneUnitSubtreeWithFreshNames(child, preserveRelationshipState);
+            if (clonedChild != null)
+                clone.Nodes.Add(clonedChild);
+        }
+
+        return clone;
+    }
+
+    private void CopySelectedUnit()
+    {
+        TreeNode source = GetSelectedUnitNode();
+        if (source == null) return;
+
+        RecalculateAll();
+
+        var nodesToCopy = new HashSet<TreeNode>();
+        CollectCopyNodes(source, nodesToCopy);
+
+        if (source.Parent?.Tag as string != "GROUP")
+        {
+            copiedUnits = new List<CopiedUnitSnapshot>
+            {
+                new CopiedUnitSnapshot(CloneUnitSnapshot(source), false)
+            };
+            return;
+        }
+
+        copiedUnits = source.Parent.Nodes.Cast<TreeNode>()
+            .Where(nodesToCopy.Contains)
+            .Select(node => new CopiedUnitSnapshot(
+                CloneUnitSnapshot(node),
+                node != source))
+            .ToList();
+    }
+
+    private void ExpandCopiedNodes(IEnumerable<TreeNode> nodes)
+    {
+        foreach (TreeNode node in nodes)
+            node.ExpandAll();
+    }
+
+    private void PasteCopiedUnit()
+    {
+        if (copiedUnits.Count == 0 || currentTargetGroup == null) return;
+
+        List<TreeNode> pastedNodes = new List<TreeNode>();
+
+        foreach (CopiedUnitSnapshot snapshot in copiedUnits)
+        {
+            TreeNode pastedNode = CloneUnitSubtreeWithFreshNames(snapshot.Node, snapshot.PreserveRelationshipState);
+
+            if (pastedNode == null) continue;
+
+            currentTargetGroup.Nodes.Add(pastedNode);
+            pastedNodes.Add(pastedNode);
+        }
+
+        if (pastedNodes.Count == 0) return;
+
+        currentTargetGroup.Expand();
+        ExpandCopiedNodes(pastedNodes);
+        activeArmyTree.SelectedNode = pastedNodes[0];
+
+        RecalculateAll();
+    }
+
+    private void DuplicateSelectedUnit()
+    {
+        TreeNode source = GetSelectedUnitNode();
+        if (source == null || source.Parent == null || source.Parent.Tag as string != "GROUP") return;
+
+        RecalculateAll();
+
+        var nodesToCopy = new HashSet<TreeNode>();
+        CollectCopyNodes(source, nodesToCopy);
+
+        TreeNode parentGroup = source.Parent;
+        List<TreeNode> sourceBlock = parentGroup.Nodes.Cast<TreeNode>().Where(nodesToCopy.Contains).ToList();
+
+        if (sourceBlock.Count == 0) return;
+
+        // Insert the entire duplicate block after the LAST source relationship node to prevent infinite tercios (or anything else)
+        int insertIndex = parentGroup.Nodes.IndexOf(sourceBlock[sourceBlock.Count - 1]) + 1;
+        List<TreeNode> duplicateNodes = new List<TreeNode>();
+
+        foreach (TreeNode sourceNode in sourceBlock)
+        {
+            bool preserveRelationshipState = sourceNode != source;
+            TreeNode duplicateNode = CloneUnitSubtreeWithFreshNames(sourceNode, preserveRelationshipState);
+
+            if (duplicateNode == null) continue;
+
+            parentGroup.Nodes.Insert(insertIndex++, duplicateNode);
+            duplicateNodes.Add(duplicateNode);
+        }
+
+        if (duplicateNodes.Count == 0) return;
+
+        parentGroup.Expand();
+        ExpandCopiedNodes(duplicateNodes);
+        activeArmyTree.SelectedNode = duplicateNodes[0];
+
+        RecalculateAll();
     }
 
     private void newGroupButton_Click(object sender, EventArgs e)
@@ -1673,7 +1941,7 @@ public partial class ArmyBuilder : Form
                 foreach (UnitTemplate member in builder.SelectedTercioUnits)
                 {
                     // Give it a default name exactly like standard units get
-                    ActiveUnitEntry childEntry = new ActiveUnitEntry(member, $"Unit {nextUnitNumber++}");
+                    ActiveUnitEntry childEntry = new ActiveUnitEntry(member, GetNextDefaultUnitName());
 
                     TreeNode childNode = new TreeNode();
                     childNode.Tag = childEntry;
