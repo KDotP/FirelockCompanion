@@ -2290,4 +2290,52 @@ public partial class ArmyBuilder : Form
 
         SaveArmyToFile(FinalFileName);
     }
+
+    private void massRenameToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        using (MassRenameMenu renameDialog = new MassRenameMenu())
+        {
+            if (renameDialog.ShowDialog() == DialogResult.OK)
+            {
+                List<string> newNames = renameDialog.SelectedNames;
+                if (newNames == null || newNames.Count == 0) return;
+                
+                List<ActiveUnitEntry> targets = new List<ActiveUnitEntry>();
+
+                // Skip tercio parents >:(
+                foreach (TreeNode groupNode in activeArmyTree.Nodes)
+                {
+                    foreach (TreeNode node in GetLogicalNodes(groupNode))
+                    {
+                        if (node.Tag is ActiveUnitEntry entry && entry.Unit.name != "Tercios")
+                            targets.Add(entry);
+                    }
+                }
+
+                if (targets.Count == 0) return;
+
+
+                Random rng = new Random();
+                List<string> pool = new List<string>();
+                int cycle = 0; // Anything beyond 0 has a suffix
+
+                foreach (ActiveUnitEntry entry in targets)
+                {
+                    if (pool.Count == 0)
+                    {
+                        pool.AddRange(newNames);
+                        cycle++;
+                    }
+
+                    int index = rng.Next(pool.Count);
+                    string name = pool[index];
+                    pool.RemoveAt(index);
+
+                    entry.CustomName = cycle > 1 ? $"{name} ({cycle - 1})" : name; // I don't like this that much, change later??
+                }
+
+                RecalculateAll();
+            }
+        }
+    }
 }

@@ -62,6 +62,7 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
+        massRenameToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -333,29 +334,29 @@ partial class ArmyBuilder
         // 
         // GroupManager
         // 
-        GroupManager.Items.AddRange(new ToolStripItem[] { createNewGroupToolStripMenuItem, renameToolStripMenuItem, deleteToolStripMenuItem });
+        GroupManager.Items.AddRange(new ToolStripItem[] { createNewGroupToolStripMenuItem, renameToolStripMenuItem, deleteToolStripMenuItem, massRenameToolStripMenuItem });
         GroupManager.Name = "contextMenuStrip1";
-        GroupManager.Size = new Size(172, 70);
+        GroupManager.Size = new Size(181, 114);
         GroupManager.Text = "Group Manager";
         // 
         // createNewGroupToolStripMenuItem
         // 
         createNewGroupToolStripMenuItem.Name = "createNewGroupToolStripMenuItem";
-        createNewGroupToolStripMenuItem.Size = new Size(171, 22);
+        createNewGroupToolStripMenuItem.Size = new Size(180, 22);
         createNewGroupToolStripMenuItem.Text = "Create New Group";
         createNewGroupToolStripMenuItem.Click += createNewGroupToolStripMenuItem_Click;
         // 
         // renameToolStripMenuItem
         // 
         renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-        renameToolStripMenuItem.Size = new Size(171, 22);
+        renameToolStripMenuItem.Size = new Size(180, 22);
         renameToolStripMenuItem.Text = "Rename";
         renameToolStripMenuItem.Click += renameToolStripMenuItem_Click;
         // 
         // deleteToolStripMenuItem
         // 
         deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-        deleteToolStripMenuItem.Size = new Size(171, 22);
+        deleteToolStripMenuItem.Size = new Size(180, 22);
         deleteToolStripMenuItem.Text = "Delete";
         deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
         // 
@@ -500,6 +501,13 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
+        // massRenameToolStripMenuItem
+        // 
+        massRenameToolStripMenuItem.Name = "massRenameToolStripMenuItem";
+        massRenameToolStripMenuItem.Size = new Size(180, 22);
+        massRenameToolStripMenuItem.Text = "Mass Rename";
+        massRenameToolStripMenuItem.Click += massRenameToolStripMenuItem_Click;
+        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -573,4 +581,5 @@ partial class ArmyBuilder
     private ContextMenuStrip saveContextMenu;
     private ToolStripMenuItem quickSaveToolStripMenuItem;
     private Button quickSaveButton;
+    private ToolStripMenuItem massRenameToolStripMenuItem;
 }
