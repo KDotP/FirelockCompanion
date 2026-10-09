@@ -51,6 +51,7 @@ partial class ArmyBuilder
         createNewGroupToolStripMenuItem = new ToolStripMenuItem();
         renameToolStripMenuItem = new ToolStripMenuItem();
         deleteToolStripMenuItem = new ToolStripMenuItem();
+        massRenameToolStripMenuItem = new ToolStripMenuItem();
         availableUnitsSplit = new SplitContainer();
         newTercioButton = new Button();
         addUnitButton = new Button();
@@ -62,7 +63,6 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
-        massRenameToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -115,15 +115,15 @@ partial class ArmyBuilder
         // pointsLabel
         // 
         pointsLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        pointsLabel.AutoSize = true;
         pointsLabel.BackColor = Color.Transparent;
         pointsLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        pointsLabel.Location = new Point(862, 0);
+        pointsLabel.Location = new Point(822, 0);
         pointsLabel.Name = "pointsLabel";
-        pointsLabel.Size = new Size(152, 30);
+        pointsLabel.Size = new Size(192, 30);
         pointsLabel.TabIndex = 5;
         pointsLabel.Text = "Points 000/XXX";
         pointsLabel.TextAlign = ContentAlignment.TopRight;
+        pointsLabel.DoubleClick += pointsLabel_DoubleClick;
         // 
         // factionNameLabel
         // 
@@ -148,6 +148,7 @@ partial class ArmyBuilder
         armyNameLabel.Size = new Size(371, 30);
         armyNameLabel.TabIndex = 3;
         armyNameLabel.Text = "Unnamed Army";
+        armyNameLabel.DoubleClick += armyNameLabel_DoubleClick;
         // 
         // allUnitsSplit
         // 
@@ -336,29 +337,36 @@ partial class ArmyBuilder
         // 
         GroupManager.Items.AddRange(new ToolStripItem[] { createNewGroupToolStripMenuItem, renameToolStripMenuItem, deleteToolStripMenuItem, massRenameToolStripMenuItem });
         GroupManager.Name = "contextMenuStrip1";
-        GroupManager.Size = new Size(181, 114);
+        GroupManager.Size = new Size(172, 92);
         GroupManager.Text = "Group Manager";
         // 
         // createNewGroupToolStripMenuItem
         // 
         createNewGroupToolStripMenuItem.Name = "createNewGroupToolStripMenuItem";
-        createNewGroupToolStripMenuItem.Size = new Size(180, 22);
+        createNewGroupToolStripMenuItem.Size = new Size(171, 22);
         createNewGroupToolStripMenuItem.Text = "Create New Group";
         createNewGroupToolStripMenuItem.Click += createNewGroupToolStripMenuItem_Click;
         // 
         // renameToolStripMenuItem
         // 
         renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-        renameToolStripMenuItem.Size = new Size(180, 22);
+        renameToolStripMenuItem.Size = new Size(171, 22);
         renameToolStripMenuItem.Text = "Rename";
         renameToolStripMenuItem.Click += renameToolStripMenuItem_Click;
         // 
         // deleteToolStripMenuItem
         // 
         deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-        deleteToolStripMenuItem.Size = new Size(180, 22);
+        deleteToolStripMenuItem.Size = new Size(171, 22);
         deleteToolStripMenuItem.Text = "Delete";
         deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+        // 
+        // massRenameToolStripMenuItem
+        // 
+        massRenameToolStripMenuItem.Name = "massRenameToolStripMenuItem";
+        massRenameToolStripMenuItem.Size = new Size(171, 22);
+        massRenameToolStripMenuItem.Text = "Mass Rename";
+        massRenameToolStripMenuItem.Click += massRenameToolStripMenuItem_Click;
         // 
         // availableUnitsSplit
         // 
@@ -501,13 +509,6 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
-        // massRenameToolStripMenuItem
-        // 
-        massRenameToolStripMenuItem.Name = "massRenameToolStripMenuItem";
-        massRenameToolStripMenuItem.Size = new Size(180, 22);
-        massRenameToolStripMenuItem.Text = "Mass Rename";
-        massRenameToolStripMenuItem.Click += massRenameToolStripMenuItem_Click;
-        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -519,7 +520,6 @@ partial class ArmyBuilder
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Army Builder";
         initalSplit.Panel1.ResumeLayout(false);
-        initalSplit.Panel1.PerformLayout();
         initalSplit.Panel2.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)initalSplit).EndInit();
         initalSplit.ResumeLayout(false);

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing.Configuration;
 using System.Text.RegularExpressions;
 
 namespace FirelockCompanion;
@@ -2299,7 +2300,7 @@ public partial class ArmyBuilder : Form
             {
                 List<string> newNames = renameDialog.SelectedNames;
                 if (newNames == null || newNames.Count == 0) return;
-                
+
                 List<ActiveUnitEntry> targets = new List<ActiveUnitEntry>();
 
                 // Skip tercio parents >:(
@@ -2337,5 +2338,128 @@ public partial class ArmyBuilder : Form
                 RecalculateAll();
             }
         }
+    }
+
+    // Rename army by double clicking
+    private void armyNameLabel_DoubleClick(object sender, EventArgs e)
+    {
+        var label = sender as Label;
+
+        var editor = new TextBox
+        {
+            Location = new Point(label.Left + 5, label.Top), // Because default forms use some padding
+            Size = new Size(label.Width - 5, label.Height),
+            Text = label.Text,
+            Font = label.Font,
+            TextAlign = HorizontalAlignment.Left, // Why can't you just get this??
+            BorderStyle = label.BorderStyle,
+            BackColor = SystemColors.ControlDark
+        };
+
+        label.Parent.Controls.Add(editor);
+        editor.BringToFront();
+
+        // Note to self: if label is not returning after text finalized, please check this line
+        label.Visible = false;
+
+        editor.Focus();
+        editor.SelectAll();
+
+        editor.KeyDown += (s, args) =>
+        {
+            if (args.KeyCode == Keys.Enter)
+            {
+                string newArmyName = editor.Text.Trim();
+                armyName = newArmyName;
+                label.Text = newArmyName;
+                FinishEditingTextbox(label, editor);
+                args.SuppressKeyPress = true;
+            }
+            else if (args.KeyCode == Keys.Escape)
+            {
+                FinishEditingTextbox(label, editor);
+                args.SuppressKeyPress = true;
+            }
+        };
+
+        editor.LostFocus += (s, args) =>
+        {
+            string newArmyName = editor.Text.Trim();
+            armyName = newArmyName;
+            label.Text = newArmyName;
+            FinishEditingTextbox(label, editor);
+        };
+    }
+
+    private void pointsLabel_DoubleClick(object sender, EventArgs e)
+    {
+        var label = sender as Label;
+
+        var editor = new TextBox
+        {
+            Location = new Point(label.Left - 8, label.Top), // I could not tell you where these numbers come from
+            Size = new Size(label.Width, label.Height),
+            Text = $"{maxPoints}",
+            Font = label.Font,
+            TextAlign = HorizontalAlignment.Right,
+            BorderStyle = label.BorderStyle,
+            BackColor = SystemColors.ControlDark
+        };
+
+        label.Parent.Controls.Add(editor);
+        editor.BringToFront();
+
+        label.Visible = false;
+
+        editor.Focus();
+        editor.SelectAll();
+
+        editor.KeyDown += (s, args) =>
+        {
+            if (args.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    int newMaxPoints = int.Parse(editor.Text.Trim());
+                    maxPoints = newMaxPoints;
+                    RecalculateArmyTotals(); // Easiest way to reset the label
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show($"Invalid point total", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                FinishEditingTextbox(label, editor);
+                args.SuppressKeyPress = true;
+            }
+            else if (args.KeyCode == Keys.Escape)
+            {
+                FinishEditingTextbox(label, editor);
+                args.SuppressKeyPress = true;
+            }
+        };
+
+        editor.LostFocus += (s, args) =>
+        {
+            try
+            {
+                int newMaxPoints = int.Parse(editor.Text.Trim());
+                maxPoints = newMaxPoints;
+                RecalculateArmyTotals();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show($"Invalid point total", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            FinishEditingTextbox(label, editor);
+        };
+    }
+
+    private void FinishEditingTextbox(Label label, TextBox editor)
+    {
+        if (editor.IsDisposed)
+            return;
+
+        label.Visible = true;
+        editor.Dispose();
     }
 }
