@@ -476,12 +476,14 @@ partial class ArmyBuilder
         // backToMenuButton
         // 
         backToMenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        backToMenuButton.BackColor = SystemColors.ControlLight;
+        backToMenuButton.FlatStyle = FlatStyle.Popup;
         backToMenuButton.Location = new Point(429, 173);
         backToMenuButton.Name = "backToMenuButton";
         backToMenuButton.Size = new Size(75, 23);
         backToMenuButton.TabIndex = 6;
         backToMenuButton.Text = "🠜 Back";
-        backToMenuButton.UseVisualStyleBackColor = true;
+        backToMenuButton.UseVisualStyleBackColor = false;
         backToMenuButton.Click += backToMenuButton_Click;
         // 
         // detailsTextBox

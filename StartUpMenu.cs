@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,13 @@ namespace FirelockCompanion
 {
     public partial class StartUpMenu : Form
     {
+        private PrivateFontCollection customFonts = new PrivateFontCollection();
+        private Font titleFont;
+
         public StartUpMenu()
         {
             InitializeComponent();
+            LoadTitleFont();
         }
 
         private void newArmyButton_Click(object sender, EventArgs e)
@@ -43,6 +48,14 @@ namespace FirelockCompanion
                     this.Hide();
                 }
             }
+        }
+
+        private void LoadTitleFont()
+        {
+            string fontPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Bombardier-Regular.ttf");
+            customFonts.AddFontFile(fontPath);
+            titleFont = new Font(customFonts.Families[0], 36, FontStyle.Regular);
+            titleLabel.Font = titleFont;
         }
 
         private void loadEditButton_Click(object sender, EventArgs e)

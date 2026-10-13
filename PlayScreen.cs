@@ -302,6 +302,11 @@ public partial class PlayScreen : Form
                     }
                 }
             }
+
+            if (weaponLines.Count > 0)
+            {
+                parts.Add("WEAPONS:\r\n" + string.Join("\r\n", weaponLines));
+            }
         }
 
         // Gather keywords
@@ -1342,5 +1347,10 @@ public partial class PlayScreen : Form
     {
         ReturnToMenu = true;
         this.Close();
+    }
+
+    private void sendToTTSButton_Click(object sender, EventArgs e)
+    {
+
     }
 }

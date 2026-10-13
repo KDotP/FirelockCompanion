@@ -35,6 +35,7 @@
             armyNameLabel = new Label();
             splitContainer2 = new SplitContainer();
             activeArmyContainer = new SplitContainer();
+            currentArmyValueLabel = new Label();
             ActiveArmy = new Label();
             activeArmyTree = new TreeView();
             splitContainer4 = new SplitContainer();
@@ -43,7 +44,6 @@
             unitInfoText = new RichTextBox();
             backToMenuButton = new Button();
             detailsTextBox = new RichTextBox();
-            currentArmyValueLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -166,6 +166,18 @@
             activeArmyContainer.SplitterDistance = 25;
             activeArmyContainer.TabIndex = 0;
             // 
+            // currentArmyValueLabel
+            // 
+            currentArmyValueLabel.Anchor = AnchorStyles.Top;
+            currentArmyValueLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            currentArmyValueLabel.ForeColor = SystemColors.ControlDarkDark;
+            currentArmyValueLabel.Location = new Point(313, -1);
+            currentArmyValueLabel.Name = "currentArmyValueLabel";
+            currentArmyValueLabel.Size = new Size(191, 25);
+            currentArmyValueLabel.TabIndex = 2;
+            currentArmyValueLabel.Text = "Current Value: XXX";
+            currentArmyValueLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // ActiveArmy
             // 
             ActiveArmy.Anchor = AnchorStyles.Top;
@@ -255,12 +267,14 @@
             // backToMenuButton
             // 
             backToMenuButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            backToMenuButton.BackColor = SystemColors.ControlLight;
+            backToMenuButton.FlatStyle = FlatStyle.Popup;
             backToMenuButton.Location = new Point(428, 517);
             backToMenuButton.Name = "backToMenuButton";
             backToMenuButton.Size = new Size(75, 23);
             backToMenuButton.TabIndex = 2;
             backToMenuButton.Text = "🠜 Back";
-            backToMenuButton.UseVisualStyleBackColor = true;
+            backToMenuButton.UseVisualStyleBackColor = false;
             backToMenuButton.Click += backToMenuButton_Click;
             // 
             // detailsTextBox
@@ -273,18 +287,6 @@
             detailsTextBox.Size = new Size(502, 539);
             detailsTextBox.TabIndex = 0;
             detailsTextBox.Text = "Unit/Keyword info will show up here! (You can also resize this menu)";
-            // 
-            // currentArmyValueLabel
-            // 
-            currentArmyValueLabel.Anchor = AnchorStyles.Top;
-            currentArmyValueLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            currentArmyValueLabel.ForeColor = SystemColors.ControlDarkDark;
-            currentArmyValueLabel.Location = new Point(313, -1);
-            currentArmyValueLabel.Name = "currentArmyValueLabel";
-            currentArmyValueLabel.Size = new Size(191, 25);
-            currentArmyValueLabel.TabIndex = 2;
-            currentArmyValueLabel.Text = "Current Value: XXX";
-            currentArmyValueLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // PlayScreen
             // 
