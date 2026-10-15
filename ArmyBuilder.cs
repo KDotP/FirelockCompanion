@@ -133,6 +133,7 @@ public partial class ArmyBuilder : Form
         if (faction == "Atom Barons of Santagria")
         {
             newTercioButton.Visible = true;
+            newTercioToolStripMenuItem.Enabled = true;
         }
 
         // Fill out available units
@@ -2343,7 +2344,7 @@ public partial class ArmyBuilder : Form
     // Rename army by double clicking
     private void armyNameLabel_DoubleClick(object sender, EventArgs e)
     {
-        var label = sender as Label;
+        var label = armyNameLabel; // More hard coding, fantastic
 
         var editor = new TextBox
         {
@@ -2391,25 +2392,24 @@ public partial class ArmyBuilder : Form
         };
     }
 
+    // Hard coded to the points label for ribbon
     private void pointsLabel_DoubleClick(object sender, EventArgs e)
     {
-        var label = sender as Label;
-
         var editor = new TextBox
         {
-            Location = new Point(label.Left - 8, label.Top), // I could not tell you where these numbers come from
-            Size = new Size(label.Width, label.Height),
+            Location = new Point(pointsLabel.Left - 8, pointsLabel.Top), // I could not tell you where these numbers come from
+            Size = new Size(pointsLabel.Width, pointsLabel.Height),
             Text = $"{maxPoints}",
-            Font = label.Font,
+            Font = pointsLabel.Font,
             TextAlign = HorizontalAlignment.Right,
-            BorderStyle = label.BorderStyle,
+            BorderStyle = pointsLabel.BorderStyle,
             BackColor = SystemColors.ControlDark
         };
 
-        label.Parent.Controls.Add(editor);
+        pointsLabel.Parent.Controls.Add(editor);
         editor.BringToFront();
 
-        label.Visible = false;
+        pointsLabel.Visible = false;
 
         editor.Focus();
         editor.SelectAll();
@@ -2428,12 +2428,12 @@ public partial class ArmyBuilder : Form
                 {
                     MessageBox.Show($"Invalid point total", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                FinishEditingTextbox(label, editor);
+                FinishEditingTextbox(pointsLabel, editor);
                 args.SuppressKeyPress = true;
             }
             else if (args.KeyCode == Keys.Escape)
             {
-                FinishEditingTextbox(label, editor);
+                FinishEditingTextbox(pointsLabel, editor);
                 args.SuppressKeyPress = true;
             }
         };
@@ -2450,7 +2450,7 @@ public partial class ArmyBuilder : Form
             {
                 MessageBox.Show($"Invalid point total", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            FinishEditingTextbox(label, editor);
+            FinishEditingTextbox(pointsLabel, editor);
         };
     }
 
@@ -2461,5 +2461,131 @@ public partial class ArmyBuilder : Form
 
         label.Visible = true;
         editor.Dispose();
+    }
+
+    // For command ribbon
+    private void backToolStripMenuItem_Click(object sender, EventArgs e) => backToMenuButton_Click(sender, e);
+
+    private void newTercioToolStripMenuItem_Click(object sender, EventArgs e) => newTercioButton_Click(sender, e);
+
+    private void saveToolStripMenuItem_Click(object sender, EventArgs e) => quickSaveButton_Click(sender, e);
+
+    private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) => saveButton_Click(sender, e);
+
+    private void pointTotalToolStripMenuItem_Click(object sender, EventArgs e) => pointsLabel_DoubleClick(sender, e);
+
+    private void formatUnitsToolStripMenuItem_Click(object sender, EventArgs e) => reformatButton_Click(sender, e);
+
+    private void deleteUnitToolStripMenuItem_Click(object sender, EventArgs e) => removeButton_Click(sender, e);
+
+    // Normal delete menu just deletes selected, this gets group
+    private void deleteGroupToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        TreeNode node = activeArmyTree.SelectedNode;
+        if (node == null)
+        {
+            MessageBox.Show("No unit or group selected!", "Invalid deletion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        bool isGroup = node.Tag as string == "GROUP";
+
+        while (!isGroup)
+        {
+            node = node.Parent;
+
+            if (node == null)
+            {
+                MessageBox.Show("No group found for the selected unit!", "Invalid deletion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            isGroup = node.Tag as string == "GROUP";
+        }
+
+        if (node.Nodes.Count > 0)
+        {
+            var confirm = MessageBox.Show(
+                $"Remove \"{node.Text}\" and the {node.Nodes.Count} unit(s) inside it?",
+                "Confirm Remove",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes) return;
+        }
+
+        if (node == currentTargetGroup)
+        {
+            ClearTargetGroup();
+        }
+
+        node.Remove();
+
+        RecalculateAll();
+    }
+
+    private void newGroupToolStripMenuItem_Click(object sender, EventArgs e) => createNewGroupToolStripMenuItem_Click(sender, e);
+
+    private void selectedUnitToolStripMenuItem_Click(object sender, EventArgs e) => AddSelectedUnitToArmy();
+
+    private void armyToolStripMenuItem_Click(object sender, EventArgs e) => armyNameLabel_DoubleClick(sender, e);
+
+    private void groupToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        // From the delete code, but for naming things now
+        TreeNode node = activeArmyTree.SelectedNode;
+        if (node == null)
+        {
+            MessageBox.Show("No unit or group selected!", "Invalid rename", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        bool isGroup = node.Tag as string == "GROUP";
+
+        while (!isGroup)
+        {
+            node = node.Parent;
+
+            if (node == null)
+            {
+                MessageBox.Show("No group found for the selected unit!", "Invalid rename", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            isGroup = node.Tag as string == "GROUP";
+        }
+
+        activeArmyTree.LabelEdit = true;
+        node.BeginEdit();
+    }
+
+    private void unitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        TreeNode node = activeArmyTree.SelectedNode;
+        if (node == null || node.Tag as string == "GROUP")
+        {
+            MessageBox.Show("No unit selected!", "Invalid rename", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        if (node.Tag is ActiveUnitEntry entry)
+        {
+            BeginRenameUnit(node, entry);
+            return;
+        }
+
+        MessageBox.Show("Unable to rename unit!", "Invalid rename", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+
+    private void massRenameToolStripMenuItem1_Click(object sender, EventArgs e) => massRenameToolStripMenuItem_Click(sender, e);
+
+    private void asTXTToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void asToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
     }
 }
