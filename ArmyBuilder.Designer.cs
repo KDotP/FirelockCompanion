@@ -35,6 +35,9 @@ partial class ArmyBuilder
         testToolStripMenuItem = new ToolStripMenuItem();
         saveToolStripMenuItem = new ToolStripMenuItem();
         saveAsToolStripMenuItem = new ToolStripMenuItem();
+        exportToolStripMenuItem = new ToolStripMenuItem();
+        asTXTToolStripMenuItem = new ToolStripMenuItem();
+        asToolStripMenuItem = new ToolStripMenuItem();
         backToolStripMenuItem = new ToolStripMenuItem();
         editToolStripMenuItem = new ToolStripMenuItem();
         pointTotalToolStripMenuItem = new ToolStripMenuItem();
@@ -82,9 +85,6 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
-        exportToolStripMenuItem = new ToolStripMenuItem();
-        asTXTToolStripMenuItem = new ToolStripMenuItem();
-        asToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -165,6 +165,28 @@ partial class ArmyBuilder
         saveAsToolStripMenuItem.Size = new Size(180, 22);
         saveAsToolStripMenuItem.Text = "Save As";
         saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
+        // 
+        // exportToolStripMenuItem
+        // 
+        exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { asTXTToolStripMenuItem, asToolStripMenuItem });
+        exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+        exportToolStripMenuItem.Size = new Size(180, 22);
+        exportToolStripMenuItem.Text = "Export...";
+        // 
+        // asTXTToolStripMenuItem
+        // 
+        asTXTToolStripMenuItem.Name = "asTXTToolStripMenuItem";
+        asTXTToolStripMenuItem.Size = new Size(209, 22);
+        asTXTToolStripMenuItem.Text = "To Text";
+        asTXTToolStripMenuItem.Click += asTXTToolStripMenuItem_Click;
+        // 
+        // asToolStripMenuItem
+        // 
+        asToolStripMenuItem.Enabled = false;
+        asToolStripMenuItem.Name = "asToolStripMenuItem";
+        asToolStripMenuItem.Size = new Size(209, 22);
+        asToolStripMenuItem.Text = "To Spreadsheet (Disabled)";
+        asToolStripMenuItem.Click += asSpreadsheetStripMenuItem_Click;
         // 
         // backToolStripMenuItem
         // 
@@ -670,27 +692,6 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Name = "addUnitToolStripMenuItem";
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
-        // 
-        // exportToolStripMenuItem
-        // 
-        exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { asTXTToolStripMenuItem, asToolStripMenuItem });
-        exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-        exportToolStripMenuItem.Size = new Size(180, 22);
-        exportToolStripMenuItem.Text = "Export...";
-        // 
-        // asTXTToolStripMenuItem
-        // 
-        asTXTToolStripMenuItem.Name = "asTXTToolStripMenuItem";
-        asTXTToolStripMenuItem.Size = new Size(180, 22);
-        asTXTToolStripMenuItem.Text = "To Text";
-        asTXTToolStripMenuItem.Click += asTXTToolStripMenuItem_Click;
-        // 
-        // asToolStripMenuItem
-        // 
-        asToolStripMenuItem.Name = "asToolStripMenuItem";
-        asToolStripMenuItem.Size = new Size(180, 22);
-        asToolStripMenuItem.Text = "To Spreadsheet";
-        asToolStripMenuItem.Click += asToolStripMenuItem_Click;
         // 
         // ArmyBuilder
         // 

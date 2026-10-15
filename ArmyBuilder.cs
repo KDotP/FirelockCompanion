@@ -2579,13 +2579,111 @@ public partial class ArmyBuilder : Form
 
     private void massRenameToolStripMenuItem1_Click(object sender, EventArgs e) => massRenameToolStripMenuItem_Click(sender, e);
 
+    // Export to txt, maybe one day I'll do importing too
+    // I remember watching a video a while ago about "never nesting". I feel like I failed that guy.
     private void asTXTToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        // Fortuntely, windows forms has a built in save dialog
+        using (SaveFileDialog dialog = new SaveFileDialog())
+        {
+            dialog.Title = "Export Army as TXT";
+            dialog.Filter = "Text Files (*.txt)|*.txt";
+            dialog.DefaultExt = "txt";
+            dialog.AddExtension = true;
+            dialog.FileName = $"{armyName}.txt";
+            dialog.InitialDirectory = Application.StartupPath;
 
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                var lines = new List<string>();
+
+                foreach (TreeNode groupNode in activeArmyTree.Nodes)
+                {
+                    // Separate groups with a blank line
+                    if (lines.Count > 0)
+                        lines.Add("");
+
+                    lines.Add($"**{groupNode.Text}**");
+
+                    foreach (TreeNode unitNode in groupNode.Nodes)
+                    {
+                        if (unitNode.Tag is not ActiveUnitEntry entry)
+                            continue;
+
+                        // "Oh hey, nice code you got there, I wonder what it does"
+                        // Take a guess
+                        // A single guess
+                        // "Uhh idk, tercio exception?
+                        // Ding ding ding, bingo!
+                        if (entry.Unit.name == "Tercios")
+                        {
+                            int tercioIndex = 1;
+
+                            foreach (TreeNode childNode in unitNode.Nodes)
+                            {
+                                if (childNode.Tag is not ActiveUnitEntry childEntry)
+                                    continue;
+
+                                string prefix = childEntry.Status switch
+                                {
+                                    EmbarkStatus.Embarked => $"E/{tercioIndex}",
+                                    EmbarkStatus.Desanted => $"D/{tercioIndex}",
+                                    _ when childEntry.IsTowed => $"T/{tercioIndex}",
+                                    _ => tercioIndex.ToString()
+                                };
+
+                                lines.Add(
+                                    $"[{prefix}] {childEntry.Unit.name} - " +
+                                    $"{childEntry.Unit.cost} pts - " +
+                                    $"\"{childEntry.CustomName}\"");
+
+                                tercioIndex++;
+                            }
+
+                            continue;
+                        }
+
+                        // Prefixslop
+                        string unitPrefix = "";
+
+                        if (entry.Status == EmbarkStatus.Embarked)
+                            unitPrefix = "[E] ";
+                        else if (entry.Status == EmbarkStatus.Desanted)
+                            unitPrefix = "[D] ";
+                        else if (entry.IsTowed)
+                            unitPrefix = "[T] ";
+
+                        lines.Add(
+                            $"{unitPrefix}{entry.Unit.name} - " +
+                            $"{entry.Unit.cost} pts - " +
+                            $"\"{entry.CustomName}\"");
+                    }
+                }
+
+                File.WriteAllLines(dialog.FileName, lines);
+
+                MessageBox.Show(
+                    $"Army exported successfully to:\n{dialog.FileName}",
+                    "Export Complete",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to export army:\n{ex.Message}",
+                    "Export Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
     }
 
-    private void asToolStripMenuItem_Click(object sender, EventArgs e)
+    private void asSpreadsheetStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        // To do
     }
 }
