@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -1349,8 +1350,55 @@ public partial class PlayScreen : Form
         this.Close();
     }
 
-    private void sendToTTSButton_Click(object sender, EventArgs e)
-    {
 
+    private void ttsButton_Click(object sender, EventArgs e)
+    {
+        var units = new List<UnitSpawn>();
+
+        foreach (TreeNode groupNode in activeArmyTree.Nodes)
+        {
+            foreach (TreeNode unitNode in groupNode.Nodes)
+            {
+                AddUnit(unitNode);
+            }
+        }
+
+        if (units.Count == 0)
+        {
+            MessageBox.Show("Your army has no units!", "Nethook Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        bool sent = Nethook.SpawnPieces(units);
+
+        if (!sent)
+        {
+            MessageBox.Show("Could not send units to Tabletop Simulator. Make sure TTS is running and the receiving script is loaded.", "Nethook Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        // In function functions. What a time we live in
+        void AddUnit(TreeNode node)
+        {
+            if (node.Tag is not ActiveUnitEntry entry)
+                return;
+
+            // If I had a dollar for every tercio change, I'd be a very rich man
+            if (entry.Unit.name != "Tercios")
+            {
+                string unitId = entry.Unit.id;
+
+                if (!string.IsNullOrWhiteSpace(unitId))
+                {
+                    units.Add(new UnitSpawn(entry.Unit.id, entry.Unit.name, entry.CustomName));
+                }
+            }
+
+            foreach (TreeNode child in node.Nodes)
+            {
+                // Not a fan of recursion, but this is probably fine
+                AddUnit(child);
+            }
+        }
     }
+
 }

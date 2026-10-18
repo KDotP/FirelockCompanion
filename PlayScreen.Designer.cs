@@ -35,6 +35,7 @@
             armyNameLabel = new Label();
             splitContainer2 = new SplitContainer();
             activeArmyContainer = new SplitContainer();
+            ttsButton = new Button();
             currentArmyValueLabel = new Label();
             ActiveArmy = new Label();
             activeArmyTree = new TreeView();
@@ -156,6 +157,7 @@
             // activeArmyContainer.Panel1
             // 
             activeArmyContainer.Panel1.BackColor = SystemColors.ControlLight;
+            activeArmyContainer.Panel1.Controls.Add(ttsButton);
             activeArmyContainer.Panel1.Controls.Add(currentArmyValueLabel);
             activeArmyContainer.Panel1.Controls.Add(ActiveArmy);
             // 
@@ -165,6 +167,16 @@
             activeArmyContainer.Size = new Size(505, 599);
             activeArmyContainer.SplitterDistance = 25;
             activeArmyContainer.TabIndex = 0;
+            // 
+            // ttsButton
+            // 
+            ttsButton.Location = new Point(-1, -3);
+            ttsButton.Name = "ttsButton";
+            ttsButton.Size = new Size(85, 28);
+            ttsButton.TabIndex = 3;
+            ttsButton.Text = "Sent to TTS";
+            ttsButton.UseVisualStyleBackColor = true;
+            ttsButton.Click += ttsButton_Click;
             // 
             // currentArmyValueLabel
             // 
@@ -340,5 +352,6 @@
         private RichTextBox unitInfoText;
         private Button backToMenuButton;
         private Label currentArmyValueLabel;
+        private Button ttsButton;
     }
 }
