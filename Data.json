@@ -1,62 +1,61 @@
 {
   "keywords": {
     "Assault Dismount": "If this infantry unit is embarked or desanting on a vehicle (not aircraft), when that vehicle charges into close combat, the infantry may immediately declare an Assault Dismount. Replace the vehicle with this unit, then move the vehicle's frontal arc into basal contact with the infantry's rear arc. The enemy unit that was charged then receives 2 pin tokens from the vehicle's covering fire (if the vehicle isn't unarmed). The units which used Assault Dismount to charge count as having Assault Specialist for the rest of that close combat. \nThe vehicle cannot itself be targeted by enemies in the subsequent close combat engagement, since it's not in basal contact with any of them. It is not considered a participant in the close combat. \nIf there are multiple units with this special rule in the same vehicle, then extra units after the first may consecutively disembark from the vehicle on the same Maneuver Phase turn, specifically to join the close combat engagement before it starts. \nIf infantry with Assault Dismount can harm an enemy, the vehicle carrying them may still charge that enemy, even if the vehicle itself could not damage the enemy in close combat. \nInfantry may not embark or desant on a vehicle and trigger Assault Dismount in the same round. \nIf Assault Dismount is used to charge into contact with multiple units or into a building, only one enemy unit in contact with the dismounting units receives two pin",
-    "Paradrop": "Units with the Paradrop special rule may deploy by parachuting onto the table in alternating turns after all other blinds deploy.\nParachuters can deploy anywhere on the board so long as the unit is not spotted by an enemy or within 8” of an enemy unit, enemy deployment zone or board edge, or objective.\nParachuting units do not get a deployment move. Vehicles cannot deploy with units towed, embarked, or desanting.\nAfter deployment, parachuters gain two pin per non-parachuting enemy with Air or All-targeting weapons able to kill it in half range. These aren't lost in the first Upkeep.",
-    "Fearless": "This infantry unit has nerves of steel! It does not lose movement from pin tokens.",
+    "Paradrop": "This unit may parachute onto the table, from unseen heavy transport aircraft, as a form of special deployment.\nParachute deployment happens after all other units deploy normally, after which they take turns deploying. Parachuters may deploy anywhere on the board, so long as they are not spotted by an enemy, or within 8\" of an enemy unit, deployment zone, deployment board edge, or objective.\nParachuting units do not get a deployment move. During deployment, parachuting vehicles may not tow anything, or carry embarked or desanting infantry.\nAfter deployment, parachuting units gain two pin per every non-parachuting enemy with Air or All-targeting weapons (which have a chance of killing the parachuter) within half range.\nThose enemies that cannot possibly kill the parachuter—out of arc, carrying desants, not enough Strength, or otherwise—don't apply pin. LOS is not factored when determining this, meaning that terrain shadow and occluding terrain is ignored when factoring what units apply pin. These pin tokens are not lost during the first Support Phase's Upkeep.\nDummies may be deployed as parachuters, even if your faction's roster has no units with Paradrop.",
+    "Fearless": "This unit does not lose movement from pin tokens.",
     "Small Arm": "This is a man-portable weapon. It may be fired at stationary Accuracy while embarked in the Fire Phase and in close combat. It may target enemies in any of the firer's arcs.",
-    "Shaped Charge": "This weapon is a powerful explosive penetrator. It does not use its second Strength value as half range Strength.\nWhen hitting vehicles at any range, it uses its first Strength value. If this Strength is greater than the target's Toughness, add a +1 modifier to its kill roll (before Cover Modifier). If a 1+ attack gains a +1 modifier, it becomes ++.\nWhen hitting infantry at any range, it uses its second value and gains Ignore Cover (1).",
-    "Slow Round": "This munition is both large and slow enough to be susceptible to Active Protection.",
+    "Shaped Charge": "This weapon is a powerful explosive penetrator. It does not use its second Strength value as half range Strength.\nWhen hitting vehicles at any range, it uses its first Strength value. If this Strength is greater than the target's Toughness, add a +1 modifier to its kill roll (before any Cover Modifiers).\n1+ attacks that are modified by Shaped Charge become ++ and apply two kills when they hit.\nWhen hitting infantry at any range, this weapon uses its second Strength value, and gains Ignore Cover (1). A Shaped Charge that hits desanting infantry uses its first Strength value, since they are tightly clustered.",
+    "Slow Round": "This munition is both large and slow enough to be susceptible to Active Protection. Does not qualify as a time-to-target weapon.",
     "Underbarrel (X)": "This weapon is mounted under the barrel of X parent weapon. It may be fired simultaneously with that weapon at the same target. The Underbarrel weapon uses that weapon's Accuracy and half range modifier. It benefits from Thermal Sights, Small Arm, and Scoped if those are possessed by the main weapon.",
     "Squad": "The first time a squad is killed, it is instead considered to be depleted: shot down to team-size. It gains a depletion token. Thereafter, it counts as a team for all purposes.",
-    "Guided Missile (X)": "This weapon does not get a half range Accuracy modifier. Air-targeting Guided Missiles never confirm hits against airborne units and may target planes.\nA Guided Missile has a time-to-target equal to X. If the weapon is fired within half range, its time-to-target is reduced by 1. If timeto-target is reduced to 0, that attack is resolved immediately. Guided Missiles use their accuracy at the time their attack lands, not when it was fired. If the firer is killed, the attack misses.\nSusceptible to Active/Decoy Protection. Active Protection won't trigger if attack is Radius.",
+    "Guided Missile (X)": "This is a guided missile that may be steered in flight, but which flies much more slowly than most projectiles. It is a time-to-target weapon that takes X turns to resolve after being fired.\nGuided Missiles do not gain half range Accuracy bonuses. Instead, they reduce time-to-target by one within half range. Air-targeting Guided Missiles may target planes, and never confirm hits against airborne targets.\nGuided Missiles are susceptible to Active/Decoy Protection.\nRemember: Active Protection won't trigger if the Guided Missile has a Radius.",
     "MCLOS": "This guided missile demands concentration to steer. For each pin token on the firer (not each two), this weapon suffers -1 to hit.",
-    "Bloodlust": "If this infantry unit reaches six pin tokens during the Fire Phase, the unit must roll a 4+ check on a D6 to avoid going berserk. Place a berserk token on the unit if it fails.\nWhen a unit gains a berserk token, all other Lupar infantry with the Bloodlust trait within 3\" also roll to go berserk. This chain reaction will continue until all infantry succeed their checks or there are no more units with Bloodlust within range. Units do not roll to go berserk more than once per round, and they may choose to willingly go berserk.\nBerserk units immediately lose all pin tokens and cannot gain new ones. They do not benefit from cover and must always fire at moving accuracy outside of close combat. In close combat, they fire stationary and re-roll misses. Time-to-target attacks fired by berserk units automatically miss.\nDuring the Maneuver Phase, the owning player chooses whether each non-stationary berserk unit moves towards the nearest corpse token or the nearest enemy unit which it can possibly kill. These obligatory move actions do not cost command tokens, and occur automatically at the beginning of the phase, before normal move actions are declared by anyone.\nA unit remains berserk until it is hit by a Rally weapon or it sates on a corpse token. Units with Bloodlust may choose to sate on a corpse even if not currently berserk.\nSating automatically occurs when a unit with Bloodlust ends a round in basal contact with a corpse token. In the beginning of the subsequent Support Phase, before any other actions occur, remove the corpse token. Flip the unit's berserk token to show that it is satiated. This unit will not roll berserk checks for the rest of the battle.\nMultiple units may sate on the same corpse token if they are all in contact with it at the beginning of the Support Phase.\nBloodlust cannot trigger while within Chemical Weapons. Berserk units may not call or participate in brigade movement, nor can they share spotting or call missions. Embarked units do not roll to go berserk.",
-    "Brigade (X, Y)": "This unit (the brigadier) may brigade in the Maneuver Phase for a command token.\nWhen executing a brigade move, the brigadier must be clearly indicated and may move as normal. Up to X additional friendly units may also move that same turn, so long as they remain within a Radius of Y inches from the brigadier at the start and end of movement. Neither they nor the brigadier are eligible to move again in the same Phase.\nAn infantry unit participating in a brigade move may either embark or disembark from a vehicle, but it may not do both. That is, an infantry unit cannot enter a vehicle, have that vehicle move, and then exit the vehicle (all as part of one brigade move).",
+    "Bloodlust": "If this infantry unit reaches six pin tokens during the Fire Phase, the unit must roll a 4+ check on a D6 to avoid going berserk. Place a berserk token on the unit if it fails.\nWhen a unit gains a berserk token, all other Lupar infantry with the Bloodlust trait within 4\" also roll to go berserk. This chain reaction will continue until all infantry succeed their checks or there are no more units with Bloodlust within range. Units do not roll to go berserk more than once per round, and they may choose to willingly go berserk.\nBerserk units immediately lose gone to ground tokens and all pin tokens, and cannot gain new ones. They lose the benefit of ambush, and must always fire at moving accuracy, even in close combat. In close combat, they re-roll misses. Time-to-target attacks by berserk units automatically miss.\nDuring the Maneuver Phase, the owning player chooses whether each non-stationary berserk unit moves towards the nearest corpse token or the nearest enemy unit which it can possibly kill. These obligatory move actions do not cost command tokens, and occur automatically at the beginning of the phase, before normal move actions are declared by anyone.\nA unit remains berserk until it is hit by a Rally weapon or it sates on a corpse token. Units with Bloodlust may choose to sate on a corpse even if not currently berserk.\nSating automatically occurs when a unit with Bloodlust ends a round in basal contact with a corpse token. In the beginning of the subsequent Support Phase, before any other actions occur, remove the corpse token. Flip the unit's berserk token to show that it is satiated. This unit will not roll berserk checks for the rest of the battle.\nMultiple units may sate on the same corpse token if they are all in contact with it at the beginning of the Support Phase.\nBloodlust cannot trigger while within Chemical Weapons. Berserk units may not call or participate in brigade movement, nor can they share spotting or call missions. Embarked units do not roll to go berserk.",
+    "Brigade (X, Y)": "This unit (the brigadier) may spend a command token to declare a brigade move in the Maneuver Phase. A \"brigade move\" does not literally mean a \"brigade-level\" movement—it's just jargon to describe movements coordinated by an officer.\nWhen executing a brigade move, you must indicate which unit is the brigadier. The brigadier may move as normal. Then, up to X additional friendly units may also move in the same turn, so long as they remain within a Radius of Y inches from the brigadier at the start and end of movement.\nNeither those units, nor the brigadier, are eligible to move again in the same Maneuver Phase—they just moved already!\nInfantry units participating in a brigade move can embark or disembark from vehicles as part of it, but not both in the same move.\nUnits which cannot move cannot participate in brigades.",
     "Infiltrator": "This unit may deploy up to 16\" away from your deployment edge, into occluding terrain (or terrain that puts infantry into ambush, such as dead ground or entrenchment), before any standard deployment by either side. It does not get a subsequent move. Multiple players with Infiltrators must alternate their deployments.",
-    "Sense (X)": "This unit spots and may call missions on all enemy units within X inches, even without LOS. Embarked units cannot spot with or be spotted by Sense. Unlike Radius effects, Sense measures edge-to-edge.",
+    "Sense (X)": "This unit can spot all enemy units within X inches, even without LOS. If it is a TACOM, it may call missions on those spotted enemies as well. Embarked units cannot spot with, or be spotted by, Sense. As with normal spotting, you can choose not to spot with Sense.\nSense is measured edge-to-edge, not center-to-center like a Radius",
     "Light Indirect (X)": "This weapon can conduct indirect fire. It does not get a half range Accuracy modifier. A non-blind-fire hit result of 6 hits counts as a Rear Attack. It has a time-to-target equal to X. Time-to-target is not reduced in half range.\nLight Indirect weapons do not identify or spot the firer (but remove vehicle ambush) and need friendly LOS for indirect fire.",
     "Heavy Indirect (X)": "This weapon can conduct indirect fire. It does not get a half range Accuracy modifier. A non-blind-fire hit result of 6 hits counts as a Rear Attack. It has a time-to-target equal to X. Time-to-target is not reduced in half range.\nHeavy Indirect weapons do identify and spot the firer and cannot fire if concealed. They use their accuracy at the time their attack lands, not when it was fired. If the firer is killed, the attack misses. Heavy Indirect weapons need a fire mission to conduct indirect fire.",
-    "Active Protection (X)": "This unit is fitted with one of two protection systems which force dice to confirm a hit. They cannot be reloaded, but may trigger X times before running out of ammo. Protection can't fire if units are desanting.\nActive Protection may trigger when the unit is hit by a Slow Round or Guided Missile. One die which hit in a single attack must be confirmed at an unmodifiable roll of 6+ or else miss and apply three pin. This only affects one die at a time and only triggers once per turn. Cannot trigger on Radius attacks.",
-    "Decoy Protection (X)": "This unit is fitted with one of two protection systems which force dice to confirm a hit. They cannot be reloaded, but may trigger X times before running out of ammo. Protection can't fire if units are desanting.\nDecoy Protection may trigger when the unit is hit by Radar Anti-Air or a Guided Missile. All dice which hit must be confirmed at their original target numbers after modifiers or else miss and apply three pin. This affects all die which are resolving at the same time and may trigger multiple times per turn, but not to trigger multiple confirms on the same die. If triggered during close combat, only lasts for one close combat round. Unusable landed. Cannot trigger on Radius attacks.",
-    "Afterburner": "If this plane waves off and is not at max pin, it may both rotate and make a full move in the same action in exchange for one pin.",
-    "Loiter": "This plane may choose to stop moving forward anywhere along its strafing line. At the end of the Fire Phase, it may choose to stay on-map and hold its target between rounds.",
+    "Active Protection (X)": "This unit is fitted with a protective system, forcing certain incoming attacks to confirm hits. They cannot be reloaded, but may trigger X times before running out of ammo.\nProtection cannot trigger on units carrying desanting infantry, nor against Radius attacks. Triggering is voluntary. You must declare whether you are using it or not before the roll to kill.\nActive Protection may trigger against Slow Rounds and Guided Missiles. Protection can't be activated multiple times per attack resolution.\nWhen Protection triggers, one ammo is spent to affect a certain number of dice from eligible attacks during a simultaneous attack resolution. Attacks from multiple different weapons may be affected by a single Protection activation so long as those dice came from eligible weapons.\nActive Protection forces one die which hit in a single attack, once per turn or beat, to be confirmed at an unmodifiable 6+ to-hit.\nFailed confirm rolls result in misses that apply three pin.",
+    "Decoy Protection (X)": "This unit is fitted with a protective system, forcing certain incoming attacks to confirm hits. They cannot be reloaded, but may trigger X times before running out of ammo.\nProtection cannot trigger on units carrying desanting infantry, nor against Radius attacks. Triggering is voluntary. You must declare whether you are using it or not before the roll to kill.\nDecoy Protection may trigger against Radar Anti-Air or Guided Missiles. Protection can’t be activated multiple times per attack resolution.\nDecoy Protection is unusable by landed aircraft. If triggered during close combat, it only lasts for the beat in which it was triggered.\nWhen Protection triggers, one ammo is spent to affect a certain number of dice from eligible attacks during a simultaneous attack resolution. Attacks from multiple different weapons may be affected by a single Protection activation so long as those dice came from eligible weapons.\nDecoy Protection affects all eligible dice. It forces confirms at the original target numbers, with the same modifiers.\nFailed confirm rolls result in misses that apply three pin.",
+    "Afterburner": "If this plane waves off and is not at max pin, it may choose to both rotate 180 degrees AND make a full move in the same action, in exchange for one pin.",
+    "Loiter": "This plane’s tight turning circle and low stall speed permit it to loiter in place. It may choose to stop moving forward at any point during a Fire Phase movement.\nAt the end of the Fire Phase, it may choose to stay on-map, holding its target between rounds. It may still be given new targets through support missions, in which case its new strafing line is drawn from its current position through that of the target. The plane does not have to reenter the board, but may simply choose to resume moving to the target from its current position.",
     "NBC": "This unit and units embarked inside of it do not suffer kill rolls from Chemical Weapons or Scorched terrain.",
     "Amphibious": "This unit may move through deep water without any movement penalty. It must pay 1\" to cross into or out of Swamp and Deep Water.",
-    "Assault Specialist": "This infantry unit is specifically trained for close-quarters combat, combat with it is not simultaneous in all rounds. It resolves its firing first in each round, then the enemy retaliates.\nOpposing Assault Specialists resolve combat simultaneously. Embarked and desanting units do not benefit from Assault Specialist.",
-    "Tow (X)": "This unit may tow any friendly vehicle with a (highest arc) toughness of X or less.\nTo hitch another vehicle, a tower must be in basal contact on its rear arc with the front or rear arc of a towable vehicle. The other vehicle may be hitched, even if it has already fired at stationary Accuracy. Hitching can occur at the beginning or end of a tower's turn.\nAs long as the tower and towed unit are hitched, they activate and move as one unit, using the towing unit's Movement statistic. Towed units cannot move in the same phase that they are hitched or the tower moves.\nTowing units can fire all weapons. Towed units may only fire Small Arms.\nA towed unit may tow another unit, creating a chain of tows. The leading unit adds together the (highest arc) Toughness of all tows in a chain to see if it can tow them.\nWhen deploying a unit that is towing another unit, deploy the towing unit first with its rear arc touching the edge of the map as normal. Then move the towing unit forward before placing the towed unit at its rear. If there is not enough space to fit the towed unit, the towed unit must deploy on a separate turn. Do this for all successive chain tows.\nA unit towing another unit must pay 1\" per unit being towed for every full 45 degrees it rotates during the Maneuver Phase. Its first 45 degrees of movement are free.\nThe towing unit may choose to unhitch towed units at the end of its movement. The towed unit automatically becomes unhitched from the tower when it moves on its own turn.\nA tower may not hitch and unhitch in the same turn. Airborne units may hitch and unhitch tows while airborne, but cannot land while towing, and the towed unit cannot form tow chains. Units towed by an airborne unit are considered aircraft for targeting purposes. Parachuting units do not get a deployment move. Vehicles cannot deploy with units towed, embarked, or desanting. After deployment, parachuters gain two pin per non-parachuting enemy with Air or All-targeting weapons able to kill it in half range. These aren't lost in the first Upkeep.",
-    "PC (X, Y)": "This unit is a personnel carrier, capable of carrying up to X infantry units inside itself in addition to external desants. Infantry must disembark from the vehicle from the listed Y arc. Friendly vehicles do not block disembarkation.\nInfantry may not use their weapons while embarked except for Small Arms, which may fire at stationary without forcing themselves or their carrier to lose their move action. Embarked units use the pin of their carrier for firing. A PC that is carrying infantry may use its own weapons as normal. Embarked infantry can fight in close combat, but cannot screen.\nAircraft must land to embark or disembark, and may not carry desanting infantry.\nEmbarked units cannot be targeted or hit directly by attacks on the carrier, and do not inherit the carrier's pin when they disembark. When a carrier dies, teams are killed and squads are depleted; infantry in an airborne carrier are fully killed.",
-    "Resupply (X)": "This unit can reload up to X Ammo (for any number of weapons) to one friendly within 6\" during Upkeep without needing LOS. For every unit of Ammo reloaded to another unit, this unit's Resupply value decreases by one. Reloading forces the Resupply vehicle to remain stationary in the Maneuver Phase, but it may still take a fire action. Resupply units cannot reload themselves or airborne units.",
-    "Watercraft": "Can only move and unhitch onto water type terrain. Pays nothing to cross water types. Deep Water offers a 2x movement modifier.\nWatercraft can't be towed by land units, only be other Watercraft or aircraft.",
-    "Air-Filling": "This weapon's misses apply two pin rather than one unless the weapon cannot possibly kill its target. For weapons with variable Strength, roll Strength even on a miss. Support missions can target designated units which aren't in LOS of the calling TACOM. Designators fired at the same time as other weapons can immediately spot for them. All Designators can target planes.",
-    "Discreet": "This weapon does not identify the firer nor cause the firer to lose concealment when fired. You don't have to indicate who fired it.",
+    "Assault Specialist": "This infantry unit is specifically trained and equipped for close-quarters combat.\nIf this unit charges into close combat, then combat will NOT be simultaneous in all beats of the engagement. In each beat, this unit will resolve its attacks first. Then, other units (friendly and enemy) without Assault Specialist will get to simultaneously act as normal.\nOpposing Assault Specialists resolve combat simultaneously. Embarked and desanting units don't benefit from being Assault Specialists.\nAssault Specialists that are the defenders in close combat behave as normal, i.e. they do not resolve their attacks first.",
+    "Tow (X)": "This unit may tow any friendly vehicle with a (highest arc) toughness of X or less.\nTo hitch a vehicle to a tower, the tower must be in basal contact on its rear arc with the front or rear arc of a towable vehicle. The hitched vehicle then moves with the tower at the tower's speed, remaining behind it until the tower unhitches it.\nA tower may choose to hitch or unhitch any vehicle once, at any point during its movement, but it may not hitch or unhitch multiple times. A unit can't be both hitched and unhitched in the same round.\nUnits which fire stationary or have already moved themselves cannot be hitched. Units which were moved by a tower count as having used their move action.\nIf the towed unit also has Tow, you can form a tow chain of vehicles. Sum the highest Toughness of all units within to see if the tower can haul the chain.\nCarriages may be hitched even if they already moved in the Maneuver Phase; they do not count as having moved when their tower moves, allowing them to be activated to use their own move action for a seperate command token after being unhitched.\nAircraft may only hitch and unhitch tower units while airborne. They cannot land while towing, nor form tow chains, and they cannot both land and unhitch in the same turn. Units under airborne tow and considered aircraft for targeting purposes. Conversely, landed aircraft may be towed as vehicles.\nTowing units can fire all weapons. Towed units may only fire Small Arms.\nLanded aircraft under tow that are moved into occluding terrain (and they couldn't land in) cannot take off from said terrain later.\nDeploy a tower first, with its rear arc touching the edge of the map as normal. Then move it forward and place the towed unit in basal contact at the rear. Repeat this for tow chains.\nIf there is enough space to fit a towed unit, it must deploy on a seperate turn during Maneuver Phase.\nIn the event of close combat, all units in the tow chain are considered to be in the same close combat no matter what part of the chain was charged. Tow chains can't reform, but may fall back.",
+    "PC (X, Y)": "This vehicle or aircraft is a personnel carrier, capable of carrying up to X infantry units inside itself in addition to any desanting infantry on the exterior (if a vehicle). As when desanting, squads count as two teams when determining capacity. \nEmbarked infantry must disembark the vehicle from the listed Arcs. Aircraft must land to embark or disembark carried infantry. Dummies do not fill capacity when embarked, and can be loaded even when the carrier is already full. \nCarried infantry may not use their weapons except for Small Arms. They may fire at stationary accuracy without losing their subsequent Maneuver Phase action (or that of the carrier). They use the carrier's pin when attacking, not their own. They may draw LOS and spot from their carrier, including to call missions.\nA carrier may use its own weapons normally while carrying infantry. As with the carrier's weapons, the presence of desanting infantry blocks embarked infantry from firing.\nCarried infantry cannot be directly targeted or hit by attacks on the carrier, and they do not accrue pin from being attacked. They do not inherit the carrier's pin when they disembark.\nWhen a carrier is detroyed, teams inside it are killed and squads are depleted. Any infantry in an airborne carrier that are killed are killed.\nEmbarked infantry are obligated combatants. They can fight in close combat, but cannot screen the vehicle. Embarked infantry in a carrier that is destroyed suffer the usual kill result, but do not accrue pin.",
+    "Resupply (X)": "This unit can reload up to X Ammo (for any number of weapons) to one friendly within 6\" during Upkeep without needing LOS. For every unit of Ammo reloaded to another unit, this unit's Resupply value decreases by one. Reloading forces the Resupplying vehicle to remain stationary in the Maneuver Phase, but it may still take a fire action. Resupply units cannot reload themselves or airborne units.",
+    "Watercraft": "This unit a boat of some kind. It can only move and unhitch onto Swamps, Shallow, and Deep Water. When moving through Deep Water, it enjoys a 2x Movement multiplier. It cannot be towed by ground units, only by other Watercraft or aircraft.",
+    "Air-Filling": "This weapon's misses apply two pin rather than one unless the weapon cannot posibly kill its target. For weapons with variable Strength, roll Strength even on a miss.",
+    "Discreet": "This weapon does not identify the firer nor cause the firer to lose concealment when fired. You don't have to indicate who fired it.\nFiring a Discreet weapon on a vehicle with desanting dummies still causes the dummies to disappear.",
     "Barrage (X)": "This weapon may simultaneously fire up to X times in one fire action. Each attack consumes one Ammo and may use a different shot type. Declare the number of attacks before resolving. Targets can be spaced 2\" from each other unless the weapon is Barrage (X, Point).\nThe first Barrage attack called in a fire mission must be directly on target. The rest can be spaced 2\" from each other as normal.",
-    "Door Gun (X)": "This helicopter weapon may only fire in the listed X arc(s), and may fire while landed.",
-    "Chemical Weapon (X)": "All Chemical Weapons have a Radius of X inches and are Lingering. Ground units within cannot lose more than one pin at once by any means (including Rally), participate in brigading, or participate in support missions (but may still be targeted by one). Embarked units are affected. Airborne units are unaffected.\nChemical Weapons inflict a single 6+ kill roll on affected, non-NBC units only during Upkeep. Unlike other Lingering weapons, a unit in multiple Chemical Weapon radii only rolls one kill. This roll is never modified.",
+    "Door Gun (X)": "This aircraft weapon may fire while landed, but it may only fire in the listed arc(s). If a unit with this weapon charges into close combat, but has no weapons that can fire in its frontal arc, the unit may may rotate to use one of its armed arcs against the defending unit.",
+    "Chemical Weapon (X)": "This Lingering weapon has a Radius of X inches. Embarked infantry are affected, but airborne units are not.\nGround units inside Chemical Weapons cannot lose more than one pin at once by any means (including via Upkeep pin loss or Rally). They cannot participate in brigades or in support missions (although they can still be targeted by one).\nDuring Upkeep, any non-NBC unit affected by Chemical Weapons suffers an unmodifiable 6+ to-kill roll. A unit standing inside multiple Chemical Weapon radii only rolls for one kill.",
     "Defensive CC": "If its unit charged, this weapon cannot fire, or cannot fire vs. infantry (if marked (Inf.)).",
     "No CC": "In close combat, this weapon cannot fire, or cannot fire vs. infantry (if marked (Inf.)).",
-    "Designator": "This weapon immediately spots its target with a designator token. Designation is maintained indefinitely as long as the designator is alive and has not declared any other fire action since beginning designation, and the target remains within arc, range, and LOS.\nDesignators can't be fired or maintained though Smoke or if the firer is at max pin.\nSupport missions can target designated units which aren't in the LOS of the calling TACOM.\nDesignators fired at the same time as other weapons can immediately spot for them. All designators can target planes.",
-    "Homing": "This missile has a fire-and-forget seeker. A declared attack's accuracy cannot be modified by anything but Evasion, even if its firer is dead or spotting/LOS to target is lost.",
-    "Nuclear (X)": "The final argument. X radius. See APPENDIX I.",
-    "Radius (X)": "This weapon affects all non-plane units whose base centers are within an X-inch radius from its impact point. If it possesses an Accuracy statistic, it rolls independently to hit each unit covered. Radius attacks against unspotted units are considered to be blind-firing.",
+    "Designator": "This is a laser or mechanical target designator that provides the precise location of the target it's aimed at. It causes its target to become immediately spotted. Mark it with a designator token.\nDesignation is maintained indefinitely, round after round, so long as the designator is alive, doesn't fire at a new target with any weapon, doesn't move, and the target remains within weapon arc, range, and the designator's LOS.\nDesignators fired simultaneously with other weapons can immediately spot for them.\nDesignators can't be fired or maintained through Smoke, or if the firer is at max pin. Currently designating units that reach max pin have their designation broken immediately.\nSupport missions can target designated units, even if the target isn't within LOS of the calling TACOM.\nDesignators can target planes.",
+    "Homing": "This Guided Missile has a fire and forget seeker. Once it has been declared, its to-hit roll cannot be modified by anything except by the target's Evasion or Smoke. Even if the firer dies, or spotting/LOS to the target is lost, the attack continues unmodified by anything but the above two mechanics.\nHoming attacks always resolve, even if the target exits the board, while all other attacks miss.",
+    "Nuclear (X)": "The final argument. X radius. See APPENDIX I of the core rulesets. These used to fall like rain in Santagria, so go kill some Tercios.",
+    "Radius (X)": "This weapon affects all units (except planes) whose base centers are within X inches of its impact point, regardless of LOS. If it has Accuracy, it rolls independently to hit each unit covered. Radius attacks against unspotted units are considered blind-firing.\nA Radius (X\"-Y\") weapon has a base Radius of X inches. It can expand its Radius in increments of one inch, up to Y inches, by spending one Ammo per extra inch. This does not create multiple attacks, but only increases the Radius of a single attack. The base Radius still only costs one Ammo.\nRadii can potentially hit friendly units. It is permissible to call a Radius attack on enemy units that hits some of your own units if the majority of units in the Radius are of the enemy or the attack is of pressing importance. Remember: friendly fire always counts as spotted (i.e. Murphy's Law applies).",
     "Ignore Cover (X)": "This weapon ignores up to X points of the target's Cover Modifier.",
-    "Lingering": "This Radius weapon's effects persist on the table after it has landed. Units inside of a Lingering Radius are hit according to the weapon's Accuracy statistic when it lands, then hit again automatically if they are in the weapon's Radius during subsequent Upkeeps. Lingering creates a number of separate radii equal to its Dice statistic at the point where it lands. Units suffer as many kill rolls as radii which the unit is inside of. These kill rolls do not apply pin. After all Lingering weapons have rolled to kill during Upkeep (if they have Strength values), roll once per radius to see if it dissipates. On a roll of 4+, the weapon cloud persists until the next Support Phase. All discrete radii roll to persist separately.",
-    "Radar Anti-Air": "This weapon is designed to engage high-altitude aircraft. It may target planes.\nRadar Anti-Air does not confirm hits against airborne units at any range. It also blind-fires at planes and airborne units at 4+ (or base accuracy, if it's worse) rather than 6+, even if blocked by Smoke. However, it is susceptible to Decoy Protection.",
-    "Tracking Anti-Air": "This weapon is designed to engage high-altitude aircraft. It may target planes.\nTracking Anti-Air does not have to confirm attacks against airborne units within 12\" of itself and is not susceptible to Decoy Protection.",
-    "Rally": "This tool restores friendly units' fighting spirits. Any friendly unit targeted by this weapon immediately loses all of its pin tokens. Rally weapons can be fired at max pin.",
+    "Lingering": "This Radius's effects persist on the table after it has landed. Units inside a Lingering Radius are hit according to the weapon's Accuracy statistic when it lands. If they are still inside the Radius during subsequent Upkeeps, they are hit automatically. The to-kill rolls (if it has Strength) do not apply pin on failed kills.\nIf a Lingering weapon has multiple dice, it creates a number of separate radii (as if a thicker cloud) on the same point. These independently roll to kill.\nAfter all Upkeep to-kill rolls, roll once (per each radius). On a 4+, the Radius persists. Otherwise, it dissipates and is removed from play.",
+    "Radar Anti-Air": "This weapon is designed to engage high-altitude aircraft. These weapons do not have to confirm hits against aircraft at any range and can blind-fire at aircraft at 4+ (or base accuracy, whichever is lower), even if blocked by Smoke. Susceptible to Decoy Protection.",
+    "Tracking Anti-Air": "This weapon is designed to engage high-altitude aircraft.\nShots against aircraft within 12\" do not have to confirm. They are not susceptible to Decoy Protection.",
+    "Rally": "This tool restores friendly units' fighting spirits. Any friendly unit targeted by this weapon immediately loses all of its pin tokens. Rally weapons can be fired at max pin.\nIf fired simultaneously with other weapons, Rally resolves first.",
     "Rear Attack": "This weapon strikes either the top or rear of a target (i.e., its thinnest armor). Attacks automatically hit the target's rear arc, regardless of the shooter and target's positions.",
-    "Melee": "This weapon may target an enemy in any of the firer's arcs, but only in close combat. Does not get a half range modifier.",
-    "Multi-Gun": "This weapon may be used simultaneously with other weapons during a single fire action. May be used against a different target. Unlike other types of Lingering weapon, a Smoke weapon with a Strength value only hits units when it lands, not during Upkeep. Missions can't be called through Smoke unless the TACOM spots the target by Sense.",
-    "Saturating (X)": "This weapon can spend up to X amount of Ammo in a single attack. The attack gains Radius with a number of inches equal to the Ammo spent to fire it. If only one Ammo is spent, the weapon's targeting type if Inf/Vec (not Gnd) and it does not get radius.",
-    "Scoped": "This weapon has a magnified optic. It blind-fires at ground units at 4+ (or base accuracy, if it's worse) unless firing through Smoke. Additionally, this weapon gains Ignore Cover (1) when hitting infantry.",
-    "Smoke (X)": "All Smoke weapons have a Radius of X inches and are Lingering. LOS may be drawn through Smoke, but not spotting. Fire through Smoke is thus always blind-fire, unless the unit is otherwise spotted, such as by Thermal Sights. A unit which has the center of its base within a Smoke radius is considered to be firing and fired at through smoke. Smoke blocks Designators.\nFiring through Smoke at an otherwise spotted unit incurs a -1 Accuracy modifier. A result of 6 will always hit anyways, unless the roll is also modified by pin tokens.\nSmoke fired at the same time as other weapons does not block spotting until after the fire action has concluded.\nAs airborne units fly above Smoke, they can spot units on the other side of Smoke radius. Ground units directly inside of the radius, however, benefit from smoke.\nUnlike other types of Lingering weapon, a Smoke weapon with a Strength value only hits units when it lands, not during Upkeep.\nMissions can't be called through Smoke unless the TACOM spots the target by Sense.",
+    "Melee": "This weapon may target an enemy in any of the firer's arcs, but only in close combat. Does not benefit from half range and cannot be used across impassable terrain.",
+    "Multi-Gun": "This weapon may be used simultaneously with other weapons during a single fire action. May be used against a different target.",
+    "Scoped": "This weapon is equipped with a powerful magnified optic, making it easier to find targets that are not fully visible. It blind-fires at 4+ unless firing through Smoke, and gains Ignore Cover (1) against infantry.\nScoped weapons with Thermal Sights blind-fire through Smoke at 4+.",
+    "Smoke (X)": "All Smoke weapons have a Radius of X inches, and are Lingering. Only LOS, not spotting, can be drawn through (or into) Smoke. Fire through (or into) Smoke is thus always blind-fire unless the target is otherwise spotted (e.g. via Thermal Sights). In that case, it incurs a -1 Accuracy modifier.\nAirborne units are flying high enough to look over Smoke clouds. The only way for spotting to be blocked to and from an airborne unit and another unit is if a ground unit is directly inside of a Smoke radius.\nSmoke fired simultaneously with other weapons does not block spotting until after their attacks resolve.\nA Smoke weapon with a Strength, unlike other Lingering weapons, only hits targets when landing, not during subsequent Upkeeps.\nDesignators are blocked by Smoke. TACOMs cannot call missions through Smoke, unless the TACOM itself is spotting the target via Sense. LOS through Smoke cannot be used for friendly indirect fire.",
     "Strafing": "If this weapon is fired at moving Accuracy, the helicopter must immediately move itself forward 12\" without rotating after the attack is resolved. A strafing attack cannot be declared if the movement would result in a charge.",
-    "Turret": "This weapon may target an enemy in any of its firer's arcs, not just its front.",
-    "Thermal Sights": "This weapon can ignore Smoke on its own fire actions. If the target of this weapon would have been spotted by the firer if not for Smoke, the weapon is not forced to blind-fire. It still accrues the -1 Accuracy penalty from firing through Smoke at a spotted unit.\nThermal Sights do not allow an on-map unit to proactively spot through Smoke for the benefit of friendly units on their fire actions (e.g. for a friendly Indirect fire mission). Thermal Sights only negate Smoke for this weapon's own attack on its own turn. Scoped weapons with Thermal Sights blind-fire through Smoke at 4+.\nPlanes can't spot, so those with Thermal Sights may fire at -1 Accuracy through Smoke if the target would have been spotted otherwise.",
-    "Undetectable": "This trap cannot be avoided by infantry unless they move 2\" or less within its Radius. It may only be identified through basal contact.",
-    "Chemical-SP (X)": "This is a Chemical Weapon, but it rolls two separate kills against luparic units in Radius affected during Upkeep. X\" Radius.",
+    "Turret": "This weapon may swivel freely. It may target an enemy in any of its firer's arcs, not just its front.",
+    "Thermal Sights": "This weapon can see through Smoke when attacking. It still accrues the -1 Accuracy penalty from firing through Smoke at a spotted unit unless the weapon is also Homing, in which case the fire suffers no penalty.\nThermal sights in this era are limited in capability. They do not allow a unit to proactively spot through Smoke for friendlies, to spot for indirect fire, or to identify enemy blinds. They only negate Smoke for this weapon's own attack on its own turn.\nScoped weapons with Thermal Sights blind-fire through Smoke at 4+.\nPlanes with Thermal Sights still can't spot for themselves, but they fire at -1 Accuracy through Smoke if the target would have been spotted by a friendly if not for the Smoke's presence.",
+    "Undetectable": "This trap is exceptionally hard to locate before it's too late. When moving 2\" or less, this trap may roll a 6+ check to trigger regardless. The trap does not consume Ammo if the 6+ roll does not pass.",
+    "Chemical-SP (X)": "This is a Chemical Weapon, but it rolls two separate kills against luparic units in X\" Radius affected during Upkeep.",
     "Sprint Motor": "This turboprop plane is assisted by a powerful rocket motor with a separate fuel supply, allowing it to \"sprint\" much faster than its normal airspeed for a short duration.\nOnce per game, when this unit moves, the plane may declare a rocket sprint until its next turn. During a rocket sprint, the plane doubles its movement, sets its Evasion statistic to E2, and gains Afterburner. When Sprint Motor has been used, mark the plane with a spent ammo token. May be used in dogfights.",
     "Steel Watchbands": "During the Fire Phase, when this vehicle scores a successful kill with a non-indirect weapon on an enemy unit, it can immediately make a half-move, even if the unit fired with its stationary Accuracy. This move may not result in a charge.\nIf the vehicle fired at moving Accuracy, then half-moved, no penalty is applied to its subsequent Manuever Phase movement.\nThis special rule activates even if suffering the kill did not remove the enemy unit from the game, such as infantry depleting or a unit triggering Leviathan. It may not trigger multiple times in a single Fire Phase.",
-    "Guidance (X)": "This unit soothes friendly lupar within X inches from itself. Units which enter this radius automatically lose their berserk tokens (if berserk), and units inside of the radius cannot gain them. A unit that loses its berserk token this way does not become satiated. Units within the radius never have to roll to go berserk for any reason.",
+    "Guidance (X)": "This unit soothes friendly lupar. Units within a Radius of X inches automatically lose their berserk tokens (if berserk) without becoming satiated, and units inside of the radius can't roll to go berserk. Additionally, units with the Bloodlust rule within Guidance range may still share their spotting and fire Designators while at max pin.",
     "Rally (Salt)": "This Rally weapon only affects non-NBC lupar. Friendly non-lupar are not affected. It does not affect airborne units.",
     "Active Camouflage": "This unit starts the game in a special state called active camouflage. If active camouflage has not been lost, the unit cannot be spotted from more than 6\" away regardless of its current terrain, ambush, or concealment status, but LOS may still be drawn to it. While in active camouflage, dice from blind-fire attacks automatically miss, but still apply one pin as a miss regardless of special rules. If spotted by an enemy within 6\", active camouflage is lost and units from further than 6\" away may fire upon it as normal.\nThis unit permanently loses active camouflage when it fires a non-Discreet weapon, or is spotted by either Sense or Designators. It does not lose active camouflage when it is spotted by an enemy from 6\" away and then exits that range without any of the above occurring. Units in active camouflage may still be targeted by Designators at their normal range as long as the designating unit can draw valid LOS.\nUnits desanting on units with Active Camouflage also benefit from it.",
     "Guided Shell": "This weapon gains an Ignore Cover (X) value where X equals the number of friendly units currently spotting the unit. If target would not be spotted if not for a Designator, only units currently Designating the target count.\nUnits which have counterbattery spotting tokens that are not directly spotted by any friendlies do not gain Ignore Cover.",
@@ -67,7 +66,7 @@
     "Rygonet (X)": "Any friendly Rygolic unit which is within a Radius of X inches from this unit is eligible to lend its action to any other Rygo unit in that same radius during the Fire and Maneuver Phases. A friendly Rygo unit can then simultaneously take a turn to receive that action during the Maneuver or Fire Phase. Receiving a move action always costs one command token. A unit can receive via Rygonet up to two times per Phase. Thus, in addition to its own (innate) action, it may act up to three times per Phase.\nWhen a unit lends its action, it is considered to have spent its turn. It is ineligible to act on its own or lend another action for the rest of the phase. It can, however, still receive bonus actions from other units.\nA unit which receives an action must begin and end its turn within a Rygonet radius, but it does not have to be the same unit's radius.\nRygonet can be used during a Brigade activation to transfer moves from units which have not been targeted as part of the Brigade to units that have been targeted.\nUnits with no weapons cannot lend a fire action. Units with no viable movement, such as those with M0\" or those which fired stationary in the previous Fire Phase, cannot lend a movement action.\nIf a unit is being towed, or is embarked or desanting where it cannot disembark, it cannot lend its move action.\nDummies, Petty Staters, Planes, Drones, and units being affected by Chemical Weapons cannot lend or receive actions.\nUnits using lended actions cannot both gain and lose a gone to ground token in the same Fire phase, nor embark and disembark in the same Maneuver Phase.",
     "Strider": "Biological legs grant Rygolic light armor all-terrain mobility and the ability to crouch behind cover.\nThis vehicle is marked Vec (S) and behaves like infantry for movement purposes. It can sprint, rotate for free, and ignores terrain vehicle multipliers (though it cannot move through or into Inf-only terrain), but still takes pin as if it were a vehicle. It cannot garrison structures, but can move over them, provided it does not end its movement inside. It may also spend a fire action in any terrain to gain or lose a gone to ground token without simultaneously firing. This reduces the unit's Height by 1, but gives no Cover Modifier.",
     "Leviathan (X)": "This unit must suffer X number of kills to be destroyed. When it suffers a kill, place a leviathan token on it and choose one non-Small Arm weapon on its statline to be destroyed. Destroyed weapons cannot be used and no special rule benefits may be derived from them for the rest of the game. Leviathans cannot be towed.\nLeviathan helicopters do not force hits against them to confirm beyond 12\" away.",
-    "Flower of the Atom": "Instead of moving, if this unit has not yet fired on or gotten into a dogfight with its mission target may instead choose to lose its current mission target and tilt. A tilt allows the plane to immediately select any spotted enemy on the board as its new mission target.\nDraw a new strafing line from the plane's current position through the selected unit and apply one pin to the plane. The plane then immediately moves toward its new target. The plane must attempt to fire upon its target, diving if necessary, before it can leave the board or wave off.\nThe command token used to activate the TACOM (or Pages) that originally called the mission then returns to the controlling player's command pool to be used during the Maneuver Phase. A TACOM which has had its command token refunded can later call a brigade and move and act normally, i.e. as if it did not activate during the Support phase.\nIf a plane with Flower of the Atom is the target of an interception by a living plane, it may not change targets until its interceptor is dead.",
+    "Flower of the Atom": "Instead of moving, if this plane is not at max pin and has not yet fired on or gotten into a dogfight with its mission target may instead choose to lose its current mission target and tilt. A tilt allows the plane to immediately select any spotted enemy on the board as its new mission target.\nDraw a new strafing line from the plane's current position through the selected unit and apply one pin to the plane. The plane then immediately moves toward its new target. The plane must attempt to fire upon its target, diving if necessary, before it can leave the board or wave off.\nThe command token used to activate the TACOM (or Pages) that originally called the mission then returns to the controlling player's command pool to be used during the Maneuver Phase. A TACOM which has had its command token refunded can later call a brigade and move and act normally, i.e. as if it did not activate during the Support phase.\nIf a plane with Flower of the Atom is intercepted by a living plane, it may not change targets until its interceptor is dead.",
     "Tercio": "i. Formation\nUnits with this rule may be deployed in a special tercio formation. A tercio consists of three infantry units placed into mutual basal contact. To form a tercio, place all constituent units in the shape of a triangle, with one leading unit in front and two supporting units in the rear. Tercios can't be formed mid-game.\nA tercio may be deliberately disbanded. This is declared during Upkeep in the Support Phase and costs no command tokens. After the former tercio's pin has been divided (detailed below), the constituent units behave as normal and are not affected by the following rules.\nii. Pin & Quality\nTercios can accrue up to twelve pin. Rather than losing one inch of movement per one pin accrued, and suffering a -1 Accuracy modifier per two, the tercio loses one inch of movement per two and -1 Accuracy per four.\nA tercio's Quality is the sum of all its living units' Quality. Tercios sprint 1/3 of their Quality stat in inches rather than 1/2.\nWhen a tercio with pin disbands, the pin must be divided equally between the newly disbanded units. Any remainder is assigned at the player's discretion. No single unit can receive more than one pin from the remainder.\nIf only one unit remains in the tercio, that unit immediately takes the leading unit's position and the tercio disbands. The survivor inherits up to six pin from the former tercio.\niii. Movement\nA vehicle must be able to fit the whole tercio to transport it, but the tercio may split between the carrier's PC and desant capacity. While embarked or desanting, a tercio is temporarily disbanded, and its pin is divided as such. The tercio may disembark as a single activation. When a tercio exits its carrier, it exits in the same configuration as when it embarked, adding together its units' pin.\nTercios count as being three units (or two, if one constituent unit has been killed) for the purpose of garrisoning buildings.\nWhen charging with a tercio, the leading unit must make basal contact with its frontal arc to create a valid close combat. A move cannot result in basal contact with an enemy if no enemies end up in basal contact with the leading unit's frontal arc. A tercio can charge multiple enemies as long as at least one of them is in the leading unit's frontal arc.\niv. Suffering Hits & Kills\nTercios are targeted as a single unit by non-Radius attacks which can target at least one of its units. Attcks target the arc of the closest unit targetable by the attcker. When struck, the tercio uses the toughness of the leading unit to determine the target number of the kill roll. If the tercio suffers a kill, that kill must be applied to the leading unit.\nTercios targeted by a Radius attack receive an attack for each of its units within the Radius. Each unit in the tercio is truck by individuaally resolved attacks thaaat use the unit's own Toughness, not that of the leading unit. Hits gainst desanting members of a Tercio are also resolved individually.\nWhen the leading unit is fully killed (not just depleted), one of the two supporting units must immediately move up and replace it. The other supporting unit enters full basal conact with the rear of the new leading unit, resulting in  straight \"column\" of two unit bases.\nIf the tercio suffers multiple kills simultaneously, then kills are assigned to the leading unit until it is fully dead. All overflowing kills must then be assigned to one of the two supporting units (of the defender's choice) before the next leading unit is moved forward.\nv. Firing & Terrain\nA tercio attacks simultaneously, with all units using their weapons within normal facing and range restrictions. Each constituent unit may select a different target and draw LOS out of any other unit's base in the same tercio.\nTercios are spotted and identified as one unit. A tercio is concealed if all of its constituent units are concealed. It is in ambush if the leading unit can enter ambush and the supporting units are in ambush, concealed, or out of LOS from all enemies. The whole tercio uses the leading unit's Cover Modifier.\nConstituent units of a tercio benefit from their special rules individually. Parachuting tercios take pin as if disbanded.",
     "Wheeled": "If a wheeled vehicle begins and ends its movement on road, it may road dash, adding its quality statistic to its base movement. Add quality before applying any multiplier.\nWheeled vehicles must pay an additional 1\" movement penalty whenever they enter occluding terrain, even if that terrain does not normally have an entrance/exit cost, unless otherwise noted.",
     "Carriage": "Ignores terrain multipliers and may sprint and rotate for free, like infantry.",
@@ -75,7 +74,10 @@
     "Desant (X)": "This unit has an altered max number of desanting units.",
     "Dummy": "Dummies are fake unit markers. Dummies are not real units and cannot do any actions a real unit can do. Destroyed on hit, can move as far as you want, but costs a command token to move as normal.\nCan be moved in a brigade move, but does not count towards the brigade limit. Dummies may call a brigade that affects only other dummies.",
     "Reserve": "This TACOM unit does not count towards your TACOM total.",
-    "Horseback":  "This unit cannot embark or desant. They may let you pet their horse if you ask, though."
+    "Horseback": "This unit cannot embark or desant. They may let you pet their horse if you ask, though.",
+    "Standoff": "This plane weapon can be guided towards its target while the pilot is maneuvering away from the battlefield.\nWhen a Standoff weapon is fired, the plane which fired it may choose to immediately rotate 90 degrees clockwise and remain stationary until the attack is resolved.\nWhen the Standoff attack resolves, the plane which fired it rotates another 90 degrees clockwise (for a 180 degree total turn) and begins automatically waving off the board, returning to the direction from whence it came.",
+    "Dispersing": "Infantry in radius take one pin. Smoke radii with their centers inside this weapon’s radius are cleared.",
+    "Plutonium Core": "Roll a D6 for each unit in the radius. If the result is above the unit’s Quality, it takes max pin, otherwise it takes one pin."
   },
   "formats": {
     "The Federal States Army": {
@@ -119,12 +121,12 @@
           {
             "name": "SUR-4 127mm Air-to-Air Missile",
             "weapon_stats": "Air, R60\", A3+/3+, S6/6, D1, Ammo 1",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           },
           {
             "name": "120dB Megaphone Array",
-            "weapon_stats": "Inf/Vec, R16\", A++/++, D1",
-            "keywords": [ "Rally", "Turret" ]
+            "weapon_stats": "Gnd, R16\", A++/++, D1",
+            "keywords": [ "Rally", "Turret", "Radius (3\")" ]
           }
         ]
       },
@@ -145,12 +147,12 @@
           {
             "name": "SUR-4 127mm Air-to-Air Missile",
             "weapon_stats": "Air, R60\", A3+/3+, S6/6, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           },
           {
             "name": "120dB Megaphone Array",
-            "weapon_stats": "Inf/Vec, R16\", A++/++, D1",
-            "keywords": [ "Rally", "Turret" ]
+            "weapon_stats": "Gnd, R16\", A++/++, D1",
+            "keywords": [ "Rally", "Turret", "Radius (3\")" ]
           }
         ]
       },
@@ -216,7 +218,7 @@
         "cost": 10,
         "unit_stats": "Inf (S), H2, S24\", M8\", Q2, T1/1/1-",
         "keywords": [ "Fearless", "NBC", "Squad", "Horseback" ],
-        "bonus_traits": "May not embark or desant.",
+        "bonus_traits": "May not embark or desant. Becomes H1 while gone to ground.",
         "weapons": [
           {
             "name": "Cavalry Carbine, local manufacture",
@@ -379,8 +381,7 @@
               {
                 "name": "14-lb Plutonium Core",
                 "ammo_stats": "A++/xx",
-                "keywords": [ "Radius (4\")" ],
-                "bonus_traits": "*Roll a D6 for each unit in the radius. If the result is above the unit's Quality, it takes max pin, otherwise it takes one pin."
+                "keywords": [ "Radius (4\")", "Plutonium Core" ]
               }
             ]
           }
@@ -646,7 +647,7 @@
         "cost": 35,
         "unit_stats": "Vec, H2, S32\", M10\", Q2, T12/6/5",
         "keywords": [ "NBC", "Tow (5)" ],
-        "bonus_traits": "This unit ignores up to 90 degrees of rotation to the right, but must pay an additional 1\" the first time it rotates to the left in a move.",
+        "bonus_traits": "This unit ignores up to 90 degrees of rotation to the right, but must pay an additional 1\" the first time it rotates to the left in a move. Does not apply while towing.",
         "weapons": [
           {
             "name": "MhL-42 .305 MG",
@@ -1140,7 +1141,7 @@
           {
             "name": "SUR-4 127mm Infrared AAM",
             "weapon_stats": "Air, R30\", A3+, S6, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           }
         ]
       },
@@ -1166,7 +1167,7 @@
           {
             "name": "9GR3 275mm AGM",
             "weapon_stats": "Vec, R60\", A2+, S24/8, D1, Ammo 3",
-            "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge" ]
+            "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge", "Standoff" ]
           }
         ]
       },
@@ -1192,7 +1193,7 @@
           {
             "name": "SUR-4 127mm IR AAM, modified",
             "weapon_stats": "Vec/Air, R36\", A3+, S6, D1, Ammo 4",
-            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           }
         ]
       },
@@ -1301,7 +1302,7 @@
         "cost": 20,
         "unit_stats": "Vec, H1, S0\", M0\", Q6, T4/4/4, C6",
         "keywords": [ "Brigade (4, 12\")", "NBC", "Paradrop", "Rygonet (24\")", "Sense (6\")" ],
-        "bonus_traits": "Uses a 40x40mm base. May activate in the Maneuver Phase despite having M0\", but only to call a Brigade. May not lend actions to friendly units via Rygonet.",
+        "bonus_traits": "Uses a 40x40mm base. May activate in the Maneuver Phase despite having M0\", but only to call a Brigade. May not lend actions to friendly units via Rygonet. Always dies if in a close combat without friendly units.",
         "weapons": []
       },
       {
@@ -1475,7 +1476,7 @@
           {
             "name": "\"Pole Guard\" 70mm MANPADS",
             "weapon_stats": "Air, R60\", A3+/xx, S6/6, D1, Ammo 2",
-            "keywords": [ "Guided Missile (1)", "Homing", "Small Arm" ]
+            "keywords": [ "Guided Missile (1)", "Homing", "Small Arm", "Thermal Sights" ]
           }
         ]
       },
@@ -1704,7 +1705,7 @@
           {
             "name": "\"Pole Guard\" 70mm SAM",
             "weapon_stats": "Air, R60\", A3+/xx, S6/6, D1, Ammo 4",
-            "keywords": [ "Guided Missile (1)", "Homing", "Turret" ]
+            "keywords": [ "Guided Missile (1)", "Homing", "Thermal Sights", "Turret" ]
           },
           {
             "name": "\"Tread Bus\" 65mm Smoke Launchers",
@@ -1903,8 +1904,8 @@
           },
           {
             "name": "\"Ink Strake\" 55mm Thermobaric Rockets",
-            "weapon_stats": "Gnd, R28\", A4+/4+, S2/2, D3, Ammo 4",
-            "keywords": [ "Ignore Cover (2)", "No CC", "Rear Attack", "Saturating (4)", "Thermal Sights", "Turret" ]
+            "weapon_stats": "Gnd, R28\", A4+/4+, S2/2, D3, Ammo 3",
+            "keywords": [ "Ignore Cover (2)", "No CC", "Rear Attack", "Radius (2-4\")", "Thermal Sights", "Turret", "Round Extruder" ]
           }
         ]
       },
@@ -2031,8 +2032,7 @@
           {
             "name": "Shockwave Dispersal System",
             "weapon_stats": "Gnd, R0\", A++/++, D1",
-            "keywords": [ "Radius (6\")" ],
-            "bonus_traits": "*Infantry in radius take one pin. Smoke radii with their centers inside this weapon's radius are cleared."
+            "keywords": [ "Radius (6\")", "Dispersing" ]
           }
         ]
       },
@@ -2144,7 +2144,7 @@
           {
             "name": "\"Ram Crutch\" 175mm Active AAM",
             "weapon_stats": "Air, R60\", A3+/3+, S7/7, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Radar Anti-Air" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Radar Anti-Air", "Thermal Sights" ]
           },
           {
             "name": "\"Mark Pate\" 180mm AGM",
@@ -2187,12 +2187,12 @@
           {
             "name": "\"Ram Crutch\" 175mm Active AAM",
             "weapon_stats": "Air, R60\", A3+, S7, D1, Ammo 4",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Radar Anti-Air" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Radar Anti-Air", "Thermal Sights" ]
           },
           {
             "name": "\"Mark Pate\" 180mm AGM",
             "weapon_stats": "Vec, R60\", A3+, S18/4, D1, Ammo 2",
-            "keywords": [ "Guided Missile (1)", "Shaped Charge" ]
+            "keywords": [ "Guided Missile (1)", "Shaped Charge", "Standoff" ]
           }
         ]
       },
@@ -2208,7 +2208,7 @@
           {
             "name": "\"Able Ivy\" 20t Guided Nuclear Bomb",
             "weapon_stats": "Gnd, R40\", A++, D1, Ammo 1",
-            "keywords": [ "Guided Missile (2)", "Nuclear (1\"-2\"-6\")" ]
+            "keywords": [ "Guided Missile (2)", "Nuclear (1\"-2\"-6\")", "Standoff" ]
           }
         ]
       },
@@ -2224,12 +2224,12 @@
           {
             "name": "\"Yaw Switch\" 40mm Rotary Cannon",
             "weapon_stats": "All, R8\", A4+, S6, D4, Ammo 4",
-            "keywords": [ "Radar Anti-Air" ]
+            "keywords": [ "Radar Anti-Air", "Thermal Sights" ]
           },
           {
             "name": "\"Lake Brush\" 275mm Guided Bomb",
             "weapon_stats": "Gnd, R32\", A2+, S10, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Radius (3\")", "Rear Attack" ]
+            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Radius (3\")", "Rear Attack", "Standoff" ]
           }
         ]
       },
@@ -2383,7 +2383,7 @@
         "subname": "Command Airmobile Light Tank",
         "type": "TACOM",
         "cost": 15,
-        "unit_stats": "Vec, H2, S32\", M10\", Q3, T4/3/3, C4",
+        "unit_stats": "Vec, H2, S32\", M10\", Q4, T4/3/3, C4",
         "keywords": [ "Active Protection (1)", "Amphibious", "NBC", "Paradrop", "Steel Watchbands", "Brigade (4, 6\")" ],
         "weapons": [
           {
@@ -2675,7 +2675,7 @@
           {
             "name": "9GR2 85mm MANPADS",
             "weapon_stats": "Air, R60\", A4+/xx, S5/5, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (2)", "Homing", "Small Arm" ]
+            "keywords": [ "Air-Filling", "Guided Missile (2)", "Homing", "Small Arm", "Thermal Sights" ]
           }
         ]
       },
@@ -2701,12 +2701,12 @@
               {
                 "name": "73mm HEAT",
                 "ammo_stats": "Inf/Vec, A3+/xx, S8/1+",
-                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round" ]
+                "keywords": [ "Defensive CC", "Shaped Charge", "Slow Round" ]
               },
               {
                 "name": "73mm Incendiary",
                 "ammo_stats": "Inf/Vec, A3+/xx, S1+/1+",
-                "keywords": [ "Ignore Cover (2)", "No CC (Inf.)", "Rear Attack", "Slow Round" ]
+                "keywords": [ "Ignore Cover (2)", "Defensive CC", "Rear Attack", "Slow Round" ]
               },
               {
                 "name": "73mm Smoke",
@@ -3316,7 +3316,7 @@
           {
             "name": "9GR5 120mm Infrared SAM",
             "weapon_stats": "Air, R60\", A4+/xx, S6/6, D1, Ammo 4",
-            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Homing", "Turret" ]
+            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Homing", "Thermal Sights", "Turret" ]
           }
         ]
       },
@@ -3342,7 +3342,7 @@
               {
                 "name": "152mm HEAT",
                 "ammo_stats": "Inf/Vec, R40\", A3+/4+, S14/2, D1",
-                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round" ]
+                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round", "Thermal Sights" ]
               },
               {
                 "name": "152mm Frag",
@@ -3452,24 +3452,31 @@
         "name": "SiG-17 \"Hardnose\"",
         "subname": "Light Bomber",
         "type": "Aircraft",
-        "cost": 20,
-        "unit_stats": "Air (CAS), M10\", Q2, T3, E0",
-        "keywords": [],
+        "cost": 25,
+        "unit_stats": "Air (CAS), M12\", Q2, T3, E0",
+        "keywords": [ "Decoy Protection (2)" ],
         "weapons": [
           {
             "name": "6G2 7.76mm MGs, octet",
             "weapon_stats": "All, R2\", A4+, S1, D3",
-            "keywords": [ "Radar Anti-Air" ]
+            "keywords": [ ]
           },
           {
-            "name": "4BB2 350kg Dual-Purpose Cluster Bomb",
-            "weapon_stats": "Gnd, R0\", A2+, S6/1, D2, Ammo 6",
-            "keywords": [ "Rear Attack", "Saturating (6)", "Shaped Charge" ]
-          },
-          {
-            "name": "9GR6 200mm Beam-Riding AAM",
-            "weapon_stats": "Air, R50\", A5+, S6, D1, Ammo 4",
-            "keywords": [ "Air-Filling", "Guided Missile (2)", "Barrage (2)", "No CC" ]
+            "name": "H1A1 Rotary Bomb Bay",
+            "weapon_stats": "Gnd, R0\", A2+, Ammo 5",
+            "keywords": [ "Radius (2-6\")", "Rear Attack" ],
+            "ammos": [
+              {
+                "name": "350kg Dual-Purpose Cluster Bomb",
+                "ammo_stats": "S6/1+, D2",
+                "keywords": [ "Shaped Charge" ]
+              },
+              {
+                "name": "350kg HE Airburst",
+                "ammo_stats": "S[D3], D3",
+                "keywords": [ "Air-Filling" ]
+              }
+            ]
           }
         ]
       },
@@ -3495,7 +3502,7 @@
           {
             "name": "9GR4 120mm Infrared AAM",
             "weapon_stats": "Air, R30\", A4+, S6, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           }
         ]
       },
@@ -3514,14 +3521,14 @@
             "keywords": [ "Radar Anti-Air" ]
           },
           {
-            "name": "4BE1 500kg HE Bomb",
-            "weapon_stats": "Gnd, R0\", A3+, S8, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Barrage (2)", "Radius (3\")", "Rear Attack" ]
+            "name": "4BD1 500kg Bunker Buster",
+            "weapon_stats": "Gnd, R8\", A3+, S8, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Barrage (2)", "Ignore Cover (2)", "Radius (2\")", "Rear Attack" ]
           },
           {
             "name": "9GR3 275mm AGM",
             "weapon_stats": "Vec, R50\", A2+, S24/8, D1, Ammo 2",
-            "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge", "Thermal Sights" ]
+            "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge", "Thermal Sights", "Standoff" ]
           }
         ]
       },
@@ -3584,7 +3591,7 @@
           {
             "name": "Stimulant-Laced Bomb, \"Signal Salt\"",
             "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
-            "keywords": [ "Light Indirect (0)", "Radius (3)", "Rally (Salt)", "Small Arm" ]
+            "keywords": [ "Light Indirect (0)", "Radius (3\")", "Rally (Salt)", "Small Arm" ]
           }
         ]
       },
@@ -3624,7 +3631,7 @@
           },
           {
             "name": "Stimulant-Laced Filter, \"Signal Snuff\"",
-            "weapon_stats": "Inf*, R0\", A++/++, D1, Ammo 1",
+            "weapon_stats": "Self, R0\", A++/++, D1, Ammo 1",
             "keywords": [ "Discreet", "Rally" ]
           }
         ]
@@ -3636,7 +3643,7 @@
         "type": "TACOM",
         "cost": 20,
         "unit_stats": "Inf, H1, S24\", M4\", Q5, T1/1/1, C5",
-        "keywords": [ "Amphibious", "Brigade (3, 12\")", "Guidance (12\")", "Infiltrator", "Sense (8\")" ],
+        "keywords": [ "Amphibious", "Brigade (3, 12\")", "Guidance (8\")", "Infiltrator", "Sense (8\")" ],
         "bonus_traits": "While this unit is alive, no unit in this army can willingly go berserk. Only Judges may call Exhortation support missions.",
         "weapons": [
           {
@@ -3652,7 +3659,7 @@
           {
             "name": "Stimulant-Laced Bomb, \"Signal Salt\"",
             "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
-            "keywords": [ "Light Indirect (0)", "Radius(3)", "Rally (Salt)", "Small Arm" ]
+            "keywords": [ "Light Indirect (0)", "Radius (3\")", "Rally (Salt)", "Small Arm" ]
           }
         ]
       },
@@ -3693,7 +3700,7 @@
           },
           {
             "name": "Mle. 44 3.5-inch RPG",
-            "weapon_stats": "Inf/Vec, R8\", A4+/6+, S9/1+, D1, Ammo 2",
+            "weapon_stats": "Inf/Vec, R8\", A4+/6+, S9/1+, D1, Ammo 4",
             "keywords": [ "Shaped Charge", "Small Arm", "Slow Round" ]
           },
           {
@@ -3786,7 +3793,7 @@
           },
           {
             "name": "Stimulant-Laced Filter, \"Signal Snuff\"",
-            "weapon_stats": "Inf*, R0\", A++/++, D1, Ammo 1",
+            "weapon_stats": "Self, R0\", A++/++, D1, Ammo 1",
             "keywords": [ "Discreet", "Rally" ]
           }
         ]
@@ -3875,12 +3882,12 @@
               {
                 "name": "3-inch HEAT",
                 "ammo_stats": "Inf/Vec, R24\", A4+/6+, S8/1+, D1",
-                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round" ]
+                "keywords": [ "Shaped Charge", "Slow Round" ]
               },
               {
                 "name": "3-inch Canister",
                 "ammo_stats": "Inf/Vec, R12\", A4+/6+, S1/1+, D3",
-                "keywords": [ "Defensive CC (Inf.)" ]
+                "keywords": [ ]
               },
               {
                 "name": "3-inch Smoke",
@@ -3988,6 +3995,11 @@
             "name": "Stimulant-Laced Bomb, \"Signal Salt\"",
             "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
             "keywords": [ "Light Indirect (0)", "Radius (3\")", "Rally (Salt)", "Small Arm" ]
+          },
+          {
+            "name": "MdG. 341 Smoke Bomb",
+            "weapon_stats": "Gnd, R6\", A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "Small Arm", "Smoke (2\")" ]
           }
         ]
       },
@@ -4268,7 +4280,7 @@
         "subname": "Anti-Air Gun Truck",
         "type": "Vehicle",
         "cost": 15,
-        "unit_stats": "Vec (W), H2, S16\", M8\", Q2, T2/2/1",
+        "unit_stats": "Vec (W), H2, S24\", M8\", Q2, T2/2/1",
         "keywords": [ "Tow (2)", "Wheeled" ],
         "weapons": [
           {
@@ -4407,7 +4419,7 @@
         "name": "CdS-F2 \"Aurora\"",
         "subname": "Rocket Truck",
         "type": "Vehicle",
-        "cost": 30,
+        "cost": 35,
         "unit_stats": "Vec (W), H2, S16\", M8\", Q2, T2/2/1",
         "keywords": [ "Wheeled" ],
         "weapons": [
@@ -4418,8 +4430,8 @@
           },
           {
             "name": "Mle. 13 5.2-inch Rocket Rack",
-            "weapon_stats": "Gnd, R12-∞\", A4+/5+, S6/6, D2, Ammo 6",
-            "keywords": [ "Air-Filling", "Ignore Cover (1)", "Heavy Indirect (2)", "No CC", "Saturating (6)" ]
+            "weapon_stats": "Gnd, R12-∞\", A4+/5+, S6/6, D2, Ammo 5",
+            "keywords": [ "Air-Filling", "Heavy Indirect (2)", "No CC", "Radius (2-6\")" ]
           }
         ]
       },
@@ -4546,8 +4558,8 @@
           },
           {
             "name": "BLG-64 500-lb. HE Cluster Bomb",
-            "weapon_stats": "Gnd, R0\", A2+, S4, D2, Ammo 4",
-            "keywords": [ "Air-Filling", "Rear Attack", "Saturating (4)" ]
+            "weapon_stats": "Gnd, R0\", A2+, S3, D2, Ammo 3",
+            "keywords": [ "Air-Filling", "Rear Attack", "Radius (2-4\")" ]
           }
         ]
       },
@@ -4568,12 +4580,12 @@
           {
             "name": "MA-67 4.7-inch Infrared AAM",
             "weapon_stats": "Air, R30\", A3+, S6, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           },
           {
             "name": "SD68 8-inch TV-Guided Bomb",
             "weapon_stats": "Gnd, R40\", A3+, S8, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (2)", "Radius (3\")", "Rear Attack" ]
+            "keywords": [ "Air-Filling", "Barrage (2)", "Guided Missile (2)", "Homing", "MCLOS", "Radius (3\")", "Rear Attack", "Standoff" ]
           }
         ]
       },
@@ -4594,7 +4606,7 @@
           {
             "name": "MA-67B 4.7-inch Infrared AAM",
             "weapon_stats": "Air, R36\", A3+, S6, D1, Ammo 2",
-            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing", "Thermal Sights" ]
           },
           {
             "name": "MA-62 7.9-inch Semi-Active AAM",
