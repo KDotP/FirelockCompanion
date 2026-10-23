@@ -16,9 +16,10 @@ When we hooked it up, it seemed curious, but didn’t even hesitate when we fed 
 - **Beginner Mode**: Also called Verbose Mode, Beginner Mode automatically translates the difficult-to-understand unit stat lines into easily understandable English. No more wondering what A3+/4+ means!
 - **Saving, Loading, Sharing**: Your lists are safe on your computer, and they aren't going anywhere (except where you choose to send them). This means you can even send custom lists to friends using Firelock Companion!
 - **Custom Content Loading**: Play custom factions? Don't worry, Firelock Companion uniquely allows for full custom content loading, including custom keywords. Sharing you own custom armies is as simple as sharing the json file and putting it in the Custom Content folder.
-- *Custom Naming*: Firelock Companion supports custom everything, from unit nicknames to list names.
+- *Custom Naming*: Firelock Companion supports custom everything, from unit nicknames to list names. Can't come up with names? Leave it all to the Ganglion that manages the Mass Rename tool.
 - *Army Value Tracking*: Playing your list and wondering how much of your initial army remains? The army value tracker provides a convenient check.
 - *Smooth Menu Flow*: Move back and forth between the main menu, army builder, army player, back to the builder, back to player, then all the way back to the menu.
+- *Import to TTS*: (IN BETA) Click one button to transfer your army from Firelock Companion to TTS. Manually naming your units is just so barbaric.
 
 ## Installation
 
