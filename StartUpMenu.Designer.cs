@@ -37,6 +37,8 @@
             label1 = new Label();
             verboseCheckbox = new CheckBox();
             label2 = new Label();
+            versionLabel = new Label();
+            versionControlLinkLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -122,13 +124,32 @@
             label2.Size = new Size(88, 15);
             label2.TabIndex = 7;
             label2.Text = "Beginner Mode";
-            label2.Click += label2_Click;
+            // 
+            // versionLabel
+            // 
+            versionLabel.Location = new Point(360, 210);
+            versionLabel.Name = "versionLabel";
+            versionLabel.Size = new Size(88, 18);
+            versionLabel.TabIndex = 8;
+            versionLabel.Text = "Version Check";
+            versionLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // versionControlLinkLabel
+            // 
+            versionControlLinkLabel.Location = new Point(346, 226);
+            versionControlLinkLabel.Name = "versionControlLinkLabel";
+            versionControlLinkLabel.Size = new Size(114, 18);
+            versionControlLinkLabel.TabIndex = 9;
+            versionControlLinkLabel.Text = "Checking...";
+            versionControlLinkLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // StartUpMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(460, 304);
+            Controls.Add(versionControlLinkLabel);
+            Controls.Add(versionLabel);
             Controls.Add(label2);
             Controls.Add(verboseCheckbox);
             Controls.Add(label1);
@@ -158,5 +179,7 @@
         private Label label1;
         private CheckBox verboseCheckbox;
         private Label label2;
+        private Label versionLabel;
+        private Label versionControlLinkLabel;
     }
 }
