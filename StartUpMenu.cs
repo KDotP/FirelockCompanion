@@ -220,13 +220,13 @@ namespace FirelockCompanion
                     break;
                 case VersionResult.Outdated:
                     versionControlLinkLabel.Text = $"{availableVersion} Available!";
-                    versionControlLinkLabel.ForeColor = Color.Orange;
+                    versionControlLinkLabel.ForeColor = Color.Red;
                     versionControlLinkLabel.Font = new Font(versionControlLinkLabel.Font, FontStyle.Underline);
                     versionControlLinkLabel.Click += VersionControlLinkLabel_Click;
                     break;
                 case VersionResult.Failed:
                     versionControlLinkLabel.Text = "Check Failed";
-                    versionControlLinkLabel.ForeColor = Color.Red;
+                    versionControlLinkLabel.ForeColor = Color.Gray;
                     break;
             }
         }
