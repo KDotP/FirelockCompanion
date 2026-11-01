@@ -32,7 +32,8 @@ namespace FirelockCompanion
         {
             try
             {
-                string poolsJson = System.IO.File.ReadAllText("NamePools.json");
+                string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/NamePools.json");
+                string poolsJson = System.IO.File.ReadAllText(configPath);
 
                 using JsonDocument doc = JsonDocument.Parse(poolsJson);
                 pools = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(doc.RootElement.GetProperty("pools").GetRawText());

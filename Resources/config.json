@@ -1,4 +1,5 @@
 {
   "version": "v0.6.2",
-  "enbale_version_control": true
+  "enbale_version_control": true,
+  "faction_agnostic":  false
 }
