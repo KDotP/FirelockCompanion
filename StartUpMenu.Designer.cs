@@ -39,6 +39,7 @@
             label2 = new Label();
             versionLabel = new Label();
             versionControlLinkLabel = new Label();
+            DONOTRELEASETHISBUTTON = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -143,11 +144,22 @@
             versionControlLinkLabel.Text = "Checking...";
             versionControlLinkLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // DONOTRELEASETHISBUTTON
+            // 
+            DONOTRELEASETHISBUTTON.Location = new Point(131, 74);
+            DONOTRELEASETHISBUTTON.Name = "DONOTRELEASETHISBUTTON";
+            DONOTRELEASETHISBUTTON.Size = new Size(75, 23);
+            DONOTRELEASETHISBUTTON.TabIndex = 10;
+            DONOTRELEASETHISBUTTON.Text = "Delete Me";
+            DONOTRELEASETHISBUTTON.UseVisualStyleBackColor = true;
+            DONOTRELEASETHISBUTTON.Click += DONOTRELEASETHISBUTTON_Click;
+            // 
             // StartUpMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(460, 304);
+            Controls.Add(DONOTRELEASETHISBUTTON);
             Controls.Add(versionControlLinkLabel);
             Controls.Add(versionLabel);
             Controls.Add(label2);
@@ -181,5 +193,6 @@
         private Label label2;
         private Label versionLabel;
         private Label versionControlLinkLabel;
+        private Button DONOTRELEASETHISBUTTON;
     }
 }
