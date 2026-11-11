@@ -79,26 +79,81 @@
     "Dispersing": "Infantry in radius take one pin. Smoke radii with their centers inside this weapon’s radius are cleared.",
     "Plutonium Core": "Roll a D6 for each unit in the radius. If the result is above the unit’s Quality, it takes max pin, otherwise it takes one pin."
   },
-  "roles": {
-    "Anti-Armor": "Effective at destroying or suppressing enemy armor.",
-    "Anti-Light": "Uses weapons with middling strength and dice to tear apart lightly armored vehicles or infantry.",
-    "Anti-Air": "Utilizes guided weaponry to destroy or disrupt hostile aircraft.",
-    "Anti-Infantry": "Especially effective at fighting infantry outside of close combat.",
-    "Artillery": "Able to engage enemies well beyond their own line of sight with TACOM or designation support.",
-    "Precision": "Capable of engaging targets with long ranged or high accuracy weapony.",
-    "Close Combat": "Uniquely terrifying and capable in close combat.",
-    "Recon": "Able to identify and spot enemies with specialized tools.",
-    "Logistics": "Work horses used tow, transport, or resupply other units.",
-    "Carrier": "Protects and moves infantry within.",
-    "Controller": "Limits hostile actions with area of effect attacks, smokes, lingering effects, or pin-inflicting attacks.",
-    "Nuclear": "For a moment, a star is born.",
-    "Line": "Standard issue and cheap. The right man in the wrong place can make all the difference.",
-    "Frontliner": "Designed to absorb incoming rounds.",
-    "Information Warfare": "Make it difficult to determine what's real or fake.",
-    "Specialist": "Fills an unsual or unique role.",
-    "Inspiring": "Rallies, enhances, or augments other friendly troops.",
-    "Paratrooper": "Able to be immediately deployed in disruptive or defensible positions."
-  },
+  "roles":
+    {
+      "Anti-Armor": {
+        "desc": "Effective at destroying or suppressing enemy armor.",
+        "show_in_info": true
+      },
+      "Anti-Light": {
+        "desc": "Uses weapons with middling strength and dice to tear apart lightly armored vehicles or infantry.",
+        "show_in_info": true
+      },
+      "Anti-Air": {
+        "desc": "Utilizes guided weaponry to destroy or disrupt hostile aircraft.",
+        "show_in_info": true
+      },
+      "Anti-Infantry": {
+        "desc": "Especially effective at fighting infantry outside of close combat.",
+        "show_in_info": true
+      },
+      "Artillery": {
+        "desc": "Able to engage enemies beyond their own line of sight with TACOM or designation support.",
+        "show_in_info": true
+      },
+      "Precision": {
+        "desc": "Capable of engaging targets with long ranged or high accuracy weapony.",
+        "show_in_info": true
+      },
+      "Close Combat": {
+        "desc": "Uniquely terrifying and capable in close combat.",
+        "show_in_info": false
+      },
+      "Recon": {
+        "desc": "Able to identify and spot enemies with specialized tools.",
+        "show_in_info": true
+      },
+      "Logistics": {
+        "desc": "Work horses used tow, transport, or resupply other units.",
+        "show_in_info": true
+      },
+      "Carrier": {
+        "desc": "Protects and moves infantry within.",
+        "show_in_info": true
+      },
+      "Controller": {
+        "desc": "Limits hostile actions with area of effect attacks, smokes, lingering effects, or pin-inflicting attacks.",
+        "show_in_info": true
+      },
+      "Nuclear": {
+        "desc": "For a moment, a star is born.",
+        "show_in_info": false
+      },
+      "Line": {
+        "desc": "Standard issue and cheap. The right man in the wrong place can make all the difference.",
+        "show_in_info": true
+      },
+      "Frontliner": {
+        "desc": "Designed to absorb incoming rounds.",
+        "show_in_info": true
+      },
+      "Information Warfare": {
+        "desc": "Make it difficult to determine what's real or fake.",
+        "show_in_info": false
+      },
+      "Specialist": {
+        "desc": "Fills an unsual or unique role.",
+        "show_in_info": false
+      },
+      "Inspiring": {
+        "desc": "Rallies, enhances, or augments other friendly troops.",
+        "show_in_info": false
+      },
+      "Paratrooper": {
+        "desc": "Able to be immediately deployed in disruptive or defensible positions.",
+        "show_in_info": true
+      }
+    },
   "formats": {
     "The Federal States Army": {
       "group_name": "Section X",
