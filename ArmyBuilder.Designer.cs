@@ -53,6 +53,8 @@ partial class ArmyBuilder
         groupToolStripMenuItem = new ToolStripMenuItem();
         unitToolStripMenuItem = new ToolStripMenuItem();
         massRenameToolStripMenuItem1 = new ToolStripMenuItem();
+        viewToolStripMenuItem = new ToolStripMenuItem();
+        armyStatsToolStripMenuItem = new ToolStripMenuItem();
         pointsLabel = new Label();
         factionNameLabel = new Label();
         armyNameLabel = new Label();
@@ -85,6 +87,7 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
+        asTextToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -138,7 +141,7 @@ partial class ArmyBuilder
         // 
         // commandRibbon
         // 
-        commandRibbon.Items.AddRange(new ToolStripItem[] { testToolStripMenuItem, editToolStripMenuItem, addToolStripMenuItem, renameToolStripMenuItem1 });
+        commandRibbon.Items.AddRange(new ToolStripItem[] { testToolStripMenuItem, editToolStripMenuItem, addToolStripMenuItem, renameToolStripMenuItem1, viewToolStripMenuItem });
         commandRibbon.Location = new Point(0, 0);
         commandRibbon.Name = "commandRibbon";
         commandRibbon.Size = new Size(1013, 24);
@@ -155,14 +158,14 @@ partial class ArmyBuilder
         // saveToolStripMenuItem
         // 
         saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-        saveToolStripMenuItem.Size = new Size(180, 22);
+        saveToolStripMenuItem.Size = new Size(117, 22);
         saveToolStripMenuItem.Text = "Save";
         saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
         // 
         // saveAsToolStripMenuItem
         // 
         saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-        saveAsToolStripMenuItem.Size = new Size(180, 22);
+        saveAsToolStripMenuItem.Size = new Size(117, 22);
         saveAsToolStripMenuItem.Text = "Save As";
         saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
         // 
@@ -170,7 +173,7 @@ partial class ArmyBuilder
         // 
         exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { asTXTToolStripMenuItem, asToolStripMenuItem });
         exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-        exportToolStripMenuItem.Size = new Size(180, 22);
+        exportToolStripMenuItem.Size = new Size(117, 22);
         exportToolStripMenuItem.Text = "Export...";
         // 
         // asTXTToolStripMenuItem
@@ -191,7 +194,7 @@ partial class ArmyBuilder
         // backToolStripMenuItem
         // 
         backToolStripMenuItem.Name = "backToolStripMenuItem";
-        backToolStripMenuItem.Size = new Size(180, 22);
+        backToolStripMenuItem.Size = new Size(117, 22);
         backToolStripMenuItem.Text = "Back";
         backToolStripMenuItem.Click += backToolStripMenuItem_Click;
         // 
@@ -293,6 +296,20 @@ partial class ArmyBuilder
         massRenameToolStripMenuItem1.Size = new Size(147, 22);
         massRenameToolStripMenuItem1.Text = "Mass Rename";
         massRenameToolStripMenuItem1.Click += massRenameToolStripMenuItem1_Click;
+        // 
+        // viewToolStripMenuItem
+        // 
+        viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { armyStatsToolStripMenuItem, asTextToolStripMenuItem });
+        viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+        viewToolStripMenuItem.Size = new Size(44, 20);
+        viewToolStripMenuItem.Text = "View";
+        // 
+        // armyStatsToolStripMenuItem
+        // 
+        armyStatsToolStripMenuItem.Name = "armyStatsToolStripMenuItem";
+        armyStatsToolStripMenuItem.Size = new Size(180, 22);
+        armyStatsToolStripMenuItem.Text = "Army Stats";
+        armyStatsToolStripMenuItem.Click += armyStatsToolStripMenuItem_Click;
         // 
         // pointsLabel
         // 
@@ -693,6 +710,13 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
+        // asTextToolStripMenuItem
+        // 
+        asTextToolStripMenuItem.Name = "asTextToolStripMenuItem";
+        asTextToolStripMenuItem.Size = new Size(180, 22);
+        asTextToolStripMenuItem.Text = "As Text";
+        asTextToolStripMenuItem.Click += asTextToolStripMenuItem_Click;
+        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -792,4 +816,7 @@ partial class ArmyBuilder
     private ToolStripMenuItem exportToolStripMenuItem;
     private ToolStripMenuItem asTXTToolStripMenuItem;
     private ToolStripMenuItem asToolStripMenuItem;
+    private ToolStripMenuItem viewToolStripMenuItem;
+    private ToolStripMenuItem armyStatsToolStripMenuItem;
+    private ToolStripMenuItem asTextToolStripMenuItem;
 }

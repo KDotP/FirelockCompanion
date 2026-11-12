@@ -240,12 +240,5 @@ namespace FirelockCompanion
                 UseShellExecute = true
             });
         }
-
-        // If you release this, I will never forgive you
-        private void DONOTRELEASETHISBUTTON_Click(object sender, EventArgs e)
-        {
-            ArmyStats statsForm = new ArmyStats();
-            statsForm.Visible = true;
-        }
     }
 }

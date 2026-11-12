@@ -2686,4 +2686,17 @@ public partial class ArmyBuilder : Form
     {
         // To do
     }
+
+    private void armyStatsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        ArmyStats statsForm = new ArmyStats();
+        statsForm.Visible = true;
+    }
+
+    private void asTextToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        // To do
+        // Show the army as text like a save, but in a text box so it doesn't have to be saved
+        // Probably leave a save button as well
+    }
 }

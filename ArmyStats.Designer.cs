@@ -46,6 +46,8 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
             typeTable.SuspendLayout();
             typeBox.SuspendLayout();
             roleBox.SuspendLayout();
@@ -215,7 +217,7 @@
             groupBox1.Controls.Add(tableLayoutPanel1);
             groupBox1.Location = new Point(12, 119);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(125, 61);
+            groupBox1.Size = new Size(125, 83);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Army Info";
@@ -229,10 +231,12 @@
             tableLayoutPanel1.Controls.Add(label2, 1, 1);
             tableLayoutPanel1.Controls.Add(label3, 0, 0);
             tableLayoutPanel1.Controls.Add(label4, 0, 1);
+            tableLayoutPanel1.Controls.Add(label5, 1, 2);
+            tableLayoutPanel1.Controls.Add(label6, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 19);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
@@ -240,7 +244,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(119, 39);
+            tableLayoutPanel1.Size = new Size(119, 61);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -285,6 +289,27 @@
             label4.TabIndex = 1;
             label4.Text = "0";
             // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Left;
+            label5.AutoSize = true;
+            label5.Location = new Point(38, 43);
+            label5.Name = "label5";
+            label5.Size = new Size(74, 15);
+            label5.TabIndex = 0;
+            label5.Text = "Non-Loaded";
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F);
+            label6.Location = new Point(19, 43);
+            label6.Name = "label6";
+            label6.Size = new Size(13, 15);
+            label6.TabIndex = 1;
+            label6.Text = "0";
+            // 
             // ArmyStats
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -325,5 +350,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Label label5;
+        private Label label6;
     }
 }
