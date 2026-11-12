@@ -74,7 +74,7 @@
     "Desant (X)": "This unit has an altered max number of desanting units.",
     "Dummy": "Dummies are fake unit markers. Dummies are not real units and cannot do any actions a real unit can do. Destroyed on hit, can move as far as you want, but costs a command token to move as normal.\nCan be moved in a brigade move, but does not count towards the brigade limit. Dummies may call a brigade that affects only other dummies.",
     "Reserve": "This TACOM unit does not count towards your TACOM total.",
-    "Horseback": "This unit cannot embark or desant. They may let you pet their horse if you ask, though.",
+    "Horseback": "This unit cannot embark or desant. Becomes H1 while gone to ground. They may let you pet their horse if you ask, though.",
     "Standoff": "This plane weapon can be guided towards its target while the pilot is maneuvering away from the battlefield.\nWhen a Standoff weapon is fired, the plane which fired it may choose to immediately rotate 90 degrees clockwise and remain stationary until the attack is resolved.\nWhen the Standoff attack resolves, the plane which fired it rotates another 90 degrees clockwise (for a 180 degree total turn) and begins automatically waving off the board, returning to the direction from whence it came.",
     "Dispersing": "Infantry in radius take one pin. Smoke radii with their centers inside this weapon’s radius are cleared.",
     "Plutonium Core": "Roll a D6 for each unit in the radius. If the result is above the unit’s Quality, it takes max pin, otherwise it takes one pin."

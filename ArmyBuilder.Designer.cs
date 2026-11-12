@@ -55,6 +55,7 @@ partial class ArmyBuilder
         massRenameToolStripMenuItem1 = new ToolStripMenuItem();
         viewToolStripMenuItem = new ToolStripMenuItem();
         armyStatsToolStripMenuItem = new ToolStripMenuItem();
+        asTextToolStripMenuItem = new ToolStripMenuItem();
         pointsLabel = new Label();
         factionNameLabel = new Label();
         armyNameLabel = new Label();
@@ -87,7 +88,6 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
-        asTextToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -306,10 +306,18 @@ partial class ArmyBuilder
         // 
         // armyStatsToolStripMenuItem
         // 
+        armyStatsToolStripMenuItem.CheckOnClick = true;
         armyStatsToolStripMenuItem.Name = "armyStatsToolStripMenuItem";
         armyStatsToolStripMenuItem.Size = new Size(180, 22);
         armyStatsToolStripMenuItem.Text = "Army Stats";
         armyStatsToolStripMenuItem.Click += armyStatsToolStripMenuItem_Click;
+        // 
+        // asTextToolStripMenuItem
+        // 
+        asTextToolStripMenuItem.Name = "asTextToolStripMenuItem";
+        asTextToolStripMenuItem.Size = new Size(180, 22);
+        asTextToolStripMenuItem.Text = "As Text";
+        asTextToolStripMenuItem.Click += asTextToolStripMenuItem_Click;
         // 
         // pointsLabel
         // 
@@ -709,13 +717,6 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Name = "addUnitToolStripMenuItem";
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
-        // 
-        // asTextToolStripMenuItem
-        // 
-        asTextToolStripMenuItem.Name = "asTextToolStripMenuItem";
-        asTextToolStripMenuItem.Size = new Size(180, 22);
-        asTextToolStripMenuItem.Text = "As Text";
-        asTextToolStripMenuItem.Click += asTextToolStripMenuItem_Click;
         // 
         // ArmyBuilder
         // 

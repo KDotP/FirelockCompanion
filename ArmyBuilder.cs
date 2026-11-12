@@ -16,6 +16,9 @@ public partial class ArmyBuilder : Form
     private string previousSaveName;
     private List<UnitTemplate> factionUnits;
 
+    private ArmyStats statsForm;
+    private Dictionary<string, RoleInfo> roleDefinitions = new();
+
     // Getting real tired of this """error""" and if I suppress it internally, YOU would still get warned
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Dictionary<string, Dictionary<string, string>> Formats { get; set; }
@@ -32,14 +35,11 @@ public partial class ArmyBuilder : Form
     private static readonly TextFormatFlags MeasureFlags = TextFormatFlags.NoPadding | TextFormatFlags.SingleLine; // For special formatting with embark
 
     // Point management
-
     private int maxPoints = 300;
     private int RequiredTacoms => (int)Math.Ceiling(maxPoints / 100.0);
-
     private int nextUnitNumber = 1;
 
     // Copy paste management
-
     private List<CopiedUnitSnapshot> copiedUnits = new();
 
     private record KeywordInfo(string Keyword, string Description);
@@ -108,6 +108,8 @@ public partial class ArmyBuilder : Form
         {
             MessageBox.Show($"Error loading custom content: {ex.Message}", "Custom Content Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        roleDefinitions = ruleset.roles ?? new Dictionary<string, RoleInfo>();
 
         // Load group names
         if (ruleset.formats != null && ruleset.formats.TryGetValue(faction, out var factionFormat))
@@ -1227,6 +1229,32 @@ public partial class ArmyBuilder : Form
         }
     }
 
+    private List<UnitTemplate> CollectArmyUnits()
+    {
+        // I forgor about walk, this could have been so helpful so often
+        var units = new List<UnitTemplate>();
+        void Walk(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Tag is ActiveUnitEntry entry && entry.Unit.name != "Tercios") units.Add(entry.Unit);
+                if (node.Nodes.Count > 0) Walk(node.Nodes);
+            }
+        }
+
+        Walk(activeArmyTree.Nodes);
+        return units;
+    }
+
+    // Update the stats page if open
+    private void UpdateArmyStats()
+    {
+        if (statsForm == null || statsForm.IsDisposed) return;
+        statsForm.UpdateStats(CollectArmyUnits());
+    }
+
+
+
     private void RecalculateAll()
     {
         ClearRelationshipState();
@@ -1241,6 +1269,7 @@ public partial class ArmyBuilder : Form
                     child.Text = BuildFullNodeText(entry, child);
 
         RecalculateArmyTotals();
+        UpdateArmyStats();
     }
 
     private void activeArmyTree_MouseDown(object sender, MouseEventArgs e)
@@ -2689,8 +2718,32 @@ public partial class ArmyBuilder : Form
 
     private void armyStatsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        ArmyStats statsForm = new ArmyStats();
-        statsForm.Visible = true;
+        // First click checks
+        if (armyStatsToolStripMenuItem.Checked)
+        {
+            if (statsForm == null || statsForm.IsDisposed)
+            {
+                statsForm = new ArmyStats();
+                statsForm.PopulateRoles(roleDefinitions);
+                statsForm.FormClosed += (s, args) => statsForm = null;
+                statsForm.Show(this);
+            }
+            else
+            {
+                if (statsForm.WindowState == FormWindowState.Minimized) statsForm.WindowState = FormWindowState.Normal;
+                statsForm.Activate();
+            }
+
+            UpdateArmyStats();
+            statsForm.FollowMainWindow(this); // Remove this
+            this.Focus();
+        }
+        else
+        {
+            if (statsForm == null) return; // Something about order of operations in windows forms
+            statsForm.Close(); // Can't remember if it's close or dispose?
+            statsForm = null;
+        }
     }
 
     private void asTextToolStripMenuItem_Click(object sender, EventArgs e)

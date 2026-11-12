@@ -13,37 +13,31 @@ namespace FirelockCompanion
 {
     public partial class ArmyStats : Form
     {
-        // I'm putting this inside the ArmyStats class because they're not needed elsewhere, but this failed when I tried it ealier so idk
-        private class RoleInfo
-        {
-            public string desc { get; set; }
-            public bool show_in_info { get; set; }
-        }
-
-        private class RolesData
-        {
-            public Dictionary<string, RoleInfo> roles { get; set; }
-        }
+        private Dictionary<string, Label> roleCountLabels = new Dictionary<string, Label>();
 
         public ArmyStats()
         {
             InitializeComponent();
-            PopulateRoles();
         }
 
-        private void PopulateRoles()
+        public async Task FollowMainWindow(Form follow)
         {
-            string jsonString = System.IO.File.ReadAllText("Data.json");
-            RolesData roles = System.Text.Json.JsonSerializer.Deserialize<RolesData>(jsonString);
-
-            if (roles.Equals(null) || roles.roles == null)
+            while (true)
             {
-                MessageBox.Show("Failed to load roles data from Data.json.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                await Task.Delay(10); // I don't think this draws performance too much, but keep an eye on this
+                this.Location = new Point(follow.Location.X - this.Width + 16, follow.Location.Y);
             }
+        }
+
+        public void PopulateRoles(Dictionary<string, RoleInfo> roleDefinitions)
+        {
+            rolesTable.SuspendLayout();
+
+            rolesTable.Controls.Clear();
+            roleCountLabels.Clear();
 
             // Cull non-shown roles
-            var visibleRoles = roles.roles.Where(role => role.Value.show_in_info).ToList();
+            var visibleRoles = (roleDefinitions ?? new Dictionary<string, RoleInfo>()).Where(role => role.Value != null && role.Value.show_in_info).ToList(); // This line made with the help of AI
             int visibleRoleCount = visibleRoles.Count; // Because this got called so many times
 
             // Add roles to table
@@ -58,6 +52,7 @@ namespace FirelockCompanion
                     AutoSize = true,
                     Anchor = AnchorStyles.Right
                 };
+
                 Label roleLabel = new Label
                 {
                     Name = $"{roleName.Replace(" ", "")}Label",
@@ -68,10 +63,36 @@ namespace FirelockCompanion
 
                 rolesTable.Controls.Add(roleCountLabel, 0, i);
                 rolesTable.Controls.Add(roleLabel, 1, i);
+                roleCountLabels[roleName] = roleCountLabel;
             }
+
+            rolesTable.ResumeLayout();
 
             // Resize named group thing
             roleBox.Size = new Size(roleBox.Size.Width, (visibleRoleCount * 20) + 23); // I know, it annoys me too
+
+            // To do: set the window size to contain the group box, no more, and no less than the other groups
+
+        }
+
+        public void UpdateStats(List<UnitTemplate> units)
+        {
+            var roleCounts = roleCountLabels.Keys.ToDictionary(role => role, role => 0);
+
+            foreach (UnitTemplate unit in units ?? Enumerable.Empty<UnitTemplate>())
+            {
+                if (unit?.roles == null)
+                    continue;
+
+                // Distinct so a role listed twice on one unit can't count twice
+                foreach (string role in unit.roles.Where(r => r != null).Distinct())
+                {
+                    if (roleCounts.ContainsKey(role))
+                        roleCounts[role]++;
+                }
+            }
+
+            foreach (var kvp in roleCounts) roleCountLabels[kvp.Key].Text = kvp.Value.ToString();
         }
     }
 }

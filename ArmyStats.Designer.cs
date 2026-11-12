@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArmyStats));
             tacomLabel = new Label();
             typeTable = new TableLayoutPanel();
             infantryLabel = new Label();
@@ -48,6 +49,8 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             typeTable.SuspendLayout();
             typeBox.SuspendLayout();
             roleBox.SuspendLayout();
@@ -180,7 +183,7 @@
             // roleBox
             // 
             roleBox.Controls.Add(rolesTable);
-            roleBox.Location = new Point(146, 12);
+            roleBox.Location = new Point(12, 226);
             roleBox.Name = "roleBox";
             roleBox.Size = new Size(128, 281);
             roleBox.TabIndex = 3;
@@ -217,7 +220,7 @@
             groupBox1.Controls.Add(tableLayoutPanel1);
             groupBox1.Location = new Point(12, 119);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(125, 83);
+            groupBox1.Size = new Size(128, 101);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Army Info";
@@ -233,25 +236,24 @@
             tableLayoutPanel1.Controls.Add(label4, 0, 1);
             tableLayoutPanel1.Controls.Add(label5, 1, 2);
             tableLayoutPanel1.Controls.Add(label6, 0, 2);
+            tableLayoutPanel1.Controls.Add(label7, 1, 3);
+            tableLayoutPanel1.Controls.Add(label8, 0, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 19);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(119, 61);
+            tableLayoutPanel1.Size = new Size(122, 79);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(38, 2);
+            label1.Location = new Point(39, 2);
             label1.Name = "label1";
             label1.Size = new Size(62, 15);
             label1.TabIndex = 0;
@@ -261,7 +263,7 @@
             // 
             label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(38, 22);
+            label2.Location = new Point(39, 22);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 0;
@@ -272,7 +274,7 @@
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F);
-            label3.Location = new Point(19, 2);
+            label3.Location = new Point(20, 2);
             label3.Name = "label3";
             label3.Size = new Size(13, 15);
             label3.TabIndex = 1;
@@ -283,7 +285,7 @@
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F);
-            label4.Location = new Point(19, 22);
+            label4.Location = new Point(20, 22);
             label4.Name = "label4";
             label4.Size = new Size(13, 15);
             label4.TabIndex = 1;
@@ -293,7 +295,7 @@
             // 
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Location = new Point(38, 43);
+            label5.Location = new Point(39, 42);
             label5.Name = "label5";
             label5.Size = new Size(74, 15);
             label5.TabIndex = 0;
@@ -304,22 +306,49 @@
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F);
-            label6.Location = new Point(19, 43);
+            label6.Location = new Point(20, 42);
             label6.Name = "label6";
             label6.Size = new Size(13, 15);
             label6.TabIndex = 1;
             label6.Text = "0";
             // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Left;
+            label7.AutoSize = true;
+            label7.Location = new Point(39, 62);
+            label7.Name = "label7";
+            label7.Size = new Size(64, 15);
+            label7.TabIndex = 0;
+            label7.Text = "Pt Average";
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9F);
+            label8.Location = new Point(20, 62);
+            label8.Name = "label8";
+            label8.Size = new Size(13, 15);
+            label8.TabIndex = 1;
+            label8.Text = "0";
+            // 
             // ArmyStats
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(638, 311);
+            ClientSize = new Size(152, 515);
             Controls.Add(groupBox1);
             Controls.Add(roleBox);
             Controls.Add(typeBox);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ArmyStats";
-            Text = "ArmyStats";
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Army Stats";
             typeTable.ResumeLayout(false);
             typeTable.PerformLayout();
             typeBox.ResumeLayout(false);
@@ -352,5 +381,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }

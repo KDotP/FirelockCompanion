@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace FirelockCompanion
 {
@@ -15,6 +17,8 @@ namespace FirelockCompanion
         public Dictionary<string, string> keywords { get; set; }
         public Dictionary<string, List<UnitTemplate>> factions { get; set; }
         public Dictionary<string, Dictionary<string, string>> formats { get; set; }
+        public Dictionary<string, RoleInfo> roles { get; set; }
+
 
         public void Merge(GameData customData)
         {
@@ -48,6 +52,18 @@ namespace FirelockCompanion
                 }
             }
 
+            // Merge Roles (Custom definitions overwrite base ones)
+            if (customData.roles != null)
+            {
+                roles ??= new Dictionary<string, RoleInfo>();
+                foreach (var kvp in customData.roles)
+                {
+                    roles[kvp.Key] = kvp.Value;
+                }
+            }
+
+
+
             // Merge Formats
             if (customData.formats != null)
             {
@@ -76,6 +92,7 @@ namespace FirelockCompanion
         public string name { get; set; }
         public string subname { get; set; }
         public string type { get; set; }
+        public List<string> roles { get; set; }
         public int cost { get; set; }
         public string unit_stats { get; set; }
         public List<string> keywords { get; set; }
@@ -183,5 +200,11 @@ namespace FirelockCompanion
             Node = node;
             PreserveRelationshipState = preserveRelationshipState;
         }
+    }
+
+    public class RoleInfo
+    {
+        public string desc { get; set; }
+        public bool show_in_info { get; set; }
     }
 }
