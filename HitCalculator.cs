@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace FirelockCompanion
 {
+    // Other forms can access this
     public enum FollowSide { Left, Right }
 
     public partial class HitCalculator : Form
@@ -22,21 +23,6 @@ namespace FirelockCompanion
             InitializeComponent();
             LoadLookupTable();
             SubscribeElements();
-        }
-
-        public async Task FollowWindow(Form follow, FollowSide side)
-        {
-            while (!IsDisposed && !follow.IsDisposed)
-            {
-                // if (follow.WindowState == FormWindowState.Maximized) return; // This is a copy of a function from armystats, update this too when you figure out what to do when maximized
-
-                await Task.Delay(10); // I don't think this draws performance too much, but keep an eye on this
-                if (side == FollowSide.Right) Location = new Point(follow.Location.X + follow.Width - 16, follow.Location.Y);
-                else Location = new Point(follow.Location.X - Width + 16, follow.Location.Y);
-
-                if (!follow.Visible) Visible = false;
-                else Visible = true;
-            }
         }
 
         private void SubscribeElements()

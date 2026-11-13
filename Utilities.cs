@@ -232,5 +232,67 @@ namespace FirelockCompanion
 
             return string.Join(", ", formattedTokens);
         }
+
+        public static bool IsWindowOnScreen(Form form)
+        {
+            Rectangle bounds = form.Bounds;
+
+            foreach (Screen screen in Screen.AllScreens)
+            {
+                Rectangle area = screen.WorkingArea;
+
+                // Calculate how much of the window is visible.
+                Rectangle intersection = Rectangle.Intersect(bounds, area);
+
+                double visibleWidth = (double) intersection.Width / bounds.Width;
+                double visibleHeight = (double) intersection.Height / bounds.Height;
+
+                // How far the window extends beyond each edge.
+                double offRight = (double) Math.Max(0, bounds.Right - area.Right) / bounds.Width;
+                double offLeft = (double) Math.Max(0, area.Left - bounds.Left) / bounds.Width;
+                double offBottom = (double) Math.Max(0, bounds.Bottom - area.Bottom) / bounds.Height;
+                double offTop = (double) Math.Max(0, area.Top - bounds.Top) / bounds.Height;
+
+                if (offRight <= 0.90 &&
+                    offLeft <= 0.90 &&
+                    offBottom <= 0.90 &&
+                    offTop <= 0.10)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static async Task FollowWindow(Form follow, FollowSide side, Form follower)
+        {
+            while (!follower.IsDisposed && !follow.IsDisposed)
+            {
+                await Task.Delay(16); // I don't think this draws performance too much, but keep an eye on this
+
+                if (follow.WindowState == FormWindowState.Maximized)
+                {
+                    if (!Utilities.IsWindowOnScreen(follower))
+                    {
+                        Rectangle workingArea = Screen.FromControl(follow).WorkingArea;
+
+                        follower.Location = new Point(
+                            workingArea.Left + (workingArea.Width - follower.Width) / 2,
+                            workingArea.Top + (workingArea.Height - follower.Height) / 2
+                        );
+                    }
+
+                    continue;
+                }
+
+
+                if (side == FollowSide.Right) follower.Location = new Point(follow.Location.X + follow.Width - 16, follow.Location.Y);
+                else follower.Location = new Point(follow.Location.X - follower.Width + 16, follow.Location.Y);
+
+                if (!follow.Visible) follower.Visible = false;
+                else follower.Visible = true;
+            }
+        }
     }
 }

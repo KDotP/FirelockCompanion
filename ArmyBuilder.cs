@@ -2747,7 +2747,11 @@ public partial class ArmyBuilder : Form
             {
                 statsForm = new ArmyStats();
                 statsForm.PopulateRoles(roleDefinitions);
-                statsForm.FormClosed += (s, args) => statsForm = null;
+                statsForm.FormClosed += (s, args) =>
+                {
+                    statsForm = null;
+                    armyStatsToolStripMenuItem.Checked = false;
+                };
                 statsForm.Show(this);
             }
             else
@@ -2757,7 +2761,7 @@ public partial class ArmyBuilder : Form
             }
 
             UpdateArmyStats();
-            _ =statsForm.FollowWindow(this, FollowSide.Left); // Remove this? <- maybe not? It's actually pretty cool, but add a config setting for it or something
+            _ = Utilities.FollowWindow(this, FollowSide.Left, statsForm);
             this.Focus();
         }
         else
@@ -2782,7 +2786,11 @@ public partial class ArmyBuilder : Form
             if (hitCalculatorForm == null || hitCalculatorForm.IsDisposed)
             {
                 hitCalculatorForm = new HitCalculator();
-                hitCalculatorForm.FormClosed += (s, args) => hitCalculatorForm = null;
+                hitCalculatorForm.FormClosed += (s, args) =>
+                {
+                    hitCalculatorForm = null;
+                    hitCalculatorToolStripMenuItem.Checked = false;
+                };
                 hitCalculatorForm.Show(this);
             }
             else
@@ -2791,7 +2799,7 @@ public partial class ArmyBuilder : Form
                 hitCalculatorForm.Activate();
             }
 
-            _ = hitCalculatorForm.FollowWindow(this, FollowSide.Right);
+            _ = Utilities.FollowWindow(this, FollowSide.Right, hitCalculatorForm);
             this.Focus();
         }
         else

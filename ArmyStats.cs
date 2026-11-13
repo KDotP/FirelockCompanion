@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,21 +17,6 @@ namespace FirelockCompanion
         public ArmyStats()
         {
             InitializeComponent();
-        }
-
-        public async Task FollowWindow(Form follow, FollowSide side)
-        {
-            while (!IsDisposed && !follow.IsDisposed)
-            {
-                // if (follow.WindowState == FormWindowState.Maximized) return; // This is a copy of a function from armystats, update this too when you figure out what to do when maximized
-
-                await Task.Delay(10); // I don't think this draws performance too much, but keep an eye on this
-                if (side == FollowSide.Right) Location = new Point(follow.Location.X + follow.Width - 16, follow.Location.Y);
-                else Location = new Point(follow.Location.X - Width + 16, follow.Location.Y);
-
-                if (!follow.Visible) Visible = false;
-                else Visible = true;
-            }
         }
 
         public void PopulateRoles(Dictionary<string, RoleInfo> roleDefinitions)
@@ -145,7 +129,7 @@ namespace FirelockCompanion
             totalUnitCountLabel.Text = totalUnits.ToString();
             commandCountLabel.Text = totalCommand.ToString();
             nonLoadedCountLabel.Text = nonLoaded.ToString();
-            pointAverageCountLabel.Text = MathF.Round(totalPoints / totalUnits, 0).ToString();
+            pointAverageCountLabel.Text = totalUnits != 0 ? MathF.Round(totalPoints / totalUnits, 0).ToString() : "0"; // Divide by zero catch
         }
     }
 }

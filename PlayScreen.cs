@@ -1410,7 +1410,11 @@ public partial class PlayScreen : Form
             if (hitCalculatorForm == null || hitCalculatorForm.IsDisposed)
             {
                 hitCalculatorForm = new HitCalculator();
-                hitCalculatorForm.FormClosed += (s, args) => hitCalculatorForm = null;
+                hitCalculatorForm.FormClosed += (s, args) =>
+                {
+                    hitCalculatorForm = null;
+                    hitCalculatorCheck.Checked = false;
+                };
                 hitCalculatorForm.Show(this);
             }
             else
@@ -1419,7 +1423,7 @@ public partial class PlayScreen : Form
                 hitCalculatorForm.Activate();
             }
 
-            _ = hitCalculatorForm.FollowWindow(this, FollowSide.Right);
+            _ = Utilities.FollowWindow(this, FollowSide.Right, hitCalculatorForm);
             this.Focus();
         }
         else
