@@ -725,6 +725,7 @@ partial class ArmyBuilder
         hitCalculatorToolStripMenuItem.Name = "hitCalculatorToolStripMenuItem";
         hitCalculatorToolStripMenuItem.Size = new Size(180, 22);
         hitCalculatorToolStripMenuItem.Text = "Hit Calculator";
+        hitCalculatorToolStripMenuItem.Click += hitCalculatorToolStripMenuItem_Click;
         // 
         // ArmyBuilder
         // 

@@ -346,6 +346,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ArmyStats";
+            ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Army Stats";

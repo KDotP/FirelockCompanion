@@ -16,6 +16,7 @@ public partial class ArmyBuilder : Form
     private string previousSaveName;
     private List<UnitTemplate> factionUnits;
 
+    private HitCalculator hitCalculatorForm;
     private ArmyStats statsForm;
     private Dictionary<string, RoleInfo> roleDefinitions = new();
 
@@ -2772,5 +2773,30 @@ public partial class ArmyBuilder : Form
         // To do
         // Show the army as text like a save, but in a text box so it doesn't have to be saved
         // Probably leave a save button as well
+    }
+
+    private void hitCalculatorToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (hitCalculatorToolStripMenuItem.Checked)
+        {
+            if (hitCalculatorForm == null || hitCalculatorForm.IsDisposed)
+            {
+                hitCalculatorForm = new HitCalculator();
+                hitCalculatorForm.FormClosed += (s, args) => hitCalculatorForm = null;
+                hitCalculatorForm.Show(this);
+            }
+            else
+            {
+                if (hitCalculatorForm.WindowState == FormWindowState.Minimized) hitCalculatorForm.WindowState = FormWindowState.Normal;
+                hitCalculatorForm.Activate();
+            }
+            this.Focus();
+        }
+        else
+        {
+            if (hitCalculatorForm == null) return;
+            hitCalculatorForm.Close();
+            hitCalculatorForm = null;
+        }
     }
 }
