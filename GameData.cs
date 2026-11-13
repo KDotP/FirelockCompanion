@@ -207,4 +207,13 @@ namespace FirelockCompanion
         public string desc { get; set; }
         public bool show_in_info { get; set; }
     }
+
+    public class ArmyStatsEntry
+    {
+        public UnitTemplate Unit { get; set; }
+        public bool IsTercioParent { get; set; }
+        public bool IsTercioChild { get; set; }
+        public bool IsLoaded { get; set; } // Embarked, desanted, towed, hopefully no etc
+        public int CommandValue { get; set; }
+    }
 }

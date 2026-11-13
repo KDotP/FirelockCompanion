@@ -88,6 +88,7 @@ partial class ArmyBuilder
         detailsTextBox = new RichTextBox();
         availableUnitsMenu = new ContextMenuStrip(components);
         addUnitToolStripMenuItem = new ToolStripMenuItem();
+        hitCalculatorToolStripMenuItem = new ToolStripMenuItem();
         ((System.ComponentModel.ISupportInitialize)initalSplit).BeginInit();
         initalSplit.Panel1.SuspendLayout();
         initalSplit.Panel2.SuspendLayout();
@@ -299,7 +300,7 @@ partial class ArmyBuilder
         // 
         // viewToolStripMenuItem
         // 
-        viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { armyStatsToolStripMenuItem, asTextToolStripMenuItem });
+        viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { armyStatsToolStripMenuItem, asTextToolStripMenuItem, hitCalculatorToolStripMenuItem });
         viewToolStripMenuItem.Name = "viewToolStripMenuItem";
         viewToolStripMenuItem.Size = new Size(44, 20);
         viewToolStripMenuItem.Text = "View";
@@ -718,6 +719,13 @@ partial class ArmyBuilder
         addUnitToolStripMenuItem.Size = new Size(121, 22);
         addUnitToolStripMenuItem.Text = "Add Unit";
         // 
+        // hitCalculatorToolStripMenuItem
+        // 
+        hitCalculatorToolStripMenuItem.CheckOnClick = true;
+        hitCalculatorToolStripMenuItem.Name = "hitCalculatorToolStripMenuItem";
+        hitCalculatorToolStripMenuItem.Size = new Size(180, 22);
+        hitCalculatorToolStripMenuItem.Text = "Hit Calculator";
+        // 
         // ArmyBuilder
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -820,4 +828,5 @@ partial class ArmyBuilder
     private ToolStripMenuItem viewToolStripMenuItem;
     private ToolStripMenuItem armyStatsToolStripMenuItem;
     private ToolStripMenuItem asTextToolStripMenuItem;
+    private ToolStripMenuItem hitCalculatorToolStripMenuItem;
 }

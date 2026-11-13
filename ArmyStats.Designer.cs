@@ -43,14 +43,14 @@
             rolesTable = new TableLayoutPanel();
             groupBox1 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
+            totalUnitsLabel = new Label();
+            commandLabel = new Label();
+            totalUnitCountLabel = new Label();
+            commandCountLabel = new Label();
+            nonLoadedLabel = new Label();
+            nonLoadedCountLabel = new Label();
+            pointAverageLabel = new Label();
+            pointAverageCountLabel = new Label();
             typeTable.SuspendLayout();
             typeBox.SuspendLayout();
             roleBox.SuspendLayout();
@@ -230,14 +230,14 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel1.Controls.Add(label1, 1, 0);
-            tableLayoutPanel1.Controls.Add(label2, 1, 1);
-            tableLayoutPanel1.Controls.Add(label3, 0, 0);
-            tableLayoutPanel1.Controls.Add(label4, 0, 1);
-            tableLayoutPanel1.Controls.Add(label5, 1, 2);
-            tableLayoutPanel1.Controls.Add(label6, 0, 2);
-            tableLayoutPanel1.Controls.Add(label7, 1, 3);
-            tableLayoutPanel1.Controls.Add(label8, 0, 3);
+            tableLayoutPanel1.Controls.Add(totalUnitsLabel, 1, 0);
+            tableLayoutPanel1.Controls.Add(commandLabel, 1, 1);
+            tableLayoutPanel1.Controls.Add(totalUnitCountLabel, 0, 0);
+            tableLayoutPanel1.Controls.Add(commandCountLabel, 0, 1);
+            tableLayoutPanel1.Controls.Add(nonLoadedLabel, 1, 2);
+            tableLayoutPanel1.Controls.Add(nonLoadedCountLabel, 0, 2);
+            tableLayoutPanel1.Controls.Add(pointAverageLabel, 1, 3);
+            tableLayoutPanel1.Controls.Add(pointAverageCountLabel, 0, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 19);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -249,89 +249,89 @@
             tableLayoutPanel1.Size = new Size(122, 79);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // label1
+            // totalUnitsLabel
             // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.Location = new Point(39, 2);
-            label1.Name = "label1";
-            label1.Size = new Size(62, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Total Units";
+            totalUnitsLabel.Anchor = AnchorStyles.Left;
+            totalUnitsLabel.AutoSize = true;
+            totalUnitsLabel.Location = new Point(39, 2);
+            totalUnitsLabel.Name = "totalUnitsLabel";
+            totalUnitsLabel.Size = new Size(62, 15);
+            totalUnitsLabel.TabIndex = 0;
+            totalUnitsLabel.Text = "Total Units";
             // 
-            // label2
+            // commandLabel
             // 
-            label2.Anchor = AnchorStyles.Left;
-            label2.AutoSize = true;
-            label2.Location = new Point(39, 22);
-            label2.Name = "label2";
-            label2.Size = new Size(64, 15);
-            label2.TabIndex = 0;
-            label2.Text = "Command";
+            commandLabel.Anchor = AnchorStyles.Left;
+            commandLabel.AutoSize = true;
+            commandLabel.Location = new Point(39, 22);
+            commandLabel.Name = "commandLabel";
+            commandLabel.Size = new Size(64, 15);
+            commandLabel.TabIndex = 0;
+            commandLabel.Text = "Command";
             // 
-            // label3
+            // totalUnitCountLabel
             // 
-            label3.Anchor = AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F);
-            label3.Location = new Point(20, 2);
-            label3.Name = "label3";
-            label3.Size = new Size(13, 15);
-            label3.TabIndex = 1;
-            label3.Text = "0";
+            totalUnitCountLabel.Anchor = AnchorStyles.Right;
+            totalUnitCountLabel.AutoSize = true;
+            totalUnitCountLabel.Font = new Font("Segoe UI", 9F);
+            totalUnitCountLabel.Location = new Point(20, 2);
+            totalUnitCountLabel.Name = "totalUnitCountLabel";
+            totalUnitCountLabel.Size = new Size(13, 15);
+            totalUnitCountLabel.TabIndex = 1;
+            totalUnitCountLabel.Text = "0";
             // 
-            // label4
+            // commandCountLabel
             // 
-            label4.Anchor = AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F);
-            label4.Location = new Point(20, 22);
-            label4.Name = "label4";
-            label4.Size = new Size(13, 15);
-            label4.TabIndex = 1;
-            label4.Text = "0";
+            commandCountLabel.Anchor = AnchorStyles.Right;
+            commandCountLabel.AutoSize = true;
+            commandCountLabel.Font = new Font("Segoe UI", 9F);
+            commandCountLabel.Location = new Point(20, 22);
+            commandCountLabel.Name = "commandCountLabel";
+            commandCountLabel.Size = new Size(13, 15);
+            commandCountLabel.TabIndex = 1;
+            commandCountLabel.Text = "0";
             // 
-            // label5
+            // nonLoadedLabel
             // 
-            label5.Anchor = AnchorStyles.Left;
-            label5.AutoSize = true;
-            label5.Location = new Point(39, 42);
-            label5.Name = "label5";
-            label5.Size = new Size(74, 15);
-            label5.TabIndex = 0;
-            label5.Text = "Non-Loaded";
+            nonLoadedLabel.Anchor = AnchorStyles.Left;
+            nonLoadedLabel.AutoSize = true;
+            nonLoadedLabel.Location = new Point(39, 42);
+            nonLoadedLabel.Name = "nonLoadedLabel";
+            nonLoadedLabel.Size = new Size(74, 15);
+            nonLoadedLabel.TabIndex = 0;
+            nonLoadedLabel.Text = "Non-Loaded";
             // 
-            // label6
+            // nonLoadedCountLabel
             // 
-            label6.Anchor = AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F);
-            label6.Location = new Point(20, 42);
-            label6.Name = "label6";
-            label6.Size = new Size(13, 15);
-            label6.TabIndex = 1;
-            label6.Text = "0";
+            nonLoadedCountLabel.Anchor = AnchorStyles.Right;
+            nonLoadedCountLabel.AutoSize = true;
+            nonLoadedCountLabel.Font = new Font("Segoe UI", 9F);
+            nonLoadedCountLabel.Location = new Point(20, 42);
+            nonLoadedCountLabel.Name = "nonLoadedCountLabel";
+            nonLoadedCountLabel.Size = new Size(13, 15);
+            nonLoadedCountLabel.TabIndex = 1;
+            nonLoadedCountLabel.Text = "0";
             // 
-            // label7
+            // pointAverageLabel
             // 
-            label7.Anchor = AnchorStyles.Left;
-            label7.AutoSize = true;
-            label7.Location = new Point(39, 62);
-            label7.Name = "label7";
-            label7.Size = new Size(64, 15);
-            label7.TabIndex = 0;
-            label7.Text = "Pt Average";
+            pointAverageLabel.Anchor = AnchorStyles.Left;
+            pointAverageLabel.AutoSize = true;
+            pointAverageLabel.Location = new Point(39, 62);
+            pointAverageLabel.Name = "pointAverageLabel";
+            pointAverageLabel.Size = new Size(64, 15);
+            pointAverageLabel.TabIndex = 0;
+            pointAverageLabel.Text = "Pt Average";
             // 
-            // label8
+            // pointAverageCountLabel
             // 
-            label8.Anchor = AnchorStyles.Right;
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9F);
-            label8.Location = new Point(20, 62);
-            label8.Name = "label8";
-            label8.Size = new Size(13, 15);
-            label8.TabIndex = 1;
-            label8.Text = "0";
+            pointAverageCountLabel.Anchor = AnchorStyles.Right;
+            pointAverageCountLabel.AutoSize = true;
+            pointAverageCountLabel.Font = new Font("Segoe UI", 9F);
+            pointAverageCountLabel.Location = new Point(20, 62);
+            pointAverageCountLabel.Name = "pointAverageCountLabel";
+            pointAverageCountLabel.Size = new Size(13, 15);
+            pointAverageCountLabel.TabIndex = 1;
+            pointAverageCountLabel.Text = "0";
             // 
             // ArmyStats
             // 
@@ -375,13 +375,13 @@
         private TableLayoutPanel rolesTable;
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
+        private Label totalUnitsLabel;
+        private Label commandLabel;
+        private Label totalUnitCountLabel;
+        private Label commandCountLabel;
+        private Label nonLoadedLabel;
+        private Label nonLoadedCountLabel;
+        private Label pointAverageLabel;
+        private Label pointAverageCountLabel;
     }
 }

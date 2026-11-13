@@ -1229,15 +1229,36 @@ public partial class ArmyBuilder : Form
         }
     }
 
-    private List<UnitTemplate> CollectArmyUnits()
+    private List<ArmyStatsEntry> CollectArmyUnits()
     {
         // I forgor about walk, this could have been so helpful so often
-        var units = new List<UnitTemplate>();
+        var units = new List<ArmyStatsEntry>();
         void Walk(TreeNodeCollection nodes)
         {
             foreach (TreeNode node in nodes)
             {
-                if (node.Tag is ActiveUnitEntry entry && entry.Unit.name != "Tercios") units.Add(entry.Unit);
+                if (node.Tag is ActiveUnitEntry entry)
+                {
+                    bool isTercioParent = entry.Unit.name == "Tercios";
+                    bool isTercioChild = node.Parent?.Tag is ActiveUnitEntry pEntry && pEntry.Unit.name == "Tercios";
+
+                    // A Tercio is loaded if any of its children are
+                    bool isLoaded = isTercioParent
+                        ? node.Nodes.Cast<TreeNode>().Any(n => n.Tag is ActiveUnitEntry c && (c.Status != EmbarkStatus.None || c.IsTowed))
+                        : entry.Status != EmbarkStatus.None || entry.IsTowed;
+
+                    // If no command value, defaults to 0
+                    int commandValue = entry.Unit.type == "TACOM" ? GetCommandValue(entry.Unit) : 0;
+
+                    units.Add(new ArmyStatsEntry
+                    {
+                        Unit = entry.Unit,
+                        IsTercioParent = isTercioParent,
+                        IsTercioChild = isTercioChild,
+                        IsLoaded = isLoaded,
+                        CommandValue = commandValue
+                    });
+                }
                 if (node.Nodes.Count > 0) Walk(node.Nodes);
             }
         }
@@ -2735,7 +2756,7 @@ public partial class ArmyBuilder : Form
             }
 
             UpdateArmyStats();
-            statsForm.FollowMainWindow(this); // Remove this
+            statsForm.FollowWindow(this); // Remove this? <- maybe not? It's actually pretty cool, but add a config setting for it or something
             this.Focus();
         }
         else
