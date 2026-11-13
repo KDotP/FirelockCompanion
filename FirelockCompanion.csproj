@@ -52,6 +52,9 @@
     <None Update="Resources\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\HitTable.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\NamePools.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -40,6 +40,7 @@
             ActiveArmy = new Label();
             activeArmyTree = new TreeView();
             splitContainer4 = new SplitContainer();
+            hitCalculatorCheck = new CheckBox();
             label1 = new Label();
             splitContainer3 = new SplitContainer();
             unitInfoText = new RichTextBox();
@@ -223,6 +224,7 @@
             // splitContainer4.Panel1
             // 
             splitContainer4.Panel1.BackColor = SystemColors.ControlLight;
+            splitContainer4.Panel1.Controls.Add(hitCalculatorCheck);
             splitContainer4.Panel1.Controls.Add(label1);
             // 
             // splitContainer4.Panel2
@@ -231,6 +233,17 @@
             splitContainer4.Size = new Size(504, 599);
             splitContainer4.SplitterDistance = 25;
             splitContainer4.TabIndex = 0;
+            // 
+            // hitCalculatorCheck
+            // 
+            hitCalculatorCheck.AutoSize = true;
+            hitCalculatorCheck.Location = new Point(396, 3);
+            hitCalculatorCheck.Name = "hitCalculatorCheck";
+            hitCalculatorCheck.Size = new Size(107, 19);
+            hitCalculatorCheck.TabIndex = 3;
+            hitCalculatorCheck.Text = "Shot Calculator";
+            hitCalculatorCheck.UseVisualStyleBackColor = true;
+            hitCalculatorCheck.CheckedChanged += hitCalculatorCheck_CheckedChanged;
             // 
             // label1
             // 
@@ -353,5 +366,6 @@
         private Button backToMenuButton;
         private Label currentArmyValueLabel;
         private Button ttsButton;
+        private CheckBox hitCalculatorCheck;
     }
 }

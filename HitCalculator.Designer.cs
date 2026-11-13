@@ -29,42 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HitCalculator));
-            textBox1 = new TextBox();
+            accuracyTextbox = new TextBox();
             label1 = new Label();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
+            blindFireCheck = new CheckBox();
+            scopedCheck = new CheckBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             label2 = new Label();
-            textBox2 = new TextBox();
-            checkBox4 = new CheckBox();
-            checkBox3 = new CheckBox();
+            pinTextbox = new TextBox();
+            throughSmokeCheck = new CheckBox();
+            halfRangeCheck = new CheckBox();
             groupBox3 = new GroupBox();
             label4 = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
-            checkBox5 = new CheckBox();
+            coverTextbox = new TextBox();
+            shapedChargeCheck = new CheckBox();
             label5 = new Label();
-            textBox4 = new TextBox();
+            strengthTextbox = new TextBox();
             label6 = new Label();
-            textBox5 = new TextBox();
+            toughnessTextbox = new TextBox();
             resultsBox = new GroupBox();
-            label8 = new Label();
-            label7 = new Label();
+            killLabel = new Label();
+            hitLabel = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             resultsBox.SuspendLayout();
             SuspendLayout();
             // 
-            // textBox1
+            // accuracyTextbox
             // 
-            textBox1.Location = new Point(12, 27);
-            textBox1.MaxLength = 2;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(128, 23);
-            textBox1.TabIndex = 0;
-            textBox1.TextAlign = HorizontalAlignment.Center;
+            accuracyTextbox.Location = new Point(12, 27);
+            accuracyTextbox.MaxLength = 2;
+            accuracyTextbox.Name = "accuracyTextbox";
+            accuracyTextbox.Size = new Size(128, 23);
+            accuracyTextbox.TabIndex = 0;
+            accuracyTextbox.Text = "4";
+            accuracyTextbox.TextAlign = HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -75,30 +76,30 @@
             label1.Text = "Base Accuracy (X+)";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
-            // checkBox1
+            // blindFireCheck
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 22);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(86, 19);
-            checkBox1.TabIndex = 1;
-            checkBox1.Text = "Blind Firing";
-            checkBox1.UseVisualStyleBackColor = true;
+            blindFireCheck.AutoSize = true;
+            blindFireCheck.Location = new Point(6, 22);
+            blindFireCheck.Name = "blindFireCheck";
+            blindFireCheck.Size = new Size(86, 19);
+            blindFireCheck.TabIndex = 1;
+            blindFireCheck.Text = "Blind Firing";
+            blindFireCheck.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // scopedCheck
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(6, 47);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(65, 19);
-            checkBox2.TabIndex = 2;
-            checkBox2.Text = "Scoped";
-            checkBox2.UseVisualStyleBackColor = true;
+            scopedCheck.AutoSize = true;
+            scopedCheck.Location = new Point(6, 47);
+            scopedCheck.Name = "scopedCheck";
+            scopedCheck.Size = new Size(65, 19);
+            scopedCheck.TabIndex = 2;
+            scopedCheck.Text = "Scoped";
+            scopedCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(checkBox1);
-            groupBox1.Controls.Add(checkBox2);
+            groupBox1.Controls.Add(blindFireCheck);
+            groupBox1.Controls.Add(scopedCheck);
             groupBox1.Location = new Point(12, 56);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(128, 77);
@@ -109,9 +110,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(checkBox4);
-            groupBox2.Controls.Add(checkBox3);
+            groupBox2.Controls.Add(pinTextbox);
+            groupBox2.Controls.Add(throughSmokeCheck);
+            groupBox2.Controls.Add(halfRangeCheck);
             groupBox2.Location = new Point(12, 139);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(128, 123);
@@ -128,44 +129,44 @@
             label2.TabIndex = 3;
             label2.Text = "Total Pin";
             // 
-            // textBox2
+            // pinTextbox
             // 
-            textBox2.BackColor = SystemColors.Window;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(6, 89);
-            textBox2.MaxLength = 1;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(19, 23);
-            textBox2.TabIndex = 5;
-            textBox2.Text = "0";
-            textBox2.TextAlign = HorizontalAlignment.Center;
-            textBox2.WordWrap = false;
+            pinTextbox.BackColor = SystemColors.Window;
+            pinTextbox.BorderStyle = BorderStyle.FixedSingle;
+            pinTextbox.Location = new Point(6, 89);
+            pinTextbox.MaxLength = 1;
+            pinTextbox.Name = "pinTextbox";
+            pinTextbox.Size = new Size(19, 23);
+            pinTextbox.TabIndex = 5;
+            pinTextbox.Text = "0";
+            pinTextbox.TextAlign = HorizontalAlignment.Center;
+            pinTextbox.WordWrap = false;
             // 
-            // checkBox4
+            // throughSmokeCheck
             // 
-            checkBox4.Location = new Point(8, 47);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(114, 36);
-            checkBox4.TabIndex = 4;
-            checkBox4.Text = "Target spotted through smoke";
-            checkBox4.UseVisualStyleBackColor = true;
+            throughSmokeCheck.Location = new Point(8, 47);
+            throughSmokeCheck.Name = "throughSmokeCheck";
+            throughSmokeCheck.Size = new Size(114, 36);
+            throughSmokeCheck.TabIndex = 4;
+            throughSmokeCheck.Text = "Target spotted through smoke";
+            throughSmokeCheck.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // halfRangeCheck
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(8, 22);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(84, 19);
-            checkBox3.TabIndex = 3;
-            checkBox3.Text = "Half Range";
-            checkBox3.UseVisualStyleBackColor = true;
+            halfRangeCheck.AutoSize = true;
+            halfRangeCheck.Location = new Point(8, 22);
+            halfRangeCheck.Name = "halfRangeCheck";
+            halfRangeCheck.Size = new Size(84, 19);
+            halfRangeCheck.TabIndex = 3;
+            halfRangeCheck.Text = "Half Range";
+            halfRangeCheck.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(label3);
-            groupBox3.Controls.Add(textBox3);
-            groupBox3.Controls.Add(checkBox5);
+            groupBox3.Controls.Add(coverTextbox);
+            groupBox3.Controls.Add(shapedChargeCheck);
             groupBox3.Location = new Point(12, 268);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(128, 81);
@@ -192,28 +193,28 @@
             label3.TabIndex = 3;
             label3.Text = "Cover Modifier";
             // 
-            // textBox3
+            // coverTextbox
             // 
-            textBox3.BackColor = SystemColors.Window;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(6, 47);
-            textBox3.MaxLength = 1;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(19, 23);
-            textBox3.TabIndex = 7;
-            textBox3.Text = "0";
-            textBox3.TextAlign = HorizontalAlignment.Center;
-            textBox3.WordWrap = false;
+            coverTextbox.BackColor = SystemColors.Window;
+            coverTextbox.BorderStyle = BorderStyle.FixedSingle;
+            coverTextbox.Location = new Point(6, 47);
+            coverTextbox.MaxLength = 1;
+            coverTextbox.Name = "coverTextbox";
+            coverTextbox.Size = new Size(19, 23);
+            coverTextbox.TabIndex = 7;
+            coverTextbox.Text = "0";
+            coverTextbox.TextAlign = HorizontalAlignment.Center;
+            coverTextbox.WordWrap = false;
             // 
-            // checkBox5
+            // shapedChargeCheck
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(6, 22);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(106, 19);
-            checkBox5.TabIndex = 6;
-            checkBox5.Text = "Shaped Charge";
-            checkBox5.UseVisualStyleBackColor = true;
+            shapedChargeCheck.AutoSize = true;
+            shapedChargeCheck.Location = new Point(6, 22);
+            shapedChargeCheck.Name = "shapedChargeCheck";
+            shapedChargeCheck.Size = new Size(106, 19);
+            shapedChargeCheck.TabIndex = 6;
+            shapedChargeCheck.Text = "Shaped Charge";
+            shapedChargeCheck.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -224,14 +225,15 @@
             label5.Text = "Attack Strength";
             label5.TextAlign = ContentAlignment.TopCenter;
             // 
-            // textBox4
+            // strengthTextbox
             // 
-            textBox4.Location = new Point(12, 370);
-            textBox4.MaxLength = 2;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(128, 23);
-            textBox4.TabIndex = 8;
-            textBox4.TextAlign = HorizontalAlignment.Right;
+            strengthTextbox.Location = new Point(12, 370);
+            strengthTextbox.MaxLength = 2;
+            strengthTextbox.Name = "strengthTextbox";
+            strengthTextbox.Size = new Size(128, 23);
+            strengthTextbox.TabIndex = 8;
+            strengthTextbox.Text = "3";
+            strengthTextbox.TextAlign = HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -242,20 +244,21 @@
             label6.Text = "Target Toughness";
             label6.TextAlign = ContentAlignment.TopCenter;
             // 
-            // textBox5
+            // toughnessTextbox
             // 
-            textBox5.Location = new Point(12, 414);
-            textBox5.MaxLength = 2;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(128, 23);
-            textBox5.TabIndex = 9;
-            textBox5.TextAlign = HorizontalAlignment.Right;
+            toughnessTextbox.Location = new Point(12, 414);
+            toughnessTextbox.MaxLength = 2;
+            toughnessTextbox.Name = "toughnessTextbox";
+            toughnessTextbox.Size = new Size(128, 23);
+            toughnessTextbox.TabIndex = 9;
+            toughnessTextbox.Text = "3";
+            toughnessTextbox.TextAlign = HorizontalAlignment.Center;
             // 
             // resultsBox
             // 
             resultsBox.BackColor = Color.AntiqueWhite;
-            resultsBox.Controls.Add(label8);
-            resultsBox.Controls.Add(label7);
+            resultsBox.Controls.Add(killLabel);
+            resultsBox.Controls.Add(hitLabel);
             resultsBox.Location = new Point(12, 443);
             resultsBox.Name = "resultsBox";
             resultsBox.Size = new Size(128, 60);
@@ -263,23 +266,23 @@
             resultsBox.TabStop = false;
             resultsBox.Text = "Results";
             // 
-            // label8
+            // killLabel
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(9, 36);
-            label8.Name = "label8";
-            label8.Size = new Size(62, 15);
-            label8.TabIndex = 0;
-            label8.Text = "Kills on 4+";
+            killLabel.AutoSize = true;
+            killLabel.Location = new Point(9, 36);
+            killLabel.Name = "killLabel";
+            killLabel.Size = new Size(62, 15);
+            killLabel.TabIndex = 0;
+            killLabel.Text = "Kills on 4+";
             // 
-            // label7
+            // hitLabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(9, 19);
-            label7.Name = "label7";
-            label7.Size = new Size(62, 15);
-            label7.TabIndex = 0;
-            label7.Text = "Hits on 4+";
+            hitLabel.AutoSize = true;
+            hitLabel.Location = new Point(9, 19);
+            hitLabel.Name = "hitLabel";
+            hitLabel.Size = new Size(62, 15);
+            hitLabel.TabIndex = 0;
+            hitLabel.Text = "Hits on 4+";
             // 
             // HitCalculator
             // 
@@ -290,9 +293,9 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox1);
+            Controls.Add(toughnessTextbox);
+            Controls.Add(strengthTextbox);
+            Controls.Add(accuracyTextbox);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label1);
@@ -318,27 +321,27 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox accuracyTextbox;
         private Label label1;
-        private CheckBox checkBox1;
-        private CheckBox checkBox2;
+        private CheckBox blindFireCheck;
+        private CheckBox scopedCheck;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private Label label2;
-        private TextBox textBox2;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
+        private TextBox pinTextbox;
+        private CheckBox throughSmokeCheck;
+        private CheckBox halfRangeCheck;
         private GroupBox groupBox3;
         private Label label4;
         private Label label3;
-        private TextBox textBox3;
-        private CheckBox checkBox5;
+        private TextBox coverTextbox;
+        private CheckBox shapedChargeCheck;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox strengthTextbox;
         private Label label6;
-        private TextBox textBox5;
+        private TextBox toughnessTextbox;
         private GroupBox resultsBox;
-        private Label label8;
-        private Label label7;
+        private Label killLabel;
+        private Label hitLabel;
     }
 }

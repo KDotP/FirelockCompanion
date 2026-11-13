@@ -2757,7 +2757,7 @@ public partial class ArmyBuilder : Form
             }
 
             UpdateArmyStats();
-            statsForm.FollowWindow(this); // Remove this? <- maybe not? It's actually pretty cool, but add a config setting for it or something
+            _ =statsForm.FollowWindow(this, FollowSide.Left); // Remove this? <- maybe not? It's actually pretty cool, but add a config setting for it or something
             this.Focus();
         }
         else
@@ -2790,6 +2790,8 @@ public partial class ArmyBuilder : Form
                 if (hitCalculatorForm.WindowState == FormWindowState.Minimized) hitCalculatorForm.WindowState = FormWindowState.Normal;
                 hitCalculatorForm.Activate();
             }
+
+            _ = hitCalculatorForm.FollowWindow(this, FollowSide.Right);
             this.Focus();
         }
         else

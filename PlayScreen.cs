@@ -15,6 +15,8 @@ public partial class PlayScreen : Form
     public bool ReturnToMenu { get; private set; } = false;
     public bool Verbose = false;
 
+    private HitCalculator hitCalculatorForm;
+
     // Core Game Data caches
     private List<UnitTemplate> factionUnits;
     private Dictionary<string, string> normalizedKeywords = new Dictionary<string, string>();
@@ -1401,4 +1403,30 @@ public partial class PlayScreen : Form
         }
     }
 
+    private void hitCalculatorCheck_CheckedChanged(object sender, EventArgs e)
+    {
+        if (hitCalculatorCheck.Checked)
+        {
+            if (hitCalculatorForm == null || hitCalculatorForm.IsDisposed)
+            {
+                hitCalculatorForm = new HitCalculator();
+                hitCalculatorForm.FormClosed += (s, args) => hitCalculatorForm = null;
+                hitCalculatorForm.Show(this);
+            }
+            else
+            {
+                if (hitCalculatorForm.WindowState == FormWindowState.Minimized) hitCalculatorForm.WindowState = FormWindowState.Normal;
+                hitCalculatorForm.Activate();
+            }
+
+            _ = hitCalculatorForm.FollowWindow(this, FollowSide.Right);
+            this.Focus();
+        }
+        else
+        {
+            if (hitCalculatorForm == null) return;
+            hitCalculatorForm.Close();
+            hitCalculatorForm = null;
+        }
+    }
 }
