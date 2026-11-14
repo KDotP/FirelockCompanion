@@ -129,7 +129,7 @@ namespace FirelockCompanion
             totalUnitCountLabel.Text = totalUnits.ToString();
             commandCountLabel.Text = totalCommand.ToString();
             nonLoadedCountLabel.Text = nonLoaded.ToString();
-            pointAverageCountLabel.Text = totalUnits != 0 ? MathF.Round(totalPoints / totalUnits, 0).ToString() : "0"; // Divide by zero catch
+            pointAverageCountLabel.Text = totalUnits != 0 ? MathF.Round((float) totalPoints / (float) totalUnits, 1).ToString() : "0"; // Divide by zero catch
         }
     }
 }
