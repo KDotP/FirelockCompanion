@@ -13,6 +13,7 @@ namespace FirelockCompanion
     public partial class ArmyStats : Form
     {
         private Dictionary<string, Label> roleCountLabels = new Dictionary<string, Label>();
+        private bool useClasses = false; // True = use the official classes, false = use my roles
 
         public ArmyStats()
         {
@@ -21,48 +22,54 @@ namespace FirelockCompanion
 
         public void PopulateRoles(Dictionary<string, RoleInfo> roleDefinitions)
         {
-            rolesTable.SuspendLayout();
+            useClasses = false; // A.k.a the right way :unamused:
+            // Cull non-shown roles
+            var visibleRoles = (roleDefinitions ?? new Dictionary<string, RoleInfo>()).Where(role => role.Value != null && role.Value.show_in_info).Select(r => r.Key).ToList(); // This line made with the help of AI
+            BuildTables(visibleRoles);
+        }
 
+        // Load official classes instead of roles into table
+        public void PopualteClasses(List<string> classes)
+        {
+            useClasses = true;
+            var visibleClasses = (classes ?? Enumerable.Empty<string>()).Where(c => c != null).Distinct().ToList(); // Also made this line with AI because I refuse to learn LINQ
+            BuildTables(visibleClasses); // Also visible classes is not really a good name beacuse they're all visible but naming unity
+        }
+
+        private void BuildTables(List<string> names)
+        {
+            rolesTable.SuspendLayout();
             rolesTable.Controls.Clear();
             roleCountLabels.Clear();
 
-            // Cull non-shown roles
-            var visibleRoles = (roleDefinitions ?? new Dictionary<string, RoleInfo>()).Where(role => role.Value != null && role.Value.show_in_info).ToList(); // This line made with the help of AI
-            int visibleRoleCount = visibleRoles.Count; // Because this got called so many times
-
-            // Add roles to table
-            rolesTable.RowCount = visibleRoleCount;
-            for (int i = 0; i < visibleRoleCount; i++)
+            rolesTable.RowCount = names.Count; // Because this got called so many times
+            for (int i = 0; i < names.Count; i++)
             {
-                string roleName = visibleRoles[i].Key;
-                Label roleCountLabel = new Label
+                string name = names[i];
+                var countLabel = new Label
                 {
-                    Name = $"{roleName.Replace(" ", "")}CountLabel",
+                    Name = $"{name.Replace(" ", "")}CountLabel",
                     Text = "X",
                     AutoSize = true,
                     Anchor = AnchorStyles.Right
                 };
-
-                Label roleLabel = new Label
+                var nameLabel = new Label
                 {
-                    Name = $"{roleName.Replace(" ", "")}Label",
-                    Text = roleName,
+                    Name = $"{name.Replace(" ", "")}Label",
+                    Text = name,
                     AutoSize = true,
                     Anchor = AnchorStyles.Left
                 };
 
-                rolesTable.Controls.Add(roleCountLabel, 0, i);
-                rolesTable.Controls.Add(roleLabel, 1, i);
-                roleCountLabels[roleName] = roleCountLabel;
+                rolesTable.Controls.Add(countLabel, 0, i);
+                rolesTable.Controls.Add(nameLabel, 1, i);
+                roleCountLabels[name] = countLabel;
             }
 
             rolesTable.ResumeLayout();
-
-            // Resize named group thing
-            roleBox.Size = new Size(roleBox.Size.Width, (visibleRoleCount * 20) + 23); // I know, it annoys me too
+            roleBox.Size = new Size(roleBox.Size.Width, (names.Count * 20) + 23);
 
             // To do: set the window size to contain the group box, no more, and no less than the other groups
-
         }
 
         public void UpdateStats(List<ArmyStatsEntry> units)
@@ -109,13 +116,19 @@ namespace FirelockCompanion
                     case "aircraft": aircraft++; break;
                 }
 
-                if (unit.Unit.roles == null) continue;
-
-                // Distinct so a role listed twice on one unit can't count twice
-                foreach (string role in unit.Unit.roles.Where(r => r != null).Distinct())
+                if (useClasses)
                 {
-                    if (roleCounts.ContainsKey(role))
-                        roleCounts[role]++;
+                    // One class per unit, optional
+                    string c = unit.Unit.unit_class;
+                    if (!string.IsNullOrEmpty(c) && roleCounts.ContainsKey(c))
+                        roleCounts[c]++;
+                }
+                else if (unit.Unit.roles != null)
+                {
+                    // Distinct so a role listed twice on one unit can't count twice
+                    foreach (string role in unit.Unit.roles.Where(r => r != null).Distinct())
+                        if (roleCounts.ContainsKey(role))
+                            roleCounts[role]++;
                 }
             }
 

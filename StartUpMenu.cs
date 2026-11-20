@@ -20,6 +20,7 @@ namespace FirelockCompanion
         private bool versionControlEnabled = true;
         private string version = "0.0.0";
         private string availableVersion = "0.0.0";
+        private bool useClasses = true;
 
         private enum VersionResult
         {
@@ -54,6 +55,7 @@ namespace FirelockCompanion
                     ArmyBuilder armyBuilder = new ArmyBuilder();
                     armyBuilder.Verbose = verboseCheckbox.Checked;
                     armyBuilder.SelectFaction(popup.SelectedFaction, popup.ArmyName, popup.SelectedPoints);
+                    armyBuilder.useClasses = useClasses;
 
                     // Close if window closed, show menu if back is used
                     armyBuilder.FormClosed += (s, args) =>
@@ -99,6 +101,7 @@ namespace FirelockCompanion
 
                     // Push the data into the builder
                     builderForm.LoadArmyFromFile(fileToLoad);
+                    builderForm.useClasses = useClasses;
 
                     this.Hide();
                     builderForm.FormClosed += (s, args) =>
@@ -165,10 +168,12 @@ namespace FirelockCompanion
                     {
                         version = configData["version"].ToString();
                     }
-                    if (configData.ContainsKey("versionControlEnabled"))
-                    {
-                        versionControlEnabled = Convert.ToBoolean(configData["versionControlEnabled"]);
-                    }
+
+                    versionControlEnabled = bool.Parse(configData["enable_version_control"].ToString()); // I imagine there's a better way to do this
+
+                    // What if I were to also load other settings and pass them down to armybuilder and claim the app is loosely coupled?
+                    // Delightfully devilish seymour
+                    useClasses = bool.Parse(configData["use_official_roles"].ToString());
                 }
                 catch (Exception ex)
                 {

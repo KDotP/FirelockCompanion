@@ -18,7 +18,7 @@ namespace FirelockCompanion
         public Dictionary<string, List<UnitTemplate>> factions { get; set; }
         public Dictionary<string, Dictionary<string, string>> formats { get; set; }
         public Dictionary<string, RoleInfo> roles { get; set; }
-
+        public List<string> classes { get; set; }
 
         public void Merge(GameData customData)
         {
@@ -62,7 +62,13 @@ namespace FirelockCompanion
                 }
             }
 
-
+            // And now classes too
+            if (customData.classes != null)
+            {
+                classes ??= new List<string>();
+                foreach (var c in customData.classes)
+                    if (!classes.Contains(c)) classes.Add(c);
+            }
 
             // Merge Formats
             if (customData.formats != null)
@@ -98,6 +104,7 @@ namespace FirelockCompanion
         public List<string> keywords { get; set; }
         public List<Weapon> weapons { get; set; }
         public string bonus_traits { get; set; }
+        public string unit_class { get; set; }
     }
 
     public class Weapon

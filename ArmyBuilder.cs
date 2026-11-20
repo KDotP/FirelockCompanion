@@ -18,7 +18,9 @@ public partial class ArmyBuilder : Form
 
     private HitCalculator hitCalculatorForm;
     private ArmyStats statsForm;
+    public bool useClasses = true;
     private Dictionary<string, RoleInfo> roleDefinitions = new();
+    private List<string> classes = new();
 
     // Getting real tired of this """error""" and if I suppress it internally, YOU would still get warned
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -110,7 +112,9 @@ public partial class ArmyBuilder : Form
             MessageBox.Show($"Error loading custom content: {ex.Message}", "Custom Content Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        // Load roles, classes, and which to use
         roleDefinitions = ruleset.roles ?? new Dictionary<string, RoleInfo>();
+        classes = ruleset.classes ?? new List<string>();
 
         // Load group names
         if (ruleset.formats != null && ruleset.formats.TryGetValue(faction, out var factionFormat))
@@ -2746,12 +2750,13 @@ public partial class ArmyBuilder : Form
             if (statsForm == null || statsForm.IsDisposed)
             {
                 statsForm = new ArmyStats();
-                statsForm.PopulateRoles(roleDefinitions);
+                if (!useClasses) statsForm.PopulateRoles(roleDefinitions);
+                else statsForm.PopualteClasses(classes); 
                 statsForm.FormClosed += (s, args) =>
-                {
-                    statsForm = null;
-                    armyStatsToolStripMenuItem.Checked = false;
-                };
+                    {
+                        statsForm = null;
+                        armyStatsToolStripMenuItem.Checked = false;
+                    };
                 statsForm.Show(this);
             }
             else
