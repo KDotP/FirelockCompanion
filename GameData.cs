@@ -99,12 +99,13 @@ namespace FirelockCompanion
         public string subname { get; set; }
         public string type { get; set; }
         public List<string> roles { get; set; }
+        [JsonPropertyName("class")] // Alias
+        public string unit_class { get; set; }
         public int cost { get; set; }
         public string unit_stats { get; set; }
         public List<string> keywords { get; set; }
         public List<Weapon> weapons { get; set; }
         public string bonus_traits { get; set; }
-        public string unit_class { get; set; }
     }
 
     public class Weapon
