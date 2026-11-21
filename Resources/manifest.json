@@ -1,0 +1,17 @@
+{
+  "replace": [
+    "FirelockCompanion.exe",
+    "FirelockCompanion.pdb",
+    "Data.json",
+    "Resources/HitTable.csv"
+  ],
+  "append": [
+    "Resources/config.json",
+    "Resources/NamePools.json"
+  ],
+  "ignore": [
+    "Resources/Bombardier-Regular.ttf",
+    "Custom Content/",
+    "Saves/"
+  ]
+}
