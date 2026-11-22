@@ -33,6 +33,7 @@ namespace FirelockCompanion
         {
             InitializeComponent();
             LoadConfig();
+            LoadManifest();
             if (!versionControlEnabled)
             {
                 versionLabel.Visible = false;
@@ -164,10 +165,6 @@ namespace FirelockCompanion
                     string jsonContent = File.ReadAllText(configPath);
                     var configData = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(jsonContent);
                     if (configData == null) return;
-                    if (configData.ContainsKey("version"))
-                    {
-                        version = configData["version"].ToString();
-                    }
 
                     versionControlEnabled = bool.Parse(configData["enable_version_control"].ToString()); // I imagine there's a better way to do this
 
@@ -178,6 +175,28 @@ namespace FirelockCompanion
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error reading configuration: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void LoadManifest()
+        {
+            string manifestPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/manifest.json");
+            if (File.Exists(manifestPath))
+            {
+                try
+                {
+                    string jsonContent = File.ReadAllText(manifestPath);
+                    var manifestData = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(jsonContent);
+                    if (manifestData == null) return;
+                    if (manifestData.ContainsKey("version"))
+                    {
+                        version = manifestData["version"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error reading manifest: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
