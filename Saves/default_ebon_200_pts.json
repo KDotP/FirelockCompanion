@@ -1,0 +1,123 @@
+{
+  "ArmyName": "A.E.F. Reinforced Mech. Platoon",
+  "FactionName": "The Army of the Ebon Forest",
+  "MaxPoints": 200,
+  "ExistingSaveName": "default",
+  "Groups": [
+    {
+      "GroupName": "1e Groupe - Headquarters",
+      "Units": [
+        {
+          "UnitId": "ebon_tanner",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_company_chief",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_waykeepers",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_made_to_orders",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "Desanted"
+        }
+      ]
+    },
+    {
+      "GroupName": "2e Groupe - Infantry",
+      "Units": [
+        {
+          "UnitId": "ebon_tanner",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_machine_gun_team",
+          "CustomName": "Unit 8",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_made_to_orders",
+          "CustomName": "Unit 9",
+          "EmbarkStatus": "Desanted"
+        }
+      ]
+    },
+    {
+      "GroupName": "3e Groupe - Infantry",
+      "Units": [
+        {
+          "UnitId": "ebon_tanner",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 10",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_machine_gun_team",
+          "CustomName": "Unit 11",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_made_to_orders",
+          "CustomName": "Unit 12",
+          "EmbarkStatus": "Desanted"
+        }
+      ]
+    },
+    {
+      "GroupName": "4e Groupe - Fire Support",
+      "Units": [
+        {
+          "UnitId": "ebon_tanner_r",
+          "CustomName": "Unit 13",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_guided_missile_team",
+          "CustomName": "Unit 14",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 15",
+          "EmbarkStatus": "Desanted"
+        },
+        {
+          "UnitId": "ebon_kennel",
+          "CustomName": "Unit 16",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_hima_team",
+          "CustomName": "Unit 17",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_hima_team",
+          "CustomName": "Unit 19",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "ebon_company_chief",
+          "CustomName": "Unit 18",
+          "EmbarkStatus": "Desanted"
+        }
+      ]
+    }
+  ]
+}

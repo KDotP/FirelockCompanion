@@ -1,0 +1,120 @@
+{
+  "ArmyName": "A.B.S. Free Mechanized Platoon",
+  "FactionName": "Atom Barons of Santagria",
+  "MaxPoints": 200,
+  "ExistingSaveName": "default",
+  "Groups": [
+    {
+      "GroupName": "Escuadr\u00F3n Primo - Headquarters",
+      "Units": [
+        {
+          "UnitId": "santa_graf",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "santa_don",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "santa_spada_fresco",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "I. Hemipelot\u00F3n - Anti-Tank",
+      "Units": [
+        {
+          "UnitId": "santa_exto",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "Tercios",
+          "CustomName": "Tercio",
+          "EmbarkStatus": "Embarked",
+          "IsTercioParent": true,
+          "TercioCost": 25,
+          "TercioSize": 3,
+          "TercioChildren": [
+            {
+              "UnitId": "santa_grenadier_team",
+              "CustomName": "Unit 7",
+              "EmbarkStatus": "Embarked"
+            },
+            {
+              "UnitId": "santa_machine_gun_team",
+              "CustomName": "Unit 8",
+              "EmbarkStatus": "Embarked"
+            },
+            {
+              "UnitId": "santa_volley_team",
+              "CustomName": "Unit 9",
+              "EmbarkStatus": "Embarked"
+            }
+          ]
+        },
+        {
+          "UnitId": "Tercios",
+          "CustomName": "Tercio",
+          "EmbarkStatus": "Embarked",
+          "IsTercioParent": true,
+          "TercioCost": 25,
+          "TercioSize": 3,
+          "TercioChildren": [
+            {
+              "UnitId": "santa_grenadier_team",
+              "CustomName": "Unit 11",
+              "EmbarkStatus": "Embarked"
+            },
+            {
+              "UnitId": "santa_machine_gun_team",
+              "CustomName": "Unit 12",
+              "EmbarkStatus": "Embarked"
+            },
+            {
+              "UnitId": "santa_volley_team",
+              "CustomName": "Unit 13",
+              "EmbarkStatus": "Embarked"
+            }
+          ]
+        },
+        {
+          "UnitId": "santa_light_gun_team",
+          "CustomName": "Unit 10",
+          "EmbarkStatus": "Desanted"
+        },
+        {
+          "UnitId": "santa_bombard_team",
+          "CustomName": "Unit 14",
+          "EmbarkStatus": "Desanted"
+        },
+        {
+          "UnitId": "santa_field_gun",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        }
+      ]
+    },
+    {
+      "GroupName": "II. Secci\u00F3n - Fire Support",
+      "Units": [
+        {
+          "UnitId": "santa_mogul",
+          "CustomName": "Unit 15",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "santa_pom_pom",
+          "CustomName": "Unit 16",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        }
+      ]
+    }
+  ]
+}

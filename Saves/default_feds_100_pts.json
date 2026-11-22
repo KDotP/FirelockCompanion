@@ -1,0 +1,77 @@
+{
+  "ArmyName": "Default Feds 100",
+  "FactionName": "The Federal States Army",
+  "MaxPoints": 100,
+  "Groups": [
+    {
+      "GroupName": "Uther Section - Headquarters",
+      "Units": [
+        {
+          "UnitId": "feds_appomattox",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "Aart Section - Anti-Tank",
+      "Units": [
+        {
+          "UnitId": "feds_grumble",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_states_grenadiers",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "feds_recoilless_rifle_team",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Elmo Section - Ranger Attaches",
+      "Units": [
+        {
+          "UnitId": "feds_grumble",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_states_grenadiers",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "feds_intermarine_rangers",
+          "CustomName": "Unit 8",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Olli Section - Mortar",
+      "Units": [
+        {
+          "UnitId": "feds_grumble",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_states_grenadiers",
+          "CustomName": "Unit 9",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "feds_mortar_team",
+          "CustomName": "Unit 10",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    }
+  ]
+}

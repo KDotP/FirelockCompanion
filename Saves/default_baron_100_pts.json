@@ -1,0 +1,96 @@
+{
+  "ArmyName": "Default Barons 100",
+  "FactionName": "Atom Barons of Santagria",
+  "MaxPoints": 100,
+  "Groups": [
+    {
+      "GroupName": "Escuadr\u00F3n Primo - Headquarters",
+      "Units": [
+        {
+          "UnitId": "santa_graf",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "I. Hemipelot\u00F3n - Fire Support",
+      "Units": [
+        {
+          "UnitId": "santa_veldjen",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "santa_retumbo",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        },
+        {
+          "UnitId": "santa_hexamer",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "santa_pom_pom",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        }
+      ]
+    },
+    {
+      "GroupName": "II. Hemipelot\u00F3n - Infantry",
+      "Units": [
+        {
+          "UnitId": "santa_steam_tractor",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "santa_war_wagon",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        },
+        {
+          "UnitId": "Tercios",
+          "CustomName": "Tercio",
+          "EmbarkStatus": "Desanted",
+          "IsTercioParent": true,
+          "TercioCost": 15,
+          "TercioSize": 5,
+          "TercioChildren": [
+            {
+              "UnitId": "santa_santagrine_militia",
+              "CustomName": "Unit 8",
+              "EmbarkStatus": "Desanted"
+            },
+            {
+              "UnitId": "santa_santagrine_militia",
+              "CustomName": "Unit 9",
+              "EmbarkStatus": "Embarked"
+            },
+            {
+              "UnitId": "santa_volley_team",
+              "CustomName": "Unit 10",
+              "EmbarkStatus": "Embarked"
+            }
+          ]
+        },
+        {
+          "UnitId": "santa_light_gun_team",
+          "CustomName": "Unit 11",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "santa_field_gun",
+          "CustomName": "Unit 12",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        }
+      ]
+    }
+  ]
+}

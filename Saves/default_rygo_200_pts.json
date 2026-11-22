@@ -1,0 +1,88 @@
+{
+  "ArmyName": "N.R.H. Mechanized Task Element",
+  "FactionName": "The New Rygolic Host",
+  "MaxPoints": 200,
+  "ExistingSaveName": "default",
+  "Groups": [
+    {
+      "GroupName": "Task Unit 1 - Headquarters",
+      "Units": [
+        {
+          "UnitId": "rygo_parallax",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "rygo_node_team",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "rygo_guided_mortar_spider",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "rygo_smart_gun_team",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "Desanted"
+        }
+      ]
+    },
+    {
+      "GroupName": "Task Unit 2 - Laser",
+      "Units": [
+        {
+          "UnitId": "rygo_perigee",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "rygo_node_team",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "rygo_laser_team",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "rygo_carabiner_horse",
+          "CustomName": "Unit 8",
+          "EmbarkStatus": "Desanted"
+        }
+      ]
+    },
+    {
+      "GroupName": "Task Unit 3 - Assault",
+      "Units": [
+        {
+          "UnitId": "rygo_redstone",
+          "CustomName": "Unit 9",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "rygo_legionnaires",
+          "CustomName": "Unit 10",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Task Unit 4 - Information Warfare",
+      "Units": [
+        {
+          "UnitId": "rygo_vehicle_blind",
+          "CustomName": "Unit 11",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "rygo_infantry_blind",
+          "CustomName": "Unit 12",
+          "EmbarkStatus": "None"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1017 @@
+{
+  "keywords": {
+    "Double Time": "Once per game, during the command phase, this unit may spend a command token to consume their \"Shützen Chocolaatje\". The following fire phase, this unit may only fire at moving accuracy. During the manuever phase, this unit may add its quality to its sprint, and may sprint even if they activated in the fire phase. This unit ignores the effects of pin until next turn.",
+    "Heavy Hardpoints (X)": "This unit may bring and deploy X number of Flying Bombs, purchased seperately.",
+    "Flying Bomb": "Flying bombs may only target plane missions, or designated targets. When fired, the flying bomb unit is placed in front of the plane that fired it in basal contact, and tilts towards its target.  Flying bombs take no pin. The unit is taken off the board permanently when out of ammo."
+  },
+  "formats": {
+    "The Felidae Verteidigungsministerium": {
+      "group_name": "Groep X",
+      "save_name": "cats"
+    }
+  },
+  "factions": {
+    "The Felidae Verteidigungsministerium": [
+      {
+        "id": "felidae_leautenant",
+        "name": "Leautenant",
+        "subname": "Infantry Command Team",
+        "type": "TACOM",
+        "cost": 0,
+        "unit_stats": "Inf, H1, S24\", M6\", Q4, T1/1-/1-, C3",
+        "keywords": [ "Brigade (3, 8\")", "Fearless" ],
+        "weapons": [
+          {
+            "name": "M1 7.92mm Battle Rifle",
+            "weapon_stats": "All, R10”, A3+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_kommandant_char",
+        "name": "FPZ-21C \"LangC\"",
+        "subname": "Armoured Command Vehicle",
+        "type": "TACOM",
+        "cost": 10,
+        "unit_stats": "Vec, H1, S24\", M10\", Q4, C4, T4/3/2",
+        "keywords": [ "NBC", "Brigade (4, 8\")" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3"
+          },
+          {
+            "name": "NbKWrf84 60mm Smoke Launchers",
+            "weapon_stats": "Gnd, R3”, A++/++, D1, Ammo 2",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2”)" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_schuetzen",
+        "name": "Schützen",
+        "subname": "Line Squad",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf(S), H1, S24\", M5\", Q3, T1/1-/1-",
+        "keywords": [ "Double Time", "Squad" ],
+        "weapons": [
+          {
+            "name": "M1A3 7.92mm Battle Rifle",
+            "weapon_stats": "All, R10”, A3+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "M2A3 7.92mm Squad Automatic Rifle",
+            "weapon_stats": "All, R12”, A4+/xx, S1/1+, D2",
+            "keywords": [ "Defensive CC" ]
+          },
+          {
+            "name": "M6A2 \"Verlosser\" Rifle Grenade Adapter",
+            "weapon_stats": "Underbarrel (M1A3) Ammo 6, Small Arm",
+            "keywords": [ "No CC (Inf)", "Slow Round" ],
+            "ammos": [
+              {
+                "name": "60mm Frag",
+                "ammo_stats": "Inf, R6”, S1+/1+, D2",
+                "keywords": [ "Ignore Cover (1)" ]
+              },
+              {
+                "name": "60mm HEAT",
+                "ammo_stats": "Inf/Veh, R6” S6/1+, D1",
+                "keywords": [ "Shaped Charge" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_gamma_force",
+        "name": "Gamma Force",
+        "subname": "Commando Squad",
+        "type": "Infantry",
+        "cost": 20,
+        "unit_stats": "Inf(S), H1, S32”, M4”, Q4, T1/1-/1-",
+        "keywords": [ "Fearless", "Paradrop", "Double Time", "Squad"],
+        "weapons": [
+          {
+            "name": "M2A3 \"Dog Head\" Light Carbine",
+            "weapon_stats": "All, R6”, A3+/4+, S1-/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "R1A1 72mm Light Disposable Launcher",
+            "weapon_stats": "R10”, A3+/5+, Ammo 4",
+            "keywords": [ "Small Arm", "Thermal Sights", "Slow Round" ],
+            "ammos": [
+              {
+                "name": "72mm HEAT",
+                "ammo_stats": "Inf/Veh, S7/1+, D1",
+                "keywords": [ "Shaped Charge", "No CC (Inf)" ]
+              },
+              {
+                "name": "72mm WP Smoke",
+                "ammo_stats": "Gnd, S1-/1-, D1",
+                "keywords": [ "Ignore Cover (1)", "No CC", "Smoke (2”)" ]
+              }
+            ]
+          },
+          {
+            "name": "KRR-330 Catpack Radio",
+            "weapon_stats": "All, R32”, A++/++, D1",
+            "keywords": [ "Discreet", "Designator" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_saboteur",
+        "name": "Saboteur",
+        "subname": "Assault Squad",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf(S), H1, S24\", M4”, Q3, T1+/1/1",
+        "keywords": [ "Assault Specialist", "NBC", "Fearless", "Double Time", "Squad" ],
+        "weapons": [
+          {
+            "name": "\"Grey Face\" Model 189x 12 Gauge Shotgun",
+            "weapon_stats": "All, R8”, A3+/3+, S1+/2, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "M1A4 Infantry Flamethrower",
+            "weapon_stats": "Inf/Vec, R6”, A4+/xx, S1/1, D2, Ammo 3",
+            "keywords": [ "Ignore Cover (2)", "Rear Attack", "Def CC" ]
+          },
+          {
+            "name": "Ordinance, 7 Pound, Anti-Tank Magnetic Grenade",
+            "weapon_stats": "Vec, R0”, A1+/1+, S8/3, D1, Ammo 2",
+            "keywords": [ "Shaped Charge", "Melee" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_gunners",
+        "name": "Gunners",
+        "subname": "Anti-Personnel Squad",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf(S), H1, S24\", M4”, Q2, T1/-1/-1",
+        "keywords": [],
+        "weapons": [
+          {
+            "name": "M1 \"Dog Tail\" 7.62 Light Carbine",
+            "weapon_stats": "All, R8”, A3+/4+, S1-/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Double Issue Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R14”, A4+/xx, S1/1+, D4/2*, Ammo 3",
+            "keywords": [ "Defensive CC" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_luftabwehrraketetrupp",
+        "name": "Luftabwehrraketetrupp",
+        "subname": "Anti Air Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S24\", M5”, Q2, T1/-1/-1",
+        "keywords": [],
+        "weapons": [
+          {
+            "name": "M1 \"Dog Tail\" 7.62 Light Carbine",
+            "weapon_stats": "All, R8”, A3+/4+, S1-/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "AA-1 \"Seeing-Eye\" 60mm Manpads",
+            "weapon_stats": "Air, R60”, A3+/xx, S3/3, D1, Ammo 4",
+            "keywords": [ "Guided Missile (2)", "Homing" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_raketentrupp",
+        "name": "Raketentrupp",
+        "subname": "Rocket Squad",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf(S), H1, S24\", M5”, Q3, T1/-1/-1",
+        "keywords": [ "Double Time" ],
+        "weapons": [
+          {
+            "name": "M1A3 7.92mm Battle Rifle",
+            "weapon_stats": "All, R10”, A3+/3+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "90mm M20A3 \"Super Pipe\"",
+            "weapon_stats": "R18”, Ammo 4, D2",
+            "keywords": [ "Slow Round" ],
+            "ammos": [
+              {
+                "name": "90mm HEAT",
+                "ammo_stats": "Inf/Vec, A4+/xx, S8/1+",
+                "keywords": [ "No CC (Inf.)", "Shaped Charge" ]
+              },
+              {
+                "name": "90mm Smoke",
+                "ammo_stats": "Gnd,A++/xx",
+                "keywords": [ "No CC", "Smoke (2”)" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_morserteam",
+        "name": "Mörserteam",
+        "subname": "Mortar Team",
+        "type": "Infantry",
+        "cost": 15,
+        "unit_stats": "Inf, H1, S24\", M4”, Q3, T1/-1/-1",
+        "keywords": [ "Double Time" ],
+        "weapons": [
+          {
+            "name": "M1 \"Dog Tail\" 7.62 Light Carbine",
+            "weapon_stats": "All, R8”, A3+/4+, S1-/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "6 cm LichtMörser",
+            "weapon_stats": "R24”, D1, Ammo 4",
+            "keywords": [ "Light Indirect (2)", "No CC", "Slow Round" ],
+            "ammos": [
+              {
+                "name": "6 cm HE",
+                "ammo_stats": "Inf/Vec, A4+/xx, S1",
+                "keywords": [ "Ignore Cover (1)" ]
+              },
+              {
+                "name": "6 cm WP Smoke",
+                "ammo_stats": "Gnd, A5+/xx, S1-",
+                "keywords": [ "Smoke (2”)" ]
+              },
+              {
+                "name": "6 cm HEAT",
+                "ammo_stats": "Inf/Vec, A5+/xx, S4/1+",
+                "keywords": [ "Rear Attack" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_minister",
+        "name": "Minister",
+        "subname": "Chaplain Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S24\", M6”, Q3, T1/-1/-1",
+        "keywords": [ "Fearless" ],
+        "bonus_traits": "If this unit is killed, all units in a 4” radius are rallied.",
+        "weapons": [
+          {
+            "name": "9.5 mm Mouser Pistol, Personal or Gvmt Issue.",
+            "weapon_stats": "All, R2”, A5+/5+, S1/1, D2",
+            "keywords": [ "Small Arm", "Multigun" ]
+          },
+          {
+            "name": "Various Religious Texts",
+            "weapon_stats": "All, R4”. A++/++",
+            "keywords": [ "Rally" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_munitionsschmuggler",
+        "name": "Munitionsschmuggler",
+        "subname": "Infantry Resupply Team",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf, H1, S24\", M5”, Q2, T1/-1/-1",
+        "keywords": [ "Resupply (2)", "Sense (6”)" ],
+        "bonus_traits": "May only resupply infantry.",
+        "weapons": [
+          {
+            "name": "M1 \"Dog Tail\" 7.62 Light Carbine",
+            "weapon_stats": "All, R8”, A4+/5+, S1-/1+, D1",
+            "keywords": [ "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_scharfschutze",
+        "name": "Scharfschütze",
+        "subname": "Sniper Team",
+        "type": "Infantry",
+        "cost": 25,
+        "unit_stats": "Inf, H1, S32\", M3”, Q4, T1/-1/-1",
+        "keywords": [ "Double Time" ],
+        "weapons": [
+          {
+            "name": "M128 13.2 mm TuF Anti-Material Rifle",
+            "weapon_stats": "R24”, A3+/xx, Ammo 4 No CC (Inf.), Scoped",
+            "keywords": [ "Scoped" ],
+            "ammos": [
+              {
+                "name": "13.2 mm DU Sabot",
+                "ammo_stats": "Vec, S5/7, D1"
+              },
+              {
+                "name": "13.2 mm HEDP",
+                "ammo_stats": "Inf/Vec, S3/1+, D1",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "XM3A1 \"Sheephead\" 7.62 Light Sniper, With Thermal Complex",
+            "weapon_stats": "All, R12”, A2+/xx, S1/1+, D1",
+            "keywords": [ "Small Arm", "Thermal Sights", "Scoped", "Discreet" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_abk36t",
+        "name": "AbK 36T 1 Ton 4x4",
+        "subname": "Light Truck",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec (W), H1, S24\", M8”, Q2, T1/1-/1-",
+        "keywords": [ "Resupply (4)", "PC (1, Rear)", "Tow (2)" ],
+        "weapons": [
+          {
+            "name": "11.5mm Mouser 1911 Pistol, Standard Issue.",
+            "weapon_stats": "All, R2”, A4+/4+, S1-/1, D1",
+            "keywords": [ "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_schutzencahr21",
+        "name": "Schützenchar 21 \"Dandelion\"",
+        "subname": "Light APC",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec, H1, S24\", M8”, Q2, T2/2/1+",
+        "keywords": [ "NBC", "PC (3, Sides)" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3"
+          },
+          {
+            "name": "SMK60 60mm Smoke Launcher",
+            "weapon_stats": "Gnd R3”, A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2”)" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_schutzencahr22",
+        "name": "Schützenchar 22 NTU \"Rose\"",
+        "subname": "Light IFV",
+        "type": "Vehicle",
+        "cost": 20,
+        "unit_stats": "Vec, H1, S24\", M8”, Q3, T4/3/2",
+        "keywords": [ "NBC", "PC (2, Rear)" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "AC-45 2 cm Autokanone",
+            "weapon_stats": "All, R32”, A4+/4+, S4/6, D2, Ammo 4",
+            "keywords": [ "Turret", "No CC (Inf.)" ]
+          },
+          {
+            "name": "R-73 7.2 cm HEAT Rocket Pod",
+            "weapon_stats": "Inf/Veh, R16, A5+/xx S6/1+, D4, Ammo(1)",
+            "keywords": [ "No CC (Inf.)", "Turret", "Shaped Charge", "Slow Round" ]
+          },
+          {
+            "name": "SMK60 60mm Smoke Launchers",
+            "weapon_stats": "Gnd R3”, A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2”)", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_xm31",
+        "name": "Schützenchar XM31 \"Bougainvillea\"",
+        "subname": "Heavy IFV",
+        "type": "Vehicle",
+        "cost": 30,
+        "unit_stats": "Vec, H2, S32\", M8”, Q3, T7/5/4",
+        "keywords": [ "NBC", "PC (2, Rear)" ],
+        "weapons": [
+          {
+            "name": "Infantry Deck Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3",
+            "keywords": [ "Turret", "Multigun" ]
+          },
+          {
+            "name": "AC-45 2 cm Autokanone",
+            "weapon_stats": "All, R32”, A4+/4+, S4/6, D2, Ammo 4",
+            "keywords": [ "Turret", "No CC (Inf)" ]
+          },
+          {
+            "name": "9GR1 125mm ATGM",
+            "weapon_stats": "Vec, R12-60”, A3+/xx, S14/2, D1, Ammo 1",
+            "keywords": [ "Guided Missile (2)", "MCLOS", "Shaped Charge", "Turret" ]
+          },
+          {
+            "name": "SMK60 60mm Smoke Launchers",
+            "weapon_stats": "Gnd R3”, A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2”)", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_fpz23",
+        "name": "Fpz 23 \"Lily\"",
+        "subname": "Recon Tank",
+        "type": "Vehicle",
+        "cost": 25,
+        "unit_stats": "Vec, H1, S32”, M10”, Q3, T4/3/1+",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "AC-45 2 cm Autokanone",
+            "weapon_stats": "All, R32”, A4+/4+, S4/6, D2, Ammo 4",
+            "keywords": [ "Turret", "No CC (Inf.)" ]
+          },
+          {
+            "name": "SMK60 60mm Smoke Launcher, WP",
+            "weapon_stats": "Gnd R2-3”, A4+/6+, D1, S1+, Ammo 2",
+            "keywords": [ "Light Indirect (0)", "Smoke (2”)", "Turret", "Rear Attack", "Ignore Cover (2)" ]
+          },
+          {
+            "name": "LBZR-241 Laser Designator",
+            "weapon_stats": "All, R40’’, A++/++",
+            "keywords": [ "Discreet", "Designator" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_luftchar31",
+        "name": "Luftchar 31",
+        "subname": "Medium Tank",
+        "type": "Vehicle",
+        "cost": 30,
+        "unit_stats": "Vec,H2, S32\", M8”,Q3, T10/5/4",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "M1A3 9 cm Kanone",
+            "weapon_stats": "R40”, A3+/4+, D1, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "90mm APDS",
+                "ammo_stats": "Vec, S10/15"
+              },
+              {
+                "name": "90mm HESH",
+                "ammo_stats": "Inf/Veh S8/3",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "SMK60 60mm Smoke Launchers",
+            "weapon_stats": "Gnd R3”, A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2”)", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_luftchar35",
+        "name": "Luftchar 35 AEV",
+        "subname": "Engineering Tank",
+        "type": "Vehicle",
+        "cost": 25,
+        "unit_stats": "Vec,H2, S24\", M6”,Q3, T10/5/4",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "M36 15 cm Kanone",
+            "weapon_stats": "R20”, Ammo 4 No CC (Inf.), Thermal Sights, Turret",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "15 cm HESH",
+                "ammo_stats": "A3+/xx, Inf/Vec, S10/5, D1",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "15 cm Beehive",
+                "ammo_stats": "All, A4+/xx, S1/1+, D4",
+                "keywords": [ "Radius (2”)" ]
+              },
+              {
+                "name": "15 cm Chemical Shell",
+                "ammo_stats": "A++/xx, Gnd,D2",
+                "keywords": [ "Chemical Weapon (3”)" ]
+              }
+            ]
+          },
+          {
+            "name": "SMK60W 60mm Smoke Launchers,WP",
+            "weapon_stats": "Gnd R6”, A++/++, S1+/1+, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (3”)", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_char42",
+        "name": "Char 42",
+        "subname": "Main Battle Tank",
+        "type": "Vehicle",
+        "cost": 45,
+        "unit_stats": "Vec,H2, S32\", M8”,Q3, T14/7/6",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "M2A1 10.5 cm Kanone",
+            "weapon_stats": "R40”, A2+/3+, D1, Ammo 4",
+            "keywords": [ "No CC (Inf.)", "Thermal Sights", "Turret" ],
+            "ammos": [
+              {
+                "name": "105mm APDS",
+                "ammo_stats": "Vec, S12/18"
+              },
+              {
+                "name": "105mm HESH",
+                "ammo_stats": "Inf/Veh S9/4",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/4+, S1/1+, D3",
+            "keywords": [ "Thermal Sights", "Turret" ]
+          },
+          {
+            "name": "SMK60 60mm Smoke Launchers",
+            "weapon_stats": "Gnd R3”, A++/++, D1, Ammo 1",
+            "keywords": [ "Light Indirect (0)", "No CC", "Smoke (2”)", "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_char45",
+        "name": "Char 45 AEV",
+        "subname": "Engineering Tank",
+        "type": "Vehicle",
+        "cost": 35,
+        "unit_stats": "Vec,H2, S32\", M6”,Q3, T16/7/7",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/4+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "XM8R-Dual Mounted Rocket Revolvers",
+            "weapon_stats": "R2-24”, A4+/4+, D2, Ammo 3 No CC (Inf.), Turret",
+            "keywords": [ "No CC (Inf.)", "Turret" ],
+            "ammos": [
+              {
+                "name": "180mm Thermobaric",
+                "ammo_stats": "Gnd, S3/3,",
+                "keywords": [ "Ignore Cover (2)", "Radius (2”)", "Rear Attack" ]
+              },
+              {
+                "name": "180mm HESH",
+                "ammo_stats": "Inf/Veh S10/4",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              }
+            ]
+          },
+          {
+            "name": "M2A1 Sponson Flamethrower",
+            "weapon_stats": "Inf/Vec, R8”, A3+/3+, S1+/1+, D3, Ammo 3",
+            "keywords": [ "Ignore Cover (2)", "Multi-Gun", "Rear Attack" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_flakchar21",
+        "name": "FlakChar 21 \"Goose\"",
+        "subname": "Self Propelled Anti Air Gun",
+        "type": "Vehicle",
+        "cost": 30,
+        "unit_stats": "Vec, H2, S32”, M10”, Q3, T4/3/3",
+        "keywords": [ "Amphibious", "NBC" ],
+        "weapons": [
+          {
+            "name": "\"Welding Rod\" M2A3 9mm SMG",
+            "weapon_stats": "All, R6”, A4+/5+, S1-/1, D2",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Dual AC-85 4 cm Autokanone",
+            "weapon_stats": "All, R36\" A4+/5+, D2, Ammo 4",
+            "keywords": [ "Radar Anti-Air", "Turret", "No CC" ],
+            "ammos": [
+              {
+                "name": "40mm Airburst-Frag",
+                "ammo_stats": "S3/3",
+                "keywords": [ "Air-Filling" ]
+              },
+              {
+                "name": "40mm APBC",
+                "ammo_stats": "S4/6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_kmz",
+        "name": "KmZ-10.5 cm Leichte Haubitze",
+        "subname": "Recoilless Gun",
+        "type": "Vehicle",
+        "cost": 20,
+        "unit_stats": "Vec (C) H1, S24\", M2”,Q3, T1/1-/-1",
+        "keywords": [],
+        "weapons": [
+          {
+            "name": "M1 \"Dog Tail\" 7.62 Light Carbine",
+            "weapon_stats": "All, R8”, A4+/5+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "10.5 cm Recoilless Rifle",
+            "weapon_stats": "Ammo 4, No CC",
+            "keywords": [ "No CC" ],
+            "ammos": [
+              {
+                "name": "105mm HESH, Direct Fire",
+                "ammo_stats": "Inf/Vec, R20”, A3+/xx, S8/2, D1",
+                "keywords": [ "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "105mm Frag",
+                "ammo_stats": "Gnd, R40”, A4+/xx, S[D3], D2",
+                "keywords": [ "Air-Filling", "Light Indirect (2)", "Radius (2”)" ]
+              },
+              {
+                "name": "105mm Mustard Gas",
+                "ammo_stats": "Gnd, R40”, A++/xx, D2",
+                "keywords": [ "Chemical Weapon (2”)", "Smoke (3”)", "Light Indirect (2)" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_charhaubitze",
+        "name": "CharHaubitze \"Scaup\"",
+        "subname": "Self Propelled Howitzer",
+        "type": "Vehicle",
+        "cost": 30,
+        "unit_stats": "Vec, H2, S32”, M10”, Q2, T6/4/4",
+        "keywords": [ "NBC" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/4+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "1K26 122mm Howitzer",
+            "weapon_stats": "Ammo 4, Turret",
+            "keywords": [ "Turret" ],
+            "ammos": [
+              {
+                "name": "122mm HEAT",
+                "ammo_stats": "Inf/Vec, R40”, A3+/5+, S12/2, D1",
+                "keywords": [ "No CC (Inf.)", "Shaped Charge", "Slow Round" ]
+              },
+              {
+                "name": "122mm Frag",
+                "ammo_stats": "Gnd, R∞”, A4+/5+, S[D3], D2",
+                "keywords": [ "Air-Filling", "Heavy Indirect (2)", "No CC", "Radius (3”)" ]
+              },
+              {
+                "name": "122mm Mustard Gas",
+                "ammo_stats": "Gnd, R∞”, A++/++, D1",
+                "keywords": [ "Chemical Weapon (3”)", "Smoke (3\")", "Heavy Indirect (2)", "No CC" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_abk25",
+        "name": "AbK 25 Meter",
+        "subname": "Coastal Patrol Boat",
+        "type": "Vehicle",
+        "cost": 30,
+        "unit_stats": "Vec, H2, S32”, M10”, Q2, T4/3/2",
+        "keywords": [ "Watercraft" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R12”, A4+/5+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "AC-45 2 cm Autokanone",
+            "weapon_stats": "All, R32”, A4+/4+, S4/6, D2, Ammo 4",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "ASR50 Anti-Submarine Rockets",
+            "weapon_stats": "Gnd, R24”, A4+/5+, S6/6, D2, Ammo 4",
+            "keywords": [ "Air-Filling", "Ignore Cover (1)", "Light Indirect (1)", "No CC", "Radius (2”)" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_uh13",
+        "name": "UH-13 \"Hummingbird\"",
+        "subname": "Light Utility Helicopter",
+        "type": "Aircraft",
+        "cost": 15,
+        "unit_stats": "Air, H2, S32\", M32”, Q3, T1+/1/1",
+        "keywords": [],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\"",
+            "weapon_stats": "All, R14”, A5+/6+, S1/1+, D3",
+            "keywords": [ "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_uh24",
+        "name": "UH-24 \"Condor\"",
+        "subname": "Makeshift Heavy Gunship",
+        "type": "Aircraft",
+        "cost": 30,
+        "unit_stats": "Air, H2, S32\", M24”, Q3, T3/2/2",
+        "keywords": [ "NBC", "Decoy Protection (1)" ],
+        "weapons": [
+          {
+            "name": "AC-45 2 cm Autokanone",
+            "weapon_stats": "All, R32”, A4+/4+, S4/6, D2, Ammo 4"
+          },
+          {
+            "name": "MPAR 12.7 cm Rocket, Quad Mount",
+            "weapon_stats": "Inf/Vec, R22”, A6+/5+, S6/6, D4, Ammo 1",
+            "keywords": [ "Strafing", "Slow Round" ]
+          },
+          {
+            "name": "SDAR 7 cm Rocket Pod",
+            "weapon_stats": "Inf/Vec, S4/4, D2, Ammo 2",
+            "keywords": [ "Barrage (2)", "Strafing", "Slow Round" ],
+            "ammos": [
+              {
+                "name": "Direct Fire",
+                "ammo_stats": "R24” A6+/5+"
+              },
+              {
+                "name": "Lofting Fire",
+                "ammo_stats": "R22”-60” Axx/6+",
+                "keywords": [ "Light Indirect (1)", "Radius (2”)" ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_ah36",
+        "name": "AH-36 \"Parrot\"",
+        "subname": "Light Gunship",
+        "type": "Aircraft",
+        "cost": 20,
+        "unit_stats": "Air, H1, S32\", M32”, Q3, T2/1+/1+",
+        "keywords": [ "Decoy Protection (1)", "NBC" ],
+        "weapons": [
+          {
+            "name": "Bergmann 7.92 \"Sawzaw\" Dual Mount",
+            "weapon_stats": "All, R14”, A4+/5+, S1/1+, D6",
+            "keywords": [ "Turret" ]
+          },
+          {
+            "name": "MPAR 12.7 cm Rocket, Dual Mount",
+            "weapon_stats": "Inf/Vec, R22”, A6+/5+, S6/6, D2, Ammo 1",
+            "keywords": [ "Strafing", "Slow Round" ]
+          },
+          {
+            "name": "\"Hull Splitter\" AT-1m 16.5 cm Anti Tank Missile",
+            "weapon_stats": "Vec, R12-60”, A3+/5+, S15/2, D1, Ammo 1",
+            "keywords": [ "Guided Missile (1)", "Shaped Charge", "MCLOS" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_flying_tigers",
+        "name": "Flying Tigers",
+        "subname": "Jetpack Unit",
+        "type": "Aircraft",
+        "cost": 15,
+        "unit_stats": "Air, H1, S24”, M12/4”, Q3, T1+/1/1",
+        "keywords": [ "Double Time" ],
+        "bonus_traits": "Uses a 40x40mm base and can be depleted as if it were an infantry squad. Does not pay to land. When landed, uses its second movement stat, counts as Inf (S), may fire all weapons and enter close combat as infantry, and may land in forests and inside buildings as a squad-sized garrison.",
+        "weapons": [
+          {
+            "name": "M2A3 \"Dog Head\" Automatic Light Carbine",
+            "weapon_stats": "All, R6”, A3+/6+, S1-/1, D2",
+            "keywords": [ "Small Arm", "Thermal Sights" ]
+          },
+          {
+            "name": "80 mm M30A1 IAT \"Ultra\"",
+            "weapon_stats": "Inf/Vec R8”, A4+/6+, S9/1+, D1, Ammo 3",
+            "keywords": [ "Slow Round", "Shaped Charge" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_t12",
+        "name": "T-12 \"Eagle\"",
+        "subname": "Trainer Aircraft",
+        "type": "Aircraft",
+        "cost": 20,
+        "unit_stats": "Air (CAS), M14”, Q2, T2, E2",
+        "keywords": [ "Decoy Protection (1)" ],
+        "weapons": [
+          {
+            "name": "AC-45 2 cm Autocannon, Single Mount",
+            "weapon_stats": "All, R6”, A5+, S4, D2, Ammo 4"
+          },
+          {
+            "name": "SDAR 7 cm Heat Rocket Pods",
+            "weapon_stats": "Inf/Vec R6” A4+ , S7/1+, D4, Ammo 2",
+            "keywords": [ "Barrage (2)", "Shaped Charge", "Slow Round" ]
+          },
+          {
+            "name": "GP 250 KG Thermobaric Bomb",
+            "weapon_stats": "Gnd, R0”, A3+, S3, D1, Ammo 2",
+            "keywords": [ "Barrage (2)", "Radius (2”)", "Rear Attack", "Ignore Cover (2)" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_f13",
+        "name": "F-13 \"Serval\"",
+        "subname": "Interceptor",
+        "type": "Aircraft",
+        "cost": 30,
+        "unit_stats": "Air (CAP), M20”, Q3, T2, E0",
+        "keywords": [ "Decoy Protection (1)", "Afterburner" ],
+        "weapons": [
+          {
+            "name": "XM-345 2 cm Rotary Cannon",
+            "weapon_stats": "All, R6”, A3+, S4, D3, Ammo 3"
+          },
+          {
+            "name": "AA-3 \"Polearm\" 21 Cm Semi-Active AAM",
+            "weapon_stats": "Air, R60”, A3+, S8, D1, Ammo 2",
+            "keywords": [ "Guided Missile (1)", "No CC" ]
+          },
+          {
+            "name": "AA-2 \"Yellow Jacket\" 6 Cm IR AAM",
+            "weapon_stats": "Air, R30”, A4+, S4, D1, Ammo 2",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_b12",
+        "name": "B-12 \"Spiker\"",
+        "subname": "Tactical Bomber",
+        "type": "Aircraft",
+        "cost": 25,
+        "unit_stats": "Air (CAS), M12”, Q3, T3, E0",
+        "keywords": [ "Heavy Hardpoints (3)", "Decoy Protection (1)" ],
+        "weapons": [
+          {
+            "name": "AC-45 2 cm Autocannon",
+            "weapon_stats": "All, R8”, A5+, S4/6, D2"
+          },
+          {
+            "name": "GP 450kg HE Bomb",
+            "weapon_stats": "Gnd, R0”, A3+, S6, D1, Ammo 4",
+            "keywords": [ "Air-Filling", "Barrage (2)", "Radius (3”)", "Rear Attack" ]
+          },
+          {
+            "name": "Dual Pod AA-2 \"Yellow Jacket\" 6 Cm IR AAM",
+            "weapon_stats": "Air, R30”, A3+, S4, D2, Ammo 2",
+            "keywords": [ "Air-Filling", "Guided Missile (1)", "Homing" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_ac21",
+        "name": "AC-21 \"Jackdaw\"",
+        "subname": "Strike Aircraft",
+        "type": "Aircraft",
+        "cost": 40,
+        "unit_stats": "Air (CAS), M12”, Q4, T4, E1",
+        "keywords": [ "Heavy Hardpoints (1)", "Decoy Protection (2)" ],
+        "weapons": [
+          {
+            "name": "XM1A2 7.5cm Kanone",
+            "weapon_stats": "R16\", A4+ D1, Ammo 6",
+            "ammos": [
+              {
+                "name": "75mm API",
+                "ammo_stats": "Vec, S7"
+              },
+              {
+                "name": "75mm Fragmentation Proximity Fuze",
+                "ammo_stats": "All, S2",
+                "keywords": [ "Air-Filling" ]
+              }
+            ]
+          },
+          {
+            "name": "MPAR 12.7 cm Rocket Pods",
+            "weapon_stats": "Inf/Vec, R12”, A4+, S10/2, D3, Ammo 2",
+            "keywords": [ "Barrage (2)", "Shaped Charge", "Slow Round" ]
+          },
+          {
+            "name": "9GR3M 275mm AGM",
+            "weapon_stats": "Vec, R40”, A3+, S24/8, D1, Ammo 2",
+            "keywords": [ "Guided Missile (2)", "Shaped Charge" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_agm25",
+        "name": "AGM-25",
+        "subname": "Flying Bomb",
+        "type": "Aircraft",
+        "cost": 10,
+        "unit_stats": "Air (FB), M14”, Q*, T2, E0",
+        "keywords": [ "Flying Bomb" ],
+        "weapons": [
+          {
+            "name": "500kg HE Warhead",
+            "weapon_stats": "Gnd, R0”, A3+, S8, D1, Ammo 1",
+            "keywords": [ "Air-Filling", "Radius (3”)", "Rear Attack" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_crm21",
+        "name": "CRM-21",
+        "subname": "Flying Chemical Canister",
+        "type": "Aircraft",
+        "cost": 10,
+        "unit_stats": "Air (FB), M14”, Q*, T2, E0",
+        "keywords": [ "Flying Bomb" ],
+        "weapons": [
+          {
+            "name": "Chemical-Smoke Mix Warhead",
+            "weapon_stats": "Gnd, R0”, A++, S8, D1, Ammo 1",
+            "keywords": [ "Chemical Weapon (3”)", "Smoke (4”)" ]
+          }
+        ]
+      },
+      {
+        "id": "felidae_md26",
+        "name": "MD-26",
+        "subname": "Flying Munitions Dispenser",
+        "type": "Aircraft",
+        "cost": 10,
+        "unit_stats": "Air (FB), M14”, Q*, T2, E0",
+        "keywords": [ "Flying Bomb" ],
+        "bonus_traits": "This unit MUST attack all units along its strafing line, including friendly units.",
+        "weapons": [
+          {
+            "name": "4.5 kg Bomblets",
+            "weapon_stats": "Vec*, R0”, A4+, S5/1+, D3, Ammo 2",
+            "keywords": [ "Radius (2\")", "Shaped Charge" ]
+          }
+        ]
+      }
+    ]
+  }
+}

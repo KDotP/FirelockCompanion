@@ -1,0 +1,57 @@
+{
+  "ArmyName": "Rygo Default 100",
+  "FactionName": "The New Rygolic Host",
+  "MaxPoints": 100,
+  "Groups": [
+    {
+      "GroupName": "Task Unit 1 - Headquarters",
+      "Units": [
+        {
+          "UnitId": "rygo_candor",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "rygo_tactical_team",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "rygo_node_team",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Task Unit 2 - Reconnaissance",
+      "Units": [
+        {
+          "UnitId": "rygo_candor",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "rygo_tactical_team",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "Embarked"
+        },
+        {
+          "UnitId": "rygo_smart_gun_team",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Task Unit 3 - Information Warfare",
+      "Units": [
+        {
+          "UnitId": "rygo_vehicle_blind",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "None"
+        }
+      ]
+    }
+  ]
+}

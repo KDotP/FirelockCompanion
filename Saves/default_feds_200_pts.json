@@ -1,0 +1,89 @@
+{
+  "ArmyName": "F.S-A. Mechanized Platoon",
+  "FactionName": "The Federal States Army",
+  "MaxPoints": 200,
+  "ExistingSaveName": "default",
+  "Groups": [
+    {
+      "GroupName": "Uther Section - Headquarters",
+      "Units": [
+        {
+          "UnitId": "feds_appomattox",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_razorback_m_command",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_razorback_m",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "Aart Section - Infantry",
+      "Units": [
+        {
+          "UnitId": "feds_bantam",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_states_grenadiers",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Elmo Section - Infantry",
+      "Units": [
+        {
+          "UnitId": "feds_bantam",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_states_grenadiers",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Olli Section - LAAD",
+      "Units": [
+        {
+          "UnitId": "feds_bantam_mk",
+          "CustomName": "Unit 8",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_manpads_team",
+          "CustomName": "Unit 9",
+          "EmbarkStatus": "Embarked"
+        }
+      ]
+    },
+    {
+      "GroupName": "Isaac Section - Fire Support",
+      "Units": [
+        {
+          "UnitId": "feds_ox",
+          "CustomName": "Unit 10",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "feds_korenbloem",
+          "CustomName": "Unit 11",
+          "EmbarkStatus": "None",
+          "IsTowed": true
+        }
+      ]
+    }
+  ]
+}

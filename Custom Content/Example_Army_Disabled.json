@@ -1,0 +1,113 @@
+{
+  "keywords": {
+    "Custom Content": "For formatting, match the Data.json formatting structure. All factions also need a format entry.",
+    "Vengeful": "When this unit suffers a depletion, if it is not fully depleted, it may immediately return fire to its attacker. This attack is allowed even if this unit has already attacked this turn and does not prevent a normal attack.",
+    "Kindled": "This unit gains additional movement equal to the ammo remaining in its primary weapon.",
+    "Pedigree": "This unit is revealed at the start of combat. When this unit suffers a depletion, its attacker is permenently designated.",
+    "Palace Guard": "This indirect weapon can always fire on designated units within range, even if no unit is able to provide LOS.",
+    "Onslaught": "This weapon can continue to fire without ammo.",
+    "Faithful": "This unit may fire Heavy Indirect missions as if they were Light Indirect Missions.",
+    "Molten Core": "This weapon uses its first value against vehicles at any range and second value against infantry at any range. Does not have a half-range modifier."
+  },
+  "formats": {
+    "Royal Court of Agresta": {
+      "group_name": "Court X",
+      "save_name": "court"
+    }
+  },
+  "factions": {
+    "Royal Court of Agresta": [
+      {
+        "id": "court_disciple",
+        "name": "Deisciple of the Targaro",
+        "subname": "Command Artillery",
+        "type": "TACOM",
+        "cost": 0,
+        "unit_stats": "Vec, H2, S32\", M2\", Q5, T1/1-/1-, C3",
+        "keywords": [ "NBC", "Kindled", "Pedigree", "Faithful" ],
+        "weapons": [
+          {
+            "name": "180mm \"Martyr\"",
+            "weapon_stats": "All, R12-60\", A3+/xx, Ammo 3",
+            "keywords": [ "Turret", "Palace Guard", "Onslaught" ],
+            "ammos": [
+              {
+                "name": "\"Claimant\" Molten Shell",
+                "ammo_stats": "Ground, S14/2, D1",
+                "keywords": [ "Ignore Cover (1)", "Slow Round", "Radius (2\")", "Molten Core", "Heavy Indirect" ]
+              },
+              {
+                "name": "Air Burst \"Reclaimer\" Shell",
+                "ammo_stats": "Air, S3, D2",
+                "keywords": []
+              }
+            ]
+          },
+          {
+            "name": "\"Lero\" 12.7mm Mounted Machine Gun",
+            "weapon_stats": "Inf, R12\", A4+/4+, S2/3, D3",
+            "keywords": [ "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "court_gunners",
+        "name": "Faceless Gunners",
+        "subname": "Caste Soldiers",
+        "type": "Infantry",
+        "cost": 10,
+        "unit_stats": "Inf (S), H1, S16\", M4\", Q2, T1/1-/1-",
+        "keywords": [ "Assault Dismount", "Squad", "Vengeful" ],
+        "weapons": [
+          {
+            "name": "7.76mm Battle Rifle",
+            "weapon_stats": "All, R8\", A3+/4+, S1/1+, D1",
+            "keywords": [ "Small Arm" ]
+          },
+          {
+            "name": "Bipod 12.7mm LMG",
+            "weapon_stats": "All, R12\", A4+/xx, S2/3, D2",
+            "keywords": [ "Defensive CC" ]
+          },
+          {
+            "name": "Remote-Armed RPG",
+            "weapon_stats": "Inf/Vec, R8\", A4+/6+, S9/1+, D1, Ammo 3",
+            "keywords": [ "Shaped Charge", "Slow Round", "Small Arm" ]
+          }
+        ]
+      },
+      {
+        "id": "court_palanquin",
+        "name": "\"Palanquin\" APC",
+        "subname": "Armored Personnel Carrier",
+        "type": "Vehicle",
+        "cost": 10,
+        "unit_stats": "Vec (W), H2, S24\", M8\", Q2, T4/4/3",
+        "keywords": [ "PC (2, Rear)", "Wheeled" ],
+        "weapons": [
+          {
+            "name": "\"Lero\" 12.7mm Mounted Machine Gun",
+            "weapon_stats": "Inf, R12\", A4+/4+, S2/3, D3",
+            "keywords": [ "Turret" ]
+          }
+        ]
+      },
+      {
+        "id": "court_artifact",
+        "name": "LM0Kn-a \"Artifact\"",
+        "subname": "Assault Helicopter",
+        "type": "Aircraft",
+        "cost": 15,
+        "unit_stats": "Air, H2, S32\", M32\", Q2, T1+/1+/1+",
+        "keywords": [ "PC (2, Sides)" ],
+        "weapons": [
+          {
+            "name": "\"Lero-2\" 12.7mm Swivel Machine Gun",
+            "weapon_stats": "Inf, R20\", A3+/3+, S1+/2, D3",
+            "keywords": [ "Turret" ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "ArmyName": "Default Dogs 100",
+  "FactionName": "The Army of the Ebon Forest",
+  "MaxPoints": 100,
+  "Groups": [
+    {
+      "GroupName": "1er Groupe - Headquarters",
+      "Units": [
+        {
+          "UnitId": "ebon_company_chief",
+          "CustomName": "Unit 1",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 2",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "2e Groupe - Recoilless Rifle",
+      "Units": [
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 3",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_recoilless_rifle_team",
+          "CustomName": "Unit 4",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "3e Groupe - Anti-Tank",
+      "Units": [
+        {
+          "UnitId": "ebon_subaltern_team",
+          "CustomName": "Unit 5",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 6",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_guided_missile_team",
+          "CustomName": "Unit 7",
+          "EmbarkStatus": "None"
+        }
+      ]
+    },
+    {
+      "GroupName": "4e Groupe - Mortar",
+      "Units": [
+        {
+          "UnitId": "ebon_chasseurs",
+          "CustomName": "Unit 8",
+          "EmbarkStatus": "None"
+        },
+        {
+          "UnitId": "ebon_hima_team",
+          "CustomName": "Unit 9",
+          "EmbarkStatus": "None"
+        }
+      ]
+    }
+  ]
+}
